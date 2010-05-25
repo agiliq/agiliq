@@ -76,6 +76,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     
     "agiliqpages",
+    "compressor",
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
 )

@@ -1,8 +1,9 @@
+import time
+
 from django import template
 from django.core.cache import cache
 from compressor import CssCompressor, JsCompressor
 from compressor.conf import settings
-
 
 register = template.Library()
 
@@ -11,21 +12,41 @@ class CompressorNode(template.Node):
         self.nodelist = nodelist
         self.kind = kind
 
+    def cache_get(self, key):
+        packed_val = cache.get(key)
+        if packed_val is None:
+            return None
+        val, refresh_time, refreshed = packed_val
+        if (time.time() > refresh_time) and not refreshed:
+            # Store the stale value while the cache
+            # revalidates for another MINT_DELAY seconds.
+            self.cache_set(key, val, timeout=settings.MINT_DELAY, refreshed=True)
+            return None
+        return val
+
+    def cache_set(self, key, val, timeout=settings.REBUILD_TIMEOUT, refreshed=False):
+        refresh_time = timeout + time.time()
+        real_timeout = timeout + settings.MINT_DELAY
+        packed_val = (val, refresh_time, refreshed)
+        return cache.set(key, packed_val, real_timeout)
+
     def render(self, context):
         content = self.nodelist.render(context)
-        if not settings.COMPRESS:
+        if not settings.COMPRESS or not len(content.strip()):
             return content
         if self.kind == 'css':
             compressor = CssCompressor(content)
         if self.kind == 'js':
             compressor = JsCompressor(content)
-        in_cache = cache.get(compressor.cachekey)
-        if in_cache:
-            return in_cache
-        else:
-            output = compressor.output()
-            cache.set(compressor.cachekey, output, 86400) # rebuilds the cache once a day if nothign has changed.
-            return output
+        output = self.cache_get(compressor.cachekey)
+        if output is None:
+            try:
+                output = compressor.output()
+                self.cache_set(compressor.cachekey, output)
+            except:
+                from traceback import format_exc
+                raise Exception(format_exc())
+        return output
 
 @register.tag
 def compress(parser, token):
@@ -76,6 +97,6 @@ def compress(parser, token):
 
     kind = args[1]
     if not kind in ['css', 'js']:
-        raise template.TemplateSyntaxError("%r's argument must be 'js' or 'css'." % (args[0], ', '.join(ALLOWED_ARGS)))
+        raise template.TemplateSyntaxError("%r's argument must be 'js' or 'css'." % args[0])
 
     return CompressorNode(nodelist, kind)

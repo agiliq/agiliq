@@ -1,4 +1,6 @@
 *.pyc
 *.log
 *.tmp
+localsettings.py
+*.tmp*~
 

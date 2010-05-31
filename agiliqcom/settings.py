@@ -47,6 +47,8 @@ MEDIA_URL = ''
 # Examples: "http://foo.com/media/", "/media/".
 ADMIN_MEDIA_PREFIX = '/media/'
 
+EMAIL_BACKEND = 'mailer.backends.DbBackend'
+
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'os683(ah9+!==97gy3e9=81d=o(gs&!=#^2!&538sc%@#$hhu*'
 
@@ -55,6 +57,15 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
 #     'django.template.loaders.eggs.Loader',
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+	'django.contrib.auth.context_processors.auth',
+	'django.core.context_processors.debug',
+	'django.core.context_processors.i18n',
+	'django.core.context_processors.media',
+	'django.contrib.messages.context_processors.messages',
+	'agiliqpages.context_processors.sidebar_vars',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -69,14 +80,16 @@ ROOT_URLCONF = 'agiliqcom.urls'
 
 
 INSTALLED_APPS = (
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.messages',
     
-    "agiliqpages",
-    "compressor",
+    'agiliqpages',
+    'compressor',
+	'mailer',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
 )

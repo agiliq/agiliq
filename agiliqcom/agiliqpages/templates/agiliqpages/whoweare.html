@@ -1,5 +1,9 @@
 {% extends "agiliqpages/base.html" %}
 
+{% block  title %}
+	{{ block.super }} | ABOUT US
+{% endblock %}
+
 {% block extracss %}
 	<link href="{{ MEDIA_URL }}css/whoweare.css" rel="stylesheet" type="text/css" charset="utf-8">
 {% endblock %}
@@ -7,62 +11,39 @@
 {% block body_ns %}whoweare{% endblock %}
 
 {% block banner %}
-	    <div id="title">
-      <h1>Agile <span class="black">web development </span><br/>
-        using <span class="black">django</span> framework</h1>
-      <h2>visit our portfolio</h2>
-    </div>
-    <div id="homegraphic"></div>
+<div id="title">
+	<h1>Agile <span class="black">web development </span><br/>
+		using <span class="black">django</span> framework</h1>
+		<h2>visit our portfolio</h2>
+</div>
+<div id="homegraphic"></div>
 {% endblock %}
 
 {% block content %}
+<div id="pagecontent">
+	<span class="greentitle">Who we are</span>
+	<p>We are a small, intelligent web development studio with good ideas and lots of experience. We love designing and developing websites, but what really drives us is solving problems and cultivating strong relationships with our clients</p>
 
-      <div id="pagecontent"><span class="greentitle">Who we are</span>
-        <p>We�re a small, intelligent web development studio with good ideas and lots of experience. We love designing and developing websites, but what really drives us is solving problems and cultivating strong relationships with our clients</p>
-        <!-- profile starts here -->
-        <div class="profile">
-          <div class="left"><img src="{{ MEDIA_URL }}images/shabda.jpg" width="130" height="129" alt="Shabda Raaj"></div>
-          <div class="right">
-            <h3>Shabda Raaj </h3>
-            <span class="designation">Partner, Developer</span>
-            <p class="profilecontent">Shabda is developer at Usware technologies, working with Django. He loves everything about the web, and loves playing a part in making it better everyday. Earlier, Shabda worked at Oracle India, on Oracle property manager, to write the calculation engine behind it. 
-              Favorite quote: The best way to predict the future is to invent it. </p>
-          </div>
-          <div class="clear"></div>
-        </div>
-        <div class="profile">
-          <div class="left"><img src="{{ MEDIA_URL }}images/lakshman.jpg" width="130" height="130" alt="Lakshman Prasad"></div>
-          <div class="right">
-            <h3>Lakshman Prasad</h3>
-            <span class="designation">Partner, Developer</span>
-            <p class="profilecontent">Lakshman is developer at Usware technologies. He primarily works with Django. He loves Python and Django and advocates it passionately. He has spoken about django at barcampbangalore, twincling society, Pycon India and foss.in. Before Usware, Lakshman worked at Oracle India and Infosys Technologies.</p>
-          </div>
-          <div class="clear"></div>
-        </div>
-        <div class="profile">
-          <div class="left"><img src="{{ MEDIA_URL }}images/saikiran.jpg" width="130" height="130" alt="Sai Kiran"></div>
-          <div class="right">
-            <h3>Sai Kiran</h3>
-            <span class="designation">User Experience Designer</span>
-            <p class="profilecontent">With over 6 years diverse experience, Sai kiran has been recognized for his exceptional visual and conceptional problem solving skills. He brings a high-level of design sensibility with the ability to produce and direct a variety of creative on-target solutions to any given problem. From interactive media to traditional graphic design Sai Kiran can bring the innovation and expertise needed for successful visual communications.</p>
-          </div>
-          <div class="clear"></div>
-        </div>
-        <div class="profile">
-          <div class="left"><img src="{{ MEDIA_URL }}images/ashok.jpg" width="130" height="130" alt="Ashok Raavi"></div>
-          <div class="right">
-            <h3>Ashok Raavi </h3>
-            <span class="designation">Senior Developer </span>
-            <p class="profilecontent">Developer at Usware technologies. Before Usware, Ashok worked at Picsquare. </p>
-          </div>
-          <div class="clear"></div>
-        </div>
-        <!-- profile ends here -->
-      </div>
-      <div id="testimonials"><span class="greentitle">testimonials</span>
-	   	{% include "agiliqpages/testimonials.html" %}
-      </div>
+{% for profile in object_list %}
+	<div class="profile">
+		<div class="left">
+			{% if profile.photo %}
+				<img src="{{ profile.photo.url }}" width="130" height="129" alt="{{ profile.name }}">
+			{% endif %}
+		</div>
+		<div class="right">
+			<h3>{{ profile.name }}</h3>
+			<span class="designation">{{ profile.designation }}</span>
+			<p class="profilecontent">{{ profile.bio }}</p>
+		</div>
+		<div class="clear"></div>
+	</div>
+{% endfor %}
 
+</div>
 
+<div id="testimonials"><span class="greentitle">testimonials</span>
+	{% include "agiliqpages/testimonials.html" %}
+</div>
 {% endblock %}
 

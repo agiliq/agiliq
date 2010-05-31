@@ -23,6 +23,11 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 ol, ul {
 	list-style: none;
 }
+ul.errorlist {
+	font-weight: bold;
+	color: red;
+	margin-top: -14px;
+}
 blockquote, q {
 	quotes: none;
 }

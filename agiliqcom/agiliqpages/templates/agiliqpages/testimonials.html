@@ -1,34 +1,18 @@
-<ul id="mycarousel" class="jcarousel-skin-tango">
-          <li>
-            <div class="blockquote">
-              <p>Collaborating with Usware Technologies enabled us to build a scalable, effective app and thanks to their good advice we managed to avoid some pitfalls that could have cost valuable hours later in the development process.</p>
-              <p class="right"><span class="clientname">Colby Palmer</span> - <span class="companyname">Illusion Factory</span></p>
-            </div>
-          </li>
-          <li>
-            <div class="blockquote">
-              <p>We contracted Shabda to help us out with a very large project. The quality and timeliness of work was of a high priority for us and Shabda was able to deliver on both. We found him very efficient and was able to complete any work we sent through his way, no matter how complex or difficult. If you want quality work delivered on time then Shabda is your man!</p>
-              <p class="right"><span class="clientname">Steven Mallows</span> - <span class="companyname">Additional View</span></p>
-            </div>
-          </li>
-          <li>
-            <div class="blockquote">
-              <p>Shabda has been a reliable provider for Django programming since our first project with this language. I would recommend UsWareTech for any size project; Shabda has assembled a team unlike any other in the industry.</p>
-              <p class="right"><span class="clientname">Lane Campbell</span> - <span class="companyname">ZipZap</span></p>
-            </div>
-          </li>
-          <li>
-            <div class="blockquote">
-              <p>We approached Uswaretech to work with us on a complicated project in a time when we were under real pressure.  
-                
-                I was and am impressed with Shabda's dedication to delivering great work. We're very appreciative of all the creative solutions to complicated problems. It's very rare to find a partner like Uswartech, but I'm glad we did.</p>
-              <p class="right"><span class="clientname">Johnny Kane</span> - <span class="companyname">Cubedroute</span></p>
-            </div>
-          </li>
-          <li>
-            <div class="blockquote">
-              <p>Shabda is a rare breed of developer that can handle both the nitty-gritty technical work and communicate details in a manner the is easy for non-technical types to understand. His development work is fast without cutting corners like commenting and testing. I highly recommend his work.</p>
-              <p class="right"><span class="clientname">Peter Baumgartner</span> - <span class="companyname">Lincoln Loop</span></p>
-            </div>
-          </li>
-        </ul>
+{% if testimonials %}
+<div id="testimonials">
+	<span class="hometitle">testimonials</span>
+	<ul id="mycarousel" class="jcarousel-skin-tango">
+	{% for testimonial in testimonials %}
+	<li>
+		<div class="blockquote">
+			<p>{{ testimonial.testimonial }}</p>
+			<p class="right">
+				<span class="clientname">{{ testimonial.contact_name }}</span> - 
+				<span class="companyname">{{ testimonial.name }}</span>
+			</p>
+		</div>
+	</li>
+	{% endfor %}	
+	</ul>
+</div>
+{% endif %}

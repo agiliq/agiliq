@@ -19,102 +19,55 @@
 {% block body_ns %}ourwork{% endblock %}
 
 {% block content %}
+<div id="pagecontent">
+	{% if products %}
+		<span class="redtitle">our products</span>
+	{% endif %}
+    <!-- product starts here -->
+	{% for prod in products %}
+    	<div class="clientblock">
+	    	<div class="left">
+				{% if prod.logo %}
+					<img src="{{ prod.log.url }}" width="190" height="100" alt="{{ prod.name }}">
+				{% endif %}
+			</div>
+	        <div class="right">
+	            <h4>{{ prod.name }}</h4>
+	            <a href="{{ prod.url }}" target="_blank" class="website">{{ prod.url }}</a>
+	            <p class="profilecontent">{{ prod.blurb }}</p>
+	        </div>
+	    	<div class="clear"></div>
+	    </div>
+    {% endfor %}
+    <div class="hr"></div>
 
-      <div id="pagecontent"><span class="redtitle">our products</span>
-        <!-- product starts here -->
-        <div class="clientblock">
-          <div class="left"><img src="{{ MEDIA_URL }}images/jobboardshq.gif" width="190" height="100" alt="Job Boards Hq"></div>
-          <div class="right">
-            <h4>jobboards hq</h4>
-            <a href="http://www.jobboardshq.com/" target="_blank" class="website"> www.jobboardshq.com</a>
-            <p class="profilecontent">JobBoardsHQ  lets you launch an easy-to-use advanced Job Board, while providing the key features to generate revenue and be successful in the competitive job board market. </p>
-          </div>
-          <div class="clear"></div>
+	<span class="redtitle">our code</span>
+	<p>
+		<img src="{{ MEDIA_URL }}images/logov3.png" width="65" height="29" alt="github"> 
+		Follow the link to get the code 
+		<a href="http://github.com/uswaretech" target="_blank" class="redlink">http://github.com/uswaretech</a>
+	</p>
+	<div class="hr"></div>
+	
+	{% if clients %}
+		<span class="redtitle">our clients</span>
+    {% endif %}
+	<!-- clients starts here -->
+    {% for client in clients %}
+    	<div class="clientblock">
+        	<div class="left">
+				{% if client.logo %}
+					<img src="{{ client.logo.url }}" width="190" height="100" alt="{{ client.name }}">
+				{% endif %}
+			</div>
+          	<div class="right">
+            	<h4>{{ client.name }}</h4>
+            	<a href="{{ client.url }}" target="_blank" class="website">{{ client.url }}</a>
+            	<p class="profilecontent">{{ client.about }}</p>
+        	</div>
+        	<div class="clear"></div>
         </div>
-        <div class="clientblock">
-          <div class="left"><img src="{{ MEDIA_URL }}images/babbelbird.gif" width="190" height="100" alt="Babble Bird"></div>
-          <div class="right">
-            <h4>babble bird</h4>
-            <a href="#"  class="website"> Coming soon...</a>
-            <p class="profilecontent">This is a real time feed of people swearing on Twitter</p>
-          </div>
-          <div class="clear"></div>
-        </div>
-        <div class="hr"></div>
-        <span class="redtitle">our code</span>
-        <p><img src="{{ MEDIA_URL }}images/logov3.png" width="65" height="29" alt="github"> Follow the link to get the code <a href="http://github.com/uswaretech" target="_blank" class="redlink">http://github.com/uswaretech</a></p>
-        <div class="hr"></div>
-        <span class="redtitle">our clients</span>
-        <!-- clients starts here -->
-        <div class="clientblock">
-          <div class="left"><img src="{{ MEDIA_URL }}images/illusionfactory.gif" width="190" height="100" alt="lincolnLoop"></div>
-          <div class="right">
-            <h4>the illusion factory</h4>
-            <a href="http://www.illusionfactory.com/" target="_blank" class="website">www.illusionfactory.com</a>
-            <p class="profilecontent">The Illusion Factory is a marketing and interactive media company that creates marketing campaigns in all forms of traditional and digital media. They are based in California, USA. We worked with them on building a high impact Django Web app for social networking.</p>
-          </div>
-          <div class="clear"></div>
-        </div>
-        <div class="clientblock">
-          <div class="left"><img src="{{ MEDIA_URL }}images/additionalview.gif" width="190" height="100" alt="Additional View"></div>
-          <div class="right">
-            <h4>additional view</h4>
-            <a href="http://www.additionalview.com/" target="_blank" class="website">www.additionalview.com</a>
-            <p class="profilecontent">AdditionalView is a digital design and website application development company specialising in building web applications to compliment</p>
-          </div>
-          <div class="clear"></div>
-        </div>
-        <div class="clientblock">
-          <div class="left"><img src="{{ MEDIA_URL }}images/zipzap.gif" width="190" height="100" alt="lincolnLoop"></div>
-          <div class="right">
-            <h4>zipzap</h4>
-            <a href="http://www.zigzap.com/" target="_blank" class="website">www.zigzap.com</a></span>
-            <p class="profilecontent">ZigZap Technologies specializes in providing small businesses in the Midwest with unique solutions for communication, website development and remote support.</p>
-          </div>
-          <div class="clear"></div>
-        </div>
-        <div class="clientblock">
-          <div class="left"><img src="{{ MEDIA_URL }}images/cubedroute.gif" width="190" height="100" alt="lincolnLoop"></div>
-          <div class="right">
-            <h4>cubedroute</h4>
-            <a href="http://www.cubedroute.com/" target="_blank" class="website">www.cubedroute.com/</a></span>
-            <p class="profilecontent">Cubedroute is a full service web design and development agency. They are based in Dublin, Ireland.</p>
-          </div>
-          <div class="clear"></div>
-        </div>
-        <div class="clientblock">
-          <div class="left"><img src="{{ MEDIA_URL }}images/kotoko.gif" width="190" height="100" alt="lincolnLoop"></div>
-          <div class="right">
-            <h4>kotoko</h4>
-            <a href="http://kotoko.com/" target="_blank" class="website">www.kotoko.com</a>
-            <p class="profilecontent">Kotoko Group, LLC is a company that focuses on building vertical websites based on Django. Thier first site is based on user generated data from the African Diaspora. </p>
-          </div>
-          <div class="clear"></div>
-        </div>
-        <div class="clientblock">
-          <div class="left"><img src="{{ MEDIA_URL }}images/lincolnloop.gif" width="190" height="100" alt="lincolnLoop"></div>
-          <div class="right">
-            <h4>Lincoln loop</h4>
-            <a href="http://lincolnloop.com/" target="_blank" class="website"> www.lincolnloop.com</a>
-            <p class="profilecontent">Lincolnloop is a Web Development shop specialising in Django and Jquery. They are based in Colarado, USA.</p>
-          </div>
-          <div class="clear"></div>
-        </div>
-        <div class="clientblock">
-          <div class="left"><img src="{{ MEDIA_URL }}images/enzymeit.gif" width="190" height="100" alt="lincolnLoop"></div>
-          <div class="right">
-            <h4>enzymeit</h4>
-            <a href="http://www.enzymeit.com/" target="_blank" class="website">www.enzymeit.com</a>
-            <p class="profilecontent">Enzyme IT is a collective of highly skilled designers and developers, specialising in building medium to large scale web applications using Python and Django, as well as cross-platform desktop applications using Adobe AIR. They are based in Bali, Indonesia.</p>
-          </div>
-          <div class="clear"></div>
-        </div>
-      </div>
-      <div id="testimonials"><span class="redtitle">testimonials</span>
-	  	{% include "agiliqpages/testimonials.html" %}
-      </div>
-
-
-    
+	{% endfor %}
+</div>
 {% endblock %}
 

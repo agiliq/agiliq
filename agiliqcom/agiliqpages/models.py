@@ -129,3 +129,11 @@ class ContentBlock(models.Model):
 	
 	def __unicode__(self):
 		return self.name
+
+class Tweet(models.Model):
+    screen_name = models.CharField(max_length=255)
+    text = models.CharField(max_length=150)
+
+    def __unicode__(self):
+        return self.screen_name
+

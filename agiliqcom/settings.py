@@ -90,8 +90,11 @@ INSTALLED_APPS = (
     'agiliqpages',
     'compressor',
 	'mailer',
-    # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
 )
+
+TWITTER_FOLLOW = ('agiliq',)
+
+TWITTER_API_USER = 'agiliqtest'
+TWITTER_API_PASSW = 'agiliq99'
 
 from localsettings import *

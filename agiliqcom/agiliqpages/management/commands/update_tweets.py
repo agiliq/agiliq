@@ -14,6 +14,12 @@ class Command(NoArgsCommand):
         for scr_name in settings.TWITTER_FOLLOW:
             user_tweets = twitter.statuses.user_timeline(screen_name=scr_name)
             for tweet in user_tweets:
-                Tweet.objects.create(screen_name = tweet['user']['screen_name']
-                                     text=tweet['text'])
-            
+                tweet_id = tweet['id']
+                tweet_exists = Tweet.objects.filter(tweet_id=tweet_id).count()
+                if tweet_exists:
+                    continue
+                else:
+                    Tweet.objects.create(screen_name = tweet['user']['screen_name'], 
+                                         text=tweet['text'],
+                                         tweet_id=tweet_id)
+

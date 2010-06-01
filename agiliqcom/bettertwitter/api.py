@@ -80,8 +80,6 @@ class TwitterCall(object):
         if self.secure:
             secure_str = 's'
 
-        import ipdb
-        ipdb.set_trace()
         req = urllib2.Request(
                 "http%s://%s/%s.%s%s" %(
                     secure_str, self.domain, uri, self.format, argStr),
@@ -178,4 +176,4 @@ class Twitter(TwitterCall):
             self, email, password, format, domain, "", agent, 
             secure=secure)
 
-__all__ = ["Twitter", "TwitterCall", "TwitterError"]
+__all__ = ["Twitter", "TwitterError"]

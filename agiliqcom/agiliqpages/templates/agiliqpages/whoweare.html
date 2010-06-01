@@ -34,7 +34,7 @@
 		<div class="right">
 			<h3>{{ profile.name }}</h3>
 			<span class="designation">{{ profile.designation }}</span>
-			<p class="profilecontent">{{ profile.bio }}</p>
+			<p class="profilecontent">{{ profile.bio|safe }}</p>
 		</div>
 		<div class="clear"></div>
 	</div>

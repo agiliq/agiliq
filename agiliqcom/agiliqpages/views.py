@@ -1,4 +1,5 @@
 
+from django.conf import settings
 from django.core.mail import mail_managers
 from django.core.urlresolvers import reverse
 from django.shortcuts import render_to_response, redirect
@@ -9,10 +10,8 @@ from django.views.decorators.cache import cache_page
 from agiliqpages.forms import ContactUsForm
 from agiliqpages.models import Client, Project
 
-ONE_DAY = 60 * 60 * 24
 
-
-@cache_page(ONE_DAY)
+@cache_page(settings.CACHE_DURATION)
 def contact_us(request, template):
 	if request.method == 'POST':
 		form = ContactUsForm(request.POST)
@@ -32,7 +31,7 @@ def contact_us(request, template):
 							  RequestContext(request))
 
 
-@cache_page(ONE_DAY)
+@cache_page(settings.CACHE_DURATION)
 def our_work(request, template):
 	products = Project.objects.all()
 	clients = Client.objects.all()

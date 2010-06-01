@@ -92,9 +92,11 @@ INSTALLED_APPS = (
 	'mailer',
 )
 
-TWITTER_FOLLOW = ('agiliq',)
+TWITTER_FOLLOW = ('agiliqdotcom', 'uswaretech')
 
 TWITTER_API_USER = 'agiliqtest'
 TWITTER_API_PASSW = 'agiliq99'
+
+CACHE_DURATION = 60 * 60 * 24
 
 from localsettings import *

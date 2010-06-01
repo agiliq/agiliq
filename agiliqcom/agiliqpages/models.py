@@ -133,7 +133,11 @@ class ContentBlock(models.Model):
 class Tweet(models.Model):
     screen_name = models.CharField(max_length=255)
     text = models.CharField(max_length=150)
-
+    tweet_id = models.CharField(max_length=50)
+    
+    class Meta:
+        get_latest_by = ('id',)
+        
     def __unicode__(self):
         return self.screen_name
 

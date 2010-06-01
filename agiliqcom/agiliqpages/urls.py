@@ -1,16 +1,14 @@
-from django.conf.urls.defaults import *
 
-from agiliqpages.models import TeamMember
+from django.conf.urls.defaults import *
+from django.conf import settings
 from django.views.generic.simple import direct_to_template
 from django.views.generic.list_detail import object_list
-
 from django.views.decorators.cache import cache_page
-ONE_DAY = 60 * 60 * 24
 
-
+from agiliqpages.models import TeamMember
 
 def cache(page):
-    return cache_page(page, ONE_DAY)
+    return cache_page(page, settings.CACHE_DURATION)
 
 cached_direct_to_template = cache(direct_to_template)
 cached_object_list = cache(object_list)

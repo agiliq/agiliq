@@ -4,10 +4,15 @@ from django.core.urlresolvers import reverse
 from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
 from django.template.loader import render_to_string
+from django.views.decorators.cache import cache_page
 
 from agiliqpages.forms import ContactUsForm
 from agiliqpages.models import Client, Project
 
+ONE_DAY = 60 * 60 * 24
+
+
+@cache_page(ONE_DAY)
 def contact_us(request, template):
 	if request.method == 'POST':
 		form = ContactUsForm(request.POST)
@@ -27,6 +32,7 @@ def contact_us(request, template):
 							  RequestContext(request))
 
 
+@cache_page(ONE_DAY)
 def our_work(request, template):
 	products = Project.objects.all()
 	clients = Client.objects.all()

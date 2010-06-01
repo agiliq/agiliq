@@ -1,5 +1,9 @@
 {% extends "agiliqpages/base.html" %}
 
+{% block  title %}
+	{{ block.super }} | WE WORK ON PYTHON, DJANGO, JQUERY, MYSQL, POSTGRESQL
+{% endblock %}
+
 {% block extracss %}
 	<link href="{{ MEDIA_URL }}css/whatwedo.css" rel="stylesheet" type="text/css" charset="utf-8">
 {% endblock %}
@@ -18,7 +22,7 @@
 {% block content %}
 
       <div id="pagecontent"><span class="browntitle">what we do</span>
-        <p>We�re a small, intelligent web development studio with good ideas and lots of experience. We love designing and developing websites, but what really drives us is solving problems and cultivating strong relationships with our clients.</p>
+        <p>We are a small, intelligent web development studio with good ideas and lots of experience. We love designing and developing websites, but what really drives us is solving problems and cultivating strong relationships with our clients.</p>
         <span class="smallbrowntitle">django</span>
         <p>Django bills itself as "the Web framework for perfectionists with deadlines." It has emerged as the most widely used Python based framework. Google used parts of Django for the App Engine.</p>
         <span class="smallbrowntitle">jquery</span>
@@ -30,9 +34,8 @@
         <span class="smallbrowntitle">python</span>
         <p>Django bills itself as "the Web framework for perfectionists with deadlines." It has emerged as the most widely used Python based framework. Google used parts of Django for the App Engine. </p>
       </div>
-      <div id="testimonials"><span class="browntitle">testimonials</span>
-	  {% include "agiliqpages/testimonials.html" %}
-      </div>
+
 
 
 {% endblock %}
+

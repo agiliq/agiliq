@@ -1,0 +1,3 @@
+{{ name }}(Email: {{ email }}) has contacted via contact form, with the following Query:
+
+{{ query }}

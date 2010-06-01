@@ -1,6 +1,8 @@
 *.pyc
 *.log
 *.tmp
+*.swp
 localsettings.py
 *.tmp*~
 *CACHE*
+*.kpf

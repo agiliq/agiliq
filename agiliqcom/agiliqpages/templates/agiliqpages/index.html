@@ -1,5 +1,9 @@
 {% extends "agiliqpages/base.html" %}
 
+{% block  title %}
+	{{ block.super }} | AGILE WEB DEVELOPMENT USING DJANGO FRAMEWORK
+{% endblock %}
+
 {% block extracss %}
 	<link href="{{ MEDIA_URL }}css/home.css" rel="stylesheet" type="text/css" charset="utf-8">
 {% endblock %}

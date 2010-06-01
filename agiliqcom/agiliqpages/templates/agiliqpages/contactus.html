@@ -1,4 +1,9 @@
+
 {% extends "agiliqpages/base.html" %}
+
+{% block  title %}
+	{{ block.super }} | CONTACT US, WE LOVE TO HEAR FROM YOU
+{% endblock %}
 
 {% block extracss %}
 	<link href="{{ MEDIA_URL }}css/contact.css" rel="stylesheet" type="text/css" charset="utf-8">
@@ -16,43 +21,49 @@
 
 
 {% block content %}
-      <div id="pagecontent"><span class="purpletitle">get in touch</span>
-        <div>
-          <div class="address"><br/>
-            <span class="purpletext">Email :</span> <a href="mailto:hello@agiliqsolutions.com" class="blacklink">hello@agiliqsolutions.com</a><br/>
-            <br/>
-            <span class="purpletext">Speak to us :</span><br/>
-            India: +91- 99499 97612<br/>
-            <br/>
-            <span class="purpletext">Address :</span><br/>
-            Agiliq Solutions, <br/>
-            # 1-46, Kumhar Basti, Madhapur, <br/>
-            Hyderabad 500081.India </div>
-          <div class="map"><img src="http://maps.google.com/maps/api/staticmap?center=Kumhar+Basti,Madhapur,Hyderabad&zoom=12&size=300x188&sensor=false" width="300" height="188" alt="Map"></div>
-        </div>
-        <div class="clear"></div>
-        <fieldset>
-          <legend class="purpletitle">Say Hello !</legend>
-          Your Name :<br/>
-          <input type="text" name="textfield" id="textfield" class="formstyle">
-          <br/>
-          Phone (optional) :<br/>
-          <input type="text" name="textfield" id="textfield" class="formstyle">
-          <br/>
-          Email :<br/>
-          <input type="text" name="textfield" id="textfield" class="formstyle">
-          <br/>
-          Company (optional) :<br/>
-          <input type="text" name="textfield" id="textfield" class="formstyle">
-          <br/>
-          Message :<br/>
-          <textarea name="textarea" cols="45" rows="5" class="formstyletextarea" id="textarea"></textarea>
-          <br/>
-          <input name="button" type="submit" class="submitbutton" id="button" value="Submit">
-        </fieldset>
-      </div>
-      <div id="testimonials"><span class="purpletitle">testimonials</span>
-	  	{% include "agiliqpages/testimonials.html" %}
-      </div>
+<div id="pagecontent"><span class="purpletitle">get in touch</span>
+	<div>
+		<div class="address"><br/>
+			<span class="purpletext">Email :</span> <a href="mailto:hello@agiliqsolutions.com" class="blacklink">hello@agiliqsolutions.com</a><br/>
+			<br/>
+			<span class="purpletext">Speak to us :</span><br/>
+			India: +91- 99499 97612<br/>
+			<br/>
+			<span class="purpletext">Address :</span><br/>
+			Agiliq Solutions, <br/>
+			# 1-46, Kumhar Basti, Madhapur, <br/>
+			Hyderabad 500081.India 
+		</div>
+		<div class="map"><img src="http://maps.google.com/maps/api/staticmap?center=Kumhar+Basti,Madhapur,Hyderabad&zoom=12&size=300x188&sensor=false" width="300" height="188" alt="Map"></div>
+	</div>
+	<div class="clear"></div>
+	<form method='post'>
+	{% csrf_token %}
+	<fieldset>
+		<legend class="purpletitle">Say Hello !</legend>
+		Your Name : <br/>
+		{{ form.name }}
+		{{ form.name.errors }}
+		<br/>
+		Phone (optional) :<br/>
+		{{ form.phone }}
+		{{ form.phone.errors }}
+		<br/>
+		Email :<br/>
+		{{ form.email }}
+		{{ form.email.errors }}
+		<br/>
+		Company (optional) :<br/>
+		{{ form.company }}
+		{{ form.company.errors }}
+		<br/>
+		Message :<br/>
+		{{ form.message }}
+		{{ form.message.errors }}
+		<br/>
+		<input name="button" type="submit" class="submitbutton" id="button" value="Submit">
+	</fieldset>
+	</form>
+</div>
 
 {% endblock %}

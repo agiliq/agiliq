@@ -47,6 +47,8 @@ MEDIA_URL = ''
 # Examples: "http://foo.com/media/", "/media/".
 ADMIN_MEDIA_PREFIX = '/media/'
 
+EMAIL_BACKEND = 'mailer.backends.DbBackend'
+
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'os683(ah9+!==97gy3e9=81d=o(gs&!=#^2!&538sc%@#$hhu*'
 
@@ -56,6 +58,15 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     
 #     'django.template.loaders.eggs.Loader',
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+	'django.contrib.auth.context_processors.auth',
+	'django.core.context_processors.debug',
+	'django.core.context_processors.i18n',
+	'django.core.context_processors.media',
+	'django.contrib.messages.context_processors.messages',
+	'agiliqpages.context_processors.sidebar_vars',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -70,6 +81,7 @@ ROOT_URLCONF = 'agiliqcom.urls'
 
 
 INSTALLED_APPS = (
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -77,13 +89,26 @@ INSTALLED_APPS = (
     'django.contrib.messages',
 	'django.contrib.humanize',
 	'django.contrib.markup',
-    
-    "agiliqpages",
+     "agiliqpages",
     "compressor",
 	"blogango",
+	"mailer",
 	'registration',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
 )
+
+SEND_BROKEN_LINK_EMAILS = True
+
+DEFAULT_FROM_EMAIL = 'Agiliq.com <webmaster@agiliq.com>'
+# The e-mail address that error messages come from
+SERVER_EMAIL = 'developer@agiliq.com'
+
+TWITTER_FOLLOW = ('agiliqdotcom', 'uswaretech')
+
+TWITTER_API_USER = 'agiliqtest'
+TWITTER_API_PASSW = 'agiliq99'
+
+CACHE_DURATION = 60 * 60 * 24
 
 from localsettings import *

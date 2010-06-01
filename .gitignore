@@ -4,3 +4,4 @@
 localsettings.py
 *.tmp*~
 *CACHE*
+*.kpf

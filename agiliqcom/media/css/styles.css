@@ -47,7 +47,7 @@ h1{font:bold 36px Helvetica, Arial, sans-serif; color:#FFFFFF; text-decoration:n
 h1 .black{color:#000000;}
 
 h2{font:bold 24px Helvetica, Arial, sans-serif; color:#000000; text-decoration:none; line-height:30px; text-transform:uppercase; vertical-align:middle; letter-spacing:-1px;}
-
+h2 a {font:bold 24px Helvetica, Arial, sans-serif; color:#000000; text-decoration:none; line-height:30px; text-transform:uppercase; vertical-align:middle; letter-spacing:-1px;}
 h3{font:bold 14px Arial, Helvetica, sans-serif; color:#6A9318; text-decoration:none; line-height:30px; text-transform:uppercase; border-top:1px solid #CCC; border-bottom:1px solid #CCC;}
 
 h4{font:bold 14px Arial, Helvetica, sans-serif; color:#A0001A; text-decoration:none; line-height:30px; text-transform:uppercase; border-top:1px solid #CCC; border-bottom:1px solid #CCC;}
@@ -139,6 +139,9 @@ fieldset{border:1px solid #DCDCDC; padding:20px;}
 #bodycontent #rightpanel{width:300px; float:right; }
 #hireblock{background-color:#F1F1F1; border-top:8px solid #eea235; border-bottom:1px solid #dadada; padding:10px 20px 10px 20px; margin:0 0 10px 0px;}
 #hireblock img{ float:right;}
+
+#codeblock{background-color:#F1F1F1; border-top:8px solid #A1001B; border-bottom:1px solid #dadada; padding:10px 20px 10px 20px; margin:0 0 10px 0px;}
+#codeblock img{ float:right;}
 
 #blogblock{ clear:both; background-color:#F1F1F1; border-top:8px solid #8fb83c; border-bottom:1px solid #dadada; padding:10px 20px 10px 20px; margin:0 0 10px 0px;}
 #blogblock img{ float:right;}

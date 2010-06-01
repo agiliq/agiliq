@@ -27,6 +27,12 @@ urlpatterns = patterns('',
 		 'extra_context': {'sitepage': 'whatwedo'},
 		}, 
 		name='agiliqpages_whatwedo'),
+    url('^thankyou$', 
+        cached_direct_to_template, 
+        {'template': 'agiliqpages/thankyou.html', 
+         'extra_context': {},
+        }, 
+        name='agiliqpages_thankyou'),
 )
 
 # using object_list will not cache the queryset

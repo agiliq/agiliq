@@ -92,6 +92,12 @@ INSTALLED_APPS = (
 	'mailer',
 )
 
+SEND_BROKEN_LINK_EMAILS = True
+
+DEFAULT_FROM_EMAIL = 'Agiliq.com <webmaster@agiliq.com>'
+# The e-mail address that error messages come from
+SERVER_EMAIL = 'developer@agiliq.com'
+
 TWITTER_FOLLOW = ('agiliqdotcom', 'uswaretech')
 
 TWITTER_API_USER = 'agiliqtest'

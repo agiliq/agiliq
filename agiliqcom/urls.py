@@ -10,6 +10,8 @@ urlpatterns = patterns('',
     # (r'^agiliqcom/', include('agiliqcom.foo.urls')),
     
     (r'^', include('agiliqpages.urls')),
+	(r'^accounts/', include('registration.urls')),
+	(r'^blog/', include('blogango.urls')),
 
     # Uncomment the admin/doc line below and add 'django.contrib.admindocs' 
     # to INSTALLED_APPS to enable admin documentation:

@@ -67,6 +67,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 	'django.core.context_processors.media',
 	'django.contrib.messages.context_processors.messages',
 	'agiliqpages.context_processors.sidebar_vars',
+    'blogango.context_processors.sidebar_vars',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -89,13 +90,13 @@ INSTALLED_APPS = (
     'django.contrib.messages',
 	'django.contrib.humanize',
 	'django.contrib.markup',
-     "agiliqpages",
-    "compressor",
-	"blogango",
-	"mailer",
-	'registration',
-    # Uncomment the next line to enable the admin:
-    'django.contrib.admin',
+    
+    'agiliqpages',
+    'blogango',
+    'compressor',
+	'mailer',
+    'taggit',
+	# 'registration',    
 )
 
 SEND_BROKEN_LINK_EMAILS = True

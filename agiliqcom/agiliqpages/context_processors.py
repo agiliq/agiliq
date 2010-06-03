@@ -1,9 +1,16 @@
 
 from agiliqpages.models import ContentBlock, Client, Tweet
+from blogango.models import BlogEntry
 
 def get_object_or_none(model, **kwargs):
     try:
         return model.objects.get(**kwargs)
+    except model.DoesNotExist:
+        return None
+    
+def get_latest_object_or_none(model):
+    try:
+        return model.objects.latest()
     except model.DoesNotExist:
         return None
     
@@ -14,12 +21,11 @@ def sidebar_vars(request):
     our_code = get_object_or_none(ContentBlock, slug='our-code')
     our_code = our_code and our_code.content
 		
-    try:
-        tweet = Tweet.objects.latest()
-    except:
-        tweet = None
+    tweet = get_latest_object_or_none(Tweet)
+    blog_entry = BlogEntry.objects.filter(is_published=True)[0]
         
     return {'hire_us': hire_us,
             'our_code': our_code, 
 		    'testimonials': testimonials,
-		    'tweet': tweet}
+		    'tweet': tweet, 
+            'blog_entry': blog_entry}

@@ -24,7 +24,9 @@ def sidebar_vars(request):
     tweet = get_latest_object_or_none(Tweet)
     blog_entries = BlogEntry.objects.filter(is_published=True)
     if blog_entries.count():
-        blog_entry = blog_entries[0] 
+        blog_entry = blog_entries[0]
+    else: 
+        blog_entry = None
         
     return {'hire_us': hire_us,
             'our_code': our_code, 

@@ -22,7 +22,9 @@ def sidebar_vars(request):
     our_code = our_code and our_code.content
 		
     tweet = get_latest_object_or_none(Tweet)
-    blog_entry = BlogEntry.objects.filter(is_published=True)[0]
+    blog_entries = BlogEntry.objects.filter(is_published=True)
+    if blog_entries.count():
+        blog_entry = blog_entries[0] 
         
     return {'hire_us': hire_us,
             'our_code': our_code, 

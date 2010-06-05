@@ -133,6 +133,7 @@ fieldset{border:1px solid #DCDCDC; padding:20px;}
 #banner #whatwedographic{width:340px;  height:318px; float:left;  background:url(../images/whatwedo_graphic.png) no-repeat; background-position:bottom right;}
 #banner #ourworkgraphic{width:340px;  height:318px; float:left;  background:url(../images/ourwork_graphic.png) no-repeat; background-position:bottom right;}
 #banner #contactgraphic{width:340px;  height:318px; float:left;  background:url(../images/contact_graphic.png) no-repeat; background-position:bottom right;}
+#banner #pagenotfound{width:340px;  height:318px; float:left;  background:url(../images/404_notfound.png) no-repeat; background-position:bottom right;}
 
 #bodycontent{width:960px; margin:0px auto; margin-top:20px; }
 #bodycontent #leftpanel{width:640px; float:left; margin-right:20px; clear:both; border-top:8px solid #eea235;}

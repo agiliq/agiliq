@@ -107,8 +107,9 @@ class Comment(models.Model):
     text = models.TextField()
     comment_for = models.ForeignKey(BlogEntry)
     created_on = models.DateTimeField(auto_now_add=True)
-    created_by = models.ForeignKey(User, unique=False, blank=True)
+    created_by = models.ForeignKey(User, unique=False, blank=True, null=True)
     user_name = models.CharField(max_length=100)
+    user_url = models.CharField(max_length=100)
     email_id = models.EmailField()
     is_spam = models.BooleanField(default=False)
 

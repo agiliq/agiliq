@@ -60,9 +60,10 @@ def details(request, year, month, slug):
         comment_f = bforms.CommentForm(request.POST)
         if comment_f.is_valid():
             comment = Comment(text=comment_f.cleaned_data['text'], 
-                              created_by=request.user, 
+                              created_by=request.user.id, 
                               comment_for=entry, 
-                              user_name=comment_f.cleaned_data['name'], 
+                              user_name=comment_f.cleaned_data['name'],
+                              user_url=comment_f.cleaned_data['url'], 
                               email_id=comment_f.cleaned_data['email'])
             comment.save()
             return HttpResponseRedirect('.')

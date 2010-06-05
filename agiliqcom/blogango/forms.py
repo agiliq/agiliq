@@ -19,7 +19,8 @@ class EntryForm(forms.Form):
 
 class CommentForm(forms.Form):
     text = forms.CharField(widget=forms.Textarea(attrs={'class': 'textarea'}), label='Comment')
-    name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'textfield'})) 
+    name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'textfield'}))
+    url = forms.URLField(required=False, widget=forms.TextInput(attrs={'class': 'textfield'})) 
     email = forms.EmailField(widget=forms.TextInput(attrs={'class': 'textfield'}))
 
 class TagForm(forms.Form):

@@ -1,5 +1,5 @@
 {% load compress %}
-
+{% load filters %}
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -71,6 +71,8 @@
 		{% endblock %}
     </div>
     <!--LEFT PANEL ENDS HERE-->
+    
+    {% block right_panel %}
     <!--RIGHT PANEL STARTS HERE-->
     <div id="rightpanel">
       <!--HIRE BLOCK STARTS HERE-->
@@ -111,7 +113,7 @@
           <img src="{{ MEDIA_URL }}images/tweet_icon.png" alt="Twitter Feed" width="40" height="26">
         </div>
         <p>
-          {{ tweet.text }}<br/> 
+          {{ tweet.text|twitterify|safe }}<br/> 
           <a href="http://twitter.com/{{ tweet.screen_name }}" target="_blank" class="tweetslink">Follow us</a> <br/>
           <!-- <span class="tweetdate"> 2 days ago</span>  -->
         </p>
@@ -121,14 +123,13 @@
       <div class="clear"></div>
     </div>
     <!--RIGHT PANEL ENDS HERE-->
+    {% endblock right_panel %}
   </div>
   <!--BODY CONTENT ENDS HERE-->
 </div>
 <!--MAIN CONTAINER ENDS HERE-->
 <div class="clear"></div>
 
-	{% include "agiliqpages/footer_frag.html" %}
-  
 </body>
 
 {% compress js %}

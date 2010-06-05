@@ -6,7 +6,15 @@
 {% for entry in entries %}
     <div class="leftblock"> 
         <h1><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></h1> 
-        <div class="filed">Filed in : <a href="#">Django Forms</a></div> 
+        {% if entry.tags.all %}
+            <div class="filed">Filed in :
+                {% for tag in entry.tags.all %} 
+                    <a href="{% url blogango_tag_details tag.slug %}">{{ tag.name }}</a>
+                {% endfor %}
+            </div>
+        {% else %}
+            <br/>
+        {% endif %}
         <div class="postdetails">
             <img src="{{ MEDIA_URL }}blogango/images/blog.png" width="16" height="16" alt="Written by" /> 
             <a href="#"> {{ entry.created_by }}</a> &nbsp;&nbsp;&nbsp;

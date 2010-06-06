@@ -10,6 +10,8 @@ urlpatterns = patterns('',
     # (r'^agiliqcom/', include('agiliqcom.foo.urls')),
     
     (r'^', include('agiliqpages.urls')),
+	# (r'^accounts/', include('registration.urls')),
+	(r'^blog/', include('blogango.urls')),
 
     # Uncomment the admin/doc line below and add 'django.contrib.admindocs' 
     # to INSTALLED_APPS to enable admin documentation:
@@ -19,8 +21,11 @@ urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
 )
 
-if settings.DEBUG:
+if settings.DEBUG or getattr(settings, 'SERVE_MEDIA', False):
+    from django.views.generic.simple import direct_to_template
     urlpatterns += patterns('django.views.static',
         (r'^site_media/(?P<path>.*)$', 'serve', { 'document_root': settings.MEDIA_ROOT,
                                         'show_indexes': True }),
+        url('^404$', direct_to_template, {'template': '404.html'}, name='agiliqcom_notfound'),
+        url('^500$', direct_to_template, {'template': '500.html'}, name='agiliqcom_error'),
     )

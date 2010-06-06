@@ -54,8 +54,9 @@ SECRET_KEY = 'os683(ah9+!==97gy3e9=81d=o(gs&!=#^2!&538sc%@#$hhu*'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
+	'django.template.loaders.app_directories.Loader',
     'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
+    
 #     'django.template.loaders.eggs.Loader',
 )
 
@@ -66,6 +67,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 	'django.core.context_processors.media',
 	'django.contrib.messages.context_processors.messages',
 	'agiliqpages.context_processors.sidebar_vars',
+    'blogango.context_processors.sidebar_vars',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -86,10 +88,15 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.messages',
+	'django.contrib.humanize',
+	'django.contrib.markup',
     
     'agiliqpages',
+    'blogango',
     'compressor',
 	'mailer',
+    'taggit',
+	# 'registration',    
 )
 
 SEND_BROKEN_LINK_EMAILS = True

@@ -11,30 +11,39 @@ class ContactUs(models.Model):
 	
 	class Meta:
 		verbose_name_plural = 'Contacts from web'
+	
 	def __unicode__(self):
 		return '%s - %s - %s' % (self.name, self.email, self.company)
 
 class ClientManager(models.Manager):
     def get_query_set(self, *args, **kwargs):
-        return super(ClientManager, self).get_query_set().filter(is_active = True)
+        return super(ClientManager, self).get_query_set().filter(is_active=True)
 
 class Client(models.Model):
-    name = models.CharField(max_length = 100)
+    name = models.CharField(max_length=100)
     about = models.TextField()
     url = models.URLField()
     email = models.EmailField()
-    testimonial = models.TextField(null = True, blank = True)
-    contact_name = models.CharField(max_length = 100)
-    logo = models.ImageField(upload_to = 'logos/')
-    has_testimonial = models.BooleanField(default = False)
+    testimonial = models.TextField(null=True, blank=True)
+    contact_name = models.CharField(max_length=100)
+    logo = models.ImageField(upload_to='logos/')
+    has_testimonial = models.BooleanField(default=False)
 
-    ordering = models.PositiveSmallIntegerField(default = 0)
-    created_on = models.DateTimeField(auto_now_add = 1)
-    updated_on = models.DateTimeField(auto_now= 1)
-    is_active = models.BooleanField(default = True)
+    ordering = models.PositiveSmallIntegerField(default=0)
+    created_on = models.DateTimeField(auto_now_add=True)
+    updated_on = models.DateTimeField(auto_now=True)
+    is_active = models.BooleanField(default=True)
 
     _default_manager = models.Manager()
     objects = ClientManager()
+
+
+    class Meta:
+        get_latest_by = ('ordering', )
+        ordering = ('ordering', )
+
+    def __unicode__(self):
+        return self.name
 
     def save(self):
         if self.testimonial:
@@ -43,24 +52,17 @@ class Client(models.Model):
             self.has_testimonial = False
         super(Client, self).save()
 
-    def __unicode__(self):
-        return self.name
-
-    class Meta:
-        get_latest_by = ('ordering', )
-        ordering = ('ordering', )
-
 class BlogEntry(models.Model):
     feed_url = models.URLField()
 
     #Entry
-    entry_title = models.CharField(max_length = 100)
-    entry_url = models.URLField(unique = True)
+    entry_title = models.CharField(max_length=100)
+    entry_url = models.URLField(unique=True)
     entry_summary = models.TextField()
 
     #Who columns
-    created_on = models.DateTimeField(auto_now_add = 1)
-    updated_on = models.DateTimeField(auto_now= 1)
+    created_on = models.DateTimeField(auto_now_add=True)
+    updated_on = models.DateTimeField(auto_now=True)
 
     class Meta:
         get_latest_by = ('created_on', )
@@ -69,34 +71,34 @@ class BlogEntry(models.Model):
         return self.entry_title
 
 class TeamMember(models.Model):
-    name = models.CharField(max_length = 100)
+    name = models.CharField(max_length=100)
     bio = models.TextField()
-    photo = models.ImageField(upload_to = 'people/', null = True, blank = True)
-    designation = models.CharField(max_length = 100)
+    photo = models.ImageField(upload_to='people/', null=True, blank=True)
+    designation = models.CharField(max_length=100)
 
-    twitter = models.URLField(null = True, blank = True)
-    linked_in = models.URLField(null = True, blank = True)
+    twitter = models.URLField(null=True, blank=True)
+    linked_in = models.URLField(null=True, blank=True)
 
-    ordering = models.PositiveSmallIntegerField(default = 0)
-    created_on = models.DateTimeField(auto_now_add = 1)
-    updated_on = models.DateTimeField(auto_now= 1)
-
-    def __unicode__(self):
-        return self.name
+    ordering = models.PositiveSmallIntegerField(default=0)
+    created_on = models.DateTimeField(auto_now_add=True)
+    updated_on = models.DateTimeField(auto_now=True)
 
     class Meta:
         get_latest_by = ('ordering', )
         ordering = ('ordering', )
 
+    def __unicode__(self):
+        return self.name
+
 class Project(models.Model):
-    name = models.CharField(max_length = 100)
+    name = models.CharField(max_length=100)
     blurb = models.TextField()
     url = models.URLField()
-    logo = models.ImageField(upload_to = 'project_logos/')
+    logo = models.ImageField(upload_to='project_logos/')
 
-    ordering = models.PositiveSmallIntegerField(default = 0)
-    created_on = models.DateTimeField(auto_now_add = 1)
-    updated_on = models.DateTimeField(auto_now= 1)
+    ordering = models.PositiveSmallIntegerField(default=0)
+    created_on = models.DateTimeField(auto_now_add=True)
+    updated_on = models.DateTimeField(auto_now=True)
 
     class Meta:
         get_latest_by = ('ordering', )
@@ -106,13 +108,13 @@ class Project(models.Model):
         return self.name
 
 class Whitepaper(models.Model):
-    name = models.CharField(max_length = 100)
+    name = models.CharField(max_length=100)
     details = models.TextField() 
-    paper =  models.FileField(upload_to = 'whitepapers/')
+    paper =  models.FileField(upload_to='whitepapers/')
 
-    ordering = models.PositiveSmallIntegerField(default = 0)
-    created_on = models.DateTimeField(auto_now_add = 1)
-    updated_on = models.DateTimeField(auto_now= 1)
+    ordering = models.PositiveSmallIntegerField(default=0)
+    created_on = models.DateTimeField(auto_now_add=True)
+    updated_on = models.DateTimeField(auto_now=True)
 
     class Meta:
         get_latest_by = ('ordering', )

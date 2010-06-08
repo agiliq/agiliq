@@ -57,9 +57,7 @@ def details(request, year, month, slug):
     if not entry.is_published:
         raise Http404
 
-    if request.method == 'GET':
-        comment_f = bforms.CommentForm()
-    elif request.method == 'POST':
+    if request.method == 'POST':
         comment_f = bforms.CommentForm(request.POST)
         if comment_f.is_valid():
             comment = Comment(text=comment_f.cleaned_data['text'], 
@@ -70,7 +68,9 @@ def details(request, year, month, slug):
                               email_id=comment_f.cleaned_data['email'])
             comment.save()
             return HttpResponseRedirect('.')
-        
+    else:
+        comment_f = bforms.CommentForm()
+            
     comments = Comment.objects.filter(comment_for=entry)
     # tags = Tag.objects.filter(tag_for=entry)
     payload = {'entry': entry, 'comments': comments, 'comment_form': comment_f}

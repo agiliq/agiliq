@@ -19,10 +19,10 @@ class Blog(models.Model):
     recents = models.IntegerField(default=5)
     recent_comments = models.IntegerField(default=5)
      
-    def __unicode__ (self):
+    def __unicode__(self):
         return self.title
      
-    def save (self):
+    def save(self):
         """There should not be more than one Blog object"""
         if Blog.objects.count() > 1 and self.id:
             raise Exception("Only one blog object allowed.")

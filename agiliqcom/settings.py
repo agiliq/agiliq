@@ -115,4 +115,6 @@ TWITTER_API_PASSW = 'agiliq99'
 
 CACHE_DURATION = 60 * 60 * 24
 
+# FEED_URL = 'http://feeds.feedburner.com/uswarearticles'
+
 from localsettings import *

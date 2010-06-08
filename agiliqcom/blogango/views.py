@@ -1,5 +1,6 @@
 from django.shortcuts import render_to_response, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
+from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.template import RequestContext
@@ -83,13 +84,14 @@ def comment_details(request, comment_id):
     return render('blogango/comment.html', request, payload)         
        
 
-def tag_details(request, tag_txt):
+def tag_details(request, tag_slug):
     from taggit.models import Tag
-    if Tag.objects.filter(slug=tag_txt).count() == 0:
+    if Tag.objects.filter(slug=tag_slug).count() == 0:
         raise Http404
-    tag = Tag.objects.get(slug=tag_txt)
+    tag = Tag.objects.get(slug=tag_slug)
     entries = BlogEntry.objects.filter(is_published=True, tags__in=[tag])
-    payload = {'tag': tag, 'entries': entries}
+    feed_url = getattr(settings, 'FEED_URL', reverse('blogango_feed', args=['tag']) + tag.slug + '/')
+    payload = {'tag': tag, 'entries': entries, 'feed_url': feed_url}
     return render('blogango/tag_details.html', request, payload)    
 
 

@@ -25,7 +25,7 @@ urlpatterns = patterns('blogango.views',
     url(r'^blogroll/$', 'create_blogroll', name='blogango_blogroll'),
     url(r'^moderate/$', 'moderate_comments', name='blogango_mod_comments'),
     url(r'^entries/$', 'mod_entries', name='blogango_mod_entries'),
-    url(r'^tag/(?P<tag_txt>\w+)/$','tag_details', name='blogango_tag_details'),
+    url(r'^tag/(?P<tag_slug>\w+)/$','tag_details', name='blogango_tag_details'),
     url(r'^manage/$', 'manage', name='blogango_manage'),
     url(r'^edit/(?P<entry_id>\d+)/$', 'edit_entry', name='blogango_edit_entry'),
     url(r'^comment/(?P<comment_id>\d+)/$', 'comment_details', name='blogango_comment_details'),
@@ -53,7 +53,7 @@ urlpatterns += patterns('django_xmlrpc.views',
 )
 
 feeds = {'latest': feeds.main_feed, 'tag':feeds.CatFeed}
-
+# feeds = {'latest': feeds.main_feed}
 urlpatterns += patterns('',
-    (r'^rss/(?P<url>.*)/$', 'django.contrib.syndication.views.feed', {'feed_dict': feeds})
+    url(r'^rss/(?P<url>.*)/$', 'django.contrib.syndication.views.feed', {'feed_dict': feeds}, name='blogango_feed')
 )

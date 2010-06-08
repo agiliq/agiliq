@@ -6,7 +6,10 @@
 <link href="{{ MEDIA_URL }}blogango/css/agiliqblog.css" rel="stylesheet" type="text/css" /> 
 <link href="{{ MEDIA_URL }}blogango/css/prettify.css" rel="stylesheet" type="text/css" />
 <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css' />
-<link rel="alternate" type="application/rss+xml" title="The Agiliq Blog - Django Web Development RSS Feed" href="http://feeds.feedburner.com/uswarearticles" />
+
+{% if feed_url %}
+    <link rel="alternate" type="application/rss+xml" title="The Agiliq Blog - Django Web Development RSS Feed" href="{{feed_url}}" />
+{% endif %}
 {% if canonical_url %}
     <link rel="canonical" href='{{ canonical_url }}' />
 {% endif %}

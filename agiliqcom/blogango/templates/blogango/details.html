@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load gravatar %}
+{% load pingback_tags %}
 
 {% block title %}
     {{block.super}} - {{entry.title}}
@@ -8,19 +9,9 @@
 {% block content %}
 <div class="leftblock"> 
     <h1>{{ entry.title }}</h1> 
-    {% if entry.tags.all %}
-        <div class="filed">Filed in :
-        {% for tag in entry.tags.all %} 
-            <a href="{% url blogango_tag_details tag.slug %}">{{ tag.name }}</a>
-        {% endfor %}
-        </div>
-    {% endif %} 
-    <div class="postdetails">
-        <img src="{{ MEDIA_URL }}blogango/images/blog.png" width="16" height="16" alt="Written by" /> 
-        <a href="#"> {{ entry.created_by }}</a> &nbsp;&nbsp;&nbsp;
-        <img src="{{ MEDIA_URL }}blogango/images/date_icon.png" width="16" height="16" alt="Date" />
-        &nbsp;{{ entry.created_on|date:'jS N, Y' }}.
-    </div> 
+    
+    {% include 'blogango/entry_controls.html' %} 
+    
     <div class="postcontent"> 
         <p>{{ entry.text|safe }}</p> 
     </div>
@@ -58,6 +49,22 @@
 {% endfor %}
 <!--COMMENT BLOCK ENDS-->
 {% endif %}
+
+<!--  Ping Backs starts -->
+{% get_pingback_list for entry as pingbacks %}
+
+{% if pingbacks %}
+    {% for pingback in pingbacks %}
+        <div class="comment_block">
+            <span class="commentor">
+                <a name='pingback-{{pingback.id}}' href='{{entry.get_absolute_url}}#pingback-{{ pingback.id }}'>permalink</a>
+            </span>
+            <span class="postdate">{{ comment.created_on|date:'jS N, Y' }}, pingback from {{ pingback.url|urlizetrunc:40 }}</span>
+            <div class="comment_post">{{ pinback.content }}</div>
+        </div>
+    {% endfor %} 
+{% endif %}
+<!--  Ping Backs ends -->
 
 <!--COMMENT FORM BLOCK STARTS-->
 <div class="general_block">

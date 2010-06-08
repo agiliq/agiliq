@@ -86,6 +86,7 @@ INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.sitemaps',
     'django.contrib.sites',
     'django.contrib.messages',
 	'django.contrib.humanize',
@@ -95,11 +96,13 @@ INSTALLED_APPS = (
     'blogango',
     'compressor',
 	'mailer',
+    'pingback',
     'taggit',
 	# 'registration',    
 )
 
 SEND_BROKEN_LINK_EMAILS = True
+EMAIL_SUBJECT_PREFIX = '[Agiliq] ' 
 
 DEFAULT_FROM_EMAIL = 'Agiliq.com <webmaster@agiliq.com>'
 # The e-mail address that error messages come from

@@ -1,6 +1,7 @@
 from django.shortcuts import render_to_response, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.template import RequestContext
 from django.core.paginator import Paginator
 from django.core.urlresolvers import reverse
@@ -49,7 +50,8 @@ def details(request, year, month, slug):
     
     entry = BlogEntry.objects.get(created_on__year=year, 
                                   created_on__month=month, 
-                                  slug=slug)
+                                  slug=slug,
+                                  is_published=True)
 
     if not entry.is_published:
         raise Http404
@@ -82,11 +84,12 @@ def comment_details(request, comment_id):
        
 
 def tag_details(request, tag_txt):
-    if Tag.objects.filter(tag_txt=tag_txt).count() == 0:
+    from taggit.models import Tag
+    if Tag.objects.filter(slug=tag_txt).count() == 0:
         raise Http404
-    tags = Tag.objects.get(tag_txt=tag_txt)
-    entries = tags.tag_for.filter(is_published=True)
-    payload = {'tags': tags, 'entries': entries}
+    tag = Tag.objects.get(slug=tag_txt)
+    entries = BlogEntry.objects.filter(is_published=True, tags__in=[tag])
+    payload = {'tag': tag, 'entries': entries}
     return render('blogango/tag_details.html', request, payload)    
 
 
@@ -259,6 +262,11 @@ def manage(request):
     return render('blogango/manage.html', request, {})   
 
 
+def author(request, username):
+    author = get_object_or_404(User, username=username)
+    return render('blogango/author.html', request, {'author': author})
+    
+    
 def monthly_view(request, year, month):
     # print year, month
     queryset = BlogEntry.objects.filter(is_page=False, is_published=True)

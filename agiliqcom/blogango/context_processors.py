@@ -11,4 +11,5 @@ def sidebar_vars(request):
     
     return {'clients': clients,
             'blog_rolls': blog_rolls,
-            'tags': tags}
+            'tags': tags, 
+            'canonical_url': request.build_absolute_uri()}

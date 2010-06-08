@@ -36,6 +36,7 @@ h1.red{font:bold 18px Helvetica, Arial, sans-serif;  line-height:50px; backgroun
 h1.purple{font:bold 18px Helvetica, Arial, sans-serif;  line-height:50px; background-color:#530072; padding-left:25px; }
 h1.blue{font:bold 18px Helvetica, Arial, sans-serif;  line-height:50px; background-color:#01C0B9; padding-left:25px; }
 
+h2{font:bold 15px Helvetica, Arial, sans-serif; line-height:40px;}
 p.post{padding-bottom:20px;border-bottom:1px solid #A4A4A4; }
 
 #container{width:960px; margin:0px auto;}
@@ -77,7 +78,8 @@ p.post{padding-bottom:20px;border-bottom:1px solid #A4A4A4; }
 .postdetails a{font:bold 12px Arial, Helvetica, sans-serif; color:#000; line-height:25px;  text-decoration:none; color:#424242; border-bottom:1px dashed #999;}
 .postdetails a:hover{font:bold 12px Arial, Helvetica, sans-serif; color:#000; line-height:25px;  text-decoration:none; color:#000; }
 
-
+.postlist ul li { list-style-type: square;}
+	
 .postcontent{font:14px Helvetica, Arial, sans-serif; color:#000; line-height:22px; margin:20px 25px 0px 25px; background:url(../images/linesbg2.png) repeat-x bottom left; display:block; padding-bottom:20px; }
 .postcontent ul{ margin:10px 0px 20px 0px; font-weight:bold;}
 .postcontent li{font:14px Helvetica, Arial, sans-serif; color:#000; line-height:22px; margin:0px 0px 0px 15px; list-style-type:disc;}

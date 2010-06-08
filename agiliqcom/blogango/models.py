@@ -149,6 +149,9 @@ class BlogRoll(models.Model):
     text = models.CharField(max_length=100)
     is_published = models.BooleanField(default=True)
 
+    def __unicode__(self):
+        return self.text
+
     def get_absolute_url(self):
         return self.url
 

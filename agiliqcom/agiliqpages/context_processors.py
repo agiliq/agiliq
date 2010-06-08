@@ -20,7 +20,6 @@ def sidebar_vars(request):
     hire_us = hire_us and hire_us.content
     our_code = get_object_or_none(ContentBlock, slug='our-code')
     our_code = our_code and our_code.content
-		
     tweet = get_latest_object_or_none(Tweet)
     blog_entries = BlogEntry.objects.filter(is_published=True)
     if blog_entries.count():
@@ -29,7 +28,7 @@ def sidebar_vars(request):
         blog_entry = None
         
     return {'hire_us': hire_us,
-            'our_code': our_code, 
-		    'testimonials': testimonials,
-		    'tweet': tweet, 
+            'our_code': our_code,
+	    'testimonials': testimonials,
+	'tweet': tweet, 
             'blog_entry': blog_entry}

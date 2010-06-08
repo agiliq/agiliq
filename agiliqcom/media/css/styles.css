@@ -148,6 +148,8 @@ fieldset{border:1px solid #DCDCDC; padding:20px;}
 #blogblock img{ float:right;}
 
 #twitterblock{background-color:#F1F1F1; border-top:8px solid #00adef; border-bottom:1px solid #dadada; padding:10px 20px 10px 20px; margin:0 0 10px 0px;}
+#twitterblock a {font:13px  Arial, Helvetica, sans-serif; color:#00A9E9; line-height:16px; text-decoration:underline;}
+#twitterblock a:hover {font:13px  Arial, Helvetica, sans-serif; color:#000; line-height:16px; text-decoration:underline;}
 #twitterblock img{ float:right;}
 
 #pagecontent{ padding:12px 20px 20px 20px; margin-bottom:10px;}

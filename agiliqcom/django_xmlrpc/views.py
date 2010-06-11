@@ -42,6 +42,8 @@ import sys
 from django.core.exceptions import ImproperlyConfigured
 from django.http import HttpResponse, HttpResponseServerError
 from django.conf import settings
+from django.views.decorators.csrf import csrf_exempt
+
 from dispatcher import DjangoXMLRPCDispatcher
 from decorators import xmlrpc_func, permission_required
 
@@ -63,6 +65,7 @@ def test_xmlrpc(text):
     return "Here's a response! %s" % str(text)
 
 
+@csrf_exempt
 def handle_xmlrpc(request):
     """Handles XML-RPC requests. All XML-RPC calls should be forwarded here
 

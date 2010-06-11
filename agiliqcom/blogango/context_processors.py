@@ -17,4 +17,5 @@ def sidebar_vars(request):
             'blog_rolls': blog_rolls,
             'tags': tags, 
             'canonical_url': request.build_absolute_uri(),
-            'feed_url': feed_url}
+            'feed_url': feed_url,
+            'pingback_xmlrpc_url': request.build_absolute_uri(reverse('xmlrpc'))}

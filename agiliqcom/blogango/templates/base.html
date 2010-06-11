@@ -13,7 +13,8 @@
 {% if canonical_url %}
     <link rel="canonical" href='{{ canonical_url }}' />
 {% endif %}
-<link rel="pingback" href="{% url xmlrpc %}" />
+{# <link rel="pingback" href="{% url xmlrpc %}" /> #}
+<link rel="pingback" href="{{ pingback_xmlrpc_url }}" />
 
 <script type="text/javascript" src="{{ MEDIA_URL }}blogango/js/prettify.js"></script> 
  

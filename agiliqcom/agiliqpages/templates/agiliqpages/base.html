@@ -76,6 +76,7 @@
     {% block right_panel %}
     <!--RIGHT PANEL STARTS HERE-->
     <div id="rightpanel">
+      {% if hire_us %}
       <!--HIRE BLOCK STARTS HERE-->
       <div id="hireblock">
         <div><span class="yellowtitle">hire us </span><img src="{{ MEDIA_URL }}images/hireus_icon.png" alt="Hire us"></div>
@@ -84,6 +85,7 @@
         <div class="clear"></div>
       </div>
       <!--HIRE BLOCK ENDS HERE-->
+      {% endif %}
       
       {% if our_code %}
       <!--CODE BLOCK STARTS HERE-->

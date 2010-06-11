@@ -18,7 +18,7 @@ def pingback_blog_handler(year, month, slug, **kwargs):
                                  is_published=True)
     
 
-ping_details = {'details': pingback_blog_handler}
+ping_details = {'blogango_details': pingback_blog_handler}
 
 ping_func = create_ping_func(**ping_details)
 

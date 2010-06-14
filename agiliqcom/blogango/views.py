@@ -273,7 +273,7 @@ def monthly_view(request, year, month):
     # print year, month
     queryset = BlogEntry.objects.filter(is_page=False, is_published=True)
     return archive_month(request=request, 
-                         template_name='archive_view.html', 
+                         template_name='blogango/archive_view.html', 
                          year=year, 
                          month=month, 
                          queryset=queryset, 
@@ -305,18 +305,18 @@ def _get_sidebar_objects (request):
     blogroll = BlogRoll.objects.all()
     pages = BlogEntry.objects.filter(is_page = True, is_published = True)
     recent_comments = Comment.objects.all().order_by('-created_on')[:blog.recent_comments]
-    date_list = _get_archive_months()
-    return {'blog':blog, 'recents':recents, 'pages':pages, 'blogroll':blogroll, 'recent_comments':recent_comments, 'date_list': date_list}
+    # date_list = _get_archive_months()
+    return {'blog':blog, 'recents':recents, 'pages':pages, 'blogroll':blogroll, 'recent_comments':recent_comments}
 
 
 def _get_archive_months():
     """Get the months for which at least one entry exists"""
-    dates = BlogEntry.objects.dates('created_on', 'month')
+    dates = BlogEntry.objects.dates('created_on', 'month', order='DESC')
     # print dates
-    date_list = []
-    for date in dates:
-        date_list.append((date.strftime('%Y/%b'), date.strftime('%B %y')))
-    return date_list
+    # date_list = []
+    # for date in dates:
+    #     date_list.append((date.strftime('%Y/%b'), date.strftime('%B %y')))
+    return dates
 
 
 def _generic_form_display(request, form_class):

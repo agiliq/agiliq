@@ -66,7 +66,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 	'django.core.context_processors.i18n',
 	'django.core.context_processors.media',
 	'django.contrib.messages.context_processors.messages',
-	'agiliqpages.context_processors.sidebar_vars',
+	'agiliqpages.context_processors.extra_context',
     'blogango.context_processors.sidebar_vars',
 )
 

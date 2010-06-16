@@ -38,9 +38,9 @@ q:before, q:after {
 }
 html { height:101%;}
 
-/*p a {color:#000;}
-p a:hover {color:#000;}
-p a:visited {color:#000;}*/
+#leftpanel a {color:#A1001B;text-decoration:underline;}
+#leftpanel a:hover {color:#c30;}
+#leftpanel a:visited {color:#A1001B;}
 
 h1{font:bold 36px Helvetica, Arial, sans-serif; color:#FFFFFF; text-decoration:none; line-height:48px; text-transform:uppercase; vertical-align:middle; letter-spacing:-2px;}
 
@@ -178,7 +178,10 @@ fieldset{border:1px solid #DCDCDC; padding:20px;}
 
 .hr{height:1px; border-bottom:1px solid #DCDCDC;}
 .clear{clear:both;}
-.blockquote { clear:both; margin:0px 0px 0px 0px; padding:3px; color:#2A2A2A; padding: 0 24px; background: url(../images/quote.gif) no-repeat 0 0;}
+.blockquote { clear:both; margin:0px 0px 0px 0px; padding:3px;padding: 0 24px; background: url(../images/quote.gif) no-repeat 0 0;}
+.reversequote { clear:both; margin:-10px 0px 0px 0px; padding:3px;padding: 0 24px; background: url(../images/reverse_quote.gif) no-repeat 0 0 ;}
 .clientname{font:bold 12px Arial, Helvetica, sans-serif; color:#000; text-decoration:none;font-style:italic;}
 .companyname{font:12px Arial, Helvetica, sans-serif; color:#000; text-decoration:none; font-style:italic;}
 p.right{float:right; text-align:right;}
+
+.quote {font-size:24px;font-family: verdana;}

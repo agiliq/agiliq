@@ -18,14 +18,15 @@ def pingback_blog_handler(year, month, slug, **kwargs):
                                  is_published=True)
     
 
-ping_details = {'details': pingback_blog_handler}
+ping_details = {'blogango_details': pingback_blog_handler}
 
 ping_func = create_ping_func(**ping_details)
 
 xmlrpcdispatcher.register_function(ping_func, 'pingback.ping')
 
 signals.post_save.connect(ping_external_links(content_attr='text', url_attr='get_absolute_url'), sender=BlogEntry, weak=False)
-signals.post_save.connect(ping_directories(content_attr='text', 
-                                           url_attr='get_absolute_url', 
-                                           feed_url_fun=lambda x: reverse('blogango_feed', args=['latest'])), 
-                                           sender=BlogEntry, weak=False) 
+
+# signals.post_save.connect(ping_directories(content_attr='text', 
+#                                            url_attr='get_absolute_url', 
+#                                            feed_url_fun=lambda x: reverse('blogango_feed', args=['latest'])), 
+#                                            sender=BlogEntry, weak=False) 

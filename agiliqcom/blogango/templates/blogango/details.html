@@ -57,9 +57,9 @@
     {% for pingback in pingbacks %}
         <div class="comment_block">
             <span class="commentor">
-                <a name='pingback-{{pingback.id}}' href='{{entry.get_absolute_url}}#pingback-{{ pingback.id }}'>permalink</a>
+                <!-- <a name='pingback-{{pingback.id}}' href='{{entry.get_absolute_url}}#pingback-{{ pingback.id }}'>permalink</a>  -->
             </span>
-            <span class="postdate">{{ comment.created_on|date:'jS N, Y' }}, pingback from {{ pingback.url|urlizetrunc:40 }}</span>
+            <span class="postdate">{{ pingback.date|date:'jS N, Y' }}, pingback from {{ pingback.url|urlizetrunc:40 }}</span>
             <div class="comment_post">{{ pinback.content }}</div>
         </div>
     {% endfor %} 

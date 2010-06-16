@@ -21,25 +21,24 @@
 
 {% block content %}
 <div id="pagecontent">
-	{% if products %}
-		<span class="redtitle">our products</span>
-	{% endif %}
     <!-- product starts here -->
-	{% for prod in products %}
-    	<div class="clientblock">
-	    	<div class="left">
-				{% if prod.logo %}
-					<img src="{{ prod.logo.url }}" width="190" height="100" alt="{{ prod.name }}">
-				{% endif %}
-			</div>
-	        <div class="right">
-	            <h4>{{ prod.name }}</h4>
-	            <a href="{{ prod.url }}" target="_blank" class="website">{{ prod.url }}</a>
-	            <p class="profilecontent">{{ prod.blurb }}</p>
-	        </div>
-	    	<div class="clear"></div>
-	    </div>
-    {% endfor %}
+    <span class="redtitle">products</span>
+        <div class="clientblock">
+            <div class="left">
+                <img src="{{ MEDIA_URL }}images/jobboardshq.gif" width="190" height="100" alt="{{ prod.name }}">
+            </div>
+            <div class="right">
+                <h4>jobboardshq</h4>
+                <a href="http://www.jobboardshq.com" target="_blank" class="website">http://www.jobboardshq.com</a>
+                <p class="profilecontent">
+                    Job Board Software lets you launch an easy-to-use advanced 
+                    Job Board, while providing the key features to generate revenue 
+                    and be successful in the competitive job board market. 
+                    JobBoardsHQ is scalable and fully customizable solution to meet your unique Job Board requirements.
+                </p>
+            </div>
+            <div class="clear"></div>
+        </div>
     <div class="hr"></div>
 
 	<span class="redtitle">our code</span>
@@ -67,8 +66,39 @@
             	<p class="profilecontent">{{ client.about }}</p>
         	</div>
         	<div class="clear"></div>
+            <br/>
+            {% if client.testimonial %}
+            <div>
+                <p class='blockquote'>{{ client.testimonial }}<span class='reversequote'></span> - <span class="clientname">{{ client.contact_name }}</span></p>    
+            </div>
+            {% endif %}
         </div>
 	{% endfor %}
+
+    <div class="hr"></div>	
+	
+	{% if products %}
+        <span class="redtitle">earlier projects</span>
+    {% endif %}
+    <!-- product starts here -->
+    {% for prod in products %}
+        <div class="clientblock">
+            <div class="left">
+                {% if prod.logo %}
+                    <img src="{{ prod.logo.url }}" width="190" height="100" alt="{{ prod.name }}">
+                {% endif %}
+            </div>
+            <div class="right">
+                <h4>{{ prod.name }}</h4>
+                <a href="{{ prod.url }}" target="_blank" class="website">{{ prod.url }}</a>
+                <p class="profilecontent">{{ prod.blurb }}</p>
+            </div>
+            <div class="clear"></div>
+        </div>
+    {% endfor %}
+
+{% block testimonials %}
+{% endblock %}
 </div>
 {% endblock %}
 

@@ -45,7 +45,7 @@ urlpatterns += patterns('django.contrib.sitemaps.views',
 
 # Archive view
 urlpatterns += patterns('blogango.views',
-    (r'^archive/(?P<year>\d+)/(?P<month>\w+)/$', 'monthly_view',)
+    url(r'^archive/(?P<year>\d+)/(?P<month>\w+)/$', 'monthly_view', name='blogango_archives')
 )
 
 urlpatterns += patterns('django_xmlrpc.views',

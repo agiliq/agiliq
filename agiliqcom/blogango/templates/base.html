@@ -13,7 +13,8 @@
 {% if canonical_url %}
     <link rel="canonical" href='{{ canonical_url }}' />
 {% endif %}
-<link rel="pingback" href="{% url xmlrpc %}" />
+{# <link rel="pingback" href="{% url xmlrpc %}" /> #}
+<link rel="pingback" href="{{ pingback_xmlrpc_url }}" />
 
 <script type="text/javascript" src="{{ MEDIA_URL }}blogango/js/prettify.js"></script> 
  
@@ -103,6 +104,19 @@
         </div> 
         <!--CATEGORIES PANEL ENDS-->
         {% endif %} 
+        
+        {% if archive_months %}
+        <!--ARCHIVES PANEL STARTS--> 
+        <div class="rightblock"> 
+            <h1 class="blue">ARCHIVES</h1> 
+            <ul>
+                {% for month in archive_months %}
+                    <li><a href="{% url blogango_archives month|date:'Y' month|date:'b' %}">{{ month|date:'F Y' }}</a></li>
+                {% endfor %} 
+            </ul> 
+        </div> 
+        <!--ARCHIVES PANEL ENDS-->
+        {% endif %}
     </div> 
     <!--RIGHT PANEL ENDS-->
      

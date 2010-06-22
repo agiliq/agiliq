@@ -44,6 +44,22 @@ def index(request, page = 1):
     return render('blogango/mainpage.html', request, payload)
 
 
+def check_comment_spam(request, comment):
+    from lib.akismet import Akismet, APIKeyError
+    api = Akismet(settings.AKISMET_API_KEY, request.get_host(), request.META['HTTP_USER_AGENT'])
+    
+    if api.verify_key():
+        akismet_data = {'user_ip': request.META['REMOTE_ADDR'], 
+                        'user_agent': request.META['HTTP_USER_AGENT'], 
+                        'comment_author': comment.user_name, 
+                        'comment_author_email': comment.email_id, 
+                        'comment_author_url': comment.user_url, 
+                        'comment_type': 'comment'}
+
+        return api.comment_check(comment.text, akismet_data)
+    raise APIKeyError("Akismet API key is invalid.")
+
+
 @handle404
 def details(request, year, month, slug):
     if not _is_blog_installed():
@@ -60,18 +76,21 @@ def details(request, year, month, slug):
     if request.method == 'POST':
         comment_f = bforms.CommentForm(request.POST)
         if comment_f.is_valid():
+            comment_by = request.user if request.user.is_authenticated() else None
             comment = Comment(text=comment_f.cleaned_data['text'], 
-                              created_by=request.user.id, 
+                              created_by=comment_by, 
                               comment_for=entry, 
                               user_name=comment_f.cleaned_data['name'],
                               user_url=comment_f.cleaned_data['url'], 
                               email_id=comment_f.cleaned_data['email'])
+            
+            comment.is_spam = check_comment_spam(request, comment)
             comment.save()
             return HttpResponseRedirect('.')
     else:
         comment_f = bforms.CommentForm()
             
-    comments = Comment.objects.filter(comment_for=entry)
+    comments = Comment.objects.filter(comment_for=entry, is_spam=False)
     # tags = Tag.objects.filter(tag_for=entry)
     payload = {'entry': entry, 'comments': comments, 'comment_form': comment_f}
     return render('blogango/details.html', request, payload)

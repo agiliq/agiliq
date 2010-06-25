@@ -43,7 +43,9 @@ a:active {
 body{ background:url(../images/bg.png) repeat-x; background-color:#4E4E4E; font:14px Helvetica, Arial, sans-serif; color:#000; line-height:22px;}
 
 h1{font:bold 18px Helvetica, Arial, sans-serif; color:#ffffff; line-height:50px; background-color:#8FB83C; padding-left:25px;  }
-h1 a {color:#ffffff; text-decoration: none;}
+h1 a:link {color:#ffffff; text-decoration: none;}
+h1 a:visited {color:#ffffff; text-decoration: none;}
+h1 a:hover {color:#ffffff; text-decoration: none;}
 h1.green{font:bold 18px Helvetica, Arial, sans-serif; color:#ffffff; line-height:50px; background-color:#8FB83C; padding-left:25px;}
 h1.orange{font:bold 18px Helvetica, Arial, sans-serif; ; line-height:50px; background-color:#FF7800; padding-left:25px; }
 h1.brown{font:bold 18px Helvetica, Arial, sans-serif;  line-height:50px; background-color:#7E4221; padding-left:25px; }

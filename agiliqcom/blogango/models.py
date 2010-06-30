@@ -71,7 +71,8 @@ class BlogEntry(models.Model):
             self.title = _infer_title_or_slug(self.text)
         if self.slug == None or self.slug == '':
             self.slug = _infer_title_or_slug(self.text)
-        self.summary = _generate_summary(self.text)
+        if not self.summary: 
+            self.summary = _generate_summary(self.text)
         if not self.meta_keywords:
             self.meta_keywords = self.summary
         if not self.meta_description:

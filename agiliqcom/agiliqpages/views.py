@@ -43,6 +43,3 @@ def our_work(request, template):
 	                           'clients': clients, 
 	                           'sitepage': 'ourwork'}, 
 	                          RequestContext(request))
-    
-def showhost(request, template):
-    return render_to_response(template, {'host': request.get_host()}, RequestContext(request)) 

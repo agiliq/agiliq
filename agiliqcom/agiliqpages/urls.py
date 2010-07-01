@@ -52,7 +52,3 @@ urlpatterns += patterns('agiliqpages.views',
     url('^contactus$', 'contact_us', {"template": "agiliqpages/contactus.html"}, name='agiliqpages_contactus'),
 	url('^ourwork$', 'our_work', {'template': 'agiliqpages/ourwork.html'}, name='agiliqpages_ourwork'),
 )
-
-urlpatterns += patterns('agiliqpages.views',
-    url(r'showhost', 'showhost', {'template': 'agiliqpages/showhost.html'}),
-)

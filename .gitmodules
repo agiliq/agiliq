@@ -1,0 +1,3 @@
+[submodule "agiliqcom/blogango_repo"]
+	path = agiliqcom/blogango_repo
+	url = git@github.com:agiliq/django-blogango.git

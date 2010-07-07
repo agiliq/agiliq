@@ -144,6 +144,11 @@
 <!--MAIN CONTAINER ENDS HERE-->
 <div class="clear"></div>
 {% include "agiliqpages/footer_frag.html" %}
+
+{% if extra_footer %}
+{{ extra_footer|safe }}
+{% endif %}
+
 </body>
 
 {% compress js %}

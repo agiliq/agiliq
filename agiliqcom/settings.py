@@ -76,6 +76,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'dinette.middleware.UserActivity',
 )
 
 ROOT_URLCONF = 'agiliqcom.urls'
@@ -98,6 +99,7 @@ INSTALLED_APPS = (
 	'mailer',
     'pingback',
     'taggit',
+    'dinette',
 	# 'registration',    
 )
 
@@ -114,6 +116,33 @@ TWITTER_API_USER = 'agiliqtest'
 TWITTER_API_PASSW = 'agiliq99'
 
 CACHE_DURATION = 60 * 60 * 24
+
+# Dinette Settings
+import os
+from django.conf import global_settings
+
+AUTH_PROFILE_MODULE = 'dinette.DinetteUserProfile'
+
+#Append out new template processors to already existing processors
+templist = list(global_settings.TEMPLATE_CONTEXT_PROCESSORS)
+templist.append("dinette.context_processors.get_announcement")
+templist.append("dinette.context_processors.get_site_config")
+templist.append("dinette.context_processors.get_forumwide_links")
+
+templist.append("django.core.context_processors.request")
+TEMPLATE_CONTEXT_PROCESSORS = tuple(templist)
+
+RANKS_NAMES_DATA = ((30, "Member"), (100, "Senior Member"), (300, 'Star'))
+
+DINETTE_LOGIN_TEMPLATE = 'dinette/social_login.html'
+
+#LOG_FILE_PATH in django
+LOG_FILE_PATH = "\""+os.path.join(os.path.join(os.path.dirname(os.path.normpath(__file__)),'logs'),"logs.txt")+"\""
+LOG_FILE_PATH2 = "\""+os.path.join(os.path.join(os.path.dirname(os.path.normpath(__file__)),'logs2'),"logs2.txt")+"\""
+
+#LOG FILE NAME In django
+logfilename =  os.path.join(os.path.dirname(os.path.normpath(__file__)),'logging.conf')
+LOG_FILE_NAME = logfilename
 
 # FEED_URL = 'http://feeds.feedburner.com/uswarearticles'
 

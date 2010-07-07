@@ -4,3 +4,6 @@
 [submodule "agiliqcom/socialauth_repo"]
 	path = agiliqcom/socialauth_repo
 	url = git@github.com:agiliq/Django-Socialauth.git
+[submodule "agiliqcom/dinette_repo"]
+	path = agiliqcom/dinette_repo
+	url = git@github.com:agiliq/Dinette.git

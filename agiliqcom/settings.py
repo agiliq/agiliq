@@ -35,12 +35,12 @@ USE_L10N = True
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = ''
+MEDIA_ROOT = 'media/'
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = ''
+MEDIA_URL = '/site_media/'
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
@@ -68,6 +68,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 	'django.contrib.messages.context_processors.messages',
 	'agiliqpages.context_processors.extra_context',
     'blogango.context_processors.extra_context',
+    'socialauth.context_processors.facebook_api_key',
+    'django.core.context_processors.request',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -77,6 +79,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'dinette.middleware.UserActivity',
+    'openid_consumer.middleware.OpenIDMiddleware',
 )
 
 ROOT_URLCONF = 'agiliqcom.urls'
@@ -100,6 +103,8 @@ INSTALLED_APPS = (
     'pingback',
     'taggit',
     'dinette',
+    'socialauth',
+    'openid_consumer',    
 	# 'registration',    
 )
 

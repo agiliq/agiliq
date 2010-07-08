@@ -2,6 +2,9 @@
 *.log
 *.tmp
 *.swp
+*pydev*
+.project
+logs/*
 localsettings.py
 *.tmp*~
 *CACHE*

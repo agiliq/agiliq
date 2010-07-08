@@ -105,6 +105,9 @@ INSTALLED_APPS = (
     'dinette',
     'socialauth',
     'openid_consumer',    
+    'sorl.thumbnail',
+    
+    "south",
 	# 'registration',    
 )
 

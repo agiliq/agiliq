@@ -1,0 +1,5 @@
+This is all the code which powers agiliq.com.
+
+A number of our app(socialauth, dinette, blogango) are added as Submodules. We should be adding more soon.
+
+Patches are welcome and gratefully accepted, for this, and all submodules.

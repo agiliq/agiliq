@@ -29,7 +29,6 @@ def extra_context(request):
         blog_entry = blog_entries[0]
     else: 
         blog_entry = None
-        
     return {'hire_us': hire_us, 
             'our_code': our_code, 
             'testimonials': testimonials, 

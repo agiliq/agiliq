@@ -101,6 +101,7 @@ INSTALLED_APPS = (
     'compressor',
 	'mailer',
     'pingback',
+    'django_xmlrpc',
     'taggit',
     'dinette',
     'socialauth',

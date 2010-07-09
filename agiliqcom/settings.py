@@ -106,6 +106,9 @@ INSTALLED_APPS = (
     'dinette',
     'socialauth',
     'openid_consumer',    
+    'sorl.thumbnail',
+    
+    "south",
 	# 'registration',    
 )
 
@@ -130,7 +133,7 @@ from django.conf import global_settings
 AUTH_PROFILE_MODULE = 'dinette.DinetteUserProfile'
 
 #Append out new template processors to already existing processors
-templist = list(global_settings.TEMPLATE_CONTEXT_PROCESSORS)
+templist = list(TEMPLATE_CONTEXT_PROCESSORS)
 templist.append("dinette.context_processors.get_announcement")
 templist.append("dinette.context_processors.get_site_config")
 templist.append("dinette.context_processors.get_forumwide_links")

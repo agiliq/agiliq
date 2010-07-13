@@ -108,7 +108,7 @@ INSTALLED_APPS = (
     'socialauth',
     'openid_consumer',    
     'sorl.thumbnail',
-    'pagination',    
+    'pagination',
     'south',
 	# 'registration',    
 )

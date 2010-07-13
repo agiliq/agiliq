@@ -80,6 +80,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'dinette.middleware.UserActivity',
     'openid_consumer.middleware.OpenIDMiddleware',
+    'pagination.middleware.PaginationMiddleware'
 )
 
 ROOT_URLCONF = 'agiliqcom.urls'
@@ -107,8 +108,8 @@ INSTALLED_APPS = (
     'socialauth',
     'openid_consumer',    
     'sorl.thumbnail',
-    
-    "south",
+    'pagination',
+    'south',
 	# 'registration',    
 )
 
@@ -152,6 +153,8 @@ LOG_FILE_PATH2 = "\""+os.path.join(os.path.join(os.path.dirname(os.path.normpath
 #LOG FILE NAME In django
 logfilename =  os.path.join(os.path.dirname(os.path.normpath(__file__)),'logging.conf')
 LOG_FILE_NAME = logfilename
+
+FLOOD_TIME = 1000
 
 # FEED_URL = 'http://feeds.feedburner.com/uswarearticles'
 

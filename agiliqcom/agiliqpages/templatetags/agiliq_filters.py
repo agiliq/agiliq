@@ -30,6 +30,9 @@ class ExtraContext(template.Node):
         extra_header = get_content_or_none(slug='extra-header')
         extra_footer = get_content_or_none(slug='extra-footer')
         
+        after_open_body_tag =  get_content_or_none(slug='after-open-body-tag')
+        after_close_body_tag = get_content_or_none(slug='after-close-body-tag')
+        
         tweet = get_latest_object_or_none(Tweet)
         
         blog_entries = BlogEntry.objects.filter(is_published=True)
@@ -44,7 +47,9 @@ class ExtraContext(template.Node):
                 'tweet': tweet, 
                 'blog_entry': blog_entry,
                 'extra_header': extra_header,
-                'extra_footer': extra_footer}
+                'extra_footer': extra_footer,
+                'after_open_body_tag': after_open_body_tag,
+                'after_close_body_tag': after_close_body_tag}
         context.update(extra_context)
         return ''
 

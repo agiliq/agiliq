@@ -37,6 +37,8 @@
 
 
 <body class="{% block body_ns %}home{% endblock %}">
+{{ after_open_body_tag|safe }}
+
 <!--MAIN CONTAINER STARTS HERE-->
 <div id="maincontainer">
   <!--HEADER STARTS HERE-->
@@ -148,6 +150,7 @@
 <div class="clear"></div>
 {% include "agiliqpages/footer_frag.html" %}
 </body>
+{{ after_close_body_tag|safe }}
 
 {% compress js %}
 <!-- jQuery library-->

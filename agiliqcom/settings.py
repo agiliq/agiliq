@@ -110,6 +110,7 @@ INSTALLED_APPS = (
     'sorl.thumbnail',
     'pagination',
     'south',
+    'google_analytics',
 	# 'registration',    
 )
 
@@ -155,6 +156,15 @@ logfilename =  os.path.join(os.path.dirname(os.path.normpath(__file__)),'logging
 LOG_FILE_NAME = logfilename
 
 FLOOD_TIME = 1000
+
+HAYSTACK_SITECONF = "dinette.search"
+
+HAYSTACK_SEARCH_ENGINE = 'whoosh'
+
+HAYSTACK_WHOOSH_PATH = os.path.join(os.path.dirname(os.path.normpath(__file__)),'index.db')
+
+#Site URL
+SITE_URL = "http://agiliq.com/"
 
 # FEED_URL = 'http://feeds.feedburner.com/uswarearticles'
 

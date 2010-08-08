@@ -7,3 +7,6 @@
 [submodule "agiliqcom/dinette_repo"]
 	path = agiliqcom/dinette_repo
 	url = git@github.com:agiliq/Dinette.git
+[submodule "agiliqcom/analytics_repo"]
+	path = agiliqcom/analytics_repo
+	url = http://github.com/montylounge/django-google-analytics.git

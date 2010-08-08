@@ -110,6 +110,7 @@ INSTALLED_APPS = (
     'sorl.thumbnail',
     'pagination',
     'south',
+    'google_analytics',
 	# 'registration',    
 )
 

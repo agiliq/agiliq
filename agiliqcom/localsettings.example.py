@@ -68,3 +68,4 @@ AUTHENTICATION_BACKENDS = (
     'socialauth.auth_backends.LinkedInBackend',
 )
 
+BACKTYPE_API_KEY = ''

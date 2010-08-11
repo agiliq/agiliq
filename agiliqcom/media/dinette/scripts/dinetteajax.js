@@ -13,7 +13,6 @@ function intialize() {
     }
     
     if ( $("#fpostreply").length > 0 ) {
-        $('#fpostreply').clearForm();
         $('#fpostreply').ajaxForm({
             // dataType identifies the expected content type of the server response 
             dataType:  'json',              
@@ -21,7 +20,7 @@ function intialize() {
             // has been received 
             success: formsubmission }
         );
-    } 
+    }
 }
 
 function check_errors_in_form() {
@@ -185,3 +184,14 @@ $('.moderate-post').click(function(){
    return false;
    })
 
+function quote_reply(reply, author){   
+   // just wrap the content in quotes and put it in message input field
+   msg = "[quote=" + author + "]" + $("#content"+reply).text().trim() + "[/quote]";
+   $("#id_message").val(msg).focus();
+}
+
+function delete_reply(reply){
+    $.get('/forum/delete/reply/'+reply, function(resp){
+        $("#post"+reply).fadeOut();
+    }, 'json');
+}

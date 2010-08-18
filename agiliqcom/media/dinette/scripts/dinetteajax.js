@@ -2,7 +2,8 @@ $(document).ready(intialize);
 
 function intialize() {
     if ( $("#fposttopic").length > 0 ) {
-        $('#fposttopic').clearForm();
+        // commented because it messes up markup type drop down default
+        //$('#fposttopic').clearForm();
         $('#fposttopic').ajaxForm( {
             // dataType identifies the expected content type of the server response 
             dataType:  'json',       
@@ -144,13 +145,13 @@ function isUserAuthenticated( k )
          }
          
         if ( $("#fposttopic").length > 0 ){
-            $('#fposttopic').clearForm();        
+            //$('#fposttopic').clearForm();        
             $(':input:visible:enabled:first','#fposttopic').focus();
             return false;
         }
            
         if( $("#fpostreply").length > 0 )  {
-            $('#fpostreply').clearForm();
+            //$('#fpostreply').clearForm();
             $(':input:visible:enabled:first','#fpostreply').focus();
             return false;
         }

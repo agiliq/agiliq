@@ -15,28 +15,21 @@ class ContactUs(models.Model):
 	def __unicode__(self):
 		return '%s - %s - %s' % (self.name, self.email, self.company)
 
-class ClientManager(models.Manager):
+class TestimonialManager(models.Manager):
     def get_query_set(self, *args, **kwargs):
-        return super(ClientManager, self).get_query_set().filter(is_active=True)
+        return super(TestimonialManager, self).get_query_set().filter(is_active=True)
 
-class Client(models.Model):
-    name = models.CharField(max_length=100)
-    about = models.TextField()
-    url = models.URLField()
-    email = models.EmailField()
+class Testimonial(models.Model):
     testimonial = models.TextField(null=True, blank=True)
-    contact_name = models.CharField(max_length=100)
-    logo = models.ImageField(upload_to='logos/')
-    has_testimonial = models.BooleanField(default=False)
-
+    contact = models.ForeignKey('Contact')
+    
     ordering = models.PositiveSmallIntegerField(default=0)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     is_active = models.BooleanField(default=True)
 
-    _default_manager = models.Manager()
-    objects = ClientManager()
-
+    default = models.Manager()
+    objects = TestimonialManager()
 
     class Meta:
         get_latest_by = ('ordering', )
@@ -44,13 +37,23 @@ class Client(models.Model):
 
     def __unicode__(self):
         return self.name
-
-    def save(self):
-        if self.testimonial:
-            self.has_testimonial = True
-        else:
-            self.has_testimonial = False
-        super(Client, self).save()
+        
+class Client(models.Model):
+	name = models.CharField(max_length=100)
+	logo = models.ImageField(upload_to='logos/', null=True, blank=True)
+	about = models.TextField()
+	url = models.URLField()
+	
+	def __unicode__(self):
+		return self.name
+	
+class Contact(models.Model):
+	name = models.CharField(max_length=100)
+	email = models.EmailField()
+	client_company = models.ForeignKey('Client', null=True, blank=True)
+	
+	def __unicode__(self):
+		return self.name
 
 class BlogEntry(models.Model):
     feed_url = models.URLField()

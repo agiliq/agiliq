@@ -14,6 +14,7 @@ urlpatterns = patterns('',
 	(r'^forum/', include('dinette.urls')),
 	(r'^socialauth/', include('socialauth.urls')),
 	(r'^blog/', include('blogango.urls')),	
+    (r'^buzz/', include('pystories.urls')),
 
     # Uncomment the admin/doc line below and add 'django.contrib.admindocs' 
     # to INSTALLED_APPS to enable admin documentation:

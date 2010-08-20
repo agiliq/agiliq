@@ -10,3 +10,6 @@
 [submodule "agiliqcom/analytics_repo"]
 	path = agiliqcom/analytics_repo
 	url = http://github.com/montylounge/django-google-analytics.git
+[submodule "agiliqcom/django-buzz_repo"]
+	path = agiliqcom/django-buzz_repo
+	url = http://github.com/agiliq/django-buzz.git

@@ -43,6 +43,7 @@ class Client(models.Model):
 	logo = models.ImageField(upload_to='logos/', null=True, blank=True)
 	about = models.TextField()
 	url = models.URLField()
+	is_active = models.BooleanField(default=False)
 	
 	def __unicode__(self):
 		return self.name

@@ -69,3 +69,10 @@ AUTHENTICATION_BACKENDS = (
 )
 
 BACKTYPE_API_KEY = ''
+
+MARKUP_FIELD_TYPES = (
+    ('markdown', markdown.markdown),
+    ('ReST', render_rest),
+)
+
+MARKUP_RENDERERS = []

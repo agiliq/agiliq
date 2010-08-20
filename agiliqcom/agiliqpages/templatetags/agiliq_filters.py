@@ -1,7 +1,7 @@
 
 from django import template
 
-from agiliqpages.models import ContentBlock, Client, Tweet
+from agiliqpages.models import ContentBlock, Client, Tweet, Testimonial
 from blogango.models import BlogEntry
 
 register = template.Library()
@@ -23,7 +23,7 @@ class ExtraContext(template.Node):
         pass
     
     def render(self, context):
-        testimonials = Client.objects.filter(contact__testimonial__isnull=False).order_by('?')
+        testimonials = Testimonial.objects.filter(contact__testimonial__isnull=False).order_by('?')
         hire_us = get_content_or_none(slug='hire-us')
         our_code = get_content_or_none(slug='our-code')
         

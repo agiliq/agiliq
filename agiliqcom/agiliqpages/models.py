@@ -36,7 +36,7 @@ class Testimonial(models.Model):
         ordering = ('ordering', )
 
     def __unicode__(self):
-        return self.name
+        return self.testimonial[:30]+" ..."
         
 class Client(models.Model):
 	name = models.CharField(max_length=100)

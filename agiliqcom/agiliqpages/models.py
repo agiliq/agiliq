@@ -38,12 +38,19 @@ class Testimonial(models.Model):
     def __unicode__(self):
         return self.testimonial[:30]+" ..."
         
+class ClientManager(models.Manager):
+    def get_query_set(self, *args, **kwargs):
+        return super(ClientManager, self).get_query_set().filter(is_active=True)
+
 class Client(models.Model):
 	name = models.CharField(max_length=100)
 	logo = models.ImageField(upload_to='logos/', null=True, blank=True)
 	about = models.TextField()
 	url = models.URLField()
-	is_active = models.BooleanField(default=False)
+	is_active = models.BooleanField(default=True)
+	
+	default = models.Manager()
+	objects = ClientManager()
 	
 	def __unicode__(self):
 		return self.name

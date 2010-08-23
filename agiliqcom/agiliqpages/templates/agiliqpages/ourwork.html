@@ -44,8 +44,8 @@
 	<span class="redtitle">our code</span>
 	<p>
 		<img src="{{ MEDIA_URL }}images/logov3.png" width="65" height="29" alt="github"> 
-		Follow the link to get the code 
-		<a href="http://github.com/uswaretech" target="_blank" class="redlink">http://github.com/uswaretech</a>
+		Find our open source code at
+		<a href="http://github.com/agiliq" target="_blank" class="redlink">http://github.com/agiliq</a>
 	</p>
 	<div class="hr"></div>
 	
@@ -67,11 +67,13 @@
         	</div>
         	<div class="clear"></div>
             <br/>
-            {% if client.testimonial %}
+            {% for contact in client.contact_set.all %}
+            {% for testimonial in contact.testimonial_set.all %}
             <div>
-                <p class='blockquote'>{{ client.testimonial }}<span class='reversequote'></span> - <span class="clientname">{{ client.contact_name }}</span></p>    
+                <p class='blockquote'>{{ testimonial.testimonial }}<span class='reversequote'></span> - <span class="clientname">{{ contact.name }}</span></p>    
             </div>
-            {% endif %}
+            {% endfor %}
+            {% endfor %}
         </div>
 	{% endfor %}
 

@@ -13,3 +13,6 @@
 [submodule "agiliqcom/django-buzz_repo"]
 	path = agiliqcom/django-buzz_repo
 	url = http://github.com/agiliq/django-buzz.git
+[submodule "agiliqcom/mailer_repo"]
+	path = agiliqcom/mailer_repo
+	url = http://github.com/jtauber/django-mailer.git

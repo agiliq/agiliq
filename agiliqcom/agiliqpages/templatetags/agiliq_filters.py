@@ -10,7 +10,7 @@ def get_content_or_none(**kwargs):
     try:
         return ContentBlock.objects.get(**kwargs).content
     except ContentBlock.DoesNotExist:
-        return None
+        return ''
     
 def get_latest_object_or_none(model):
     try:

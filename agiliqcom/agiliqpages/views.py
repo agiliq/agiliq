@@ -11,7 +11,7 @@ from agiliqpages.forms import ContactUsForm
 from agiliqpages.models import Client, Project
 
 
-@cache_page(settings.CACHE_DURATION)
+# @cache_page(settings.CACHE_DURATION)
 def contact_us(request, template):
 	if request.method == 'POST':
 		form = ContactUsForm(request.POST)

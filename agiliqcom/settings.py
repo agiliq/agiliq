@@ -111,6 +111,7 @@ INSTALLED_APPS = (
     'pagination',
     'south',
     'google_analytics',
+    'pystories',
 	# 'registration',    
 )
 

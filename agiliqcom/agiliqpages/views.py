@@ -21,7 +21,7 @@ def contact_us(request, template):
 											   {'name' : form.cleaned_data['name'], 
 											    'email' : form.cleaned_data['email'], 
 											    'query' : form.cleaned_data['message']})
-			mail_managers('Contact from Agiliq.com', manager_message, fail_silently=False)
+			send_mail('Contact from Agiliq.com', manager_message, settings.DEFAULT_FROM_EMAIL, ['hello@agiliq.com'], fail_silently=False)
 			
 			customer_message = render_to_string('agiliqpages/contact_us_confirmation.txt', {})
 			send_mail('Thank you for contacting www.agiliq.com', customer_message, settings.DEFAULT_FROM_EMAIL, [form.cleaned_data['email']])

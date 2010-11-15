@@ -77,6 +77,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'django.contrib.redirects.middleware.RedirectFallbackMiddleware',
     'dinette.middleware.UserActivity',
     'openid_consumer.middleware.OpenIDMiddleware',
     'pagination.middleware.PaginationMiddleware'
@@ -89,6 +90,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
+    'django.contrib.redirects',
     'django.contrib.sessions',
     'django.contrib.sitemaps',
     'django.contrib.sites',

@@ -134,15 +134,6 @@ from django.conf import global_settings
 
 AUTH_PROFILE_MODULE = 'dinette.DinetteUserProfile'
 
-#Append out new template processors to already existing processors
-templist = list(TEMPLATE_CONTEXT_PROCESSORS)
-templist.append("dinette.context_processors.get_announcement")
-templist.append("dinette.context_processors.get_site_config")
-templist.append("dinette.context_processors.get_forumwide_links")
-
-templist.append("django.core.context_processors.request")
-TEMPLATE_CONTEXT_PROCESSORS = tuple(templist)
-
 RANKS_NAMES_DATA = ((30, "Member"), (100, "Senior Member"), (300, 'Star'))
 
 DINETTE_LOGIN_TEMPLATE = 'dinette/social_login.html'

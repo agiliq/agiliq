@@ -67,7 +67,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 	'django.core.context_processors.media',
 	'django.contrib.messages.context_processors.messages',
 	# 'agiliqpages.context_processors.extra_context',
-    'blogango.context_processors.extra_context',
     'socialauth.context_processors.facebook_api_key',
     'django.core.context_processors.request',
 )
@@ -156,7 +155,7 @@ LOG_FILE_PATH2 = "\""+os.path.join(os.path.join(os.path.dirname(os.path.normpath
 logfilename =  os.path.join(os.path.dirname(os.path.normpath(__file__)),'logging.conf')
 LOG_FILE_NAME = logfilename
 
-FLOOD_TIME = 1000
+FLOOD_TIME = 100000
 
 HAYSTACK_SITECONF = "dinette.search"
 

@@ -1,3 +1,5 @@
+
+from django.contrib.auth.models import User
 from django.db import models
 
 class ContactUs(models.Model):
@@ -86,7 +88,10 @@ class TeamMember(models.Model):
     bio = models.TextField()
     photo = models.ImageField(upload_to='people/', null=True, blank=True)
     designation = models.CharField(max_length=100)
-
+    
+    user = models.OneToOneField(User, blank=True, null=True)
+    tag_line = models.CharField(max_length=255, blank=True, null=True)
+    
     twitter = models.URLField(null=True, blank=True)
     linked_in = models.URLField(null=True, blank=True)
 

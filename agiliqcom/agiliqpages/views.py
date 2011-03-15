@@ -6,6 +6,7 @@ from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
 from django.template.loader import render_to_string
 from django.views.decorators.cache import cache_page
+from django.http import HttpResponseRedirect
 
 from agiliqpages.forms import ContactUsForm
 from agiliqpages.models import Client, Project
@@ -43,3 +44,8 @@ def our_work(request, template):
 	                           'clients': clients, 
 	                           'sitepage': 'ourwork'}, 
 	                          RequestContext(request))
+
+
+@cache_page(settings.CACHE_DURATION)
+def jobs(request):
+	return HttpResponseRedirect(reverse("blogango_page_details", kwargs={"slug": "jobs"}))

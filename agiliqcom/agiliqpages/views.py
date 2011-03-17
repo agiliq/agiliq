@@ -44,8 +44,3 @@ def our_work(request, template):
 	                           'clients': clients, 
 	                           'sitepage': 'ourwork'}, 
 	                          RequestContext(request))
-
-
-@cache_page(settings.CACHE_DURATION)
-def jobs(request):
-	return HttpResponseRedirect(reverse("blogango_page_details", kwargs={"slug": "jobs"}))

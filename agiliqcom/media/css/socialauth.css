@@ -56,18 +56,18 @@ a.openid_large_btn:focus{
 	border: 4px solid #DDD;
 }
 .linkedin{
-	background: #FFF url(/site_media/images/linkedin.jpg) no-repeat center center;
+	background: #FFF url(/images/linkedin.jpg) no-repeat center center;
 }
 .yahoo{
-	background: #FFF url(/site_media/images/yahoo.gif) no-repeat center center;
+	background: #FFF url(/images/yahoo.gif) no-repeat center center;
 }
 .google{
-	background: #FFF url(/site_media/images/google.png) no-repeat center center;
+	background: #FFF url(/images/google.png) no-repeat center center;
 }
 .openid{
-	background: #FFF url(/site_media/images/openid.png) no-repeat center center;
+	background: #FFF url(/images/openid.png) no-repeat center center;
 }
 .twitter{
-	background: #FFF url(/site_media/images/twitter.png) no-repeat center center;
+	background: #FFF url(/images/twitter.png) no-repeat center center;
 }
 

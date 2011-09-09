@@ -93,7 +93,7 @@ class TeamMember(models.Model):
     ordering = models.PositiveSmallIntegerField(default=0)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
-
+    active = models.NullBooleanField()
     class Meta:
         get_latest_by = ('ordering', )
         ordering = ('ordering', )

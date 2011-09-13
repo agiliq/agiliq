@@ -113,10 +113,11 @@ INSTALLED_APPS = (
     'south',
     'google_analytics',
     'pystories',
+    'haystack',
 	# 'registration',    
 )
 
-SEND_BROKEN_LINK_EMAILS = True
+SEND_BROKEN_LINK_EMAILS = False
 EMAIL_SUBJECT_PREFIX = '[Agiliq] ' 
 
 DEFAULT_FROM_EMAIL = 'Agiliq.com <webmaster@agiliq.com>'
@@ -148,7 +149,7 @@ LOG_FILE_PATH2 = "\""+os.path.join(os.path.join(os.path.dirname(os.path.normpath
 logfilename =  os.path.join(os.path.dirname(os.path.normpath(__file__)),'logging.conf')
 LOG_FILE_NAME = logfilename
 
-FLOOD_TIME = 100000
+FLOOD_TIME = 10
 
 HAYSTACK_SITECONF = "dinette.search"
 

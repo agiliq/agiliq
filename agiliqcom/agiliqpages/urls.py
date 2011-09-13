@@ -11,8 +11,9 @@ def cache(page):
     return cache_page(page, settings.CACHE_DURATION)
 
 cached_direct_to_template = cache(direct_to_template)
-cached_object_list = cache(object_list)
 
+cached_object_list = cache(object_list)
+#cached_object_list = object_list
 
 urlpatterns = patterns('',
     url('^$', 
@@ -41,7 +42,7 @@ urlpatterns = patterns('',
 urlpatterns += patterns('',
 	url('^whoweare$', 
 	 	cached_object_list, 
-	 	{'queryset': TeamMember.objects.all().order_by('ordering'),
+	 	{'queryset': TeamMember.objects.exclude(active=False).order_by('ordering'),
 	     'template_name': 'agiliqpages/whoweare.html',
 	 	 'extra_context': {'sitepage': 'whoweare'}
 	 	}, 
@@ -52,4 +53,3 @@ urlpatterns += patterns('agiliqpages.views',
     url('^contactus$', 'contact_us', {"template": "agiliqpages/contactus.html"}, name='agiliqpages_contactus'),
 	url('^ourwork$', 'our_work', {'template': 'agiliqpages/ourwork.html'}, name='agiliqpages_ourwork'),
 )
-

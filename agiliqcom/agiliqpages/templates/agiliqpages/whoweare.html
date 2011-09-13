@@ -1,5 +1,5 @@
 {% extends "agiliqpages/base.html" %}
-
+{% load thumbnail %}
 {% block  title %}
 	{{ block.super }} | About us.
 {% endblock %}
@@ -27,7 +27,9 @@
 	<div class="profile">
 		<div class="left">
 			{% if profile.photo %}
-				<img src="{{ profile.photo.url }}" width="130" height="129" alt="{{ profile.name }}">
+				{% thumbnail profile.photo "130x129" as im %}
+					<img src="{{ im.url}}" alt="{{ profile.name }}">
+				{% endthumbnail %}
 			{% endif %}
 		</div>
 		<div class="right">

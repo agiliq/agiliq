@@ -6,6 +6,8 @@ from django.contrib import admin
 from django.views.generic.simple import direct_to_template
 admin.autodiscover()
 
+handler500 = 'agiliqpages.views.server_error'
+
 urlpatterns = patterns('',
     # Example:
     # (r'^agiliqcom/', include('agiliqcom.foo.urls')),

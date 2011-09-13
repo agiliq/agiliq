@@ -8,6 +8,9 @@ from django.template.loader import render_to_string
 from django.views.decorators.cache import cache_page
 from django.http import HttpResponseRedirect
 
+from django import http
+from django.template import Context, loader
+
 from agiliqpages.forms import ContactUsForm
 from agiliqpages.models import Client, Project
 
@@ -44,3 +47,17 @@ def our_work(request, template):
 	                           'clients': clients, 
 	                           'sitepage': 'ourwork'}, 
 	                          RequestContext(request))
+
+def server_error(request, template_name='500.html'):
+    """
+    500 error handler.
+
+    Templates: `500.html`
+    Context:
+        MEDIA_URL
+            Path of static media (e.g. "media.example.org")
+    """
+    t = loader.get_template(template_name) # You need to create a 500.html template.
+    return http.HttpResponseServerError(t.render(Context({
+        'MEDIA_URL': settings.MEDIA_URL
+    })))

@@ -127,7 +127,7 @@ SERVER_EMAIL = 'developer@agiliq.com'
 TWITTER_FOLLOW = ('agiliqdotcom', 'uswaretech')
 
 TWITTER_API_USER = 'agiliqtest'
-TWITTER_API_PASSW = 'agiliq99'
+TWITTER_API_PASSW = ''
 
 CACHE_DURATION = 60 * 60 * 24
 

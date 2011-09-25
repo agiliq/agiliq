@@ -3,3 +3,10 @@ This is all the code which powers agiliq.com.
 A number of our app(socialauth, dinette, blogango) are added as Submodules. We should be adding more soon.
 
 Patches are welcome and gratefully accepted, for this, and all submodules.
+
+How to use this
+
+1. Clone this repo.
+2. git submodule init
+3. git submodule update
+4. mkdir logs

@@ -1,2 +1,3 @@
 django-markupfield
 feedparser
+django-mailer

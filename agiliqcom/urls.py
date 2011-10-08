@@ -27,7 +27,6 @@ urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
     url('^404$', direct_to_template, {'template': '404.html'}, name='agiliqcom_notfound'),
     url('^500$', direct_to_template, {'template': '500.html'}, name='agiliqcom_error'),
-    url(r'^cms/', include('cms.urls')),
 )
 
 if settings.DEBUG or getattr(settings, 'SERVE_MEDIA', False):

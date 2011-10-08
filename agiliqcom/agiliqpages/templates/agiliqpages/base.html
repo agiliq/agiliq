@@ -114,7 +114,7 @@
       <!--AGILIQ BLOG BLOCK STARTS HERE-->
       <div id="blogblock">
         <div><span class="greentitle">agiliq blog</span><img src="{{ MEDIA_URL }}images/blog_icon.png" alt="Agiliq Blog" width="40" height="43"></div>
-        <p>{{ blog_entry.text|truncatewords_html:0|striptags|safe }} <br/>
+        <p>{{ blog_entry.text|truncatewords_html:30|striptags|safe }} <br/>
           <a href="{{ blog_entry.get_absolute_url }}" target="_blank" class="blogpostlink">More information &raquo; </a> <br/>
           <span class="postdate">{{ blog_entry.created_on|date:'jS N, Y' }}</span></p>
       </div>

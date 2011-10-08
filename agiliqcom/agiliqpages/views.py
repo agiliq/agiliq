@@ -14,6 +14,10 @@ from django.template import Context, loader
 from agiliqpages.forms import ContactUsForm
 from agiliqpages.models import Client, Project
 
+def error_page(request):
+    #This page is meant to cause error to test error handling
+		raise Exception("This error is expected.")
+
 
 # @cache_page(settings.CACHE_DURATION)
 def contact_us(request, template):

@@ -6,6 +6,7 @@ from django.views.generic.list_detail import object_list
 from django.views.decorators.cache import cache_page
 
 from agiliqpages.models import TeamMember
+from agiliqpages.views import error_page
 
 def cache(page):
     return cache_page(page, settings.CACHE_DURATION)
@@ -28,7 +29,8 @@ urlpatterns = patterns('',
 		 'extra_context': {'sitepage': 'whatwedo'},
 		}, 
 		name='agiliqpages_whatwedo'),
-    url('^thankyou$', 
+    url('^errorpage-500$', error_page, name='agiliqpages_error_page'),
+		url('^thankyou$', 
         cached_direct_to_template, 
         {'template': 'agiliqpages/thankyou.html', 
          'extra_context': {},

@@ -114,7 +114,18 @@ INSTALLED_APPS = (
     'google_analytics',
     'pystories',
     'haystack',
-	# 'registration',    
+    'cms',
+    'menus',
+    'mptt',
+    'sekizai',
+    'cms.plugins.text',
+    'cms.plugins.picture',
+    'cms.plugins.link',
+    'cms.plugins.file',
+    'cms.plugins.snippet',
+    'cms.plugins.googlemap',
+
+
 )
 
 SEND_BROKEN_LINK_EMAILS = False

@@ -78,7 +78,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.contrib.redirects.middleware.RedirectFallbackMiddleware',
-    'dinette.middleware.UserActivity',
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+		'dinette.middleware.UserActivity',
     'openid_consumer.middleware.OpenIDMiddleware',
     'pagination.middleware.PaginationMiddleware'
 )
@@ -95,13 +96,13 @@ INSTALLED_APPS = (
     'django.contrib.sitemaps',
     'django.contrib.sites',
     'django.contrib.messages',
-	'django.contrib.humanize',
-	'django.contrib.markup',
-    
+	  'django.contrib.humanize',
+	  'django.contrib.markup',
+    'django.contrib.flatpages',
     'agiliqpages',
     'blogango',
     'compressor',
-	'mailer',
+	  'mailer',
     'pingback',
     'django_xmlrpc',
     'taggit',

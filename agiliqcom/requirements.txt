@@ -7,3 +7,18 @@ django-socialauth==0.1.2c
 dinette
 django-buzz
 -e git+git://github.com/montylounge/django-google-analytics.git#egg=django_google_analytics
+markdown
+
+south
+docutils
+django-pingback
+BeautifulSoup
+git+https://github.com/sorl/sorl-thumbnail.git
+django-pagination
+django-haystack
+Whoosh
+django-appmedia
+PIL
+python-openid
+django-oauth
+git+https://github.com/facebook/python-sdk.git

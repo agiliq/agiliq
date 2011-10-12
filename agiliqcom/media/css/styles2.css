@@ -128,11 +128,11 @@ fieldset{border:1px solid #DCDCDC; padding:20px;}
 .contactus {background:url(../images/topmenu.png) -401px -108px no-repeat;}
 .blog {background:url(../images/topmenu.png) -511px -108px no-repeat;}
 
-
+.plugin_picture img{width: 340px;height: 318px;}
 
 #banner{width:960px; margin:0px auto; height:318px; }
 #banner #title{width:620px;  height:238px; float:left; display:block; vertical-align:middle; display:table-cell; padding-top:80px;  }
-#banner #homegraphic{width:340px;  height:318px; float:left;  background:url(../images/home_graphic.png) no-repeat; background-position:bottom right;}
+/* #banner #homegraphic{width:340px;  height:318px; float:left;  background:url(../images/home_graphic.png) no-repeat; background-position:bottom right;} */
 #banner #whatwedographic{width:340px;  height:318px; float:left;  background:url(../images/whatwedo_graphic.png) no-repeat; background-position:bottom right;}
 #banner #ourworkgraphic{width:340px;  height:318px; float:left;  background:url(../images/ourwork_graphic.png) no-repeat; background-position:bottom right;}
 #banner #contactgraphic{width:340px;  height:318px; float:left;  background:url(../images/contact_graphic.png) no-repeat; background-position:bottom right;}

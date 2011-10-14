@@ -1,0 +1,187 @@
+/* CSS Document */
+/* http://meyerweb.com/eric/tools/css/reset/ */
+/* v1.0 | 20080212 */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
+
+ol, ul {
+	list-style: none;
+}
+ul.errorlist {
+	font-weight: bold;
+	color: red;
+	margin-top: -14px;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+html { height:101%;}
+
+#leftpanel a {color:#A1001B;text-decoration:underline;}
+#leftpanel a:hover {color:#c30;}
+#leftpanel a:visited {color:#A1001B;}
+
+h1{font:bold 36px Helvetica, Arial, sans-serif; color:#FFFFFF; text-decoration:none; line-height:48px; text-transform:uppercase; vertical-align:middle; letter-spacing:-2px;}
+
+.mailink{font:bold 36px Helvetica, Arial, sans-serif; color:#FFFFFF; text-decoration:none; line-height:48px;  vertical-align:middle; letter-spacing:-2px;}
+.mailink:hover{font:bold 36px Helvetica, Arial, sans-serif; color:#FC0; text-decoration:none; line-height:48px; vertical-align:middle; letter-spacing:-2px;}
+
+h1 .black{color:#000000;}
+
+h2{font:bold 24px Helvetica, Arial, sans-serif; color:#000000; text-decoration:none; line-height:30px; text-transform:uppercase; vertical-align:middle; letter-spacing:-1px;}
+h2 a {font:bold 24px Helvetica, Arial, sans-serif; color:#000000; text-decoration:none; line-height:30px; text-transform:uppercase; vertical-align:middle; letter-spacing:-1px;}
+h3{font:bold 14px Arial, Helvetica, sans-serif; color:#6A9318; text-decoration:none; line-height:30px; text-transform:uppercase; border-top:1px solid #CCC; border-bottom:1px solid #CCC;}
+
+h4{font:bold 14px Arial, Helvetica, sans-serif; color:#A0001A; text-decoration:none; line-height:30px; text-transform:uppercase; border-top:1px solid #CCC; border-bottom:1px solid #CCC;}
+
+p{ margin:0px; padding:0px; font:13px Arial, Helvetica, sans-serif; color:#505050; text-decoration:none; line-height:20px; padding-bottom:18px;}
+p.clients{ clear:both; font:13px Arial, Helvetica, sans-serif; color:#505050; text-decoration:none; line-height:20px; margin-bottom:10px;}
+p.clients img { float:left; border:1px solid #CCC; margin-right:20px;  margin-bottom:10px;}
+p.profilecontent{ font:13px Arial, Helvetica, sans-serif; color:#505050; text-decoration:none; line-height:20px; padding:10px 0px 0px 0px; text-align:justify; }
+
+.designation{font:bold 12px Arial, Helvetica, sans-serif; color:#505050; text-decoration:none;  text-transform:uppercase; display:block;border-bottom:1px solid #CCC; line-height:24px; }
+
+.website{font:bold 12px Arial, Helvetica, sans-serif; color:#505050; text-decoration:none;   display:block;border-bottom:1px solid #CCC; line-height:24px; }
+.website:hover{color:#C30; text-decoration:underline;  }
+
+fieldset{border:1px solid #DCDCDC; padding:20px;}
+.formstyle{width:400px; padding:8px; background-color:#F5F5F5; border:1px solid #CCC; margin:5px 0px 20px 0px;}
+.formstyletextarea{width:400px; padding:8px; background-color:#F5F5F5; border:1px solid #CCC; margin:5px 0px 20px 0px;}
+.submitbutton{padding:10px 30px 10px 30px; background-color:#530072; font:14px Arial, Helvetica, sans-serif; color:#FFF; border:none; cursor:pointer;}
+
+
+.hometitle {font:bold 24px Helvetica, Arial, sans-serif; color:#22C2C0; text-decoration:none; line-height:40px; text-transform:uppercase; vertical-align:middle; letter-spacing:-1px;}
+.bluetitle {font:bold 24px Helvetica, Arial, sans-serif; color:#22C2C0; text-decoration:none; line-height:40px; text-transform:uppercase; vertical-align:middle; letter-spacing:-1px;}
+.yellowtitle {font:bold 24px Helvetica, Arial, sans-serif; color:#EB9924; text-decoration:none; line-height:40px; text-transform:uppercase; vertical-align:middle; letter-spacing:-1px;}
+.greentitle {font:bold 24px Helvetica, Arial, sans-serif; color:#8FB83C; text-decoration:none; line-height:40px; text-transform:uppercase; vertical-align:middle; letter-spacing:-1px;}
+.bluetitle {font:bold 24px Helvetica, Arial, sans-serif; color:#00ADEF; text-decoration:none; line-height:40px; text-transform:uppercase; vertical-align:middle; letter-spacing:-1px;}
+.redtitle {font:bold 24px Helvetica, Arial, sans-serif; color:#A0001A; text-decoration:none; line-height:40px; text-transform:uppercase; vertical-align:middle; letter-spacing:-1px;}
+.browntitle {font:bold 24px Helvetica, Arial, sans-serif; color:#7E4220; text-decoration:none; line-height:40px; text-transform:uppercase; vertical-align:middle; letter-spacing:-1px;}
+.smallbrowntitle {font:bold 18px Helvetica, Arial, sans-serif; color:#7E4220; text-decoration:none; line-height:30px; text-transform:uppercase; }
+
+.purpletitle {font:bold 24px Helvetica, Arial, sans-serif; color:#530072; text-decoration:none; line-height:40px; text-transform:uppercase; vertical-align:middle; letter-spacing:-1px;}
+.purpletext {font:14px Arial, Helvetica, sans-serif; color:#530072; text-decoration:none; line-height:18px; }
+
+.blogpostlink{font:13px  Arial, Helvetica, sans-serif; color:#407200; line-height:16px; text-decoration:underline;}
+.blogpostlink:hover{font:13px  Arial, Helvetica, sans-serif; color:#000; line-height:16px; text-decoration:underline;}
+.postdate{font:11px  Arial, Helvetica, sans-serif; color:#407200; line-height:24px; text-decoration:none;}
+.tweetslink{font:13px  Arial, Helvetica, sans-serif; color:#00A9E9; line-height:16px; text-decoration:underline;}
+.tweetslink:hover{font:13px  Arial, Helvetica, sans-serif; color:#000; line-height:16px; text-decoration:underline;}
+.tweetdate{font:11px  Arial, Helvetica, sans-serif; color:#00A9E9; line-height:24px; text-decoration:none;}
+.hiresus_but{width:111px; float:left;}
+
+.redlink{font:12px  Arial, Helvetica, sans-serif; color:#A1001B; line-height:16px; text-decoration:underline;}
+.redlink:hover{font:12px  Arial, Helvetica, sans-serif; color:#000; line-height:16px; text-decoration:underline;}
+.blacklink{font:12px  Arial, Helvetica, sans-serif; color:#000; line-height:16px; text-decoration:none;}
+.blacklink:hover{font:12px  Arial, Helvetica, sans-serif; color:#000; line-height:16px; text-decoration:underline;}
+
+
+#maincontainer{width:960px; margin:0px auto; }
+#header{width:960px; margin:0px auto; height:108px;}
+#logo{width:360px; float:left; vertical-align:middle; display:block; padding-top:35px; height:73px;}
+#menu{width:600px; float:right; vertical-align:middle; display:block; height:108px;}
+
+#navigation{ width:582px; float:right; padding-top:25px;}
+#nav-example {background:url(../images/topmenu.png) no-repeat; width:582px; height:108px;margin:0;padding:0;}
+#nav-example span {display: none;}
+#nav-example li, #nav-example a { height:108px; display:block;}
+#nav-example li {float:left;list-style:none;display:inline;}
+#nav-example-01 {width: 74px;}
+#nav-example-02 {width: 115px;}
+#nav-example-03 {width: 111px;}
+#nav-example-04 {width: 101px;}
+#nav-example-05 {width: 110px;}
+#nav-example-06 {width: 71px;}
+
+#nav-example-01 a:hover {background:url(../images/topmenu.png) 0px -108px no-repeat;}
+#nav-example-02 a:hover {background:url(../images/topmenu.png) -74px -108px no-repeat;}
+#nav-example-03 a:hover {background:url(../images/topmenu.png) -189px -108px no-repeat;}
+#nav-example-04 a:hover {background:url(../images/topmenu.png) -300px -108px no-repeat;}
+#nav-example-05 a:hover {background:url(../images/topmenu.png) -401px -108px no-repeat;}
+#nav-example-06 a:hover {background:url(../images/topmenu.png) -511px -108px no-repeat;}
+
+.home {background:url(../images/topmenu.png) 0px -108px no-repeat;}
+.whoweare{background:url(../images/topmenu.png) -74px -108px no-repeat;}
+.whatwedo{background:url(../images/topmenu.png) -189px -108px no-repeat;}
+.ourwork{background:url(../images/topmenu.png) -300px -108px no-repeat;}
+.contactus {background:url(../images/topmenu.png) -401px -108px no-repeat;}
+.blog {background:url(../images/topmenu.png) -511px -108px no-repeat;}
+
+.plugin_picture img{width: 340px;height: 318px;}
+
+#banner{width:960px; margin:0px auto; height:318px; }
+#banner #title{width:620px;  height:238px; float:left; display:block; vertical-align:middle; display:table-cell; padding-top:80px;  }
+/* #banner #homegraphic{width:340px;  height:318px; float:left;  background:url(../images/home_graphic.png) no-repeat; background-position:bottom right;} */
+#banner #whatwedographic{width:340px;  height:318px; float:left;  background:url(../images/whatwedo_graphic.png) no-repeat; background-position:bottom right;}
+#banner #ourworkgraphic{width:340px;  height:318px; float:left;  background:url(../images/ourwork_graphic.png) no-repeat; background-position:bottom right;}
+#banner #contactgraphic{width:340px;  height:318px; float:left;  background:url(../images/contact_graphic.png) no-repeat; background-position:bottom right;}
+#banner #pagenotfound{width:340px;  height:318px; float:left;  background:url(../images/404_notfound.png) no-repeat; background-position:bottom right;}
+
+#bodycontent{width:960px; margin:0px auto; margin-top:20px; }
+#bodycontent #leftpanel{width:640px; float:left; margin-right:20px; clear:both; border-top:8px solid #eea235;}
+#bodycontent #rightpanel{width:300px; float:right; }
+#hireblock{background-color:#F1F1F1; border-top:8px solid #eea235; border-bottom:1px solid #dadada; padding:10px 20px 10px 20px; margin:0 0 10px 0px;}
+#hireblock img{ float:right;}
+
+#codeblock{background-color:#F1F1F1; border-top:8px solid #A1001B; border-bottom:1px solid #dadada; padding:10px 20px 10px 20px; margin:0 0 10px 0px;}
+#codeblock img{ float:right;}
+
+#blogblock{ clear:both; background-color:#F1F1F1; border-top:8px solid #8fb83c; border-bottom:1px solid #dadada; padding:10px 20px 10px 20px; margin:0 0 10px 0px;}
+#blogblock img{ float:right;}
+
+#twitterblock{background-color:#F1F1F1; border-top:8px solid #00adef; border-bottom:1px solid #dadada; padding:10px 20px 10px 20px; margin:0 0 10px 0px;}
+#twitterblock a {font:13px  Arial, Helvetica, sans-serif; color:#00A9E9; line-height:16px; text-decoration:underline;}
+#twitterblock a:hover {font:13px  Arial, Helvetica, sans-serif; color:#000; line-height:16px; text-decoration:underline;}
+#twitterblock img{ float:right;}
+
+#pagecontent{ padding:12px 20px 20px 20px; margin-bottom:10px;}
+#testimonials{/*border:1px solid #d2d2d2;*/ padding:20px 20px 0px 20px;}
+
+.profile {background-color:#F5F5F5; padding:20px; margin-bottom:10px; }
+.profile .left{ width:140px; float:left; }
+.profile .left img{ border:5px solid #FFF;}
+.profile .right{ width:400px; float:right; }
+
+.clientblock {background-color:#F5F5F5; padding:20px; margin-bottom:10px; }
+.clientblock .left{ width:200px; float:left; }
+.clientblock .left img{ border:5px solid #FFF;}
+.clientblock .right{ width:330px; float:right; }
+
+
+.address{ clear:both; width:280px; float:left;}
+.map{width:280px; float:right; margin-right:20px;}
+
+#footer{ clear:both;width:100%;  text-align:center; background-color:#EDEDED; margin:20px 0px 0px 0px; padding:20px 0px 20px 0px; font:12px Helvetica, Arial, sans-serif; color:#767676; text-decoration:none; line-height:35px; text-transform:uppercase; }
+#footer a{ font:bold 14px Helvetica, Arial, sans-serif; color:#767676; text-decoration:none; line-height:35px; text-transform:uppercase; padding:0px 10px 0px 10px; }
+#footer a:hover{ font:bold 14px Helvetica, Arial, sans-serif; color:#3A3A3A; text-decoration:none; line-height:35px; text-transform:uppercase; }
+
+.hr{height:1px; border-bottom:1px solid #DCDCDC;}
+.clear{clear:both;}
+.blockquote { clear:both; margin:0px 0px 0px 0px; padding:3px;padding: 0 24px; background: url(../images/quote.gif) no-repeat 0 0;}
+.reversequote { clear:both; margin:-10px 0px 0px 0px; padding:3px;padding: 0 24px; background: url(../images/reverse_quote.gif) no-repeat 0 0 ;}
+.clientname{font:bold 12px Arial, Helvetica, sans-serif; color:#000; text-decoration:none;font-style:italic;}
+.companyname{font:12px Arial, Helvetica, sans-serif; color:#000; text-decoration:none; font-style:italic;}
+p.right{float:right; text-align:right;}
+
+.quote {font-size:24px;font-family: verdana;}

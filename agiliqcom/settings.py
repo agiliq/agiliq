@@ -1,4 +1,5 @@
 # Django settings for agiliqcom project.
+import os 
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -8,7 +9,8 @@ ADMINS = (
 )
 
 MANAGERS = ADMINS
-
+gettext = lambda s:s
+PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -35,17 +37,22 @@ USE_L10N = True
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = 'media/'
+
+MEDIA_ROOT  =   os.path.join(PROJECT_PATH, "media")
+MEDIA_URL = "/site_media/"
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = '/site_media/'
+
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = '/media/'
+ADMIN_MEDIA_PREFIX = '/static/admin/'
+LANGUAGES = [
+    ('en', 'English'),
+]
 
 EMAIL_BACKEND = 'mailer.backends.DbBackend'
 
@@ -69,6 +76,10 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 	# 'agiliqpages.context_processors.extra_context',
     'socialauth.context_processors.facebook_api_key',
     'django.core.context_processors.request',
+        'django.core.context_processors.static',
+
+         'cms.context_processors.media',
+        'sekizai.context_processors.sekizai',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -79,10 +90,16 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.contrib.redirects.middleware.RedirectFallbackMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
-		'dinette.middleware.UserActivity',
+    'dinette.middleware.UserActivity',
     'openid_consumer.middleware.OpenIDMiddleware',
-    'pagination.middleware.PaginationMiddleware'
+#'debug_toolbar.middleware.DebugToolbarMiddleware',            
+    'pagination.middleware.PaginationMiddleware',
+    'cms.middleware.page.CurrentPageMiddleware',
+    'cms.middleware.user.CurrentUserMiddleware',
+    'cms.middleware.toolbar.ToolbarMiddleware',
+
 )
+
 
 ROOT_URLCONF = 'agiliqcom.urls'
 
@@ -95,6 +112,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sitemaps',
     'django.contrib.sites',
+    'django.contrib.staticfiles',
     'django.contrib.messages',
 	  'django.contrib.humanize',
 	  'django.contrib.markup',
@@ -115,8 +133,29 @@ INSTALLED_APPS = (
     'google_analytics',
     'pystories',
     'haystack',
+    'cms',
+    'mptt',
+    'menus',
+'sekizai',
+    
+    'appmedia',
+    'cms.plugins.file',
+'cms.plugins.flash',
+'cms.plugins.googlemap',
+'cms.plugins.link',
+'cms.plugins.picture',
+'cms.plugins.snippet',
+'cms.plugins.teaser',
+'cms.plugins.text',
+'cms.plugins.video',
+'cms.plugins.twitter',
+#'debug_toolbar',
+
+    
 	# 'registration',    
 )
+INTERNAL_IPS = ('127.0.0.1',)
+
 
 SEND_BROKEN_LINK_EMAILS = False
 EMAIL_SUBJECT_PREFIX = '[Agiliq] ' 
@@ -164,3 +203,18 @@ SITE_URL = "http://agiliq.com/"
 # FEED_URL = 'http://feeds.feedburner.com/uswarearticles'
 
 from localsettings import *
+CMS_TEMPLATES = (
+    ('template_1.html', 'Template One'),
+
+)
+PROJECT_DIR = os.path.abspath(os.path.dirname(__file__))
+STATIC_URL='/static/'
+STATIC_ROOT=os.path.join(PROJECT_DIR, 'static')
+
+from imp import find_module
+STATICFILES_DIRS = (
+    ('', os.path.join(os.path.abspath(find_module("cms")[1]), 'media')),
+)
+
+CMS_MEDIA_ROOT=os.path.join(STATIC_ROOT, "cms/")
+CMS_MEDIA_URL = "/static/cms/"

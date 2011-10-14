@@ -1,4 +1,5 @@
 *.pyc
+*.py~
 logs/
 *.log
 *.tmp
@@ -11,3 +12,8 @@ localsettings.py
 *CACHE*
 *.kpf
 agiliqcom/media/images/blog/
+bin/*
+local/*
+src/*
+include/*
+lib/*

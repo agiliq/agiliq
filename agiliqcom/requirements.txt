@@ -4,6 +4,6 @@ django-mailer
 django-cms
 django-blogango
 django-socialauth==0.1.2c
-dinette
+dinette==1.2b
 django-buzz
 -e git+git://github.com/montylounge/django-google-analytics.git#egg=django_google_analytics

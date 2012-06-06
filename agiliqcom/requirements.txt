@@ -16,3 +16,4 @@ django-pagination
 sorl-thumbnail
 BeautifulSoup
 markdown
+python-openid

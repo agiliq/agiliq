@@ -106,7 +106,7 @@ INSTALLED_APPS = (
     'pingback',
     'django_xmlrpc',
     'taggit',
-    'dinette',
+    #'dinette',
     'socialauth',
     'openid_consumer',    
     'sorl.thumbnail',

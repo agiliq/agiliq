@@ -1,0 +1,64 @@
+/* LayerSlider Award Skin */
+
+.ls-fusionskin a{
+	-webkit-transition: none;
+	-moz-transition: none;
+	-ms-transition: none;
+	-o-transition: none;
+	transition: none;
+}
+
+.ls-fusionskin .ls-bottom-nav-wrapper {
+	position: absolute;
+	left: 10px;
+	bottom: 10px;
+}
+.ls-fusionskin .ls-bottom-slidebuttons,
+.ls-fusionskin .ls-bottom-slidebuttons a,
+.ls-fusionskin .ls-nav-start,
+.ls-fusionskin .ls-nav-stop,
+.ls-fusionskin .ls-bottom-nav-wrapper,
+.ls-fusionskin .ls-nav-sides {
+	height: 19px;
+}
+
+.ls-fusionskin .ls-bottom-slidebuttons,
+.ls-fusionskin .ls-bottom-slidebuttons a,
+.ls-fusionskin .ls-nav-start,
+.ls-fusionskin .ls-nav-stop,
+.ls-fusionskin .ls-nav-sides {
+    float: left;
+	display: block;
+}
+
+.ls-fusionskin .ls-nav-start,
+.ls-fusionskin .ls-nav-stop{
+	width: 19px;
+	margin-right:1px;
+    /*background: url(../../../../images/elements.png) no-repeat; styles - in theme assets/css/skin*/
+	opacity:0.9; 
+}
+.ls-fusionskin .ls-nav-prev:hover,
+.ls-fusionskin .ls-nav-next:hover,
+.ls-fusionskin .ls-nav-start:hover,
+.ls-fusionskin .ls-nav-stop:hover{
+	opacity:1; 
+}
+.ls-fusionskin .ls-nav-start{
+	background-position: -38px 0;
+}
+.ls-fusionskin .ls-nav-stop{
+	background-position: -57px 0;
+}
+.ls-fusionskin .ls-bottom-slidebuttons a {
+	width: 19px;
+	margin-right:1px;
+    /* background: url(../../../../images/elements.png) no-repeat; styles - in theme assets/css/skin*/
+	opacity:0.9;  
+}
+.ls-fusionskin .ls-bottom-slidebuttons a:hover{
+	opacity:1;
+}
+.ls-fusionskin .ls-bottom-slidebuttons a.ls-nav-active {
+	background-position: -19px 0;
+}

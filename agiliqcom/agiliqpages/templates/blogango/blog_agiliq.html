@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+
+	<!-- Basic Page Needs
+  ================================================== -->
+    <meta charset="utf-8" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="lidplussdesign" />
+
+	<title>Fusion Html/Css Site Template</title>
+
+	<!-- Mobile Specific Metas
+  ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+	<!-- Google Web Fonts
+  ================================================== -->
+  
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,700,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Arvo:400,700,400italic' rel='stylesheet' type='text/css'>
+
+	<!-- CSS
+  ================================================== -->
+  
+	<link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/base.css">
+	<link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/skeleton.css">
+	<link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/layout.css">
+    <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/buttons.css">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/jquery-ui-fusion.css">
+    <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/text.css">
+    
+    <!-- superfish -->
+    <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/superfish.css">
+    <!-- superfish END -->
+    
+    <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/application.css">
+    
+    <!-- button styles -->
+    <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/button-color.css">
+    <!-- button styles END -->
+    
+    <!-- use if light background -->
+    <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/light-bg.css">
+    <!-- use if light background END -->
+    
+    <!-- skin -->
+    <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/skin/unitedNationsBlue.css">
+    
+    <!-- <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/skin/appleGreen.css"> -->
+    <!-- <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/skin/magenta.css"> -->
+    <!-- <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/skin/orange.css"> -->
+    <!-- <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/skin/unitedNationsBlue.css"> -->
+    <!-- <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/skin/violet.css"> -->
+    <!-- skin END -->
+    
+    <!-- pattern bg -->
+    <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/pattern-bg/white_pattern_02.css">
+    
+    <!-- <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/pattern-bg/white_pattern_20.css"> -->
+    <!-- <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/pattern-bg/white_pattern_19.css"> -->
+    <!-- <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/pattern-bg/white_pattern_18.css"> -->
+    <!-- <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/pattern-bg/white_pattern_17.css"> -->
+    <!-- <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/pattern-bg/white_pattern_16.css"> -->
+    <!-- <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/pattern-bg/white_pattern_15.css"> -->
+    <!-- <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/pattern-bg/white_pattern_14.css"> -->
+    <!-- <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/pattern-bg/white_pattern_13.css"> -->
+    <!-- <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/pattern-bg/white_pattern_12.css"> -->
+    <!-- <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/pattern-bg/white_pattern_11.css"> -->
+    <!-- <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/pattern-bg/white_pattern_10.css"> -->
+    <!-- <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/pattern-bg/white_pattern_09.css"> -->
+    <!-- <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/pattern-bg/white_pattern_08.css"> -->
+    <!-- <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/pattern-bg/white_pattern_07.css"> -->
+    <!-- <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/pattern-bg/white_pattern_06.css"> -->
+    <!-- <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/pattern-bg/white_pattern_05.css"> -->
+    <!-- <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/pattern-bg/white_pattern_04.css"> -->
+    <!-- <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/pattern-bg/white_pattern_03.css"> -->
+    <!-- <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/pattern-bg/white_pattern_02.css"> -->
+    <!-- <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/pattern-bg/white_pattern_01.css"> -->
+    <!-- pattern bg END -->
+    
+    <!-- bg image-->
+    <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/background.css">
+    <!-- bg imeage END -->
+
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- Favicons
+	================================================== -->
+	<link rel="shortcut icon" href="{{ MEDIA_URL }}blogango/assets/images/favicon.ico">
+	<link rel="apple-touch-icon" href="{{ MEDIA_URL }}blogango/assets/images/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="{{ MEDIA_URL }}blogango/assets/images/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="{{ MEDIA_URL }}blogango/assets/images/apple-touch-icon-114x114.png">
+    
+
+	<!-- JS
+	================================================== -->
+    <script src="http://www.google.com/jsapi" type="text/javascript"></script>
+    <script type="text/javascript">
+        google.load("jquery", "1.5.2");
+        google.load("jqueryui", "1.8.15");
+    </script>
+    
+    <!-- carouFredSel -->
+    <script type="text/javascript" language="javascript" src="{{ MEDIA_URL }}blogango/assets/js/carouFredSel/jquery.carouFredSel-5.5.0-packed.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}blogango/assets/js/carouFredSel/jquery.carouFredSel-functions.js"></script>
+    <!-- carouFredSel END-->
+    
+    <!-- footer icons hoverEffects() -->
+    <script type="text/javascript" src="{{ MEDIA_URL }}blogango/assets/js/jquery.animate-colors-min.js"></script>  
+    <!-- for footer icons  hoverEffects() END-->
+    
+    <!-- seaofclouds-->
+    <script src="{{ MEDIA_URL }}blogango/assets/js/seaofclouds/jquery.tweet.js"></script>
+    <script src="{{ MEDIA_URL }}blogango/assets/js/seaofclouds/twitter.function.js"></script>
+    <!-- seaofclouds END -->
+        
+    <!-- HoverAlls -->
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ MEDIA_URL }}blogango/assets/css/fusionHoverAlls.css"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ MEDIA_URL }}blogango/assets/hoveralls/css/hoveralls.css"/>
+    <script type="text/javascript" src="{{ MEDIA_URL }}blogango/assets/hoveralls/js/jquery.easing.1.3.min.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}blogango/assets/hoveralls/js/jquery.hoveralls.min.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}blogango/assets/hoveralls/js/jquery.hoveralls-functions.js"></script>
+    <!-- HoverAlls END-->
+    
+    <!-- superfish -->
+	<script type="text/javascript" src="{{ MEDIA_URL }}blogango/assets/js/superfish-1.4.8/hoverIntent.js"></script>
+	<script type="text/javascript" src="{{ MEDIA_URL }}blogango/assets/js/superfish-1.4.8/superfish.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}blogango/assets/js/superfish-1.4.8/superfish.function.js"></script>
+    <!-- superfish END-->  
+    
+    <!-- custom theme functions -->
+    <script src="{{ MEDIA_URL }}blogango/assets/js/navigation.function.js"></script>
+    <script src="{{ MEDIA_URL }}blogango/assets/js/functions.js"></script>
+    <!-- custom theme functions END -->
+    
+
+</head>
+<body>
+
+
+	<!-- Primary Page Layout
+	================================================== -->
+
+	<!-- Delete everything in this .container and get started on your own site! -->
+    <div id="wrap">
+        <div id="headerMeta">
+            <div class="container">
+                <div class="meta-left">
+                    <div class="meta">Twitter :&nbsp;</div>
+                    <div class="meta-tweet"></div>
+                    <div class="clear"></div>
+                </div>
+                <div class="meta-right">
+                    <span>Call Us Free:&nbsp;</span>+44 (0) 1234567890                            
+                </div>
+            </div>
+        </div>
+        <div id="header">
+            <div class="container">
+                <div class="sixteen columns">
+                    <div class="logo">
+            			<h1><a href="#"><img src="{{ MEDIA_URL }}blogango/assets/images/logo.png"/></a></h1>
+            			<h5>Mobile WordPress Theme</h5>
+                    </div>
+                    <div class="navi">
+                        <ul class="sf-menu">
+                            <li class="current"><a href="index.html"><em class="hover"></em><span>Home</span></a>
+                                <ul>
+                                	<li><a href="index.html">LayerSlider Front Page</a></li>
+                                	<li><a href="index2.html">UnoSlider Front Page</a></li>
+                                    <li><a href="index3.html">Video Front Page</a></li>
+                                    <li><a href="index4.html">No Slider Front Page</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="sidebar.html"><em class="hover"></em><span>Features</span></a>
+                                <ul>
+                                    <li><a href="blog.html">Blog Template</a></li>
+                                    <li><a href="contact.php">Contact Template</a></li>
+                                	<li><a href="full-width.html">Full Width Template</a></li>
+                                    <li>
+                                		<a href="post.html">Post Templates</a>
+                                		<ul>
+                                			<li><a href="portfolio-post.html">Portfolio Post Template</a></li>
+                                			<li><a href="post.html">Post Template</a></li>
+                                			<li><a href="post-img.html">Post Template <small>(image)</small></a></li>
+                                			<li><a href="post-img-no-tags.html">Post Template <small>(image + no-tags)</small></a></li>
+                                			<li><a href="post-no-tags.html">Post Template <small>(no-tags)</small></a></li>
+                                			<li><a href="post-video.html">Post Template <small>(video)</small></a></li>
+                                		</ul>
+                                	</li>
+                                    <li><a href="search.php">Search Template</a></li>
+                                	<li><a href="sidebar.html">Sidebar Template</a></li>
+                                    <li><a href="sitemap.html">Sitemap Template</a></li>
+                                    <li><a href="widgets.html">Page: Widgets</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="portfolio-4.html"><em class="hover"></em><span>Portfolio</span></a>
+                                <ul>
+                                    <li><a href="portfolio-1.html">1 Column Portfolio</a></li>
+                                    <li><a href="portfolio-2.html">2 Column Portfolio</a></li>
+                                	<li><a href="portfolio-3.html">3 Column Portfolio</a></li>
+                                	<li><a href="portfolio-3-left-sidebar.html">3 Column Left Sidebar</a></li>
+                                	<li><a href="portfolio-3-sidebar.html">3 Column Sidebar</a></li>
+                                	<li><a href="portfolio-4.html">4 Column Portfolio</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="blog.html"><em class="hover"></em><span>Blog</span></a></li>
+                            <li><a href="contact.php"><em class="hover"></em><span>Contact</span></a></li>
+                        </ul>
+                    </div>
+                    <div class="mobileNavi_wrap"></div>
+        		</div>
+            </div>
+        </div>
+        <div id="main_wrap">
+            <div id="title">
+                <div class="container">
+            		<div class="sixteen columns">
+            			<span class="wrap"><a href="#">Home</a>&nbsp;&rarr;&nbsp;<span class="current">The Blog Template</span></span>
+            		</div>
+                </div><!-- container -->
+            </div>
+            <div id="main">
+                <div class="container">
+            		<div class="twelve columns blog">
+            			<div class="post">
+            			
+            			{% block content %}{% endblock %}
+            			
+            			
+                            <div class="frame"><img class="overlay-item-link" src="images/692x262-01.jpg" width="692"  height="262" alt="Read More" rel="post.html"/></div>
+                            <div class="content">
+                                <div class="date">
+                                    <span class="day">31</span>
+                                    <span class="year">2012</span>
+                                    <span class="month">dec</span>
+                                </div>
+                                <div class="post-format-icon"></div>
+                                <h2>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</h2>
+                                <ul class="info">
+                                    <li>by <a href="#">admin</a></li>
+                                    <li><a href="#">2 comments</a></li>
+                                    <li>posted in <a href="#">Web standards</a>, <a href="#">Design</a></li>
+                                </ul>
+                                <div class="clear"></div>
+                                <div class="tx-content">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus adipiscing dui 
+                                    in libero molestie id porta erat tristique. Cras vitae nibh aliquam lacus sagittis 
+                                    vestibulum non nec lectus. Nam congue, neque lobortis sagittis rutrum, lectus quam 
+                                    sagittis diam, vitae auctor quam tortor luctus felis. Cras porta pellentesque turpis, 
+                                    ut congue sapien porttitor non. Ut eu nibh at risus faucibus tristique nec sit amet 
+                                    erat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac 
+                                    turpis egestas. Sed eu quam ut dui auctor iaculis. Nam vel sem dolor, non luctus turpis.</p>
+                                    <a class="bn" href="#">Read More&rarr;</a>
+                                </div>
+                                <div class="tags">
+                                    <a href="#"><span>Minimal</span></a>
+                                    <a href="#"><span>Clear</span></a>
+                                    <a href="#"><span>Design</span></a>
+                                    <a href="#"><span>Wordpress</span></a>
+                                    <a href="#"><span>Corporate</span></a>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                        <div class="post no-img">
+                            <div class="content">
+                                <div class="date">
+                                    <span class="day">31</span>
+                                    <span class="year">2012</span>
+                                    <span class="month">dec</span>
+                                </div>
+                                <div class="post-format-icon pencil"></div>
+                                <h2>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</h2>
+                                <ul class="info">
+                                    <li>by <a href="#">admin</a></li>
+                                    <li><a href="#">2 comments</a></li>
+                                    <li>posted in <a href="#">Web standards</a>, <a href="#">Design</a></li>
+                                </ul>
+                                <div class="clear"></div>
+                                <div class="tx-content">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus adipiscing dui 
+                                    in libero molestie id porta erat tristique. Cras vitae nibh aliquam lacus sagittis 
+                                    vestibulum non nec lectus. Nam congue, neque lobortis sagittis rutrum, lectus quam 
+                                    sagittis diam, vitae auctor quam tortor luctus felis. Cras porta pellentesque turpis, 
+                                    ut congue sapien porttitor non. Ut eu nibh at risus faucibus tristique nec sit amet 
+                                    erat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac 
+                                    turpis egestas. Sed eu quam ut dui auctor iaculis. Nam vel sem dolor, non luctus turpis.</p>
+                                    <a class="bn" href="#">Read More&rarr;</a>
+                                </div>
+                                <div class="tags">
+                                    <a href="#"><span>Minimal</span></a>
+                                    <a href="#"><span>Clear</span></a>
+                                    <a href="#"><span>Design</span></a>
+                                    <a href="#"><span>Wordpress</span></a>
+                                    <a href="#"><span>Corporate</span></a>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+            			<div class="post">
+                            <div class="frame"><img class="overlay-item-link" src="images/692x262-02.jpg" width="692"  height="262" alt="Read More" rel="post.html"/></div>
+                            <div class="content">
+                                <div class="date">
+                                    <span class="day">31</span>
+                                    <span class="year">2012</span>
+                                    <span class="month">dec</span>
+                                </div>
+                                <div class="post-format-icon gallery"></div>
+                                <h2>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</h2>
+                                <ul class="info">
+                                    <li>by <a href="#">admin</a></li>
+                                    <li><a href="#">2 comments</a></li>
+                                    <li>posted in <a href="#">Web standards</a>, <a href="#">Design</a></li>
+                                </ul>
+                                <div class="clear"></div>
+                                <div class="tx-content">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus adipiscing dui 
+                                    in libero molestie id porta erat tristique. Cras vitae nibh aliquam lacus sagittis 
+                                    vestibulum non nec lectus. Nam congue, neque lobortis sagittis rutrum, lectus quam 
+                                    sagittis diam, vitae auctor quam tortor luctus felis. Cras porta pellentesque turpis, 
+                                    ut congue sapien porttitor non. Ut eu nibh at risus faucibus tristique nec sit amet 
+                                    erat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac 
+                                    turpis egestas. Sed eu quam ut dui auctor iaculis. Nam vel sem dolor, non luctus turpis.</p>
+                                    <a class="bn" href="#">Read More&rarr;</a>
+                                </div>
+                                <div class="tags">
+                                    <a href="#"><span>Minimal</span></a>
+                                    <a href="#"><span>Clear</span></a>
+                                    <a href="#"><span>Design</span></a>
+                                    <a href="#"><span>Wordpress</span></a>
+                                    <a href="#"><span>Corporate</span></a>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                        <div class="post">
+                            <div class="frame"><iframe width="700" height="386" src="http://www.youtube.com/embed/c9MnSeYYtYY" frameborder="0" allowfullscreen></iframe></div>
+                            <div class="content">
+                                <div class="date">
+                                    <span class="day">31</span>
+                                    <span class="year">2012</span>
+                                    <span class="month">dec</span>
+                                </div>
+                                <div class="post-format-icon video"></div>
+                                <h2>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</h2>
+                                <ul class="info">
+                                    <li>by <a href="#">admin</a></li>
+                                    <li><a href="#">2 comments</a></li>
+                                    <li>posted in <a href="#">Web standards</a>, <a href="#">Design</a></li>
+                                </ul>
+                                <div class="clear"></div>
+                                <div class="tx-content">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus adipiscing dui 
+                                    in libero molestie id porta erat tristique. Cras vitae nibh aliquam lacus sagittis 
+                                    vestibulum non nec lectus. Nam congue, neque lobortis sagittis rutrum, lectus quam 
+                                    sagittis diam, vitae auctor quam tortor luctus felis. Cras porta pellentesque turpis, 
+                                    ut congue sapien porttitor non. Ut eu nibh at risus faucibus tristique nec sit amet 
+                                    erat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac 
+                                    turpis egestas. Sed eu quam ut dui auctor iaculis. Nam vel sem dolor, non luctus turpis.</p>
+                                    <a class="bn" href="#">Read More&rarr;</a>
+                                </div>
+                                <div class="tags">
+                                    <a href="#"><span>Minimal</span></a>
+                                    <a href="#"><span>Clear</span></a>
+                                    <a href="#"><span>Design</span></a>
+                                    <a href="#"><span>Wordpress</span></a>
+                                    <a href="#"><span>Corporate</span></a>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                        <div class="pagination">
+                            <span class="pages">Page 1 of 11</span>
+                            <span class="current">1</span>
+                            <a href="#">2</a>
+                            <a href="#">3</a>
+                            <a href="#">4</a>
+                            <a href="#">5</a>
+                            <a class="prevlink" href="#">Prev</a>
+                            <a class="nextlink" href="#">Next</a>
+                            <a href="#">10</a>
+                            <div class="clear"></div>
+                        </div>
+            		</div>
+            		<div class="four columns sidebar">
+                        <div class="gce-widget">
+                            <form method="get" action="search.php">
+                                <fieldset>
+                                    <input id="q" class="search_input" type="text" name="q" value="search site"/>
+                                    <input class="submit" type="submit" value="Search"/>
+                                </fieldset>
+                            </form>
+                        </div>
+                        <div class="tabs-widget post-tabs-widget">
+                            <div class="ui-tabs-widget ui-tabs-widget-2">
+                            	<ul>
+                            		<li><a href="#tabs-1">Popular</a></li>
+                            		<li><a href="#tabs-2">Recent</a></li>
+                                    <li><a href="#tabs-3">Tags</a></li>
+                            	</ul>
+                            	<div id="tabs-1">
+                                    <ul class="news-wrap">
+                                        <li class="post">
+                                            <div class="icon link"><img src="images/46x46-01.jpg" alt="img" height="46" width="46"/></div>
+                                            <div class="content">
+                                                <a href="#">Lorem ipsum dolor sit amet, consectetur</a>
+                                                <a class="date" href="#"><span>2nd Dec 2011</span></a> <a class="comments" href="#"><span>29</span></a>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </li>
+                                        <li class="post">
+                                            <div class="icon link"></div>
+                                            <div class="content">
+                                                <a href="#">Lorem ipsum dolor sit amet, consectetur</a>
+                                                <a class="date" href="#"><span>2nd Dec 2011</span></a> <a class="comments" href="#"><span>29</span></a>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </li>
+                                        <li class="post">
+                                            <div class="icon pencil"></div>
+                                            <div class="content">
+                                                <a href="#">Lorem ipsum dolor sit amet, consectetur</a>
+                                                <a class="date" href="#"><span>2nd Dec 2011</span></a> <a class="comments" href="#"><span>29</span></a>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            	<div id="tabs-2">
+                                    <ul class="news-wrap">
+                                        <li class="post">
+                                            <div class="icon link"><img src="images/46x46-01.jpg" alt="img" height="46" width="46"/></div>
+                                            <div class="content">
+                                                <a href="#">Ut enim ad minim veniam, quis nostrud</a>
+                                                <a class="date" href="#"><span>24nd May 2012</span></a> <a class="comments" href="#"><span>11</span></a>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </li>
+                                        <li class="post">
+                                            <div class="icon link"></div>
+                                            <div class="content">
+                                                <a href="#">Ut enim ad minim veniam, quis nostrud</a>
+                                                <a class="date" href="#"><span>24nd May 2012</span></a> <a class="comments" href="#"><span>11</span></a>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </li>
+                                        <li class="post">
+                                            <div class="icon pencil"></div>
+                                            <div class="content">
+                                                <a href="#">Ut enim ad minim veniam, quis nostrud</a>
+                                                <a class="date" href="#"><span>24nd May 2012</span></a> <a class="comments" href="#"><span>11</span></a>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            	<div id="tabs-3">
+                            		<div class="tags">
+                                        <a href="#"><span>Minimal</span></a>
+                                        <a href="#"><span>Clear</span></a>
+                                        <a href="#"><span>Design</span></a>
+                                        <a href="#"><span>Wordpress</span></a>
+                                        <a href="#"><span>Corporate</span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        	<script>
+                            	$(function() {
+                            		$( ".ui-tabs-widget-2" ).tabs();
+                            	});
+                        	</script> 
+                        </div> 
+                        <div class="pages-widget">
+                            <h3>Sub Navigation</h3>
+                            <ul>
+                                <li><a href="#">Frameworks</a></li>
+                                <li><a href="#">Javascript Programming</a></li>
+                                <li><a href="#">Brand Identity</a>
+                                    <ul>
+                                        <li><a href="#">Frameworks</a></li>
+                                        <li><a href="#">Javascript Programming</a></li>
+                                        <li><a href="#">Brand Identity</a></li>
+                                        <li><a href="#">Web & Mobile Applications</a></li>
+                                        <li><a href="#">Search Engine Optimization</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Web & Mobile Applications</a></li>
+                                <li><a href="#">Search Engine Optimization</a></li>
+                            </ul>
+                        </div>
+                        <div class="post-widget-2">
+                            <h3>Popular Posts</h3>
+                            <div class="post">
+                                <a href="#" title="Link" class="icon-format"><img src="images/82x82-01.jpg" alt="img" height="82" width="82"/></a>
+                                <h5><a href="#">Lorem ipsum dolor sit amet</a></h5>
+                                <div class="icons">
+                                    <div class="iconWrap">
+                                        <div class="icon author tooltip text_replace">
+                                            <p class="hoveralls_text">admin</p>
+                                            <a href="#" class="hoveralls_link"></a>
+                                        </div>
+                                    </div>
+                                    <div class="iconWrap">
+                                        <div class="icon tag tooltip text_replace">
+                                            <p class="hoveralls_text">16 comments</p>
+                                            <a href="#" class="hoveralls_link"></a>
+                                        </div>
+                                    </div>
+                                    <div class="iconWrap">
+                                        <div class="icon comment tooltip text_replace">
+                                            <p class="hoveralls_text">corporate</p>
+                                            <a href="#" class="hoveralls_link"></a>
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="post">
+                                <a href="#" title="Link" class="icon-format link"></a>
+                                <h5><a href="#">Lorem ipsum dolor sit amet</a></h5>
+                                <div class="icons">
+                                    <div class="iconWrap">
+                                        <div class="icon author tooltip text_replace">
+                                            <p class="hoveralls_text">admin</p>
+                                            <a href="#" class="hoveralls_link"></a>
+                                        </div>
+                                    </div>
+                                    <div class="iconWrap">
+                                        <div class="icon tag tooltip text_replace">
+                                            <p class="hoveralls_text">16 comments</p>
+                                            <a href="#" class="hoveralls_link"></a>
+                                        </div>
+                                    </div>
+                                    <div class="iconWrap">
+                                        <div class="icon comment tooltip text_replace">
+                                            <p class="hoveralls_text">corporate</p>
+                                            <a href="#" class="hoveralls_link"></a>
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="post">
+                                <a href="#" title="Link" class="icon-format"><img src="images/82x82-02.jpg" alt="img" height="82" width="82"/></a>
+                                <h5><a href="#">Lorem ipsum dolor sit amet</a></h5>
+                                <div class="icons">
+                                    <div class="iconWrap">
+                                        <div class="icon author tooltip text_replace">
+                                            <p class="hoveralls_text">admin</p>
+                                            <a href="#" class="hoveralls_link"></a>
+                                        </div>
+                                    </div>
+                                    <div class="iconWrap">
+                                        <div class="icon tag tooltip text_replace">
+                                            <p class="hoveralls_text">16 comments</p>
+                                            <a href="#" class="hoveralls_link"></a>
+                                        </div>
+                                    </div>
+                                    <div class="iconWrap">
+                                        <div class="icon comment tooltip text_replace">
+                                            <p class="hoveralls_text">corporate</p>
+                                            <a href="#" class="hoveralls_link"></a>
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                        <div class="catogories-widget">
+                            <h3>Categories</h3>
+                            <ul>
+                                <li><a href="#">Frameworks</a> &nbsp;(17)</li>
+                                <li><a href="#">Javascript Programming</a> &nbsp;(17)</li>
+                                <li><a href="#">Brand Identity</a> &nbsp;(17)</li>
+                                <li><a href="#">Web & Mobile Applications</a> &nbsp;(17)</li>
+                                <li><a href="#">Search Engine Optimization</a> &nbsp;(17)</li>
+                            </ul>
+                        </div>
+                        <div class="archive-widget">
+                            <h3>Archive</h3>
+                            <ul>
+                                <li><a href="#">2012 February</a></li>
+                                <li><a href="#">2012 March</a></li>
+                                <li><a href="#">2012 April</a></li>
+                                <li><a href="#">2012 May</a></li>
+                                <li><a href="#">2012 June</a></li>
+                            </ul>
+                        </div>
+                        <div class="carousel-widget">
+                            <h3>Recent Work</h3>
+            				<ul class="sidebar_list_items"> 
+                                <li class="itemSidebar">
+                                    <div class="frame"><img class="sb-overlay-item" src="images/412x229-01.jpg" height="118" width="212" alt="View More" rel="#"/></div>
+                                </li>
+                                <li class="itemSidebar">
+                                    <div class="frame"><img class="sb-overlay-item" src="images/412x229-02.jpg" height="118" width="212" alt="View More" rel="#"/></div>
+                                </li>
+                                <li class="itemSidebar">
+                                    <div class="frame"><img class="sb-overlay-item" src="images/412x229-03.jpg" height="118" width="212" alt="View More" rel="#"/></div>
+                                </li> 
+                                <li class="itemSidebar">
+                                    <div class="frame"><img class="sb-overlay-item" src="images/412x229-04.jpg" height="118" width="212" alt="View More" rel="#"/></div>
+                                </li>                        
+            				</ul>
+                            <div class="pager"></div>
+                            <div class="clear"></div>
+                        </div>
+            		</div>
+                </div><!-- container -->
+            </div>
+        </div>
+        <div id="footer">
+            <div class="container">
+        		<div class="four columns">
+                    <div class="contact-widget">
+                        <h4>Contact Us</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at consequat at, adipiscing ac mauris.</p>
+                        <ul>
+                            <li><span>phone :</span> +44 (0) 1234567890</li>
+                            <li><span>fax :</span> +44 (0) 1234567890</li>
+                            <li><span>email :</span> <a href="#" class="test">sayhello@awardtheme.com</a></li>
+                            <li><span>address :</span> Leathermarket court, SE1</li>
+                        </ul>
+                    </div>
+                </div>
+        		<div class="four columns">
+                    <div class="post-widget">
+                        <h4>Recent Blog Posts</h4>
+                        <ul>
+                            <li class="post">
+                                <div class="icon link"><img src="images/46x46-01.jpg" alt="img" height="46" width="46"/></div>
+                                <div class="content">
+                                    <a href="#">Lorem ipsum dolor sit amet, consectetur</a>
+                                    <a class="date" href="#"><span>2nd Dec 2011</span></a> <a class="comments" href="#"><span>29</span></a>
+                                </div>
+                                <div class="clear"></div>
+                            </li>
+                            <li class="post">
+                                <div class="icon link"></div>
+                                <div class="content">
+                                    <a href="#">Lorem ipsum dolor sit amet, consectetur</a>
+                                    <a class="date" href="#"><span>2nd Dec 2011</span></a> <a class="comments" href="#"><span>29</span></a>
+                                </div>
+                                <div class="clear"></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+        		<div class="four columns">
+                    <div class="twitter-widget">
+                        <h4>From Twitter</h4>
+                        <div class="tweet"></div>
+                    </div>
+                </div>
+        		<div class="four columns">
+                    <div class="catogories-widget">
+                        <h4>Categories</h4>
+                        <ul>
+                            <li><a href="#">Frameworks</a> &nbsp;(17)</li>
+                            <li><a href="#">Javascript Programming</a> &nbsp;(17)</li>
+                            <li><a href="#">Brand Identity</a> &nbsp;(17)</li>
+                            <li><a href="#">Web & Mobile Applications</a> &nbsp;(17)</li>
+                            <li><a href="#">Search Engine Optimization</a> &nbsp;(17)</li>
+                        </ul>
+                    </div>
+                </div>
+        	</div><!-- container -->
+        </div>
+        <div id="socket">
+            <div class="container">
+                <div class="copyright">Copyright &copy; 2012 <a href="http://themeforest.net/user/lidplussdesign/">lpd-themes</a></div>
+                <div class="social">
+                    <p>Stay in Touch via Social Networks</p>
+                    <ul>
+                        <li><a class="text_replace twitter" href="#">twitter</a></li>
+                        <li><a class="text_replace facebook" href="#">facebook</a></li>
+                        <li><a class="text_replace youtube" href="#">youtube</a></li>
+                        <li><a class="text_replace vimeo" href="#">vimeo</a></li>
+                        <li><a class="text_replace google" href="#">google</a></li>
+                        <li><a class="text_replace linkedin" href="#">linkedin</a></li>
+                    </ul>
+                </div>
+            </div><!-- container -->
+        </div>
+    </div>
+
+
+
+<!-- End Document
+================================================== -->
+</body>
+</html>

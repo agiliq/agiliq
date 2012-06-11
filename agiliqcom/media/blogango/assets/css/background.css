@@ -1,0 +1,33 @@
+body{
+    background: url(../../images/bg2.jpg);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center top;
+    background-repeat: repeat;
+}
+
+/* Ready-to-use Premium Backgrounds 
+
+background: url(../../premium-bg/appleGreen.jpg);
+background: url(../../premium-bg/magenta.jpg);
+background: url(../../premium-bg/orange.jpg);
+background: url(../../premium-bg/unitedNationsBlue.jpg);
+background: url(../../premium-bg/violet.jpg);
+
+background: url(../../premium-bg/1.jpg);
+background: url(../../premium-bg/2.jpg);
+background: url(../../premium-bg/3.jpg);
+background: url(../../premium-bg/4.jpg);
+background: url(../../premium-bg/5.jpg);
+background: url(../../premium-bg/6.jpg);
+background: url(../../premium-bg/7.jpg);
+background: url(../../premium-bg/8.jpg);
+background: url(../../premium-bg/9.jpg);
+background: url(../../premium-bg/10.jpg);
+background: url(../../premium-bg/11.jpg);
+background: url(../../premium-bg/12.jpg);
+ 
+*/

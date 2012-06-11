@@ -1,0 +1,26 @@
+.home-overlay-itemBg{
+    margin-top: -14px;
+    margin-left: -42px;
+    padding: 0 10px;
+}
+a .home-overlay-itemTx{
+    color: #fff;
+}
+p.home-overlay-itemTx,
+li p.home-overlay-itemTx{
+    line-height: 27px;
+    font-size: 10px;
+    text-transform: uppercase;
+}
+.blogPost-overlay-itemBg{
+    outline: 0 none;
+    text-indent: -9999px;
+    margin: -36px 0 0 -36px;
+    background: url(../images/blogPost-overlay-itemBg.png) no-repeat;
+}
+.portfolio-overlay-itemBg-images{
+    outline: 0 none;
+    text-indent: -9999px;
+    margin: -36px 0 0 -36px;
+    background: url(../images/portfolio-overlay-itemBg-images.png) no-repeat;
+}

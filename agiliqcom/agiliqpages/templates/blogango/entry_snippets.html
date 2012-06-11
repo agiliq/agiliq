@@ -1,0 +1,54 @@
+<div class="post">
+
+    <!--
+    <div class="frame">
+        <img class="overlay-item-link" src="images/692x262-02.jpg" width="692"  height="262" alt="Read More" rel="post.html"/>
+    </div>
+    -->
+
+    <div class="content">
+        <div class="date">
+            <span class="day">{{ entry.created_on|date:'j' }}</span>
+            <span class="year">{{ entry.created_on|date:'Y' }}</span>
+            <span class="month">{{ entry.created_on|date:'N' }}</span>
+        </div>
+                                
+        <div class="post-format-icon">
+            {% if entry.created_by.teammember.photo %}
+                <img src="{{ entry.created_by.teammember.photo.url }}" width="71" height="72" alt="{{ entry.created_by }}" />
+            {% else %}
+                <img src="{{ MEDIA_URL }}blogango/images/person_default.jpg" width="71" height="72" alt="{{ entry.created_by }}" />
+            {% endif %}
+        </div>
+                                
+        <h2><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></h2>
+                                
+        <ul class="info">
+            <li>
+                <h6 class="posted_by">by <a href="{% url blogango_author entry.created_by %}">{{ entry.created_by }}</a>{% if entry.created_by.teammember.tag_line %} - {{ entry.created_by.teammember.tag_line }} {% endif %}</h6>
+           </li>
+           <li><a href="{{ entry.get_absolute_url }}#comments">{{ entry.get_num_comments }} comments</a></li>
+        </ul>
+                                
+        <div class="clear"></div>
+        <div class="tx-content">
+            {% if post_detail %}
+	            <p>{{ entry.text|safe }}</p>
+	        {% else %}
+	            <p>{{ entry.text|truncatewords_html:100|safe }} </p>
+	        {% endif %}
+	        {% if not post_detail %}
+	            <a href="{{ entry.get_absolute_url }}" class="bn">Read More&rarr;</a>
+	        {% endif %}
+        </div>
+        <div class="tags">
+	        {% for tag in entry.tags.all %}
+                {% if forloop.first %}Topics : {% endif %}
+	                
+	            <a href="{% url blogango_tag_details tag.slug %}"><span>{{ tag.name }}</span></a>
+	        {% endfor %}
+	    </div>
+                                
+        <div class="clear"></div>
+</div>
+

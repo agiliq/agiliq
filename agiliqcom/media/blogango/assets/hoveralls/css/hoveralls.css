@@ -1,0 +1,31 @@
+@charset "utf-8";
+/* * * * * * * * * * * * * * * * * * * * * 
+* CSS Document for $.HoverAlls Plugin	 *
+* Written By: Crusader12				 *
+* Date: Jan 2012 						 *
+* Version: 1.3							 *
+* * * * * * * * * * * * * * * * * * * * */
+/* This is the master stylesheet for HoverAlls. You do not need to modify any of these styles.
+You can add classes using the HoverAlls container_class, bg_class, text_class and overlay_class settings. 
+PLEASE NOTE: Some features depend upon the html,body styles in this file. To make sure they are
+not overwritten by your CSS file, load the HoverAlls CSS after your main CSS. */
+/*************************************************
+************* HoverAlls Main Styles **************
+**************************************************/
+html,body {width:100%;/*height:100%;*/} /* IMPORTANT FOR SCREEN EDGE MODE */
+/* MASTER STYLING FOR CONTAINER */
+.hoveralls_container {overflow:hidden;position:relative;padding:0px;}  
+/* MASTER STYLING FOR BACKGROUND */
+.hoveralls_background {width:100%;position:absolute;} 
+/* MASTER STYLING FOR TEXT */
+p.hoveralls_text {margin-top:0px;margin-bottom:0px;position:relative;}
+/* MASTER STYLING FOR TOP DROP MODE */
+#top_drop {width:100%;height:50px;margin:0px;position:fixed;z-index:999999;}
+/* TICKER SPACER */ 
+.tickerspacer {padding:0px 10px;}
+/* TOOLTIP CONTAINER */ 
+.hv_tooltip {position:absolute;z-index:99999;}
+/* OVERLAY - APPLY YOUR OWN COLOR OR IMAGE USING THE OVERLAY_CLASS SETTING AND YOUR OWN CLASS */
+#hv_overlay {width:100%;height:100%;position:fixed;top:0px;left:0px;z-index:999999;display:none;-moz-opacity:0.8;-khtml-opacity:0.8;opacity:0.8;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);}
+/* SET THE MAX WIDTH TO KEEP LIGHTBOX IMAGES FROM BEING TOO LARGE */
+.hv_lightbox_img {max_width:1000px;position:absolute;}

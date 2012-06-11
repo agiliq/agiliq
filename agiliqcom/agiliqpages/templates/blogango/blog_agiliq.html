@@ -12,7 +12,7 @@
     <meta name="keywords" content="" />
     <meta name="author" content="lidplussdesign" />
 
-	<title>Fusion Html/Css Site Template</title>
+	<title>{% block title %} {{ blog.title }} {% endblock %}</title>
 
 	<!-- Mobile Specific Metas
   ================================================== -->
@@ -167,8 +167,7 @@
             <div class="container">
                 <div class="sixteen columns">
                     <div class="logo">
-            			<h1><a href="#"><img src="{{ MEDIA_URL }}blogango/assets/images/logo.png"/></a></h1>
-            			<h5>Mobile WordPress Theme</h5>
+            			<h1><a href="#"><img src="{{ MEDIA_URL }}blogango/images/agiliq_blog_logo.png"/></a></h1>
                     </div>
                     <div class="navi">
                         <ul class="sf-menu">
@@ -231,157 +230,11 @@
             <div id="main">
                 <div class="container">
             		<div class="twelve columns blog">
-            			<div class="post">
+
             			
             			{% block content %}{% endblock %}
             			
             			
-                            <div class="frame"><img class="overlay-item-link" src="images/692x262-01.jpg" width="692"  height="262" alt="Read More" rel="post.html"/></div>
-                            <div class="content">
-                                <div class="date">
-                                    <span class="day">31</span>
-                                    <span class="year">2012</span>
-                                    <span class="month">dec</span>
-                                </div>
-                                <div class="post-format-icon"></div>
-                                <h2>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</h2>
-                                <ul class="info">
-                                    <li>by <a href="#">admin</a></li>
-                                    <li><a href="#">2 comments</a></li>
-                                    <li>posted in <a href="#">Web standards</a>, <a href="#">Design</a></li>
-                                </ul>
-                                <div class="clear"></div>
-                                <div class="tx-content">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus adipiscing dui 
-                                    in libero molestie id porta erat tristique. Cras vitae nibh aliquam lacus sagittis 
-                                    vestibulum non nec lectus. Nam congue, neque lobortis sagittis rutrum, lectus quam 
-                                    sagittis diam, vitae auctor quam tortor luctus felis. Cras porta pellentesque turpis, 
-                                    ut congue sapien porttitor non. Ut eu nibh at risus faucibus tristique nec sit amet 
-                                    erat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac 
-                                    turpis egestas. Sed eu quam ut dui auctor iaculis. Nam vel sem dolor, non luctus turpis.</p>
-                                    <a class="bn" href="#">Read More&rarr;</a>
-                                </div>
-                                <div class="tags">
-                                    <a href="#"><span>Minimal</span></a>
-                                    <a href="#"><span>Clear</span></a>
-                                    <a href="#"><span>Design</span></a>
-                                    <a href="#"><span>Wordpress</span></a>
-                                    <a href="#"><span>Corporate</span></a>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-                        </div>
-                        <div class="post no-img">
-                            <div class="content">
-                                <div class="date">
-                                    <span class="day">31</span>
-                                    <span class="year">2012</span>
-                                    <span class="month">dec</span>
-                                </div>
-                                <div class="post-format-icon pencil"></div>
-                                <h2>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</h2>
-                                <ul class="info">
-                                    <li>by <a href="#">admin</a></li>
-                                    <li><a href="#">2 comments</a></li>
-                                    <li>posted in <a href="#">Web standards</a>, <a href="#">Design</a></li>
-                                </ul>
-                                <div class="clear"></div>
-                                <div class="tx-content">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus adipiscing dui 
-                                    in libero molestie id porta erat tristique. Cras vitae nibh aliquam lacus sagittis 
-                                    vestibulum non nec lectus. Nam congue, neque lobortis sagittis rutrum, lectus quam 
-                                    sagittis diam, vitae auctor quam tortor luctus felis. Cras porta pellentesque turpis, 
-                                    ut congue sapien porttitor non. Ut eu nibh at risus faucibus tristique nec sit amet 
-                                    erat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac 
-                                    turpis egestas. Sed eu quam ut dui auctor iaculis. Nam vel sem dolor, non luctus turpis.</p>
-                                    <a class="bn" href="#">Read More&rarr;</a>
-                                </div>
-                                <div class="tags">
-                                    <a href="#"><span>Minimal</span></a>
-                                    <a href="#"><span>Clear</span></a>
-                                    <a href="#"><span>Design</span></a>
-                                    <a href="#"><span>Wordpress</span></a>
-                                    <a href="#"><span>Corporate</span></a>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-                        </div>
-            			<div class="post">
-                            <div class="frame"><img class="overlay-item-link" src="images/692x262-02.jpg" width="692"  height="262" alt="Read More" rel="post.html"/></div>
-                            <div class="content">
-                                <div class="date">
-                                    <span class="day">31</span>
-                                    <span class="year">2012</span>
-                                    <span class="month">dec</span>
-                                </div>
-                                <div class="post-format-icon gallery"></div>
-                                <h2>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</h2>
-                                <ul class="info">
-                                    <li>by <a href="#">admin</a></li>
-                                    <li><a href="#">2 comments</a></li>
-                                    <li>posted in <a href="#">Web standards</a>, <a href="#">Design</a></li>
-                                </ul>
-                                <div class="clear"></div>
-                                <div class="tx-content">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus adipiscing dui 
-                                    in libero molestie id porta erat tristique. Cras vitae nibh aliquam lacus sagittis 
-                                    vestibulum non nec lectus. Nam congue, neque lobortis sagittis rutrum, lectus quam 
-                                    sagittis diam, vitae auctor quam tortor luctus felis. Cras porta pellentesque turpis, 
-                                    ut congue sapien porttitor non. Ut eu nibh at risus faucibus tristique nec sit amet 
-                                    erat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac 
-                                    turpis egestas. Sed eu quam ut dui auctor iaculis. Nam vel sem dolor, non luctus turpis.</p>
-                                    <a class="bn" href="#">Read More&rarr;</a>
-                                </div>
-                                <div class="tags">
-                                    <a href="#"><span>Minimal</span></a>
-                                    <a href="#"><span>Clear</span></a>
-                                    <a href="#"><span>Design</span></a>
-                                    <a href="#"><span>Wordpress</span></a>
-                                    <a href="#"><span>Corporate</span></a>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-                        </div>
-                        <div class="post">
-                            <div class="frame"><iframe width="700" height="386" src="http://www.youtube.com/embed/c9MnSeYYtYY" frameborder="0" allowfullscreen></iframe></div>
-                            <div class="content">
-                                <div class="date">
-                                    <span class="day">31</span>
-                                    <span class="year">2012</span>
-                                    <span class="month">dec</span>
-                                </div>
-                                <div class="post-format-icon video"></div>
-                                <h2>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</h2>
-                                <ul class="info">
-                                    <li>by <a href="#">admin</a></li>
-                                    <li><a href="#">2 comments</a></li>
-                                    <li>posted in <a href="#">Web standards</a>, <a href="#">Design</a></li>
-                                </ul>
-                                <div class="clear"></div>
-                                <div class="tx-content">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus adipiscing dui 
-                                    in libero molestie id porta erat tristique. Cras vitae nibh aliquam lacus sagittis 
-                                    vestibulum non nec lectus. Nam congue, neque lobortis sagittis rutrum, lectus quam 
-                                    sagittis diam, vitae auctor quam tortor luctus felis. Cras porta pellentesque turpis, 
-                                    ut congue sapien porttitor non. Ut eu nibh at risus faucibus tristique nec sit amet 
-                                    erat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac 
-                                    turpis egestas. Sed eu quam ut dui auctor iaculis. Nam vel sem dolor, non luctus turpis.</p>
-                                    <a class="bn" href="#">Read More&rarr;</a>
-                                </div>
-                                <div class="tags">
-                                    <a href="#"><span>Minimal</span></a>
-                                    <a href="#"><span>Clear</span></a>
-                                    <a href="#"><span>Design</span></a>
-                                    <a href="#"><span>Wordpress</span></a>
-                                    <a href="#"><span>Corporate</span></a>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-                        </div>
                         <div class="pagination">
                             <span class="pages">Page 1 of 11</span>
                             <span class="current">1</span>

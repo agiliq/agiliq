@@ -59,6 +59,8 @@
 
 		{% endblock %}
       </div>
+      
+      
       <div class="rightpanel">
         {% if recents %}
         <div id="blogposts_block">

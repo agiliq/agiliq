@@ -1,0 +1,70 @@
+
+{% extends "agiliqpages/base.html" %}
+
+{% block  title %}
+	{{ block.super }} | Contact us. We would love to hear from you.
+{% endblock %}
+
+{% block extracss %}
+	<link href="{{ MEDIA_URL }}css/contact.css" rel="stylesheet" type="text/css" charset="utf-8">
+{% endblock %}
+
+{% block banner %}
+    <div id="title">
+      <h1><span class="black">How can we help you?</span><br/>
+        Mail us at <br/></h1><a href="mailto:hello@agiliq.com" class="mailink">hello@agiliq.com</a>
+    </div>
+    <div id="contactgraphic"></div>
+{% endblock %}
+
+{% block body_ns %}contactbg{% endblock %}
+
+
+{% block content %}
+<div id="pagecontent"><span class="purpletitle">get in touch</span>
+	<div>
+		<div class="address"><br/>
+			<span class="purpletext">Email :</span> <a href="mailto:hello@agiliq.com" class="blacklink">hello@agiliq.com</a><br/>
+			<br/>
+			<span class="purpletext">Speak to us :</span><br/>
+			India: +91- 99499 97612<br/>
+			<br/>
+			<span class="purpletext">Address :</span><br/>
+            Agiliq Info Solutions India Pvt Ltd,<br/>
+            Flat No. 302, Siri Sampada,<br/>
+            Above Food World, Near Madhapur Police Station<br/>
+            Hyderabad - 500081. India 
+		</div>
+		<div class="map"><img src="http://maps.google.com/maps/api/staticmap?zoom=12&size=300x188&maptype=roadmap&markers=color:purple|label:A|17.438895,78.398319&sensor=false" width="300" height="188" alt="Map"></div>
+	</div>
+	<div class="clear"></div>
+	<form method='post'>
+	{% csrf_token %}
+	<fieldset>
+		<legend class="purpletitle">Say Hello !</legend>
+		Your Name : <br/>
+		{{ form.name }}
+		{{ form.name.errors }}
+		<br/>
+		Phone (optional) :<br/>
+		{{ form.phone }}
+		{{ form.phone.errors }}
+		<br/>
+		Email :<br/>
+		{{ form.email }}
+		{{ form.email.errors }}
+		<br/>
+		Company (optional) :<br/>
+		{{ form.company }}
+		{{ form.company.errors }}
+		<br/>
+		Message :<br/>
+		{{ form.message }}
+		{{ form.message.errors }}
+		<br/>
+		<input name="button" type="submit" class="submitbutton" id="button" value="Submit">
+	</fieldset>
+	</form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends "agiliqpages/agiliq_base.html" %}
+
+{% block  title %}
+	{{ block.super }} | Agile web development with Django.
+{% endblock %}
+
+{% block extracss %}
+	<link href="{{ MEDIA_URL }}css/home.css" rel="stylesheet" type="text/css" />
+{% endblock %}

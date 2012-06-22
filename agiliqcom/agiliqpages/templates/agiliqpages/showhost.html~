@@ -1,0 +1,5 @@
+{% extends 'agiliqpages/agiliq_base.html' %}
+
+{% block content %}
+    {{ host }}
+{% endblock content %}

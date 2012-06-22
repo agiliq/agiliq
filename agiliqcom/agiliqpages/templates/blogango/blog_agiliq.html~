@@ -64,24 +64,7 @@
     
     <!-- <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/pattern-bg/white_pattern_20.css"> -->
     <!-- <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/pattern-bg/white_pattern_19.css"> -->
-    <!-- <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/pattern-bg/white_pattern_18.css"> -->
-    <!-- <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/pattern-bg/white_pattern_17.css"> -->
-    <!-- <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/pattern-bg/white_pattern_16.css"> -->
-    <!-- <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/pattern-bg/white_pattern_15.css"> -->
-    <!-- <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/pattern-bg/white_pattern_14.css"> -->
-    <!-- <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/pattern-bg/white_pattern_13.css"> -->
-    <!-- <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/pattern-bg/white_pattern_12.css"> -->
-    <!-- <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/pattern-bg/white_pattern_11.css"> -->
-    <!-- <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/pattern-bg/white_pattern_10.css"> -->
-    <!-- <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/pattern-bg/white_pattern_09.css"> -->
-    <!-- <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/pattern-bg/white_pattern_08.css"> -->
-    <!-- <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/pattern-bg/white_pattern_07.css"> -->
-    <!-- <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/pattern-bg/white_pattern_06.css"> -->
-    <!-- <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/pattern-bg/white_pattern_05.css"> -->
-    <!-- <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/pattern-bg/white_pattern_04.css"> -->
-    <!-- <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/pattern-bg/white_pattern_03.css"> -->
-    <!-- <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/pattern-bg/white_pattern_02.css"> -->
-    <!-- <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/pattern-bg/white_pattern_01.css"> -->
+
     <!-- pattern bg END -->
     
     <!-- bg image-->
@@ -141,6 +124,36 @@
     <script src="{{ MEDIA_URL }}blogango/assets/js/functions.js"></script>
     <!-- custom theme functions END -->
     
+    <!--BASE CONTAINER ENDS-->
+    <script type="text/javascript">
+        function pretty_print(){
+            $(document).ready(function() {
+
+        // add prettyprint class to all <pre></pre> blocks
+        var prettify = false;
+        $("pre").each(function() {
+            $(this).addClass('prettyprint');
+            prettify = true;
+        });
+
+        // if code blocks were found, bring in the prettifier ...
+        if ( prettify ) {
+            $.getScript("http://media.agiliq.com/blogango/js/prettify.js", function() { prettyPrint() });
+            }
+            });
+        }
+    </script>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-367368-15");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+    
 
 </head>
 <body>
@@ -153,13 +166,8 @@
     <div id="wrap">
         <div id="headerMeta">
             <div class="container">
-                <div class="meta-left">
-                    <div class="meta">Twitter :&nbsp;</div>
-                    <div class="meta-tweet"></div>
-                    <div class="clear"></div>
-                </div>
                 <div class="meta-right">
-                    <span>Call Us Free:&nbsp;</span>+44 (0) 1234567890                            
+                    <span>Call Us Free:&nbsp;</span>+91- 99499 97612                            
                 </div>
             </div>
         </div>
@@ -174,9 +182,6 @@
                             <li class="current"><a href="index.html"><em class="hover"></em><span>Home</span></a>
                                 <ul>
                                 	<li><a href="index.html">LayerSlider Front Page</a></li>
-                                	<li><a href="index2.html">UnoSlider Front Page</a></li>
-                                    <li><a href="index3.html">Video Front Page</a></li>
-                                    <li><a href="index4.html">No Slider Front Page</a></li>
                                 </ul>
                             </li>
                             <li><a href="sidebar.html"><em class="hover"></em><span>Features</span></a>
@@ -483,11 +488,10 @@
         		<div class="four columns">
                     <div class="contact-widget">
                         <h4>Contact Us</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at consequat at, adipiscing ac mauris.</p>
+                        <p>GET IN TOUCH...</p>
                         <ul>
-                            <li><span>phone :</span> +44 (0) 1234567890</li>
-                            <li><span>fax :</span> +44 (0) 1234567890</li>
-                            <li><span>email :</span> <a href="#" class="test">sayhello@awardtheme.com</a></li>
+                            <li><span>phone :</span> +91- 99499 97612</li>
+                            <li><span>email :</span> <a href="#" class="test">hello@agiliq.com</a></li>
                             <li><span>address :</span> Leathermarket court, SE1</li>
                         </ul>
                     </div>
@@ -552,10 +556,5 @@
             </div><!-- container -->
         </div>
     </div>
-
-
-
-<!-- End Document
-================================================== -->
 </body>
 </html>

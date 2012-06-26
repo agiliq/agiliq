@@ -166,11 +166,6 @@
     <div id="wrap" class="home">
         <div id="headerMeta">
             <div class="container">
-<!--                <div class="meta-left">-->
-<!--                    <div class="meta">Twitter :&nbsp;</div>-->
-<!--                    <div class="meta-tweet"></div>-->
-<!--                    <div class="clear"></div>-->
-<!--                </div>-->
                 <div class="meta-right">
                     <span>Call Us:&nbsp;</span>+91- 99499 97612                            
                 </div>
@@ -180,7 +175,7 @@
             <div class="container">
                 <div class="sixteen columns">
                     <div class="logo">
-            			<h1><a href="http://agiliq.com"><img src="{{ MEDIA_URL }}blogango/images/agiliq_logo.png"/></a></h1>
+            			<h1><a href="http://agiliq.com"><img src="{{ MEDIA_URL }}blogango/images/agiliq_logo.png" width="208px" height="69px"/></a></h1>
             			<h5>Building Amazing Web Apps</h5>
                     </div>
                    <div class="navi">

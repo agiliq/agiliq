@@ -1,8 +1,6 @@
-<!DOCTYPE html>
-<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"> <!--<![endif]-->
 <head>
 
 	<!-- Basic Page Needs
@@ -12,7 +10,7 @@
     <meta name="keywords" content="" />
     <meta name="author" content="lidplussdesign" />
 
-	<title>{% block title %} {{ blog.title }} {% endblock %}</title>
+	{% block title %} {% endblock %}
 
 	<!-- Mobile Specific Metas
   ================================================== -->
@@ -51,29 +49,18 @@
     
     <!-- skin -->
     <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/skin/unitedNationsBlue.css">
-    
-    <!-- <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/skin/appleGreen.css"> -->
-    <!-- <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/skin/magenta.css"> -->
-    <!-- <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/skin/orange.css"> -->
-    <!-- <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/skin/unitedNationsBlue.css"> -->
-    <!-- <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/skin/violet.css"> -->
+
     <!-- skin END -->
     
     <!-- pattern bg -->
     <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/pattern-bg/white_pattern_02.css">
     
-    <!-- <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/pattern-bg/white_pattern_20.css"> -->
-    <!-- <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/pattern-bg/white_pattern_19.css"> -->
-
     <!-- pattern bg END -->
     
     <!-- bg image-->
     <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/background.css">
     <!-- bg imeage END -->
 
-	<!--[if lt IE 9]>
-		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
 
 	<!-- Favicons
 	================================================== -->
@@ -124,8 +111,7 @@
     <script src="{{ MEDIA_URL }}blogango/assets/js/functions.js"></script>
     <!-- custom theme functions END -->
     
-    <!--BASE CONTAINER ENDS-->
-    <script type="text/javascript">
+        <script type="text/javascript">
         function pretty_print(){
             $(document).ready(function() {
 
@@ -143,7 +129,8 @@
             });
         }
     </script>
-<script type="text/javascript">
+    
+    <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
 </script>
@@ -157,6 +144,8 @@ pageTracker._trackPageview();
 
 </head>
 <body onload="pretty_print()">
+
+
 
 
 	<!-- Primary Page Layout
@@ -175,15 +164,16 @@ pageTracker._trackPageview();
             <div class="container">
                 <div class="sixteen columns">
                     <div class="logo">
-            			<h1><a href="http://agiliq.com"><img src="{{ MEDIA_URL }}blogango/images/agiliq_logo.png" width="208px" height="69"/></a></h1>
+            			<h1><a href="http://agiliq.com"><img src="{{ MEDIA_URL }}blogango/images/agiliq_logo.png" width="208px" height="69px"/></a></h1>
+            			<h5>Building Amazing Web Apps</h5>
                     </div>
                    <div class="navi">
                         <ul class="sf-menu sf-js-enabled">
-                            <li class="current"><a href="/" class="sf-with-ul"><em class="hover" style="width: 67px; display: none; "></em><span>Home</span><span class="sf-sub-indicator" style=""> »</span></a>
+                            <li><a href="/" class="sf-with-ul"><em class="hover" style="width: 67px; display: none; "></em><span>Home</span><span class="sf-sub-indicator" style=""> »</span></a>
                             </li>
                             <li class=""><a href="/ourwork" class="sf-with-ul"><em class="hover" style="width: 99px; display: none; "></em><span>Our Work</span><span class="sf-sub-indicator" style=""> »</span></a>
                             </li>
-                            <li><a href="/blog/"><em class="hover" style="width: 60px; display: none; "></em><span>Blog</span></a></li>
+                            <li class="current"><a href="/blog/"><em class="hover" style="width: 60px; display: none; "></em><span>Blog</span></a></li>
                             <li><a href="/contactus"><em class="hover" style="width: 97px; display: none; "></em><span>Contact Us</span></a></li>
                         </ul>
                     </div>
@@ -199,11 +189,7 @@ pageTracker._trackPageview();
             <div id="main">
                 <div class="container">
             		<div class="twelve columns blog">
-
-            			
-            			{% block content %}{% endblock %}
-            			
-            			
+            		    {% block content %}{% endblock %}
                         <div class="pagination">
                             <span class="pages">Page 1 of 11</span>
                             <span class="current">1</span>
@@ -217,13 +203,83 @@ pageTracker._trackPageview();
                             <div class="clear"></div>
                         </div>
             		</div>
+            		<div class="four columns sidebar">
+                        <div class="gce-widget">
+                            <form method="get" action="search.php">
+                                <fieldset>
+                                    <input id="q" class="search_input" type="text" name="q" value="search site"/>
+                                    <input class="submit" type="submit" value="Search"/>
+                                </fieldset>
+                            </form>
+                        </div>
+                        <div class="tabs-widget post-tabs-widget">
+                            <div class="ui-tabs-widget ui-tabs-widget-2">
+                            	<ul>
+                            		<li><a href="#tabs">Recent</a></li>
+                            	</ul>
+                            	<div id="tabs">
+                                    <ul class="news-wrap">
+                                        <li class="post">
+                                            <div class="icon link"><img src="images/46x46-01.jpg" alt="img" height="46" width="46"/></div>
+                                            <div class="content">
+                                                <a href="#">Ut enim ad minim veniam, quis nostrud</a>
+                                                <a class="date" href="#"><span>24nd May 2012</span></a> <a class="comments" href="#"><span>11</span></a>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </li>
+                                        <li class="post">
+                                            <div class="icon link"></div>
+                                            <div class="content">
+                                                <a href="#">Ut enim ad minim veniam, quis nostrud</a>
+                                                <a class="date" href="#"><span>24nd May 2012</span></a> <a class="comments" href="#"><span>11</span></a>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </li>
+                                        <li class="post">
+                                            <div class="icon pencil"></div>
+                                            <div class="content">
+                                                <a href="#">Ut enim ad minim veniam, quis nostrud</a>
+                                                <a class="date" href="#"><span>24nd May 2012</span></a> <a class="comments" href="#"><span>11</span></a>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        	<script>
+                            	$(function() {
+                            		$( ".ui-tabs-widget-2" ).tabs();
+                            	});
+                        	</script> 
+                        </div> 
+                        <div class="catogories-widget">
+                            <h3>Categories</h3>
+                            <ul>
+                                <li><a href="#">Frameworks</a> &nbsp;(17)</li>
+                                <li><a href="#">Javascript Programming</a> &nbsp;(17)</li>
+                                <li><a href="#">Brand Identity</a> &nbsp;(17)</li>
+                                <li><a href="#">Web & Mobile Applications</a> &nbsp;(17)</li>
+                                <li><a href="#">Search Engine Optimization</a> &nbsp;(17)</li>
+                            </ul>
+                        </div>
+                        <div class="archive-widget">
+                            <h3>Archive</h3>
+                            <ul>
+                                <li><a href="#">2012 February</a></li>
+                                <li><a href="#">2012 March</a></li>
+                                <li><a href="#">2012 April</a></li>
+                                <li><a href="#">2012 May</a></li>
+                                <li><a href="#">2012 June</a></li>
+                            </ul>
+                        </div>
+            		</div>
                 </div><!-- container -->
             </div>
         </div>
         <div id="footer">
             <div class="container">
         		<div class="four columns">
-                    <div class="contact-widget">
+                     <div class="contact-widget">
                         <h4>Contact Us</h4>
                         <p>GET IN TOUCH...</p>
                         <ul>
@@ -293,6 +349,10 @@ pageTracker._trackPageview();
             </div><!-- container -->
         </div>
     </div>
-        
+
+
+
+<!-- End Document
+================================================== -->
 </body>
 </html>

@@ -5,6 +5,10 @@
 	{{ block.super }} | Contact us. We would love to hear from you.
 {% endblock %}
 
+{% block extracss %}
+	<link href="{{ MEDIA_URL }}css/contact.css" rel="stylesheet" type="text/css" charset="utf-8">
+{% endblock %}
+
 {% block banner %}
     <div id="title">
       <h1><span class="black">How can we help you?</span><br/>
@@ -12,7 +16,6 @@
     </div>
     <div id="contactgraphic"></div>
 {% endblock %}
-
 
 {% block content %}
 <div id="pagecontent"><span class="purpletitle">get in touch</span>

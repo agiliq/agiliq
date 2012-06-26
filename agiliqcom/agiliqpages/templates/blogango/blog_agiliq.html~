@@ -156,7 +156,7 @@ pageTracker._trackPageview();
     
 
 </head>
-<body>
+<body onload="pretty_print()">
 
 
 	<!-- Primary Page Layout
@@ -167,7 +167,7 @@ pageTracker._trackPageview();
         <div id="headerMeta">
             <div class="container">
                 <div class="meta-right">
-                    <span>Call Us Free:&nbsp;</span>+91- 99499 97612                            
+                    <span>Call Us:&nbsp;</span>+91- 99499 97612                            
                 </div>
             </div>
         </div>
@@ -194,9 +194,6 @@ pageTracker._trackPageview();
         <div id="main_wrap">
             <div id="title">
                 <div class="container">
-            		<div class="sixteen columns">
-            			<span class="wrap"><a href="#">Home</a>&nbsp;&rarr;&nbsp;<span class="current">The Blog Template</span></span>
-            		</div>
                 </div><!-- container -->
             </div>
             <div id="main">
@@ -523,5 +520,6 @@ pageTracker._trackPageview();
             </div><!-- container -->
         </div>
     </div>
+        
 </body>
 </html>

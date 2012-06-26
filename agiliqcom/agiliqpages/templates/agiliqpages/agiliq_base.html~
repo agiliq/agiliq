@@ -185,12 +185,12 @@
                     </div>
                    <div class="navi">
                         <ul class="sf-menu sf-js-enabled">
-                            <li class="current"><a href="index.html" class="sf-with-ul"><em class="hover" style="width: 67px; display: none; "></em><span>Home</span><span class="sf-sub-indicator" style=""> »</span></a>
+                            <li class="current"><a href="/" class="sf-with-ul"><em class="hover" style="width: 67px; display: none; "></em><span>Home</span><span class="sf-sub-indicator" style=""> »</span></a>
                             </li>
                             <li class=""><a href="/ourwork" class="sf-with-ul"><em class="hover" style="width: 99px; display: none; "></em><span>Our Work</span><span class="sf-sub-indicator" style=""> »</span></a>
                             </li>
                             <li><a href="/blog/"><em class="hover" style="width: 60px; display: none; "></em><span>Blog</span></a></li>
-                            <li><a href="/contactus/"><em class="hover" style="width: 97px; display: none; "></em><span>Contact Us</span></a></li>
+                            <li><a href="/contactus"><em class="hover" style="width: 97px; display: none; "></em><span>Contact Us</span></a></li>
                         </ul>
                     </div>
                     <div class="mobileNavi_wrap"></div>
@@ -265,98 +265,7 @@
             <div id="main">
             
             {% block content %} {% endblock %}
-                <div class="container service">
-            		<div class="sixteen columns">
-                        <div class=" rt-border">
-                            <h2>Our Service</h2>
-                            <p><i>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eu orci mattis purus cursus rhoncus.</i></p>
-                            <div class="clear"></div>             		      
-                        </div>
-                    </div>
-            		<div class="four columns">
-                        <div class="top">
-                            <span class="dropcap">a</span>
-                            <div class="header">
-                                <h3>Lorem ipsum dolor</h3>
-                                <span class="desc">Webdesign</span>
-                            </div>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consec tetur adipiscing elit. Praesent eu orci mattis purus cursus rhoncus. 
-                        Nunc quis fringilla dui. Ut orci erat, euismod nec vehicula at, sollicitudin vitae nisi. Praesent vitae 
-                        tincidunt sem.</p>
-            		</div>
-            		<div class="four columns">
-                        <div class="top">
-                            <span class="dropcap1">b</span>
-                            <div class="header">
-                                <h3>Lorem ipsum dolor</h3>
-                                <span class="desc">Webdesign</span>
-                            </div>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consec tetur adipiscing elit. Praesent eu orci mattis purus cursus rhoncus. 
-                        Nunc quis fringilla dui. Ut orci erat, euismod nec vehicula at, sollicitudin vitae nisi. Praesent vitae 
-                        tincidunt sem.</p>
-                    </div>
-            		<div class="four columns">
-                        <div class="top">
-                            <span class="dropcap2">c</span>
-                            <div class="header">
-                                <h3>Lorem ipsum dolor</h3>
-                                <span class="desc">Webdesign</span>
-                            </div>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consec tetur adipiscing elit. Praesent eu orci mattis purus cursus rhoncus. 
-                        Nunc quis fringilla dui. Ut orci erat, euismod nec vehicula at, sollicitudin vitae nisi. Praesent vitae 
-                        tincidunt sem.</p>
-                    </div>
-            	</div><!-- container -->
-                <div class="container">
-                    <hr />
-                </div><!-- container -->
-                <div class="container work">
-            		<div class="four columns">
-                        <div class=" rt-border">
-                            <h2>Our Products</h2>
-                            <p><i>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eu orci mattis purus cursus rhoncus.</i>
-                            <a class="small_button" href="#">view more</a></p>
-                            <div class="clear"></div>               		      
-                        </div>
-                    </div>
-            		<div class="twelve columns alpha omega">
-                        <div class="navi_carousel">
-                            <ul class="filter_navi">
-            					<li><a href="javascript:void(0)" rel="all">All Categories</a></li>
-            					<li><a href="javascript:void(0)" rel="webdesign">Webdesign</a></li>
-            					<li><a href="javascript:void(0)" rel="wordpress">Wordpress</a></li>
-            				</ul>
-                            <div class="pager"></div>
-                            <div class="clear"></div>
-                        </div> 
-                        <!-- product starts here -->
-             			<div class="list_carousel">
-            				<ul class="list_items">
-            			    {% for prod in products %}
-                                <li class="four columns item all webdesign wordpress">
-                                    {% if prod.logo %}
-                                        <img src="{{ prod.logo.url }}" width="190" height="100" alt="{{ prod.name }}">
-                                    {% endif %}
-                                    <div class="info">
-                                        <a href="{{ prod.url }}" target="_blank" class="website"><h4>{{ prod.name }}</h4></a>
-                                        <p>{{ prod.blurb }}</p>
-                                    </div>
-                                    <div class="clear"></div>
-                                </li>
-                            {% endfor %}
-            				</ul>
-            			</div>
-                        <div class="clear"></div>
-                    </div>
-            	</div><!-- container -->
-                <div class="container">
-                    <hr />
-                </div><!-- container -->
-
-
+ 
             <div id="bottomSlogan">
                 <div class="container">
             		<div class="twelve columns">

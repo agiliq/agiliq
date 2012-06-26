@@ -1,107 +1,115 @@
 
-{% extends "agiliqpages/base.html" %}
+{% extends "agiliqpages/agiliq_base.html" %}
 
 {% block  title %}
 	{{ block.super }} | Our work. We love technology, and you would love what we can build with it.
 {% endblock %}
 
-{% block extracss %}
-	<link href="{{ MEDIA_URL }}css/ourwork.css" rel="stylesheet" type="text/css" charset="utf-8">
-{% endblock %}
-
-{% block banner %}
-	<div id="title">
-      <h1><span class="black">We build amazing webapps</span><br/>
-        and we can build them for you</h1>
-    </div>
-	<div id="ourworkgraphic"></div>
-{% endblock %}
-
-{% block body_ns %}ourwork{% endblock %}
 
 {% block content %}
-<div id="pagecontent">
-    <!-- product starts here -->
-    <span class="redtitle">products</span>
-        <div class="clientblock">
-            <div class="left">
-                <img src="{{ MEDIA_URL }}images/jobboardshq.gif" width="190" height="100" alt="{{ prod.name }}">
-            </div>
-            <div class="right">
-                <h4>jobboardshq</h4>
-                <a href="http://www.jobboardshq.com" target="_blank" class="website">http://www.jobboardshq.com</a>
-                <p class="profilecontent">
+
+                <div class="container work">
+            		<div class="four columns">
+                        <div class=" rt-border">
+                            <h2>Our Products</h2>
+                            <p><i>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eu orci mattis purus cursus rhoncus.</i>
+                            <a class="small_button" href="#">view more</a></p>
+                            <div class="clear"></div>               		      
+                        </div>
+                    </div>
+
+            		<div class="twelve columns alpha omega">
+                        <div class="navi_carousel">
+                            <ul class="filter_navi">
+            					<li><a href="javascript:void(0)" rel="all">All Categories</a></li>
+            					<li><a href="javascript:void(0)" rel="webdesign">Webdesign</a></li>
+            					<li><a href="javascript:void(0)" rel="wordpress">Wordpress</a></li>
+            				</ul>
+                            <div class="pager"></div>
+                            <div class="clear"></div>
+                        </div> 
+                        <!-- product starts here -->
+             			<div class="list_carousel">
+            				<ul class="list_items">
+
+            				    <li class="four columns item all webdesign wordpress">
+
+                                <img src="{{ MEDIA_URL }}images/jobboardshq.gif" width="190" height="100" alt="{{ prod.name }}">
+                                    <div class="info">
+                                        <a href="{{ prod.url }}" target="_blank" class="website"><h4>jobboardshq</h4></a>
+                                    <p class="profilecontent">
                     Job Board Software lets you launch an easy-to-use advanced 
                     Job Board, while providing the key features to generate revenue 
                     and be successful in the competitive job board market. 
                     JobBoardsHQ is scalable and fully customizable solution to meet your unique Job Board requirements.
                 </p>
-            </div>
-            <div class="clear"></div>
-        </div>
-    <div class="hr"></div>
-
-	<span class="redtitle">our code</span>
-	<p>
-		<img src="{{ MEDIA_URL }}images/logov3.png" width="65" height="29" alt="github"> 
-		Find our open source code at
-		<a href="http://github.com/agiliq" target="_blank" class="redlink">http://github.com/agiliq</a>
-	</p>
-	<div class="hr"></div>
-	
-	{% if clients %}
-		<span class="redtitle">our clients</span>
-    {% endif %}
-	<!-- clients starts here -->
-    {% for client in clients %}
-    	<div class="clientblock">
-        	<div class="left">
-				{% if client.logo %}
+                                    </div>
+                                    <div class="clear"></div>
+                                </li>
+            			    {% for prod in products %}
+                                <li class="four columns item all webdesign wordpress">
+                                    {% if prod.logo %}
+                                        <img src="{{ prod.logo.url }}" width="190" height="100" alt="{{ prod.name }}">
+                                    {% endif %}
+                                    <div class="info">
+                                        <a href="{{ prod.url }}" target="_blank" class="website"><h4>{{ prod.name }}</h4></a>
+                                        <p>{{ prod.blurb }}</p>
+                                    </div>
+                                    <div class="clear"></div>
+                                </li>
+                            {% endfor %}
+            				</ul>
+            			</div>
+                        <div class="clear"></div>
+                    </div>
+            	</div><!-- container -->
+                <div class="container work">
+            		<div class="four columns">
+                        <div class=" rt-border">
+                            <h2>Our Clients</h2>
+                            <p><i>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eu orci mattis purus cursus rhoncus.</i>
+                            <a class="small_button" href="#">view more</a></p>
+                            <div class="clear"></div>               		      
+                        </div>
+                    </div>
+            		<div class="twelve columns alpha omega">
+                        <div class="navi_carousel">
+                            <ul class="filter_navi">
+            					<li><a href="javascript:void(0)" rel="all">All Categories</a></li>
+            					<li><a href="javascript:void(0)" rel="webdesign">Webdesign</a></li>
+            					<li><a href="javascript:void(0)" rel="wordpress">Wordpress</a></li>
+            				</ul>
+                            <div class="pager"></div>
+                            <div class="clear"></div>
+                        </div> 
+                        <!-- product starts here -->
+             			<div class="list_carousel">
+            				<ul class="list_items">
+                            {% for client in clients %}
+                                <li class="four columns item all webdesign wordpress">
+                                   				{% if client.logo %}
 					<img src="{{ client.logo.url }}" width="190" height="100" alt="{{ client.name }}">
 				{% endif %}
-			</div>
-          	<div class="right">
-            	<h4>{{ client.name }}</h4>
-            	<a href="{{ client.url }}" target="_blank" class="website">{{ client.url }}</a>
-            	<p class="profilecontent">{{ client.about }}</p>
-        	</div>
-        	<div class="clear"></div>
-            <br/>
-            {% for contact in client.contact_set.all %}
-            {% for testimonial in contact.testimonial_set.all %}
-            <div>
-                <p class='blockquote'>{{ testimonial.testimonial }}<span class='reversequote'></span> - <span class="clientname">{{ contact.name }}</span></p>    
-            </div>
-            {% endfor %}
-            {% endfor %}
-        </div>
-	{% endfor %}
-
-    <div class="hr"></div>	
-	
-	{% if products %}
-        <span class="redtitle">earlier projects</span>
-    {% endif %}
-    <!-- product starts here -->
-    {% for prod in products %}
-        <div class="clientblock">
-            <div class="left">
-                {% if prod.logo %}
-                    <img src="{{ prod.logo.url }}" width="190" height="100" alt="{{ prod.name }}">
-                {% endif %}
-            </div>
-            <div class="right">
-                <h4>{{ prod.name }}</h4>
-                <a href="{{ prod.url }}" target="_blank" class="website">{{ prod.url }}</a>
-                <p class="profilecontent">{{ prod.blurb }}</p>
-            </div>
-            <div class="clear"></div>
-        </div>
-    {% endfor %}
-
-{% block testimonials %}
-{% endblock %}
-</div>
+                                    <div class="info">
+                                        <a href="{{ client.url }}" target="_blank" class="website"><h4>{{ client.name }}</h4></a>
+                                        <p>{{ client.about }}</p>
+                                    </div>
+                                    <div class="clear"></div>
+                                    
+                                    {% for contact in client.contact_set.all %}
+                                    {% for testimonial in contact.testimonial_set.all %}
+                                    <div>
+                                        <p class='blockquote'>{{ testimonial.testimonial }}<span class='reversequote'></span> - <span class="clientname">{{ contact.name }}</span></p>    
+                                    </div>
+                                    {% endfor %}
+                                    {% endfor %}
+                                </li>
+                            {% endfor %}
+            				</ul>
+            			</div>
+                        <div class="clear"></div>
+                    </div>
+            	</div><!-- container -->
 {% endblock %}
 
 

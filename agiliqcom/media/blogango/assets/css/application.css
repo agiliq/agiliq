@@ -384,7 +384,7 @@ ul.bullet li{
     float: left;
     font-size: 30px;
     text-transform: uppercase;
-    margin: 0;
+    margin: 0px;
 }
 .logo h1 a{
     color: #363636;
@@ -392,6 +392,7 @@ ul.bullet li{
 }
 .logo h1 img{
     display: block;
+    margin: 5px 5px 5px 5px;
 }
 .logo h5{
     display: inline-block;

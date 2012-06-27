@@ -1,4 +1,4 @@
-![Agiliq](branding/logo_300.png)
+![Agiliq](https://github.com/agiliq/agiliq/raw/master/branding/logo_300.png)
 
 This is all the code which powers agiliq.com.
 

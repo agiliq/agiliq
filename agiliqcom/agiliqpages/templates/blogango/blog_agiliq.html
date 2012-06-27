@@ -164,7 +164,7 @@ pageTracker._trackPageview();
             <div class="container">
                 <div class="sixteen columns">
                     <div class="logo">
-            			<h1><a href="http://agiliq.com"><img src="{{ MEDIA_URL }}blogango/images/agiliq_logo.png" width="208px" height="69px"/></a></h1>
+            			<h1><a href="http://agiliq.com"><img src="{{ MEDIA_URL }}blogango/images/agiliq_logo.png" width="174" height="69"/></a></h1>
             			<h5>Building Amazing Web Apps</h5>
                     </div>
                    <div class="navi">
@@ -219,31 +219,25 @@ pageTracker._trackPageview();
                             	</ul>
                             	<div id="tabs">
                                     <ul class="news-wrap">
-                                        <li class="post">
-                                            <div class="icon link"><img src="images/46x46-01.jpg" alt="img" height="46" width="46"/></div>
-                                            <div class="content">
-                                                <a href="#">Ut enim ad minim veniam, quis nostrud</a>
-                                                <a class="date" href="#"><span>24nd May 2012</span></a> <a class="comments" href="#"><span>11</span></a>
-                                            </div>
-                                            <div class="clear"></div>
-                                        </li>
-                                        <li class="post">
-                                            <div class="icon link"></div>
-                                            <div class="content">
-                                                <a href="#">Ut enim ad minim veniam, quis nostrud</a>
-                                                <a class="date" href="#"><span>24nd May 2012</span></a> <a class="comments" href="#"><span>11</span></a>
-                                            </div>
-                                            <div class="clear"></div>
-                                        </li>
-                                        <li class="post">
-                                            <div class="icon pencil"></div>
-                                            <div class="content">
-                                                <a href="#">Ut enim ad minim veniam, quis nostrud</a>
-                                                <a class="date" href="#"><span>24nd May 2012</span></a> <a class="comments" href="#"><span>11</span></a>
-                                            </div>
-                                            <div class="clear"></div>
-                                        </li>
-                                    </ul>
+									    {% if recents %}
+											<div id="blogposts_block">
+												<div class="block_title">Posts</div>
+													<ul class="list">
+														{% for recent in recents %}
+															<li class="post">
+																<div class="content">
+																	<a href="{{ recent.get_absolute_url }}" title='{{ recent.title }}'>{{ recent.title }}</a>
+																	<a class="date" href="#"><span>{{recent.created_on|date:'d N Y' }}</span></a>
+																	<a class="comments" href="#"><span>{{recent.get_num_comments}}</span></a>
+																</div>
+																<div class="clear">
+																</div>
+															</li>
+														{% endfor %}
+													</ul>
+												</div>
+										{% endif %}                                    
+									</ul>
                                 </div>
                             </div>
                         	<script>
@@ -254,22 +248,22 @@ pageTracker._trackPageview();
                         </div> 
                         <div class="catogories-widget">
                             <h3>Categories</h3>
-                            <ul>
-                                <li><a href="#">Frameworks</a> &nbsp;(17)</li>
-                                <li><a href="#">Javascript Programming</a> &nbsp;(17)</li>
-                                <li><a href="#">Brand Identity</a> &nbsp;(17)</li>
-                                <li><a href="#">Web & Mobile Applications</a> &nbsp;(17)</li>
-                                <li><a href="#">Search Engine Optimization</a> &nbsp;(17)</li>
+                            <ul>				
+								{% if tags %}
+									{% for tag in tags %}
+										<li><a href="{% url blogango_tag_details tag.slug %}">{{ tag.name }}</a></li>
+									{% endfor %}
+								{% endif %}
                             </ul>
                         </div>
                         <div class="archive-widget">
                             <h3>Archive</h3>
                             <ul>
-                                <li><a href="#">2012 February</a></li>
-                                <li><a href="#">2012 March</a></li>
-                                <li><a href="#">2012 April</a></li>
-                                <li><a href="#">2012 May</a></li>
-                                <li><a href="#">2012 June</a></li>
+								{% if archive_months %}
+									{% for month in archive_months %}
+										<li><a href="{% url blogango_archives month|date:'Y' month|date:'b' %}">{{ month|date:'F Y' }}</a></li>
+									{% endfor %}
+								{% endif %}
                             </ul>
                         </div>
             		</div>
@@ -293,45 +287,21 @@ pageTracker._trackPageview();
                     <div class="post-widget">
                         <h4>Recent Blog Posts</h4>
                         <ul>
-                            <li class="post">
-                                <div class="icon link"><img src="images/46x46-01.jpg" alt="img" height="46" width="46"/></div>
-                                <div class="content">
-                                    <a href="#">Lorem ipsum dolor sit amet, consectetur</a>
-                                    <a class="date" href="#"><span>2nd Dec 2011</span></a> <a class="comments" href="#"><span>29</span></a>
-                                </div>
-                                <div class="clear"></div>
-                            </li>
-                            <li class="post">
-                                <div class="icon link"></div>
-                                <div class="content">
-                                    <a href="#">Lorem ipsum dolor sit amet, consectetur</a>
-                                    <a class="date" href="#"><span>2nd Dec 2011</span></a> <a class="comments" href="#"><span>29</span></a>
-                                </div>
-                                <div class="clear"></div>
-                            </li>
+							{% for recent in recents|slice:':2' %}
+								<li class="post">
+									<div class="content">
+										<a href="{{ recent.get_absolute_url }}" title='{{ recent.title }}'>{{ recent.title }}</a>
+										<a class="date" href="#"><span>{{recent.created_on|date:'d N Y' }}</span></a>
+										<a class="comments" href="#"><span>{{recent.get_num_comments}}</span></a>
+									</div>
+									<div class="clear">
+									</div>
+								</li>
+							{% endfor %}
                         </ul>
                     </div>
                 </div>
-        		<div class="four columns">
-                    <div class="twitter-widget">
-                        <h4>From Twitter</h4>
-                        <div class="tweet"></div>
-                    </div>
-                </div>
-        		<div class="four columns">
-                    <div class="catogories-widget">
-                        <h4>Categories</h4>
-                        <ul>
-                            <li><a href="#">Frameworks</a> &nbsp;(17)</li>
-                            <li><a href="#">Javascript Programming</a> &nbsp;(17)</li>
-                            <li><a href="#">Brand Identity</a> &nbsp;(17)</li>
-                            <li><a href="#">Web & Mobile Applications</a> &nbsp;(17)</li>
-                            <li><a href="#">Search Engine Optimization</a> &nbsp;(17)</li>
-                        </ul>
-                    </div>
-                </div>
-        	</div><!-- container -->
-        </div>
+       </div>
         <div id="socket">
             <div class="container">
                 <div class="copyright">Copyright &copy; 2012 <a href="http://themeforest.net/user/lidplussdesign/">lpd-themes</a></div>

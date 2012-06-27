@@ -2317,7 +2317,8 @@ input::-moz-focus-inner {
     background: #fff url(../images/icons.png) -364px -49px repeat-x;
 }
 .news-wrap .post .content{
-    padding-left: 64px;
+    /* padding-left: 64px;
+    */
 }
 .news-wrap .post a{
     display: block;

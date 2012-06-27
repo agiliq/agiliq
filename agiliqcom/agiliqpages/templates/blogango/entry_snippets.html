@@ -14,7 +14,7 @@
                 {% endif %}
             </div>
                                 
-            <h2><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></h2>
+            <h2>{{ entry.title }}</h2>
                                 
             <ul class="info">
                 <li>
@@ -34,16 +34,14 @@
 	                <a href="{{ entry.get_absolute_url }}" class="bn">Read More&rarr;</a>
 	            {% endif %}
             </div>
-            <div class="tags">
+            <ul class="info">
 	            {% for tag in entry.tags.all %}
                     {% if forloop.first %}Topics : {% endif %}
 	                
-	                <a href="{% url blogango_tag_details tag.slug %}"><span>{{ tag.name }}</span></a>
+	                <li><a href="{% url blogango_tag_details tag.slug %}"><span>{{ tag.name }}</span></a></li>
 	            {% endfor %}
-	        </div>
-                                
+	        </ul>                
             <div class="clear">
-			
 			</div>
         </div>
 

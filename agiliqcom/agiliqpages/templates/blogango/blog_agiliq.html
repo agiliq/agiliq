@@ -1,3 +1,7 @@
+{% load blogango_filters analytics %}
+
+{% blogango_extra_context %}
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en"> <!--<![endif]-->
@@ -10,7 +14,7 @@
     <meta name="keywords" content="" />
     <meta name="author" content="lidplussdesign" />
 
-	{% block title %} {% endblock %}
+	<title>{% block title %} {% endblock %}</title>
 
 	<!-- Mobile Specific Metas
   ================================================== -->
@@ -32,7 +36,8 @@
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/jquery-ui-fusion.css">
     <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/text.css">
-    
+    <link href="{{ MEDIA_URL }}blogango/css/prettify.css" rel="stylesheet" type="text/css" />
+	
     <!-- superfish -->
     <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/superfish.css">
     <!-- superfish END -->
@@ -155,9 +160,6 @@ pageTracker._trackPageview();
     <div id="wrap">
         <div id="headerMeta">
             <div class="container">
-                <div class="meta-right">
-                    <span>Call Us:&nbsp;</span>+91- 99499 97612                            
-                </div>
             </div>
         </div>
         <div id="header">
@@ -212,48 +214,12 @@ pageTracker._trackPageview();
                                 </fieldset>
                             </form>
                         </div>
-                        <div class="tabs-widget post-tabs-widget">
-                            <div class="ui-tabs-widget ui-tabs-widget-2">
-                            	<ul>
-                            		<li><a href="#tabs">Recent</a></li>
-                            	</ul>
-                            	<div id="tabs">
-                                    <ul class="news-wrap">
-									    {% if recents %}
-											<div id="blogposts_block">
-												<div class="block_title">Posts</div>
-													<ul class="list">
-														{% for recent in recents %}
-															<li class="post">
-																<div class="content">
-																	<a href="{{ recent.get_absolute_url }}" title='{{ recent.title }}'>{{ recent.title }}</a>
-																	<a class="date" href="#"><span>{{recent.created_on|date:'d N Y' }}</span></a>
-																	<a class="comments" href="#"><span>{{recent.get_num_comments}}</span></a>
-																</div>
-																<div class="clear">
-																</div>
-															</li>
-														{% endfor %}
-													</ul>
-												</div>
-										{% endif %}                                    
-									</ul>
-                                </div>
-                            </div>
-                        	<script>
-                            	$(function() {
-                            		$( ".ui-tabs-widget-2" ).tabs();
-                            	});
-                        	</script> 
-                        </div> 
                         <div class="catogories-widget">
-                            <h3>Categories</h3>
-                            <ul>				
-								{% if tags %}
-									{% for tag in tags %}
-										<li><a href="{% url blogango_tag_details tag.slug %}">{{ tag.name }}</a></li>
-									{% endfor %}
-								{% endif %}
+                            <h3>Recent Posts</h3>
+                            <ul>
+							{% for recent in recents|slice:':10' %}
+								<li><a href="{{ recent.get_absolute_url }}" title='{{ recent.title }}'>{{ recent.title }}</a></li>
+							{% endfor %}
                             </ul>
                         </div>
                         <div class="archive-widget">
@@ -279,24 +245,19 @@ pageTracker._trackPageview();
                         <ul>
                             <li><span>phone :</span> +91- 99499 97612</li>
                             <li><span>email :</span> <a href="#" class="test">hello@agiliq.com</a></li>
-                            <li><span>address :</span> Leathermarket court, SE1</li>
+                            <li><span>address :</span><p> Agiliq Info Solutions India Pvt Ltd,<br/>
+Flat No. 302, Siri Sampada,<br/>
+Above Food World, Near Madhapur Police Station<br/>
+Hyderabad - 500081. India</li>
                         </ul>
                     </div>
                 </div>
         		<div class="four columns">
-                    <div class="post-widget">
+                    <div class="catogories-widget">
                         <h4>Recent Blog Posts</h4>
                         <ul>
-							{% for recent in recents|slice:':2' %}
-								<li class="post">
-									<div class="content">
-										<a href="{{ recent.get_absolute_url }}" title='{{ recent.title }}'>{{ recent.title }}</a>
-										<a class="date" href="#"><span>{{recent.created_on|date:'d N Y' }}</span></a>
-										<a class="comments" href="#"><span>{{recent.get_num_comments}}</span></a>
-									</div>
-									<div class="clear">
-									</div>
-								</li>
+							{% for recent in recents|slice:':5' %}
+								<li><a href="{{ recent.get_absolute_url }}" title='{{ recent.title }}'>{{ recent.title }}</a></li>
 							{% endfor %}
                         </ul>
                     </div>

@@ -1651,7 +1651,7 @@ input::-moz-focus-inner {
     background: url(../images/icons.png) -312px top repeat-x;
 }
 .post-widget .post .content{
-    padding-left: 64px;
+    padding-left: 2px;
 }
 
 .post-widget .post a{

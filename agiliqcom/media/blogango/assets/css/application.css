@@ -1044,10 +1044,6 @@ ul.bullet li{
     padding: 9px 0 9px 90px;
     margin-bottom: 0;
     border-bottom: 1px solid #ebebeb;
-    a:link {text-decoration: none}
-    a:visited {text-decoration: none}
-    a:active {text-decoration: none}
-    a:hover {text-decoration: none;}
 }
 
 .blog .post .info{
@@ -2895,6 +2891,11 @@ input::-moz-focus-inner {
             width: 420px !important;
         }
 	}
+	
+.post  h2 a {
+    text-decoration: none;
+	color:black;
+}
 
 	/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
 	@media only screen and (max-width: 479px) {}

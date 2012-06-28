@@ -104,6 +104,7 @@
 ================================================== */
 	ul, ol { margin-bottom: 20px; }
 	ul { list-style: none outside; }
+	.tx-content	ul { list-style: square; margin-left: 30px; }
 	ol { list-style: decimal; }
 	ol, ul.square, ul.circle, ul.disc { margin-left: 30px; }
 	ul.square { list-style: square outside; }
@@ -333,6 +334,7 @@
 		font-weight: normal;
 		font-size: 13px;
 		color: #444; }
+		
 
 /* #Misc
 ================================================== */

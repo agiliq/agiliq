@@ -1,22 +1,22 @@
-{% extends "agiliqpages/base.html" %}
+{% extends "agiliqpages/agiliq_base.html" %}
 
 {% block  title %}
 	{{ block.super }} | Web development using Django, Jquery, Javascript, Mysql, Postgresql and a bit of love sprinkled over it all.
 {% endblock %}
 
-{% block extracss %}
-	<link href="{{ MEDIA_URL }}css/whatwedo.css" rel="stylesheet" type="text/css" charset="utf-8">
-{% endblock %}
-
-{% block body_ns %}whatwedo{% endblock %}
-
-{% block banner %}
-	 <div id="title">
-      <h1>We work on<br/>
-        <span class="black"> Python, Django, jQuery,<br/>
-        MySql and PostgreSQL </span> </h1>
-    </div>
-	<div id="whatwedographic"></div>
+{% block navigation %}
+<div class="navi">
+	<ul class="sf-menu sf-js-enabled">
+		<li class=""><a href="/" class="sf-with-ul"><em class="hover" style="width: 67px; display: none; "></em><span>Home</span><span class="sf-sub-indicator" style=""> »</span></a>
+		</li>
+		<li class=""><a href="/ourwork" class="sf-with-ul"><em class="hover" style="width: 99px; display: none; "></em><span>Our Work</span><span class="sf-sub-indicator" style=""> »</span></a>
+		</li>
+		<li class=""><a href="/whoweare" class="sf-with-ul"><em class="hover" style="width: 99px; display: none; "></em><span>Who We Are</span><span class="sf-sub-indicator" style=""> »</span></a>
+		</li>
+		<li class=""><a href="/blog/"><em class="hover" style="width: 60px; display: none; "></em><span>Blog</span></a></li>
+		<li class="current"><a href="/contactus"><em class="hover" style="width: 97px; display: none; "></em><span>Contact Us</span></a></li>
+	</ul>
+</div> 
 {% endblock %}
 
 {% block content %}

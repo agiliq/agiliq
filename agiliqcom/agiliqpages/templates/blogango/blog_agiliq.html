@@ -6,19 +6,7 @@
 "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en"> <!--<![endif]-->
 <head>
-
-	<!-- Basic Page Needs
-  ================================================== -->
-    <meta charset="utf-8" />
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <meta name="author" content="lidplussdesign" />
-
 	<title>{% block title %} {% endblock %}</title>
-
-	<!-- Mobile Specific Metas
-  ================================================== -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
 	<!-- Google Web Fonts
   ================================================== -->
@@ -100,12 +88,6 @@
     <script type="text/javascript" src="{{ MEDIA_URL }}blogango/assets/hoveralls/js/jquery.hoveralls-functions.js"></script>
     <!-- HoverAlls END-->
     
-    <!-- superfish -->
-	<script type="text/javascript" src="{{ MEDIA_URL }}blogango/assets/js/superfish-1.4.8/hoverIntent.js"></script>
-	<script type="text/javascript" src="{{ MEDIA_URL }}blogango/assets/js/superfish-1.4.8/superfish.js"></script>
-    <script type="text/javascript" src="{{ MEDIA_URL }}blogango/assets/js/superfish-1.4.8/superfish.function.js"></script>
-    <!-- superfish END-->  
-    
     <!-- custom theme functions -->
     <script src="{{ MEDIA_URL }}blogango/assets/js/navigation.function.js"></script>
     <script src="{{ MEDIA_URL }}blogango/assets/js/functions.js"></script>
@@ -131,23 +113,18 @@
     </script>
     
     <script type="text/javascript">
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
-try {
-var pageTracker = _gat._getTracker("UA-367368-15");
-pageTracker._trackPageview();
-} catch(err) {}</script>
-
-    
-
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+	<script type="text/javascript">
+		try {
+			var pageTracker = _gat._getTracker("UA-367368-15");
+			pageTracker._trackPageview();
+		}
+		catch(err) {}
+	</script>
 </head>
 <body onload="pretty_print()">
-
-
-
-
 	<!-- Primary Page Layout
 	================================================== -->
 
@@ -174,7 +151,8 @@ pageTracker._trackPageview();
                             <li><a href="/contactus"><em class="hover" style="width: 97px; display: none; "></em><span>Contact Us</span></a></li>
                         </ul>
                     </div>
-                    <div class="mobileNavi_wrap"></div>
+                    <div class="mobileNavi_wrap">
+					</div>
         		</div>
             </div>
         </div>

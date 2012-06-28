@@ -2,10 +2,7 @@
 "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
-
-    
     <title>{% block  title %} {% endblock %}</title>
-
     
 	<!-- Google Web Fonts
   ================================================== -->
@@ -132,16 +129,13 @@
             			<h1><a href="http://agiliq.com"><img src="{{ MEDIA_URL }}blogango/images/agiliq_logo.png" width="174" height="69"/></h1>
             			<h5>Building Amazing Web Apps</h5>
                     </div>
-                   <div class="navi">
-                        <ul class="sf-menu sf-js-enabled">
-                            <li class="current"><a href="/" class="sf-with-ul"><em class="hover" style="width: 67px; display: none; "></em><span>Home</span><span class="sf-sub-indicator" style=""> »</span></a>
-                            </li>
-                            <li class=""><a href="/ourwork" class="sf-with-ul"><em class="hover" style="width: 99px; display: none; "></em><span>Our Work</span><span class="sf-sub-indicator" style=""> »</span></a>
-                            </li>
-                            <li><a href="/blog/"><em class="hover" style="width: 60px; display: none; "></em><span>Blog</span></a></li>
-                            <li><a href="/contactus"><em class="hover" style="width: 97px; display: none; "></em><span>Contact Us</span></a></li>
-                        </ul>
-                    </div>
+					
+					<div class="navi">
+						<ul class="sf-menu sf-js-enabled">
+						{% block navigation %} {% endblock %}
+						</ul>
+					</div> 
+					
                     <div class="mobileNavi_wrap"></div>
         		</div>
             </div>

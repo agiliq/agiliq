@@ -7,13 +7,8 @@
     {{entry.title}} - {{block.super}}
 {% endblock %}
 
-{% block breadcrumbs %}
-    <li><a href="{% url blogango_index %}" rel="nofollow">Blog</a></li>
-    <li><a href="{% url blogango_archives entry.created_on.year entry.created_on|date:'b' %}" rel="nofollow"> {{ entry.created_on|date:'N Y' }}</a></li>
-	<li>{{ entry.title }}</li>
-{% endblock %}
 
-{% block content %}
+{% block details %}
 
 {% with 'True' as post_detail %}
     {% include 'blogango/entry_snippets.html' %}
@@ -45,36 +40,22 @@
 
 {% if comments %}
 <!--COMMENT BLOCK STARTS-->
-<h2 style="clear:both;">Comments</h2>
-{% for comment in comments %}
-    <a name="comment-{{ comment.pk }}">
-    <div id="comments" class="commentor_block">
-	    <div class="leftnpanel">
-	        <span class="commentor">
-	           {% if comment.user_url %}
-	               <a href='{{ comment.user_url }}' rel='nofollow' target='_blank'>{{ comment.user_name }}</a>
-	           {% else %}
-	               {{ comment.user_name }}
-	           {% endif %}
-	        </span>   
-            <span class="postdate">
-                <a href="#comment-{{ comment.pk }}">{{ comment.created_on|date:'jS N, Y' }}</a>
-            </span><br/>
-	        <div class="comment_post">
-	            <p>{{ comment.text|striptags|urlize|linebreaks }}</p>
-	        </div>
-	    </div>
-	    <div class="rightnpanel">
-	        <img src="{% gravatar_url comment.email_id %}" width="50" height="50" alt="commmenttor" class="picborder"/> 
-	    </div>
-	    <div class="clear"></div>
-    </div>
-{% endfor %}
-
-
-
-
-
+<div class="comment">
+	<h3>Comments</h3>
+	<div class="comment-container">
+	{% for comment in comments %}
+		<a name="comment-{{ comment.pk }}">
+		<div class="comment-post">
+			<img src="{% gravatar_url comment.email_id %}" width="50" height="50" alt="commmenttor" class="picborder"/> 
+			 {% if comment.user_url %}<a href='{{ comment.user_url }}' rel='nofollow' target='_blank'><p class="comment-author">{{ comment.user_name }}</p></a>
+			 {% else %}<p class="comment-author">{{ comment.user_name }}</p>{% endif %}
+			<p class="comment-info">{{ comment.created_on|date:'jS N, Y' }}</p>
+			<p class="comment-content">{{ comment.text|striptags|urlize|linebreaks }}</p>
+		</div>
+		</a>
+	{% endfor %}
+	</div>
+</div>
 <!--COMMENT BLOCK ENDS-->
 {% endif %}
 <div class="clear"></div>
@@ -122,6 +103,7 @@
 <!--  Ping Backs ends -->
 
 <!--COMMENT FORM BLOCK STARTS-->
+
 <div class="comment-form">
     {% if entry.comments_allowed%}
 	<h3>Leave a Comment</h3>
@@ -143,7 +125,7 @@
 </div>
 <!--COMMENT FORM BLOCK ENDS-->
 
-{% endblock %}
+{% endblock details %}
 
 
 {% comment %}
@@ -177,7 +159,7 @@
 		ut congue sapien porttitor non. Ut eu nibh at risus faucibus tristique nec sit amet 
 		erat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac 
 		turpis egestas. Sed eu quam ut dui auctor iaculis. Nam vel sem dolor, non luctus turpis.</p>
-		<blockquote><span class="quote">â??</span><i>I can never stand still. I must explore and experiment. I am never satisfied with my work. 
+		<blockquote><span class="quote">?</span><i>I can never stand still. I must explore and experiment. I am never satisfied with my work. 
 		<span>I resent the limitations of my own imagination</span>.</i><cite>Walt Disney</cite></blockquote>
 		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ultricies dictum luctus. 
 		Sed lacinia velit a orci arg tincidunt et sagittis erat egestas. Vestibulum vestibulum 

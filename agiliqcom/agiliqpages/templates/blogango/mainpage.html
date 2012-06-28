@@ -1,10 +1,6 @@
 {% extends 'blogango/blog_agiliq.html' %}
 
-{% block breadcrumbs %}
-	<li>Blog</li>
-{% endblock %}
-
-{% block content%}
+{% block posts%}
 
 <!--BLOG POST STARTS-->
 {% for entry in entries %}
@@ -36,4 +32,19 @@
 </div>
 {% endif %}
 
-{% endblock %}
+{% endblock posts%}
+
+{% block pagination %}
+     <div class="pagination">
+                            <span class="pages">Page 1 of 11</span>
+                            <span class="current">1</span>
+                            <a href="#">2</a>
+                            <a href="#">3</a>
+                            <a href="#">4</a>
+                            <a href="#">5</a>
+                            <a class="prevlink" href="#">Prev</a>
+                            <a class="nextlink" href="#">Next</a>
+                            <a href="#">10</a>
+                            <div class="clear"></div>
+                        </div>
+{% endblock pagination %}

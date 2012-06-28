@@ -164,19 +164,9 @@
             <div id="main">
                 <div class="container">
             		<div class="twelve columns blog">
-            		    {% block content %}{% endblock %}
-                        <div class="pagination">
-                            <span class="pages">Page 1 of 11</span>
-                            <span class="current">1</span>
-                            <a href="#">2</a>
-                            <a href="#">3</a>
-                            <a href="#">4</a>
-                            <a href="#">5</a>
-                            <a class="prevlink" href="#">Prev</a>
-                            <a class="nextlink" href="#">Next</a>
-                            <a href="#">10</a>
-                            <div class="clear"></div>
-                        </div>
+            		    {% block posts %} {% endblock posts %}
+						{% block pagination %} {% endblock pagination %}
+						{% block details %} {% endblock details %}
             		</div>
             		<div class="four columns sidebar">
                         <div class="gce-widget">

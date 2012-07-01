@@ -18,33 +18,21 @@
 {% endfor %}  
 <!--BLOG POST ENDS-->
 <div class="clear"></div>
-{% if has_next or has_prev %}
-<div class="pagination"> 
-    <div class="moreinfo">
-        {% if has_next %}
-            <a href='{% url blogango_page page_.next_page_number %}'>&laquo; Previous Entries</a>
-        {% endif %}
-        
-        {% if has_prev %}
-            <span class='right'><a href='{% url blogango_page page_.previous_page_number %}'>Next Entries &raquo;</a></span>
-        {% endif %}
-    </div> 
-</div>
-{% endif %}
-
 {% endblock posts%}
 
 {% block pagination %}
-     <div class="pagination">
-                            <span class="pages">Page 1 of 11</span>
-                            <span class="current">1</span>
-                            <a href="#">2</a>
-                            <a href="#">3</a>
-                            <a href="#">4</a>
-                            <a href="#">5</a>
-                            <a class="prevlink" href="#">Prev</a>
-                            <a class="nextlink" href="#">Next</a>
-                            <a href="#">10</a>
-                            <div class="clear"></div>
-                        </div>
+{% if has_next or has_prev %}
+
+<div class="pagination">
+	{% if has_next %}
+		<a href='{% url blogango_page page_.previous_page_number %}'>&laquo; Previous Entries</a>
+	{% endif %}
+	
+	{% if has_prev %}
+		<span class='right'><a href='{% url blogango_page page_.next_page_number %}'>Next Entries &raquo;</a></span>
+	{% endif %}
+	<div class="clear"></div>
+</div> 
+
+{% endif %}
 {% endblock pagination %}

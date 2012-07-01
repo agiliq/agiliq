@@ -1022,7 +1022,7 @@ ul.bullet li{
     display: block;
     width: 42px;
     height: 42px;
-    padding: 1px;
+    padding: 0px;
     border: 1px solid #ebebeb;
     background: url(../images/icons.png) 0 -100px no-repeat;
 }

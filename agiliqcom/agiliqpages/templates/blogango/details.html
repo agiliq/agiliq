@@ -41,6 +41,7 @@
 
 {% if comments %}
 <!--COMMENT BLOCK STARTS-->
+<a name="comments"></a>
 <div class="comment">
 	<h3>Comments</h3>
 	<div class="comment-container">
@@ -60,39 +61,13 @@
 <!--COMMENT BLOCK ENDS-->
 {% endif %}
 <div class="clear"></div>
-{% if reactions %}
-<!--REACTIONS BLOCK STARTS-->
-<h1>Reactions</h1>
-{% for reaction in reactions %}
-    <div id="reactions" class="commentor_block">
-	    <div class="leftnpanel">
-	        <span class="commentor">
-                <a href="{{ reaction.user_url }}">
-				    {{ reaction.user_name }}
-				</a>
-	        </span>
-	        <span class="postdate">{{ reaction.created_on|date:'jS N, Y' }}</span><br/>
-	        <div class="comment_post">
-	            <p>{{ reaction.text|safe|twitterize }}</p>
-	        </div>
-	    </div>
-	    <div class="rightnpanel">
-            {% if reaction.profile_image %}
-	            <img src="{{ reaction.profile_image }}" width="50" height="50" alt="commmenttor" class="picborder" /> 
-            {% endif %}
-	    </div>
-	    <div class="clear"></div>
-    </div>
-{% endfor %}
-<!--REACTION BLOCK ENDS-->
-{% endif %}
 
 <!--COMMENT FORM BLOCK STARTS-->
 
 <div class="comment-form">
     {% if entry.comments_allowed%}
 	<h3>Leave a Comment</h3>
-	<form class="comment" action=".">
+	<form class="comment" action="." method="post">
         {% csrf_token %}
             <fieldset>
                 <legend>Post a comment</legend>

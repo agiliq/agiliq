@@ -12,12 +12,9 @@
                 {% else %}
                     <img src="{{ MEDIA_URL }}blogango/images/person_default.jpg" width="71" height="72" />
                 {% endif %}
-            </div>
-                                
+            </div>                
             <h2><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></h2>
-			
 			{% block info %}
-                                
             <ul class="info">
                 <li>
                     <h6 class="posted_by">by <a href="{% url blogango_author entry.created_by %}">{{ entry.created_by }}</a>{% if entry.created_by.teammember.tag_line %} - {{ entry.created_by.teammember.tag_line }} {% endif %}</h6>

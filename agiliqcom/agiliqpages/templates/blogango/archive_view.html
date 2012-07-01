@@ -1,0 +1,15 @@
+{% extends "blogango/blog_agiliq.html" %}
+
+{% block title %} 
+- Archives for {{ month|date:"F" }} {{ month|date:"Y" }}
+{% endblock %}
+
+
+{% block content %}
+
+{% for entry in object_list %}
+    {% include 'blogango/entry_snippets.html' %}
+{% endfor %}
+
+{% endblock %}
+

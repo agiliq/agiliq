@@ -1039,7 +1039,7 @@ ul.bullet li{
     top: 99px;
 }
 .blog .post h2{
-    line-height: 18px;
+    /*line-height: 18px;*/
     padding: 9px 0 9px 90px;
     margin-bottom: 0;
     border-bottom: 1px solid #ebebeb;

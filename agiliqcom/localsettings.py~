@@ -45,7 +45,7 @@ DIRECTORY_URLS = (
     'http://rpc.technorati.com/rpc/ping',
 )
 
-COMPRESS = False
+COMPRESS = True
 EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_HOST_USER = "gqtoolemails@uswaretech.com"
 EMAIL_HOST_PASSWORD = "081084"

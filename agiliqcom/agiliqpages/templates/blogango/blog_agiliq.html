@@ -17,11 +17,13 @@
 	<!-- CSS
   ================================================== -->
   
+    {% load compress %}
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css">
+	{% compress css%}
 	<link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/base.css">
 	<link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/skeleton.css">
 	<link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/layout.css">
     <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/buttons.css">
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/jquery-ui-fusion.css">
     <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/text.css">
     <link href="{{ MEDIA_URL }}blogango/css/prettify.css" rel="stylesheet" type="text/css" />
@@ -48,6 +50,11 @@
     <!-- bg image-->
     <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/background.css">
     <!-- bg imeage END -->
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="{{ MEDIA_URL }}blogango/assets/css/fusionHoverAlls.css"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ MEDIA_URL }}blogango/assets/hoveralls/css/hoveralls.css"/>
+	
+	{% endcompress %}
 
 
 	<!-- Favicons
@@ -57,15 +64,17 @@
 	<link rel="apple-touch-icon" sizes="72x72" href="{{ MEDIA_URL }}blogango/assets/images/apple-touch-icon-72x72.png">
 	<link rel="apple-touch-icon" sizes="114x114" href="{{ MEDIA_URL }}blogango/assets/images/apple-touch-icon-114x114.png">
     
-
-	<!-- JS
-	================================================== -->
-    <script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	
     <script type="text/javascript">
         google.load("jquery", "1.5.2");
         google.load("jqueryui", "1.8.15");
     </script>
     
+	{% compress js %}
+	<!-- JS
+	================================================== -->
     <!-- carouFredSel -->
     <script type="text/javascript" language="javascript" src="{{ MEDIA_URL }}blogango/assets/js/carouFredSel/jquery.carouFredSel-5.5.0-packed.js"></script>
     <script type="text/javascript" src="{{ MEDIA_URL }}blogango/assets/js/carouFredSel/jquery.carouFredSel-functions.js"></script>
@@ -81,8 +90,7 @@
     <!-- seaofclouds END -->
         
     <!-- HoverAlls -->
-    <link rel="stylesheet" type="text/css" media="screen" href="{{ MEDIA_URL }}blogango/assets/css/fusionHoverAlls.css"/>
-    <link rel="stylesheet" type="text/css" media="screen" href="{{ MEDIA_URL }}blogango/assets/hoveralls/css/hoveralls.css"/>
+
     <script type="text/javascript" src="{{ MEDIA_URL }}blogango/assets/hoveralls/js/jquery.easing.1.3.min.js"></script>
     <script type="text/javascript" src="{{ MEDIA_URL }}blogango/assets/hoveralls/js/jquery.hoveralls.min.js"></script>
     <script type="text/javascript" src="{{ MEDIA_URL }}blogango/assets/hoveralls/js/jquery.hoveralls-functions.js"></script>
@@ -93,6 +101,7 @@
     <script src="{{ MEDIA_URL }}blogango/assets/js/functions.js"></script>
     <!-- custom theme functions END -->
     
+	{% endcompress %}
         <script type="text/javascript">
         function pretty_print(){
             $(document).ready(function() {

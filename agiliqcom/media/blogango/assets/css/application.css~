@@ -1039,6 +1039,7 @@ ul.bullet li{
     top: 99px;
 }
 .blog .post h2{
+    font-size: 16px;
     line-height: 18px;
     padding: 9px 0 9px 90px;
     margin-bottom: 0;
@@ -1216,7 +1217,6 @@ ul.bullet li{
 }
 .comment-post p{
     margin-left: 110px;
-    color: #333;
 }
 .comment-author{
     font-size: 14px;

@@ -23,10 +23,14 @@ h3 { font-size: 18px;}
 h4 { font-size: 14px;}
 h5 { font-size: 12px;}
 h6 { font-size: 10px;}
-h1, h2, h3, h4, h5, h6{
+h1, h2 {
     text-transform: uppercase;
     margin-bottom: 18px;
 }
+h3, h4, h5 {
+    margin-bottom: 18px;
+}
+h6 { margin-bottom: 8px; }
 .main-content h6,
 .main-content h5,
 .main-content h4,
@@ -976,7 +980,7 @@ ul.bullet li{
 .blog.post .content,
 .blog .post .content{
     position: relative;
-    padding-top: 18px;
+    padding-top: 10px;
 }
 .blog .post.no-img .content{
     padding-top: 9px;
@@ -985,13 +989,14 @@ ul.bullet li{
 .blog.post .date,
 .blog .post .date{
     position: absolute;
-    top: -18px;
-    left: 20px;
+    top: 5px;
+    left: 15px;
     text-align: center;
-    width: 50px;
-    height: 100px;
+    width: 60px;
+    height: 85px;
     text-transform: uppercase;
     color: #fff;
+    border: 1px solid #ebebeb;
     -moz-box-shadow:    0 0 5px rgba(0, 0, 0, 0.3);
     -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     box-shadow:         0 0 5px rgba(0, 0, 0, 0.3);
@@ -1006,22 +1011,22 @@ ul.bullet li{
 }
 .blog.post .date .day,
 .blog .post .date .day{
-    font-size: 36px;
-    line-height: 54px;
+    font-size: 25px;
+    line-height: 40px;
 }
 .blog.post .date .year,
 .blog.post .date .month,
 .blog .post .date .year,
 .blog .post .date .month{
-    font-size: 14px;
+    font-size: 13px;
 }
 .post-format-icon{
     position: absolute;
-    top: 90px;
-    left: 5px;
+    top: 105px;
+    left: 15px;
     display: block;
-    width: 42px;
-    height: 42px;
+    width: 60px;
+    height: 60px;
     padding: 0px;
     border: 1px solid #ebebeb;
     background: url(../images/icons.png) 0 -100px no-repeat;
@@ -1039,11 +1044,12 @@ ul.bullet li{
     top: 99px;
 }
 .blog .post h2{
-    font-size: 16px;
-    line-height: 18px;
+    font-size:20px;
+    line-height: 1.4em;
     padding: 9px 0 9px 90px;
     margin-bottom: 0;
     border-bottom: 1px solid #ebebeb;
+    border-top: 1px solid #ebebeb;
 }
 
 .blog .post .info{
@@ -1051,20 +1057,23 @@ ul.bullet li{
     font-style: italic;
     text-transform: uppercase;
     padding: 9px 0 0 90px;
-    margin-bottom: 9px;
+    margin-bottom: 0;
 }
 .blog .post .info li{
     display: inline-block;
     line-height: 18px;
     border-left: 1px solid #ebebeb;
     padding: 0 10px;
-    margin-bottom: 9px;
+    margin-bottom: 0px;
+}
+.blog .post .info li:first-child {
+    border-left: none;
 }
 .blog .post .info a:hover{
     color: #acacac;
 }
 .blog .post .tx-content{
-    margin-bottom: 36px;
+    margin-bottom: 15px;
 }
 .blog .post .tags,
 .blog .post .tx-content{
@@ -1091,7 +1100,8 @@ ul.bullet li{
 }
 .blog.post iframe,
 .blog .post iframe{
-   display: block; 
+   display: block;
+   width: 600px;
 }
 .pagination span{
     display: block;
@@ -2895,6 +2905,9 @@ input::-moz-focus-inner {
 .post  h2 a {
     text-decoration: none;
 	color:black;
+}
+.post  h2 a:hover {
+    text-decoration: underline;
 }
 
 	/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */

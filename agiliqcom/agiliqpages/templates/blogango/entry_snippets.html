@@ -8,9 +8,9 @@
                                 
             <div class="post-format-icon">
                 {% if entry.created_by.teammember.photo %}
-                    <img src="{{ entry.created_by.teammember.photo.url }}" width="71" height="72" />
+                    <img src="{{ entry.created_by.teammember.photo.url }}" width="60" height="61" />
                 {% else %}
-                    <img src="{{ MEDIA_URL }}blogango/images/person_default.jpg" width="71" height="72" />
+                    <img src="{{ MEDIA_URL }}blogango/images/person_default.jpg" width="60" height="61" />
                 {% endif %}
             </div>                
             <h2><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></h2>

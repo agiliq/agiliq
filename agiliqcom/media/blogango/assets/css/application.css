@@ -31,6 +31,9 @@ h3, h4, h5 {
     margin-bottom: 18px;
 }
 h6 { margin-bottom: 8px; }
+.section h1 {
+    font-size:20px;
+}
 .main-content h6,
 .main-content h5,
 .main-content h4,
@@ -1078,6 +1081,12 @@ ul.bullet li{
 .blog .post .tags,
 .blog .post .tx-content{
     padding-left: 90px;
+}
+.blog .post .tx-content{
+    padding-left: 90px;
+}
+.blog .post .tx-content .section h2 {
+    padding-left: 0px;
 }
 .portfolio-details .tags a,
 .blog.post .tags a,

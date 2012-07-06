@@ -28,8 +28,19 @@ jQuery(document).ready(function() {
     homeOverlayItemWork();
     fluidResizeWork();
 	hoverEffects();
+	resizeVideos();
 	
 });
+function resizeVideos() {
+		$videos = $('iframe[src*="vimeo"],iframe[src*="youtube"]');
+		$videos.each( function () {
+		  var h = $(this).height();
+		  var w = $(this).width();
+		  
+		  $(this).height(580/w*h);
+		  $(this).width(580);
+		});
+}
 function fluidResizeFrontVideo() {
 
 	var $allImages = $("#slider iframe"),

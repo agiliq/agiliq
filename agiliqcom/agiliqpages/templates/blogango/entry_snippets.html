@@ -2,8 +2,8 @@
         <div class="content">
             <div class="date">
                 <span class="day">{{ entry.created_on|date:'j' }}</span>
+                <span class="month">{{ entry.created_on|date:'M' }}</span>
                 <span class="year">{{ entry.created_on|date:'Y' }}</span>
-                <span class="month">{{ entry.created_on|date:'N' }}</span>
             </div>
                                 
             <div class="post-format-icon">

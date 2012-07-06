@@ -123,6 +123,19 @@
 		}
 		catch(err) {}
 	</script>
+	<script type="text/javascript">
+		function clickclear(thisfield, defaulttext) {
+			if (thisfield.value == defaulttext) {
+				thisfield.value = "";
+			}
+			}
+			function clickrecall(thisfield, defaulttext) {
+				if (thisfield.value == "") {
+					thisfield.value = defaulttext;
+				}
+		}
+	</script>
+
 </head>
 <body onload="pretty_print()">
 	<!-- Primary Page Layout
@@ -173,12 +186,13 @@
             		</div>
             		<div class="four columns sidebar">
                         <div class="gce-widget">
-                            <form method="get" action="search.php">
+                            <form method="get" action="">
                                 <fieldset>
-                                    <input id="q" class="search_input" type="text" name="q" value="search site"/>
-                                    <input class="submit" type="submit" value="Search"/>
+                                    <input id="q" class="search_input" type="text" name="q" value="" title="Search Agiliq Blog" placeholder="Search"/>                                  
+									<input class="submit" type="submit" value="Search"/>
                                 </fieldset>
                             </form>
+							
                         </div>
                         <div class="catogories-widget">
                             <h3>Recent Posts</h3>

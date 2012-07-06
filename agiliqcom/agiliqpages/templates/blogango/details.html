@@ -70,11 +70,10 @@
 	<form class="comment" action="." method="post">
         {% csrf_token %}
             <fieldset>
-                <legend>Post a comment</legend>
-                Name : {{comment_form.name.errors}}<br/> {{comment_form.name}} <br/>
-	            Email : {{comment_form.email.errors}} <br/> {{comment_form.email}} <br/>
-	            Your site url: {{comment_form.url.errors}} <br/> {{comment_form.url}} <br/>
-                Comment : {{comment_form.text.errors}} <br/> {{comment_form.text}} <br/>
+                Name :{{comment_form.name}} {{comment_form.name.errors}} <br/>
+	            Email :{{comment_form.email}} {{comment_form.email.errors}} <br/> 
+	            Your site url: {{comment_form.url}} {{comment_form.url.errors}} <br/> 
+                Comment : {{comment_form.text}}  {{comment_form.text.errors}} <br/> 
                 <input name="button" type="submit"  id="button" value="Comment"  class="but_right"/>
 	        </fieldset>
 	</form>

@@ -1032,7 +1032,6 @@ ul.bullet li{
     height: 60px;
     padding: 0px;
     border: 1px solid #ebebeb;
-    background: url(../images/icons.png) 0 -100px no-repeat;
 }
 .post-format-icon.pencil{
     background: url(../images/icons.png) -48px -100px no-repeat;
@@ -1086,6 +1085,9 @@ ul.bullet li{
     padding-left: 90px;
 }
 .blog .post .tx-content .section h2 {
+    padding-left: 0px;
+}
+.blog .post .tx-content h2 {
     padding-left: 0px;
 }
 .portfolio-details .tags a,

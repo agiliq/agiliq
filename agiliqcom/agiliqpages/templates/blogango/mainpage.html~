@@ -1,10 +1,6 @@
-{% extends 'blogango/base_agiliq.html' %}
+{% extends 'blogango/blog_agiliq.html' %}
 
-{% block breadcrumbs %}
-	<li>Blog</li>
-{% endblock %}
-
-{% block content%}
+{% block posts%}
 
 <!--BLOG POST STARTS-->
 {% for entry in entries %}
@@ -22,18 +18,21 @@
 {% endfor %}  
 <!--BLOG POST ENDS-->
 <div class="clear"></div>
-{% if has_next or has_prev %}
-<div class="pagination"> 
-    <div class="moreinfo">
-        {% if has_next %}
-            <a href='{% url blogango_page page_.next_page_number %}'>&laquo; Previous Entries</a>
-        {% endif %}
-        
-        {% if has_prev %}
-            <span class='right'><a href='{% url blogango_page page_.previous_page_number %}'>Next Entries &raquo;</a></span>
-        {% endif %}
-    </div> 
-</div>
-{% endif %}
+{% endblock posts%}
 
-{% endblock %}
+{% block pagination %}
+{% if has_next or has_prev %}
+
+<div class="pagination">
+	{% if has_next %}
+		<a href='{% url blogango_page page_.next_page_number %}'>&laquo; Previous Entries</a>
+	{% endif %}
+	
+	{% if has_prev %}
+		<span class='right'><a href='{% url blogango_page page_.previous_page_number %}'>Next Entries &raquo;</a></span>
+	{% endif %}
+	<div class="clear"></div>
+</div> 
+
+{% endif %}
+{% endblock pagination %}

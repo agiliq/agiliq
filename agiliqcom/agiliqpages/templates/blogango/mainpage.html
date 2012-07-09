@@ -25,11 +25,11 @@
 
 <div class="pagination">
 	{% if has_next %}
-		<a href='{% url blogango_page page_.previous_page_number %}'>&laquo; Previous Entries</a>
+		<a href='{% url blogango_page page_.next_page_number %}'>&laquo; Previous Entries</a>
 	{% endif %}
 	
 	{% if has_prev %}
-		<span class='right'><a href='{% url blogango_page page_.next_page_number %}'>Next Entries &raquo;</a></span>
+		<span class='right'><a href='{% url blogango_page page_.previous_page_number %}'>Next Entries &raquo;</a></span>
 	{% endif %}
 	<div class="clear"></div>
 </div> 

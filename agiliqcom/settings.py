@@ -152,11 +152,14 @@ LOG_FILE_NAME = logfilename
 
 FLOOD_TIME = 10
 
-HAYSTACK_SITECONF = "dinette.search"
+import os
 
-HAYSTACK_SEARCH_ENGINE = 'whoosh'
-
-HAYSTACK_WHOOSH_PATH = os.path.join(os.path.dirname(os.path.normpath(__file__)),'index.db')
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'PATH': os.path.join(os.path.dirname(__file__), 'whoosh_index'),
+    },
+}
 
 #Site URL
 SITE_URL = "http://agiliq.com/"

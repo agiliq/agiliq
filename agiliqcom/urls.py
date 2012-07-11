@@ -4,6 +4,9 @@ from django.conf import settings
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 from django.views.generic.simple import direct_to_template
+
+from haystack.views import SearchView
+
 admin.autodiscover()
 
 handler500 = 'agiliqpages.views.server_error'
@@ -16,7 +19,11 @@ urlpatterns = patterns('',
 	# (r'^accounts/', include('registration.urls')),
 	(r'^forum/', include('dinette.urls')),
 	(r'^socialauth/', include('socialauth.urls')),
-	(r'^search/', include('haystack.urls')),
+	
+
+    url(r'^$', SearchView(), name='haystack_search'),
+
+	
 	url(r'^blog/', include('blogango.urls')),
   (r'^pystories/', include('pystories.urls')),
 

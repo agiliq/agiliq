@@ -227,6 +227,16 @@ Hyderabad - 500081. India</li>
                         </ul>
                     </div>
                 </div>
+                <div class="four columns">
+                    <div class="catogories-widget">
+                        <h4>Recent Authors</h4>
+                        <ul>
+						{% for recent in recent_authors|slice:':5' %}
+						<li><a href="{% url blogango_author username=recent.created_by__username %}" title= '{{ recent.created_by__first_name }}'>{{ recent.created_by__first_name|capfirst }}</a></li>
+						{% endfor %}
+                        </ul>
+                    </div>
+                </div>
        </div>
         <div id="socket">
             <div class="container">

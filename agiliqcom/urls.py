@@ -16,7 +16,7 @@ urlpatterns = patterns('',
 	# (r'^accounts/', include('registration.urls')),
 	(r'^forum/', include('dinette.urls')),
 	(r'^socialauth/', include('socialauth.urls')),
-	(r'^blog/', include('blogango.urls')),
+	url(r'^blog/', include('blogango.urls')),
   (r'^pystories/', include('pystories.urls')),
 
     # Uncomment the admin/doc line below and add 'django.contrib.admindocs' 

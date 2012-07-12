@@ -19,11 +19,6 @@ urlpatterns = patterns('',
 	# (r'^accounts/', include('registration.urls')),
 	(r'^forum/', include('dinette.urls')),
 	(r'^socialauth/', include('socialauth.urls')),
-	
-
-    url(r'^$', SearchView(), name='haystack_search'),
-
-	
 	url(r'^blog/', include('blogango.urls')),
   (r'^pystories/', include('pystories.urls')),
 

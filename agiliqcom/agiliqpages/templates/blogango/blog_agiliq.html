@@ -1,5 +1,4 @@
 {% load blogango_filters analytics %}
-
 {% blogango_extra_context %}
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
@@ -7,59 +6,43 @@
 <html lang="en"> <!--<![endif]-->
 <head>
 	<title>{% block title %} {% endblock %}</title>
-    
 	<!-- Google Web Fonts
   ================================================== -->
-  
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,700,700italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Arvo:400,700,400italic' rel='stylesheet' type='text/css'>
-
-
     {% load compress %}
-        <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css">
     {% compress css %}
 	<!-- CSS
   ================================================== -->
-  
+    <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/jquery-ui.css"> 
 	<link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/base.css">
 	<link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/skeleton.css">
 	<link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/layout.css">
     <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/buttons.css">
-
     <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/jquery-ui-fusion.css">
     <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/text.css">
     <link href="{{ MEDIA_URL }}blogango/css/prettify.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/application.css">
-    
     <!-- button styles -->
     <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/button-color.css">
     <!-- button styles END -->
-    
     <!-- use if light background -->
     <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/light-bg.css">
     <!-- use if light background END -->
-    
     <!-- skin -->
     <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/skin/unitedNationsBlue.css">
-
     <!-- skin END -->
-    
     <!-- pattern bg -->
     <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/pattern-bg/white_pattern_02.css">
-    
     <!-- pattern bg END -->
-    
     <!-- bg image-->
     <link rel="stylesheet" href="{{ MEDIA_URL }}blogango/assets/css/background.css">
     <!-- bg imeage END -->
-    
     {% endcompress %}
-
 
 	<!-- Favicons
 	================================================== -->
 	<link rel="shortcut icon" href="{{ MEDIA_URL }}blogango/assets/images/favicon.png">
-    
 
 	<!-- JS
 	================================================== -->
@@ -68,13 +51,10 @@
         google.load("jquery", "1.5.2");
         google.load("jqueryui", "1.8.15");
     </script>
-    {% compress js %}
-
-    
+    {% compress js %}    
     <!-- footer icons hoverEffects() -->
     <script type="text/javascript" src="{{ MEDIA_URL }}blogango/assets/js/jquery.animate-colors-min.js"></script>  
     <!-- for footer icons  hoverEffects() 
-        
     <!-- HoverAlls -->
     <link rel="stylesheet" type="text/css" media="screen" href="{{ MEDIA_URL }}blogango/assets/css/fusionHoverAlls.css"/>
     <link rel="stylesheet" type="text/css" media="screen" href="{{ MEDIA_URL }}blogango/assets/hoveralls/css/hoveralls.css"/>
@@ -82,23 +62,19 @@
     <script type="text/javascript" src="{{ MEDIA_URL }}blogango/assets/hoveralls/js/jquery.hoveralls.min.js"></script>
     <script type="text/javascript" src="{{ MEDIA_URL }}blogango/assets/hoveralls/js/jquery.hoveralls-functions.js"></script>
     <!-- HoverAlls END-->
-    
     <!-- custom theme functions -->
     <script src="{{ MEDIA_URL }}blogango/assets/js/navigation.function.js"></script>
     <script src="{{ MEDIA_URL }}blogango/assets/js/functions.js"></script>
     <!-- custom theme functions END -->
-    
         <script type="text/javascript">
         function pretty_print(){
             $(document).ready(function() {
-
         // add prettyprint class to all <pre></pre> blocks
         var prettify = false;
         $("pre").each(function() {
             $(this).addClass('prettyprint');
             prettify = true;
         });
-
         // if code blocks were found, bring in the prettifier ...
         if ( prettify ) {
             $.getScript("http://media.agiliq.com/blogango/js/prettify.js", function() { prettyPrint() });
@@ -106,7 +82,6 @@
             });
         }
     </script>
-    
     <script type="text/javascript">
 		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
@@ -119,8 +94,6 @@
 		catch(err) {}
 	</script>
 	{% endcompress %}
-
-	
 </head>
 <body onload="pretty_print()">
 	<!-- Primary Page Layout

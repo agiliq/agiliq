@@ -77,12 +77,20 @@ def render_rest(markup):
     parts = publish_parts(source=markup, writer_name="html4css1")
     return parts["fragment"]
 
-MARKUP_FIELD_TYPES = (
-    ('markdown', markdown.markdown),
-    ('ReST', render_rest),
-)
+#MARKUP_FIELD_TYPES = (
+#    ('markdown', markdown.markdown),
+#    ('ReST', render_rest),
+#)
 
-MARKUP_RENDERERS = []
+#MARKUP_RENDERERS = []
+
+from markupfield.markup import DEFAULT_MARKUP_TYPES
+from dinette.libs.postmarkup import render_bbcode
+
+DEFAULT_MARKUP_TYPES.append(('bbcode', render_bbcode))
+MARKUP_RENDERERS = DEFAULT_MARKUP_TYPES
+
+DEFAULT_MARKUP_TYPE = "markdown"
 
 TWITTER_API_USER = 'agiliqtest'
 TWITTER_API_PASSW = ''

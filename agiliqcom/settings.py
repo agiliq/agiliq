@@ -56,7 +56,7 @@ SECRET_KEY = 'os683(ah9+!==97gy3e9=81d=o(gs&!=#^2!&538sc%@#$hhu*'
 TEMPLATE_LOADERS = (
 	'django.template.loaders.app_directories.Loader',
     'django.template.loaders.filesystem.Loader',
-    
+
 #     'django.template.loaders.eggs.Loader',
 )
 
@@ -108,18 +108,18 @@ INSTALLED_APPS = (
     'taggit',
     #'dinette',
     'socialauth',
-    'openid_consumer',    
+    'openid_consumer',
     'sorl.thumbnail',
     'pagination',
     'south',
     'google_analytics',
     'pystories',
     'haystack',
-	# 'registration',    
+	# 'registration',
 )
 
 SEND_BROKEN_LINK_EMAILS = False
-EMAIL_SUBJECT_PREFIX = '[Agiliq] ' 
+EMAIL_SUBJECT_PREFIX = '[Agiliq] '
 
 DEFAULT_FROM_EMAIL = 'Agiliq.com <webmaster@agiliq.com>'
 # The e-mail address that error messages come from
@@ -166,4 +166,5 @@ SITE_URL = "http://agiliq.com/"
 
 # FEED_URL = 'http://feeds.feedburner.com/uswarearticles'
 
-from localsettings import *
+
+#from localsettings import *

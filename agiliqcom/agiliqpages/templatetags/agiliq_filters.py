@@ -24,7 +24,9 @@ class ExtraContext(template.Node):
         pass
 
     def render(self, context):
-        testimonials = Testimonial.objects.filter(contact__testimonial__isnull=False).order_by('?')
+        testimonials = Testimonial.objects.\
+                filter(contact__testimonial__isnull=False,
+                    contact__client_company__is_active=True).order_by('?')
         hire_us = get_content_or_none(slug='hire-us')
         our_code = get_content_or_none(slug='our-code')
 

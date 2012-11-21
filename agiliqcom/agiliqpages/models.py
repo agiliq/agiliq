@@ -42,7 +42,7 @@ class Testimonial(models.Model):
 
 class ClientManager(models.Manager):
     def get_query_set(self, *args, **kwargs):
-        return super(ClientManager, self).get_query_set().filter(is_active=True)
+        return super(ClientManager, self).get_query_set(*args, **kwargs).filter(is_active=True)
 
 class Client(models.Model):
 	name = models.CharField(max_length=100)

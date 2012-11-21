@@ -1,3 +1,4 @@
+import datetime
 
 from django import template
 
@@ -46,7 +47,9 @@ class ExtraContext(template.Node):
                 'extra_header': extra_header,
                 'extra_footer': extra_footer,
                 'after_open_body_tag': after_open_body_tag,
-                'after_close_body_tag': after_close_body_tag}
+                'after_close_body_tag': after_close_body_tag,
+                'today': datetime.datetime.today(),
+                }
         context.update(extra_context)
         return ''
 

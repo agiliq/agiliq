@@ -25,20 +25,20 @@ def contact_us(request, template):
 		form = ContactUsForm(request.POST)
 		if form.is_valid():
 			form.save()
-			manager_message = render_to_string('agiliqpages/contact.txt', 
-											   {'name' : form.cleaned_data['name'], 
-											    'email' : form.cleaned_data['email'], 
+			manager_message = render_to_string('agiliqpages/contact.txt',
+											   {'name' : form.cleaned_data['name'],
+											    'email' : form.cleaned_data['email'],
 											    'query' : form.cleaned_data['message']})
 			send_mail('Contact from Agiliq.com', manager_message, form.cleaned_data["email"], ['hello@agiliq.com'], fail_silently=False)
-			
+
 			customer_message = render_to_string('agiliqpages/contact_us_confirmation.txt', {})
 			send_mail('Thank you for contacting www.agiliq.com', customer_message, settings.DEFAULT_FROM_EMAIL, [form.cleaned_data['email']])
 			return redirect(reverse('agiliqpages_thankyou'))
 	else:
 		form = ContactUsForm()
-	return render_to_response(template, 
-							  {'form': form, 
-							   'sitepage': 'contactus'}, 
+	return render_to_response(template,
+							  {'form': form,
+							   'sitepage': 'contactus'},
 							  RequestContext(request))
 
 
@@ -46,10 +46,10 @@ def contact_us(request, template):
 def our_work(request, template):
 	products = Project.objects.all()
 	clients = Client.objects.all()
-	return render_to_response(template, 
-	                          {'products': products, 
-	                           'clients': clients, 
-	                           'sitepage': 'ourwork'}, 
+	return render_to_response(template,
+	                          {'products': products,
+	                           'clients': clients,
+	                           'sitepage': 'ourwork'},
 	                          RequestContext(request))
 
 def server_error(request, template_name='500.html'):

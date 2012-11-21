@@ -185,3 +185,12 @@ fieldset{border:1px solid #DCDCDC; padding:20px;}
 p.right{float:right; text-align:right;}
 
 .quote {font-size:24px;font-family: verdana;}
+
+.footer_links{width:960px; margin:0 auto; text-align: left;}
+.footer_links .footerelement{width:220px; float:left; margin:10px;}
+.footer_links .footerelement h4{ font: bold 14px Helvetica, Arial, sans-serif;
+			color:#3A3A3A; padding: 10px 0;}
+.footer_links .footerelement ul{margin:0px; padding:0px;}
+.footer_links .footerelement ul li{list-style-type:none; margin:0px; padding:0px;}
+.footer_links .footerelement li a{text-decoration:none; padding: 5px 0px; font: normal 14px Helvetica, Arial, sans-serif; color:#3A3A3A;}
+

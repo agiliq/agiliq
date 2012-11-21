@@ -1,13 +1,79 @@
 <div id="footer">
-	<a href="{% url agiliqcom_search %}">Search</a>
-	<a href="{% url agiliqpages_index %}">home</a>
-	<a href="{% url agiliqpages_whoweare %}">who we are</a>
-	<a href="{% url agiliqpages_whatwedo %}">what we do</a>
-	<a href="{% url agiliqpages_ourwork %}">our work</a>
-	<a href="{% url agiliqpages_contactus %}">contact us</a>
-	<a href="{% url blogango_index %}" target="_blank">blog</a>
-	<a href="/jobs/">jobs</a><br/>
+    <div class="footer_links">
+    <div class="footerelement">
+
+        <h4>Contact Us</h4>
+        <ul>
+            <li><span>email :</span>
+                <a href="mailto:hello@agiliq.com">hello@agiliq.com</a>
+            </li>
+            <li>US: +13152854388 | IN: +919949997612</p>
+            </li>
+        </ul>
+    </div>
+
+    <div class="footerelement">
+    <h4>Agiliq</h4>
+    <ul>
+        <li>
+            <a href="{% url agiliqpages_index %}">Home</a>
+        </li>
+        <li>
+            <a href="{% url agiliqpages_ourwork %}">Our Work</a>
+        </li>
+        <li>
+            <a href="{% url agiliqpages_contactus %}">Contact Us</a>
+        </li>
+        <li>
+            <a href="{% url agiliqpages_index %}">Search</a>
+        </li>
+
+    </ul>
+    </div>
+
+    <div class="footerelement">
+    <h4>Read</h4>
+    <ul>
+        <li>
+            <a href="{% url agiliqpages_index %}">Our Blog</a>
+        </li>
+        <li>
+            <a href="{% url agiliqpages_ourwork %}">Django Design Patterns</a>
+        </li>
+        <li>
+            <a href="{% url agiliqpages_contactus %}">Djen of Django</a>
+        </li>
+        <li>
+            <a href="{% url agiliqpages_contactus %}">Contact Us</a>
+        </li>
+
+    </ul>
+    </div>
+
+    <div class="footerelement">
+    <h4>Code</h4>
+    <ul>
+        <li>
+            <a href="https://github.com/agiliq" target="_blank" rel="nofollow">Github</a>
+        </li>
+        <li>
+            <a href="{% url agiliqpages_ourwork %}">Our Work</a>
+        </li>
+        <li>
+            <a href="{% url agiliqpages_contactus %}">Contact Us</a>
+        </li>
+        <li>
+            <a href="{% url agiliqpages_contactus %}">Contact Us</a>
+        </li>
+
+    </ul>
+    </div>
+
+
+
+
     &copy; Agiliq 2009 - {{ today.year }}
+    </div>
 </div>
 
 {% if extra_footer %}

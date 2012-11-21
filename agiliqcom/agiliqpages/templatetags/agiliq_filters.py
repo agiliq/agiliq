@@ -39,8 +39,11 @@ class ExtraContext(template.Node):
         blog_entries = BlogEntry.objects.filter(is_published=True)
         if blog_entries.count():
             blog_entry = blog_entries[0]
+            posts = blog_entries[1:4]
         else:
             blog_entry = None
+            posts = []
+
 
         extra_context = {'hire_us': hire_us,
                 'our_code': our_code,
@@ -50,6 +53,7 @@ class ExtraContext(template.Node):
                 'extra_footer': extra_footer,
                 'after_open_body_tag': after_open_body_tag,
                 'after_close_body_tag': after_close_body_tag,
+                'posts': posts,
                 'today': datetime.datetime.today(),
                 }
         context.update(extra_context)

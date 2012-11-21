@@ -10,10 +10,10 @@ class ContactUs(models.Model):
 	message = models.TextField()
 	created_at = models.DateTimeField(auto_now_add=True)
 	updated_at = models.DateTimeField(auto_now=True)
-	
+
 	class Meta:
 		verbose_name_plural = 'Contacts from web'
-	
+
 	def __unicode__(self):
 		return '%s - %s - %s' % (self.name, self.email, self.company)
 
@@ -24,7 +24,7 @@ class TestimonialManager(models.Manager):
 class Testimonial(models.Model):
     testimonial = models.TextField(null=True, blank=True)
     contact = models.ForeignKey('Contact')
-    
+
     ordering = models.PositiveSmallIntegerField(default=0)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
@@ -39,7 +39,7 @@ class Testimonial(models.Model):
 
     def __unicode__(self):
         return self.testimonial[:30]+" ..."
-        
+
 class ClientManager(models.Manager):
     def get_query_set(self, *args, **kwargs):
         return super(ClientManager, self).get_query_set().filter(is_active=True)
@@ -50,18 +50,18 @@ class Client(models.Model):
 	about = models.TextField()
 	url = models.URLField()
 	is_active = models.BooleanField(default=True)
-	
+
 	default = models.Manager()
 	objects = ClientManager()
-	
+
 	def __unicode__(self):
 		return self.name
-	
+
 class Contact(models.Model):
 	name = models.CharField(max_length=100)
 	email = models.EmailField()
 	client_company = models.ForeignKey('Client', null=True, blank=True)
-	
+
 	def __unicode__(self):
 		return self.name
 
@@ -88,10 +88,10 @@ class TeamMember(models.Model):
     bio = models.TextField()
     photo = models.ImageField(upload_to='people/', null=True, blank=True)
     designation = models.CharField(max_length=100)
-    
+
     user = models.OneToOneField(User, blank=True, null=True)
     tag_line = models.CharField(max_length=255, blank=True, null=True)
-    
+
     twitter = models.URLField(null=True, blank=True)
     linked_in = models.URLField(null=True, blank=True)
 
@@ -125,7 +125,7 @@ class Project(models.Model):
 
 class Whitepaper(models.Model):
     name = models.CharField(max_length=100)
-    details = models.TextField() 
+    details = models.TextField()
     paper =  models.FileField(upload_to='whitepapers/')
 
     ordering = models.PositiveSmallIntegerField(default=0)
@@ -144,18 +144,6 @@ class ContentBlock(models.Model):
 	name = models.CharField(max_length=255)
 	slug = models.SlugField()
 	content = models.TextField()
-	
+
 	def __unicode__(self):
 		return self.name
-
-class Tweet(models.Model):
-    screen_name = models.CharField(max_length=255)
-    text = models.CharField(max_length=150)
-    tweet_id = models.CharField(max_length=50)
-    
-    class Meta:
-        get_latest_by = ('id',)
-        
-    def __unicode__(self):
-        return self.screen_name
-

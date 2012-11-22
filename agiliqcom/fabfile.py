@@ -13,7 +13,7 @@ def git_pull():
     set_user()
     with cd(env.ROOT_PATH):
         run("git pull assembla-repo deploy")
-        run("git checkout assembla-repo deploy")
+        run("git checkout deploy")
 
 def gunicorn_restart():
     set_user()

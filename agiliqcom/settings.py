@@ -1,7 +1,10 @@
-# Django settings for agiliqcom project.
+import os
+SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
+
 
 DEBUG = True
 TEMPLATE_DEBUG = True
+
 
 ADMINS = (
     # ('Your Name', 'your_email@domain.com'),
@@ -25,6 +28,10 @@ LANGUAGE_CODE = 'en-us'
 
 SITE_ID = 1
 
+TEMPLATE_DIRS = (
+    os.path.join(SITE_ROOT, "templates/"),
+    )
+
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
 USE_I18N = True
@@ -35,12 +42,14 @@ USE_L10N = True
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = 'media/'
+MEDIA_ROOT = os.path.join(SITE_ROOT, 'media/')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
 MEDIA_URL = '/site_media/'
+STATIC_URL = "/static/"
+STATIC_ROOT = "/home/shabda/repos/agiliqdotcom/agiliqdotcom/agiliqcom/static/"
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
@@ -66,9 +75,9 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 	'django.core.context_processors.i18n',
 	'django.core.context_processors.media',
 	'django.contrib.messages.context_processors.messages',
-	# 'agiliqpages.context_processors.extra_context',
     'socialauth.context_processors.facebook_api_key',
     'django.core.context_processors.request',
+    'django.core.context_processors.static'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -86,6 +95,12 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'agiliqcom.urls'
 
+STATICFILES_FINDERS = (
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+    'compressor.finders.CompressorFinder',
+    )
+
 
 INSTALLED_APPS = (
     'django.contrib.admin',
@@ -96,9 +111,10 @@ INSTALLED_APPS = (
     'django.contrib.sitemaps',
     'django.contrib.sites',
     'django.contrib.messages',
-	  'django.contrib.humanize',
-	  'django.contrib.markup',
+	'django.contrib.humanize',
+	'django.contrib.markup',
     'django.contrib.flatpages',
+    'django.contrib.staticfiles',
     'agiliqpages',
     'blogango',
     'compressor',
@@ -143,11 +159,10 @@ RANKS_NAMES_DATA = ((30, "Member"), (100, "Senior Member"), (300, 'Star'))
 DINETTE_LOGIN_TEMPLATE = 'dinette/social_login.html'
 
 #LOG_FILE_PATH in django
-LOG_FILE_PATH = "\""+os.path.join(os.path.join(os.path.dirname(os.path.normpath(__file__)),'logs'),"logs.txt")+"\""
-LOG_FILE_PATH2 = "\""+os.path.join(os.path.join(os.path.dirname(os.path.normpath(__file__)),'logs2'),"logs2.txt")+"\""
+LOG_FILE_PATH = "\""+os.path.join(os.path.join(SITE_ROOT,'logs'),"logs.txt")+"\""
 
 #LOG FILE NAME In django
-logfilename =  os.path.join(os.path.dirname(os.path.normpath(__file__)),'logging.conf')
+logfilename =  os.path.join(SITE_ROOT,'logging.conf')
 LOG_FILE_NAME = logfilename
 
 FLOOD_TIME = 10

@@ -1,5 +1,4 @@
-
-{% extends "agiliqpages/agiliq_base.html" %}
+{% extends "agiliqpages/base.html" %}
 
 {% block  title %}
 	{{ block.super }} | Contact us. We would love to hear from you.
@@ -19,23 +18,11 @@
 
 
 {% block content %}
-<div id="pagecontent"><span class="purpletitle">get in touch</span>
-	<div>
-		<div class="address"><br/>
-			<span class="purpletext">Email :</span> <a href="mailto:hello@agiliq.com" class="blacklink">hello@agiliq.com</a><br/>
-			<br/>
-			<span class="purpletext">Speak to us :</span><br/>
-			India: +91- 99499 97612<br/>
-			<br/>
-			<span class="purpletext">Address :</span><br/>
-            Agiliq Info Solutions India Pvt Ltd,<br/>
-            Flat No. 302, Siri Sampada,<br/>
-            Above Food World, Near Madhapur Police Station<br/>
-            Hyderabad - 500081. India 
-		</div>
-		<div class="map"><img src="http://maps.google.com/maps/api/staticmap?zoom=12&size=300x188&maptype=roadmap&markers=color:purple|label:A|17.438895,78.398319&sensor=false" width="300" height="188" alt="Map"></div>
-	</div>
-	<div class="clear"></div>
+<div id="pagecontent"><span class="purpletitle">Get in Touch</span>
+	<p>
+		Ready to build you app? Contact us today.
+	</p>
+
 	<form method='post'>
 	{% csrf_token %}
 	<fieldset>
@@ -60,9 +47,27 @@
 		{{ form.message }}
 		{{ form.message.errors }}
 		<br/>
-		<input name="button" type="submit" class="submitbutton" id="button" value="Submit">
+		<input name="button" type="submit" class="submitbutton" id="button" value="Get started">
 	</fieldset>
 	</form>
+
+	<div class="clear"></div>
+	<div>
+		<div class="address"><br/>
+			<span class="purpletext">Email :</span> <a href="mailto:hello@agiliq.com" class="blacklink">hello@agiliq.com</a><br/>
+			<br/>
+			<span class="purpletext">Speak to us :</span><br/>
+			India: +91- 99499 97612<br/>
+			<br/>
+			<span class="purpletext">Address :</span><br/>
+            Agiliq Info Solutions India Pvt Ltd,<br/>
+            # 302, Siri Sampada,<br/>
+            Kavuri Hills, Near Madhapur Police Station<br/>
+            Hyderabad - 500033.
+            India
+		</div>
+		<div class="map"><img src="http://maps.google.com/maps/api/staticmap?zoom=12&size=300x188&maptype=roadmap&markers=color:purple|label:A|17.438895,78.398319&sensor=false" width="300" height="188" alt="Map"></div>
+	</div>
 </div>
 
 {% endblock %}

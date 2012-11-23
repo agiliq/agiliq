@@ -19,4 +19,34 @@
 <!--	<link href="{{ MEDIA_URL }}css/home.css" rel="stylesheet" type="text/css" />-->
 {% endblock %}
 
-{% block content %} {% endblock %}
+{% block content %}
+    <div id="pagecontent">
+        <span class="hometitle">About Us</span>
+        <p>Agiliq is a app development studio building web and mobile apps.</p>
+        <p>
+        We develop bespoke web applications using Django, Python and Jquery. We build native mobile apps using Phonegap, Sencha and other modern tools.
+        We primarily work with startups, small businesses and other agencies.
+        </p>
+        <p>We love <strong>building amazing apps</strong>. We have <a href="{% url agiliqpages_whatwedo %}">done it in the past</a>. We are doing it right now, and <a href="{% url agiliqpages_contactus %}">we can do it for you</a>.
+        </p>
+        <p>
+            Interested? <a href="{% url agiliqpages_contactus %}">Contact us today.</a>
+        </p>
+    </div>
+{% endblock content %}
+
+{% block extra_content %}
+  <div id="tools">
+    <h4>
+      Tools we use
+    </h4>
+    <img src="{{ STATIC_URL }}tools/django_logo.png">
+    <img src="{{ STATIC_URL }}tools/python_logo.png">
+    <img src="{{ STATIC_URL }}tools/html5_logo.png">
+    <img src="{{ STATIC_URL }}tools/jquery_logo.png">
+    <img src="{{ STATIC_URL }}tools/phonegap_logo.png">
+    <img src="{{ STATIC_URL }}tools/assembla_logo.png">
+    <img src="{{ STATIC_URL }}tools/github_logo.png">
+  </div>
+{% endblock %}
+

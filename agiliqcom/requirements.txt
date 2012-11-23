@@ -1,0 +1,16 @@
+<<<<<<< HEAD
+=======
+django
+django-markupfield
+feedparser
+django-mailer
+django-cms
+django-compressor
+django-blogango
+django-socialauth==0.1.2c
+dinette
+django-buzz
+-e git+git://github.com/montylounge/django-google-analytics.git#egg=django_google_analytics
+MySQL-python
+docutils
+>>>>>>> deploy

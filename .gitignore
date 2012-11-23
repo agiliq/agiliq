@@ -10,4 +10,5 @@ localsettings.py
 *.tmp*~
 *CACHE*
 *.kpf
+static/
 agiliqcom/media/images/blog/

@@ -183,6 +183,14 @@ p.right{float:right; text-align:right;}
 
 .quote {font-size:24px;font-family: verdana;}
 
+#tools{
+	width: 940px;
+	padding: 10px;
+	text-align: center;
+	clear:both;
+
+}
+
 #footer{ clear:both;width:100%;  text-align:center; background-color:#EDEDED;
 	margin:20px 0px 0px 0px; padding:20px 0px 20px 0px;
 	font:12px Helvetica, Arial, sans-serif; color:#767676;

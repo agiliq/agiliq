@@ -2,13 +2,15 @@
     <div class="footer_links">
     <div class="footerelement">
 
-        <h4>Contact Us</h4>
+        <h4>Contact</h4>
         <ul>
-            <li><span>email :</span>
-                <a href="mailto:hello@agiliq.com">hello@agiliq.com</a>
+            <li><span></span>
+                Email: <a href="mailto:hello@agiliq.com">hello@agiliq.com</a>
             </li>
-            <li>US: +13152854388 | IN: +919949997612</p>
-            </li>
+            <li>US: <a href="tel:+13152854388">+13152854388</a></li>
+            <li>IN: <a href="tel:+919949997612">+919949997612</a></li>
+            <li>Skype: <a href="skype:shabda.raaj">shabda.raaj</a></li>
+
         </ul>
     </div>
 
@@ -27,6 +29,9 @@
         <li>
             <a href="{% url agiliqpages_index %}">Search</a>
         </li>
+        <li>
+            <a href="http://github.com/agiliq">Github</a>
+        </li>
 
     </ul>
     </div>
@@ -35,7 +40,13 @@
     <h4>Read</h4>
     <ul>
         <li>
-            <a href="{% url agiliqpages_index %}">Our Blog</a>
+            <a href="{% url agiliqpages_index %}">Blog</a>
+        </li>
+        <li>
+            <a href="/forum/">Forum</a>
+        </li>
+        <li>
+            <a href="/newsletter/">Newsltter</a>
         </li>
         <li>
             <a href="{% url agiliqpages_ourwork %}">Django Design Patterns</a>
@@ -43,36 +54,35 @@
         <li>
             <a href="{% url agiliqpages_contactus %}">Djen of Django</a>
         </li>
-        <li>
-            <a href="{% url agiliqpages_contactus %}">Contact Us</a>
-        </li>
 
     </ul>
     </div>
 
     <div class="footerelement">
-    <h4>Code</h4>
+    <h4>Services</h4>
     <ul>
         <li>
-            <a href="https://github.com/agiliq" target="_blank" rel="nofollow">Github</a>
+            <a href="/django-application-development/">Django development</a>
         </li>
         <li>
-            <a href="{% url agiliqpages_ourwork %}">Our Work</a>
+            <a href="/python-application-development/">Python Development</a>
+        </li
+        <li>
+        <a href="/android-application-development/">Android development </a>
         </li>
         <li>
-            <a href="{% url agiliqpages_contactus %}">Contact Us</a>
+            <a href="/iphone-application-development/">iOS Application Development</a>
         </li>
-        <li>
-            <a href="{% url agiliqpages_contactus %}">Contact Us</a>
-        </li>
+
 
     </ul>
     </div>
 
 
 
-
+    <p>
     &copy; Agiliq 2009 - {{ today.year }}
+    </p>
     </div>
 </div>
 

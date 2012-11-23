@@ -11,15 +11,15 @@ handler500 = 'agiliqpages.views.server_error'
 urlpatterns = patterns('',
     # Example:
     # (r'^agiliqcom/', include('agiliqcom.foo.urls')),
-    
+
     (r'^', include('agiliqpages.urls')),
 	# (r'^accounts/', include('registration.urls')),
 	(r'^forum/', include('dinette.urls')),
 	(r'^socialauth/', include('socialauth.urls')),
-	(r'^blog/', include('blogango.urls')),	
+	(r'^blog/', include('blogango.urls')),
   (r'^pystories/', include('pystories.urls')),
 
-    # Uncomment the admin/doc line below and add 'django.contrib.admindocs' 
+    # Uncomment the admin/doc line below and add 'django.contrib.admindocs'
     # to INSTALLED_APPS to enable admin documentation:
     # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
@@ -34,4 +34,8 @@ if settings.DEBUG or getattr(settings, 'SERVE_MEDIA', False):
     urlpatterns += patterns('django.views.static',
         (r'^site_media/(?P<path>.*)$', 'serve', { 'document_root': settings.MEDIA_ROOT,
                                         'show_indexes': True }),
+
+    )
+    urlpatterns += patterns('django.contrib.staticfiles.views',
+        url(r'^static/(?P<path>.*)$', 'serve'),
     )

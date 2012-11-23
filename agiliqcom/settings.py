@@ -88,7 +88,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.contrib.redirects.middleware.RedirectFallbackMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
-		'dinette.middleware.UserActivity',
+	#'dinette.middleware.UserActivity',
     'openid_consumer.middleware.OpenIDMiddleware',
     'pagination.middleware.PaginationMiddleware'
 )

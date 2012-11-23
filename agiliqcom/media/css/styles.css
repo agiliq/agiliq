@@ -172,9 +172,6 @@ fieldset{border:1px solid #DCDCDC; padding:20px;}
 .address{ clear:both; width:280px; float:left;}
 .map{width:280px; float:right; margin-right:20px;}
 
-#footer{ clear:both;width:100%;  text-align:center; background-color:#EDEDED; margin:20px 0px 0px 0px; padding:20px 0px 20px 0px; font:12px Helvetica, Arial, sans-serif; color:#767676; text-decoration:none; line-height:35px; text-transform:uppercase; }
-#footer a{ font:bold 14px Helvetica, Arial, sans-serif; color:#767676; text-decoration:none; line-height:35px; text-transform:uppercase; padding:0px 10px 0px 10px; }
-#footer a:hover{ font:bold 14px Helvetica, Arial, sans-serif; color:#3A3A3A; text-decoration:none; line-height:35px; text-transform:uppercase; }
 
 .hr{height:1px; border-bottom:1px solid #DCDCDC;}
 .clear{clear:both;}
@@ -186,11 +183,27 @@ p.right{float:right; text-align:right;}
 
 .quote {font-size:24px;font-family: verdana;}
 
+#footer{ clear:both;width:100%;  text-align:center; background-color:#EDEDED;
+	margin:20px 0px 0px 0px; padding:20px 0px 20px 0px;
+	font:12px Helvetica, Arial, sans-serif; color:#767676;
+	text-decoration:none;
+	line-height:25px;
+	}
+#footer a{ font:normal 14px Helvetica, Arial, sans-serif; color:#767676;
+	text-decoration:none; line-height:25px;
+	padding:10px 0px }
+#footer a:hover{ font:normal 14px Helvetica, Arial,
+	sans-serif; color:#3A3A3A; text-decoration:none;
+	line-height:25px;
+	}
+
+
 .footer_links{width:960px; margin:0 auto; text-align: left;}
 .footer_links .footerelement{width:220px; float:left; margin:10px;}
-.footer_links .footerelement h4{ font: bold 14px Helvetica, Arial, sans-serif;
-			color:#3A3A3A; padding: 10px 0;}
+.footer_links .footerelement h4{ font: normal 14px Helvetica, Arial, sans-serif;
+			color:rgb(118, 118, 118); padding: 10px 0;}
 .footer_links .footerelement ul{margin:0px; padding:0px;}
 .footer_links .footerelement ul li{list-style-type:none; margin:0px; padding:0px;}
-.footer_links .footerelement li a{text-decoration:none; padding: 5px 0px; font: normal 14px Helvetica, Arial, sans-serif; color:#3A3A3A;}
+.footer_links .footerelement li a{text-decoration:none; padding: 3px 0px;
+	font: normal 14px Helvetica, Arial, sans-serif; color:#3A3A3A;}
 

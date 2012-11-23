@@ -182,4 +182,4 @@ SITE_URL = "http://agiliq.com/"
 # FEED_URL = 'http://feeds.feedburner.com/uswarearticles'
 
 
-#from localsettings import *
+from localsettings import *

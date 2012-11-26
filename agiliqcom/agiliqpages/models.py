@@ -2,19 +2,19 @@ from django.contrib.auth.models import User
 from django.db import models
 
 class ContactUs(models.Model):
-	name = models.CharField(max_length=75)
-	phone = models.CharField(max_length=20, blank=True, null=True)
-	email = models.EmailField()
-	company = models.CharField(max_length=75, blank=True, null=True)
-	message = models.TextField()
-	created_at = models.DateTimeField(auto_now_add=True)
-	updated_at = models.DateTimeField(auto_now=True)
+    name = models.CharField(max_length=75)
+    phone = models.CharField(max_length=20, blank=True, null=True)
+    email = models.EmailField()
+    company = models.CharField(max_length=75, blank=True, null=True)
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
-	class Meta:
-		verbose_name_plural = 'Contacts from web'
+    class Meta:
+        verbose_name_plural = 'Contacts from web'
 
-	def __unicode__(self):
-		return '%s - %s - %s' % (self.name, self.email, self.company)
+    def __unicode__(self):
+        return '%s - %s - %s' % (self.name, self.email, self.company)
 
 class TestimonialManager(models.Manager):
     def get_query_set(self, *args, **kwargs):
@@ -44,25 +44,28 @@ class ClientManager(models.Manager):
         return super(ClientManager, self).get_query_set(*args, **kwargs).filter(is_active=True)
 
 class Client(models.Model):
-	name = models.CharField(max_length=100)
-	logo = models.ImageField(upload_to='logos/', null=True, blank=True)
-	about = models.TextField()
-	url = models.URLField()
-	is_active = models.BooleanField(default=True)
+    name = models.CharField(max_length=100)
+    logo = models.ImageField(upload_to='logos/', null=True, blank=True)
+    about = models.TextField()
+    url = models.URLField()
+    is_active = models.BooleanField(default=True)
 
-	default = models.Manager()
-	objects = ClientManager()
+    default = models.Manager()
+    objects = ClientManager()
 
-	def __unicode__(self):
-		return self.name
+    class Meta:
+        ordering = ("-is_active", )
+
+    def __unicode__(self):
+        return self.name
 
 class Contact(models.Model):
-	name = models.CharField(max_length=100)
-	email = models.EmailField()
-	client_company = models.ForeignKey('Client', null=True, blank=True)
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    client_company = models.ForeignKey('Client', null=True, blank=True)
 
-	def __unicode__(self):
-		return self.name
+    def __unicode__(self):
+        return self.name
 
 class BlogEntry(models.Model):
     feed_url = models.URLField()
@@ -140,9 +143,9 @@ class Whitepaper(models.Model):
         return self.name
 
 class ContentBlock(models.Model):
-	name = models.CharField(max_length=255)
-	slug = models.SlugField()
-	content = models.TextField()
+    name = models.CharField(max_length=255)
+    slug = models.SlugField()
+    content = models.TextField()
 
-	def __unicode__(self):
-		return self.name
+    def __unicode__(self):
+        return self.name

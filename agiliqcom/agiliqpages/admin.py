@@ -28,6 +28,7 @@ class ContactInline(admin.TabularInline):
 
 class ClientAdmin(admin.ModelAdmin):
     list_display = ["name", "url", "is_active"]
+    list_filter = ['is_active']
     inlines = [ ContactInline ]
 
 admin.site.register(ContentBlock, ContentBlockAdmin)

@@ -29,6 +29,8 @@
     <h6 class="posted_by">By : <a href="{% url blogango_author entry.created_by %}">{{ entry.created_by }}</a>{% if entry.created_by.teammember.tag_line %} - {{ entry.created_by.teammember.tag_line }} {% endif %}</h6>
     {% if post_detail %}
       <p>{{ entry.text|safe }}</p>
+      <hr />
+      <p>Can we help you build amazing apps? <a href="/contactus">Contact us today.</a>
     {% else %}
       <p>{{ entry.text|truncatewords_html:100|safe }} </p>
     {% endif %}

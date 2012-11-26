@@ -8,7 +8,7 @@
 <html>
 <head>
 <title>
-	{% block title %}Agiliq - Building Amazing Webapps - Django Web Development{% endblock %}	
+	{% block title %}{{ block.super }}{% endblock %}
 </title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
@@ -20,11 +20,11 @@
 	<!--jCarousel core stylesheet-->
 	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/jquery.jcarousel.css" />
 	<!--jCarousel skin stylesheet-->
-	
+
 {% endcompress %}
 
 {% block extracss %}
-	
+
 {% endblock %}
 
 {% if extra_header %}
@@ -86,4 +86,4 @@ jQuery(document).ready(function() {
 
 
 </html>
-			
+

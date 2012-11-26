@@ -64,6 +64,12 @@ class Contact(models.Model):
     email = models.EmailField()
     client_company = models.ForeignKey('Client', null=True, blank=True)
 
+    def has_testimonial(self):
+        return bool(self.testimonial_set.count())
+
+    def is_active(self):
+        return self.client_company.is_active
+
     def __unicode__(self):
         return self.name
 

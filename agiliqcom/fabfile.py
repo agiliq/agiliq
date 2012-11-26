@@ -48,5 +48,10 @@ def deploy():
     migrate_db()
     gunicorn_restart()
 
+def quick_deploy():
+    git_pull()
+    gunicorn_restart()
+
+
 if __name__ == "__main__":
     deploy()

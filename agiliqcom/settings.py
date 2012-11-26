@@ -130,7 +130,7 @@ INSTALLED_APPS = (
     'south',
     'google_analytics',
     'pystories',
-    'haystack',
+    #'haystack',
 	# 'registration',
 )
 

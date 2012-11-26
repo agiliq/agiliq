@@ -2,7 +2,7 @@ import os
 SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
 
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = True
 
 
@@ -49,7 +49,7 @@ MEDIA_ROOT = os.path.join(SITE_ROOT, 'media/')
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
 MEDIA_URL = '/site_media/'
 STATIC_URL = "/static/"
-STATIC_ROOT = "/home/shabda/repos/agiliqdotcom/agiliqdotcom/agiliqcom/static/"
+MEDIA_ROOT = os.path.join(SITE_ROOT, 'static/')
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
@@ -63,10 +63,8 @@ SECRET_KEY = 'os683(ah9+!==97gy3e9=81d=o(gs&!=#^2!&538sc%@#$hhu*'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
-	'django.template.loaders.app_directories.Loader',
     'django.template.loaders.filesystem.Loader',
-
-#     'django.template.loaders.eggs.Loader',
+    'django.template.loaders.app_directories.Loader',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -118,11 +116,11 @@ INSTALLED_APPS = (
     'agiliqpages',
     'blogango',
     'compressor',
-	  'mailer',
+	'mailer',
     'pingback',
     'django_xmlrpc',
     'taggit',
-    #'dinette',
+    'dinette',
     'socialauth',
     'openid_consumer',
     'sorl.thumbnail',
@@ -130,8 +128,6 @@ INSTALLED_APPS = (
     'south',
     'google_analytics',
     'pystories',
-    #'haystack',
-	# 'registration',
 )
 
 SEND_BROKEN_LINK_EMAILS = False

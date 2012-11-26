@@ -1,43 +1,28 @@
-
 {% extends "agiliqpages/base.html" %}
 
 {% block  title %}
 	{{ block.super }} | Contact us. We would love to hear from you.
 {% endblock %}
 
-{% block extracss %}
-	<link href="{{ MEDIA_URL }}css/contact.css" rel="stylesheet" type="text/css" charset="utf-8">
-{% endblock %}
+{% block navigation %}
+		<li><a href="/" class="sf-with-ul"><em class="hover" style="width: 67px; display: none; "></em><span>Home</span></a>
+		</li>
+		<li><a href="/ourwork" class="sf-with-ul"><em class="hover" style="width: 99px; display: none; "></em><span>Our Work</span></a>
+		</li>
+		<li><a href="/whoweare" class="sf-with-ul"><em class="hover" style="width: 99px; display: none; "></em><span>Who We Are</span></a>
+		</li>
+		<li><a href="/blog/"><em class="hover" style="width: 60px; display: none; "></em><span>Blog</span></a></li>
+		<li class="current"><a href="/contactus"><em class="hover" style="width: 97px; display: none; "></em><span>Contact Us</span></a></li>
+{% endblock navigation%}
 
-{% block banner %}
-    <div id="title">
-      <h1><span class="black">How can we help you?</span><br/>
-        Mail us at <br/></h1><a href="mailto:hello@agiliq.com" class="mailink">hello@agiliq.com</a>
-    </div>
-    <div id="contactgraphic"></div>
-{% endblock %}
-
-{% block body_ns %}contactbg{% endblock %}
 
 
 {% block content %}
-<div id="pagecontent"><span class="purpletitle">get in touch</span>
-	<div>
-		<div class="address"><br/>
-			<span class="purpletext">Email :</span> <a href="mailto:hello@agiliq.com" class="blacklink">hello@agiliq.com</a><br/>
-			<br/>
-			<span class="purpletext">Speak to us :</span><br/>
-			India: +91- 99499 97612<br/>
-			<br/>
-			<span class="purpletext">Address :</span><br/>
-            Agiliq Info Solutions India Pvt Ltd,<br/>
-            Flat No. 302, Siri Sampada,<br/>
-            Above Food World, Near Madhapur Police Station<br/>
-            Hyderabad - 500081. India 
-		</div>
-		<div class="map"><img src="http://maps.google.com/maps/api/staticmap?zoom=12&size=300x188&maptype=roadmap&markers=color:purple|label:A|17.438895,78.398319&sensor=false" width="300" height="188" alt="Map"></div>
-	</div>
-	<div class="clear"></div>
+<div id="pagecontent"><span class="purpletitle">Get in Touch</span>
+	<p>
+		Ready to build you app? Contact us today.
+	</p>
+
 	<form method='post'>
 	{% csrf_token %}
 	<fieldset>
@@ -62,9 +47,27 @@
 		{{ form.message }}
 		{{ form.message.errors }}
 		<br/>
-		<input name="button" type="submit" class="submitbutton" id="button" value="Submit">
+		<input name="button" type="submit" class="submitbutton" id="button" value="Get started">
 	</fieldset>
 	</form>
+
+	<div class="clear"></div>
+	<div>
+		<div class="address"><br/>
+			<span class="purpletext">Email :</span> <a href="mailto:hello@agiliq.com" class="blacklink">hello@agiliq.com</a><br/>
+			<br/>
+			<span class="purpletext">Speak to us :</span><br/>
+			India: +91- 99499 97612<br/>
+			<br/>
+			<span class="purpletext">Address :</span><br/>
+            Agiliq Info Solutions India Pvt Ltd,<br/>
+            # 302, Siri Sampada,<br/>
+            Kavuri Hills, Near Madhapur Police Station<br/>
+            Hyderabad - 500033.
+            India
+		</div>
+		<div class="map"><img src="http://maps.google.com/maps/api/staticmap?zoom=12&size=300x188&maptype=roadmap&markers=color:purple|label:A|17.438895,78.398319&sensor=false" width="300" height="188" alt="Map"></div>
+	</div>
 </div>
 
 {% endblock %}

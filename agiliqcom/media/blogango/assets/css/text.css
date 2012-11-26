@@ -1,0 +1,78 @@
+/* `Basic HTML
+-------------------------------------------------- */
+body {
+	font-family: 'Arvo', serif;
+}
+/* `headerMeta
+-------------------------------------------------- */
+.meta-left .meta-tweet span,
+#headerMeta{
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+.meta-right span,
+.meta-left span,
+.meta-left .meta{
+	font-family: 'Arvo', serif;
+}
+/* `slogan
+-------------------------------------------------- */
+#slogan {
+	font-family: 'Arvo', serif;
+}
+/* `main
+-------------------------------------------------- */
+.desc,
+.rt-border i{
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+/* `footer
+-------------------------------------------------- */
+#footer{
+    font-family: 'Open Sans', sans-serif;
+}
+#footer h1,
+#footer h2,
+#footer h3,
+#footer h4,
+#footer h5,
+#footer h6,
+#footer .home-overlay-itemTx,
+#footer .post-widget-2 .icons,
+#footer .post-widget .post a.date,
+#footer .post-widget .post a.comments,
+#footer .contact-widget ul li span{
+	font-family: 'Arvo', serif; 
+}
+/* `main+blog
+-------------------------------------------------- */
+
+.portfolio-details .tags a,
+.comment-info,
+.blog.post .tags a,
+.blog.post .info,
+.blog .post .tags,
+.blog .post .info{
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+/* #Buttons
+================================================== */
+.button,
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"]{
+   	font-family: 'Arvo', serif; 
+}
+/* `ui */
+.ui-widget { font-family: 'Arvo', serif;}
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button { font-family: 'Arvo', serif; font-size: 1em; }
+
+/* `ui widgets */
+#footer .ui-widget-content{
+    font-family: 'Open Sans', sans-serif;  
+}
+/* `post tabs widget */
+.post-tabs-widget .tags a{
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+/* `post tabs widget END*/

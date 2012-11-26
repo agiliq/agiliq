@@ -1,0 +1,6 @@
+body{
+    background: url(../../images/bg2.jpg);
+    background-attachment:fixed;
+    background-position: center top;
+    background-repeat: repeat;
+}

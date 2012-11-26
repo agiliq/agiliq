@@ -1,0 +1,140 @@
+/* Hand cursor over navigation elements */
+.unoslider_navigation {
+  cursor: pointer;
+}
+
+/* container which contains navigation and indicator */
+.unoslider_navigation_container {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Tooltip panel */
+.unoslider_caption {
+  position: absolute;
+  right: 60px;
+  bottom: 15px;
+  left: 60px;
+  font-family: "Helvetica neue", Helvetica, Verdana, sans-serif;
+  padding: 10px 0px;
+  width: auto;
+  background-color: black;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
+  opacity: 0.7;
+  color: white;
+  text-align: center;
+  font-size: 14px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+}
+
+/* play, pause, previous and next elements */
+.unoslider_pause, .unoslider_play, .unoslider_left, .unoslider_right {
+  text-indent: -119988px;
+  overflow: hidden;
+  text-align: left;
+  position: absolute;
+  display: block;
+  background: url("basic.png") no-repeat;
+  background-color: black;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+  opacity: 0.5;
+}
+.unoslider_pause:hover, .unoslider_play:hover, .unoslider_left:hover, .unoslider_right:hover {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+  opacity: 0.8;
+}
+
+/* play and pause elements */
+.unoslider_pause, .unoslider_play {
+  height: 46px;
+  width: 46px;
+  margin-top: -23px;
+  margin-left: -23px;
+  top: 50%;
+  left: 50%;
+  -moz-border-radius: 90px;
+  -webkit-border-radius: 90px;
+  -o-border-radius: 90px;
+  -ms-border-radius: 90px;
+  -khtml-border-radius: 90px;
+  border-radius: 90px;
+}
+
+/* previous and next elements */
+.unoslider_left, .unoslider_right {
+  width: 40px;
+  height: 100%;
+}
+
+/* previous */
+.unoslider_left {
+  background-position: 10px center;
+  left: 0;
+}
+
+/* next */
+.unoslider_right {
+  background-position: -52px center;
+  right: 0;
+}
+
+/* pause */
+.unoslider_pause {
+  background-position: -163px 10px;
+}
+
+/* play */
+.unoslider_play {
+  background-position: -110px 10px;
+}
+
+/* bullet indicator */
+.unoslider_indicator {
+  position: absolute;
+  top: 10px;
+  right: 60px;
+  width: 100%;
+  text-align: right;
+}
+.unoslider_indicator a {
+  text-indent: -119988px;
+  overflow: hidden;
+  text-align: left;
+  display: -moz-inline-box;
+  -moz-box-orient: vertical;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  overflow: visible;
+  cursor: pointer;
+  background: black;
+  margin: 3px;
+  width: 12px;
+  height: 12px;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+  opacity: 0.5;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -o-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -khtml-border-radius: 20px;
+  border-radius: 20px;
+}
+.unoslider_indicator a {
+  *display: inline;
+}
+.unoslider_indicator a.unoslider_indicator_active, .unoslider_indicator a:hover {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+  opacity: 0.5;
+  width: 6px;
+  height: 6px;
+  background: white;
+  border: 3px solid black;
+}

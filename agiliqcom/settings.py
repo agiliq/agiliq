@@ -3,7 +3,7 @@ SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
 
 
 DEBUG = True
-TEMPLATE_DEBUG = DEBUG
+TEMPLATE_DEBUG = True
 
 
 ADMINS = (
@@ -88,7 +88,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.contrib.redirects.middleware.RedirectFallbackMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
-		'dinette.middleware.UserActivity',
+	#'dinette.middleware.UserActivity',
     'openid_consumer.middleware.OpenIDMiddleware',
     'pagination.middleware.PaginationMiddleware'
 )
@@ -122,7 +122,7 @@ INSTALLED_APPS = (
     'pingback',
     'django_xmlrpc',
     'taggit',
-    'dinette',
+    #'dinette',
     'socialauth',
     'openid_consumer',
     'sorl.thumbnail',
@@ -167,15 +167,19 @@ LOG_FILE_NAME = logfilename
 
 FLOOD_TIME = 10
 
-HAYSTACK_SITECONF = "dinette.search"
+import os
 
-HAYSTACK_SEARCH_ENGINE = 'whoosh'
-
-HAYSTACK_WHOOSH_PATH = os.path.join(os.path.dirname(os.path.normpath(__file__)),'index.db')
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'PATH': os.path.join(os.path.dirname(__file__), 'whoosh_index'),
+    },
+}
 
 #Site URL
 SITE_URL = "http://agiliq.com/"
 
 # FEED_URL = 'http://feeds.feedburner.com/uswarearticles'
+
 
 from localsettings import *

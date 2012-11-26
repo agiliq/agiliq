@@ -17,7 +17,7 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 	outline: 0;
 	font-size: 100%;
 	vertical-align: baseline;
-	background: transparent;
+	/*background: transparent;*/
 }
 
 ol, ul {
@@ -215,3 +215,7 @@ p.right{float:right; text-align:right;}
 .footer_links .footerelement li a{text-decoration:none; padding: 3px 0px;
 	font: normal 14px Helvetica, Arial, sans-serif; color:#3A3A3A;}
 
+#copyright{
+	clear: both;
+	text-align: center;
+}

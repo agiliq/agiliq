@@ -1,0 +1,69 @@
+/* LayerSlider Layers and Sublayers unique styles */
+
+#layerslider{}
+#layerslider img{}
+#leaf1 {
+	left: 110px;
+	top: -110px;
+}
+
+#leaf2 {
+	left: -20px;
+	top: 230px;
+}
+
+#leaf3 {
+	left: 500px;
+	top: -200px;
+}
+
+#clouds {
+	left: -100px;
+	top: -100px;
+}
+
+#earth {
+	left: 850px;
+	top: -67px;
+}
+
+#l5text1, #l5text2, #l5text3 {
+	width: 120px;
+	padding: 5px;
+	text-align: center;
+	color: #eee;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	background-color: #000;
+	background-color: rgba(255,255,255,.07);
+	font-size: 17px;
+	-webkit-transform: rotate(-30deg); 
+	-moz-transform: rotate(-30deg);	
+}
+
+#l5text1 {
+	left: 250px;
+	top: 120px;
+}
+
+#l5text2 {
+	left: 450px;
+	top: 150px;	
+}
+
+#l5text3 {
+	left: 620px;
+	top: 150px;
+}
+
+.ls-active #earth {
+	-webkit-transition: all 20s ease-in-out;
+	-moz-transition: all 20s ease-in-out;
+	-o-transition: all 20s ease-in-out;
+	-ms-transition: all 20s ease-in-out;	
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+}

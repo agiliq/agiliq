@@ -183,6 +183,15 @@ p.right{float:right; text-align:right;}
 
 .quote {font-size:24px;font-family: verdana;}
 
+ul#blogentry{
+	list-style-type: disc;
+}
+
+strong .blogpostlink{
+	font-size: 14px;
+	padding-bottom: 5px;
+}
+
 #tools{
 	width: 940px;
 	padding: 10px;

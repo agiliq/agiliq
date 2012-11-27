@@ -48,8 +48,13 @@ MEDIA_ROOT = os.path.join(SITE_ROOT, 'media/')
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
 MEDIA_URL = '/site_media/'
+
+
 STATIC_URL = "/static/"
-MEDIA_ROOT = os.path.join(SITE_ROOT, 'static/')
+STATIC_ROOT = os.path.join(SITE_ROOT, 'static/')
+STATICFILES_DIRS = (
+  os.path.join(SITE_ROOT, 'media/'),
+  )
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.

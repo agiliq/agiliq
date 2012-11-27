@@ -1,3 +1,4 @@
+{% load blogango_filters %}
 <div class="comment_block">
   <div class="left_panel">
     <div class="frame_bg">
@@ -29,6 +30,20 @@
     <h6 class="posted_by">By : <a href="{% url blogango_author entry.created_by %}">{{ entry.created_by }}</a>{% if entry.created_by.teammember.tag_line %} - {{ entry.created_by.teammember.tag_line }} {% endif %}</h6>
     {% if post_detail %}
       <p>{{ entry.text|safe }}</p>
+
+    {% related_posts entry as related_posts %}
+    {% if related_posts %}
+      <h4>Related Posts</h4>
+      <ul>
+
+      {% for post in related_posts %}
+          <li>
+              <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+          </li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+
       <hr />
       <p>Can we help you build amazing apps? <a href="/contactus">Contact us today.</a>
     {% else %}

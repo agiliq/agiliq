@@ -99,7 +99,7 @@
         <p>{{ blog_entry.text|truncatewords_html:30|striptags|safe }} <br/>
           <a href="{{ blog_entry.get_absolute_url }}" target="_blank" class="blogpostlink">Read More &raquo; </a> <br/>
           <span class="postdate">{{ blog_entry.created_on|date:'jS N, Y' }}</span></p>
-        <ul>
+        <ul id="blogentry">
           {% for post in posts %}
           <li>
             <a href="{{ post.get_absolute_url }}" class="blogpostlink">{{ post.title }} &raquo;</a>

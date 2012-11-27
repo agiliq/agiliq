@@ -1,15 +1,19 @@
 {% load blogango_filters analytics %}
+{% load compress %}
 {% blogango_extra_context %}
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>{% block title %} {{ blog.title }} {% endblock %}</title>
+{% compress css %}
 <link href="{{ STATIC_URL }}blogango/css/as_blog_styles.css" rel="stylesheet" type="text/css" />
 <link href="{{ STATIC_URL }}blogango/css/prettify.css" rel="stylesheet" type="text/css" />
+{% endcompress %}
 <link href='http://fonts.googleapis.com/css?family=Droid+Serif:regular,bold&subset=latin' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Molengo&subset=latin' rel='stylesheet' type='text/css'>
+
 {% if feed_url %}
     <link rel="alternate" type="application/rss+xml" title="The Agiliq Blog - Django Web Development RSS Feed" href="{{feed_url}}" />
 {% endif %}
@@ -118,8 +122,10 @@
   </div>
   <!--FOOTER CONTAINER ENDS-->
 </div>
+{% compress js %}
 <!--BASE CONTAINER ENDS-->
-<script type="text/javascript" src="{{ STATIC_URL }}blogango/js/jquery.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}blogango/js/jquery.min.js">
+</script>
 <script type="text/javascript">
     function pretty_print(){
         $(document).ready(function() {
@@ -138,6 +144,20 @@
 });
 }
 </script>
-{% analytics %}
+{% endcompress %}
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-367368-15']);
+  _gaq.push(['_trackPageview']);
+  _gaq.push(['_setCustomVar',1, 'Section', 'blog', 3 ]);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
 </body>
 </html>

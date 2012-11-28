@@ -36,6 +36,10 @@ class ClientAdmin(admin.ModelAdmin):
 class TeamMemberAdmin(admin.ModelAdmin):
     list_display = ["name", "active"]
 
+class ProjectAdmin(admin.ModelAdmin):
+    list_display = ['name', 'is_active']
+    list_editable = ['is_active']
+
 admin.site.register(ContentBlock, ContentBlockAdmin)
 
 admin.site.register(BlogEntry)
@@ -43,6 +47,6 @@ admin.site.register(Client, ClientAdmin)
 admin.site.register(Contact, ContactAdmin)
 admin.site.register(Testimonial)
 admin.site.register(ContactUs, ContactUsListAdmin)
-admin.site.register(Project)
+admin.site.register(Project, ProjectAdmin)
 admin.site.register(TeamMember, TeamMemberAdmin)
 admin.site.register(Whitepaper)

@@ -54,7 +54,7 @@ def contact_us(request, template):
 
 @cache_page(settings.CACHE_DURATION)
 def our_work(request, template):
-    products = Project.objects.all()
+    products = Project.objects.filter(is_active=True)
     clients = Client.objects.all()
     return render_to_response(template,
                               {'products': products,

@@ -21,36 +21,17 @@
 
 {% block content %}
 <div id="pagecontent">
-    <!-- product starts here -->
-    <span class="redtitle">products</span>
-        <div class="clientblock">
-            <div class="left">
-                <img src="{{ MEDIA_URL }}images/jobboardshq.gif" width="190" height="100" alt="{{ prod.name }}">
-            </div>
-            <div class="right">
-                <h4>jobboardshq</h4>
-                <a href="http://www.jobboardshq.com" target="_blank" class="website">http://www.jobboardshq.com</a>
-                <p class="profilecontent">
-                    Job Board Software lets you launch an easy-to-use advanced
-                    Job Board, while providing the key features to generate revenue
-                    and be successful in the competitive job board market.
-                    JobBoardsHQ is scalable and fully customizable solution to meet your unique Job Board requirements.
-                </p>
-            </div>
-            <div class="clear"></div>
-        </div>
-    <div class="hr"></div>
 
-    <span class="redtitle">our code</span>
+    <span class="redtitle">Our Code</span>
     <p>
-        <img src="{{ MEDIA_URL }}images/logov3.png" width="65" height="29" alt="github">
+        <img src="{{ STATIC_URL }}tools/github_logo.png" alt="Agiliq's code at Github">
         Find our open source code at
         <a href="http://github.com/agiliq" target="_blank" class="redlink">http://github.com/agiliq</a>
     </p>
     <div class="hr"></div>
 
     {% if clients %}
-        <span class="redtitle">our clients</span>
+        <span class="redtitle">Our Clients</span>
     {% endif %}
     <!-- clients starts here -->
     {% for client in clients %}
@@ -80,7 +61,7 @@
     <div class="hr"></div>
 
     {% if products %}
-        <span class="redtitle">earlier projects</span>
+        <span class="redtitle">Our Products</span>
     {% endif %}
     <!-- product starts here -->
     {% for prod in products %}

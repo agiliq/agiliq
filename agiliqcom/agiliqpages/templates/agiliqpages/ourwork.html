@@ -44,7 +44,7 @@
             <div class="right">
                 <h4>{{ client.name }}</h4>
                 <a href="{{ client.url }}" target="_blank" class="website">{{ client.url }}</a>
-                <p class="profilecontent">{{ client.about }}</p>
+                <p class="profilecontent">{{ client.about|safe }}</p>
             </div>
             <div class="clear"></div>
             <br/>
@@ -74,7 +74,7 @@
             <div class="right">
                 <h4>{{ prod.name }}</h4>
                 <a href="{{ prod.url }}" target="_blank" class="website">{{ prod.url }}</a>
-                <p class="profilecontent">{{ prod.blurb }}</p>
+                <p class="profilecontent">{{ prod.blurb|safe }}</p>
             </div>
             <div class="clear"></div>
         </div>

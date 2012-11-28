@@ -133,6 +133,7 @@ INSTALLED_APPS = (
     'south',
     'google_analytics',
     'pystories',
+    'django_wysiwyg',
 )
 
 SEND_BROKEN_LINK_EMAILS = False

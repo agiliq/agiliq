@@ -30,6 +30,7 @@ class ContactInline(admin.TabularInline):
 class ClientAdmin(admin.ModelAdmin):
     list_display = ["name", "url", "is_active"]
     list_filter = ['is_active']
+    change_form_template = "admin/client_change_form.html"
     inlines = [ ContactInline ]
 
 
@@ -39,6 +40,7 @@ class TeamMemberAdmin(admin.ModelAdmin):
 class ProjectAdmin(admin.ModelAdmin):
     list_display = ['name', 'is_active']
     list_editable = ['is_active']
+    change_form_template = "admin/project_change_form.html"
 
 admin.site.register(ContentBlock, ContentBlockAdmin)
 

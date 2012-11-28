@@ -204,6 +204,9 @@ strong a.blogpostlink:hover{
 	clear:both;
 
 }
+#tools img{
+	padding-top: 4px;
+}
 
 #footer{ clear:both;width:100%;  text-align:center; background-color:#EDEDED;
 	margin:20px 0px 0px 0px; padding:20px 0px 20px 0px;

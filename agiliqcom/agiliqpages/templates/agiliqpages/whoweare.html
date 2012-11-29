@@ -11,7 +11,7 @@
 	<p>We are a small, intelligent App development studio with good ideas and lots of experience. We love "Building Amazing Apps", but what really drives us is solving problems and cultivating strong relationships with our clients.</p>
 
 {% for profile in object_list %}
-	<div class="profile" itemscope itemtype="http://data-vocabulary.org/Person">
+	<div class="profile" itemscope itemtype="http://schema.org/Person">
 		<div class="left">
 			{% if profile.photo %}
 				{% thumbnail profile.photo "130x129" as im %}

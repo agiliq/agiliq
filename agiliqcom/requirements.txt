@@ -12,3 +12,4 @@ django-buzz
 MySQL-python
 docutils
 taggit
+django-wysiwyg

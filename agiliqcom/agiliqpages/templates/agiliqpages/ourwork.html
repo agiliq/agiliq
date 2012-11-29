@@ -73,7 +73,7 @@
             </div>
             <div class="right">
                 <h4>{{ prod.name }}</h4>
-                <a href="{{ prod.url }}" target="_blank" class="website">{{ prod.url }}</a>
+                <a href="{{ prod.url }}" target="_blank" class="website">{{ prod.url|truncatechars:35 }}</a>
                 <p class="profilecontent">{{ prod.blurb|safe }}</p>
             </div>
             <div class="clear"></div>

@@ -36,6 +36,7 @@ class ClientAdmin(admin.ModelAdmin):
 
 class TeamMemberAdmin(admin.ModelAdmin):
     list_display = ["name", "active"]
+    change_form_template = "admin/team_member_change_form.html"
 
 class ProjectAdmin(admin.ModelAdmin):
     list_display = ['name', 'is_active']

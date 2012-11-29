@@ -120,6 +120,11 @@ class Project(models.Model):
     url = models.URLField()
     logo = models.ImageField(upload_to='project_logos/')
 
+    category = models.CharField(choices=(
+        ('Web App', 'Web App'),
+        ('Android App', 'Android App'),
+        ('iOS App', 'iOS App'),
+        ), max_length=100, default="Web App")
     ordering = models.PositiveSmallIntegerField(default=0)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)

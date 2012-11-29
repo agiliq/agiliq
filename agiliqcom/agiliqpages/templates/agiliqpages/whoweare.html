@@ -11,18 +11,18 @@
 	<p>We are a small, intelligent App development studio with good ideas and lots of experience. We love "Building Amazing Apps", but what really drives us is solving problems and cultivating strong relationships with our clients.</p>
 
 {% for profile in object_list %}
-	<div class="profile">
+	<div class="profile" itemscope itemtype="http://data-vocabulary.org/Person">
 		<div class="left">
 			{% if profile.photo %}
 				{% thumbnail profile.photo "130x129" as im %}
-					<img src="{{ im.url}}" alt="{{ profile.name }}">
+					<img src="{{ im.url}}" alt="{{ profile.name }}" itemprop="photo" />
 				{% endthumbnail %}
 			{% endif %}
 		</div>
 		<div class="right">
-			<h3>{{ profile.name }}</h3>
-			<span class="designation">{{ profile.designation }}</span>
-			<p class="profilecontent">{{ profile.bio|safe }}</p>
+			<h3><span itemprop="name">{{ profile.name }}</span></h3>
+			<span class="designation" itemprop="title">{{ profile.designation }}</span>
+			<p class="profilecontent" itemprop="desc">{{ profile.bio|safe }}</p>
 		</div>
 		<div class="clear"></div>
 	</div>

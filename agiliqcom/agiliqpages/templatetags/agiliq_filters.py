@@ -19,6 +19,12 @@ def get_latest_object_or_none(model):
     except model.DoesNotExist:
         return None
 
+@register.filter
+def get_full_name(user):
+    if user.first_name and user.last_name:
+        return "%s %s" % (user.first_name, user.last_name)
+    return user.username
+
 class ExtraContext(template.Node):
     def __init__(self):
         pass

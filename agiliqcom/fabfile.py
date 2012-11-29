@@ -15,6 +15,13 @@ def git_pull():
         run("git pull assembla-repo deploy")
         run("git checkout deploy")
 
+def install_requirements():
+    set_user()
+    with cd("%s/agiliqcom" % env.ROOT_PATH):
+        with prefix("source ~/envs/agiliq_env/bin/activate"):
+            run("pip install -r reqiirements.txt")
+
+
 def gunicorn_restart():
     set_user()
     with cd(os.path.join("%s/agiliqcom" % env.ROOT_PATH, "pid")):
@@ -43,6 +50,7 @@ def sync_db():
 
 def deploy():
     git_pull()
+    install_requirements()
     collect_static()
     sync_db()
     migrate_db()

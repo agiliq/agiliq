@@ -38,6 +38,13 @@ class TeamMemberAdmin(admin.ModelAdmin):
     list_display = ["name", "active"]
     change_form_template = "admin/team_member_change_form.html"
 
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == "user":
+            kwargs["queryset"] = User.objects.filter(is_staff=True,
+                                is_active=True)
+        return super(TeamMemberAdmin, self).formfield_for_foreignkey(db_field,
+            request, **kwargs)
+
 class ProjectAdmin(admin.ModelAdmin):
     list_display = ['name', 'is_active']
     list_editable = ['is_active']

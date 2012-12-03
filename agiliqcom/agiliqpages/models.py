@@ -94,7 +94,9 @@ class BlogEntry(models.Model):
 class TeamMember(models.Model):
     name = models.CharField(max_length=100)
     bio = models.TextField()
-    photo = models.ImageField(upload_to='people/', null=True, blank=True)
+    photo = models.ImageField(upload_to='people/', null=True, blank=True,
+        help_text="Provide a high resolution square image."
+        "Will be resized as needed.")
     designation = models.CharField(max_length=100)
 
     user = models.OneToOneField(User, blank=True, null=True)

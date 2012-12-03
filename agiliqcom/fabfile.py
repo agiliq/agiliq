@@ -5,9 +5,33 @@ import os, getpass
 env.warn_only = True
 env.hosts = ['agiliq@agiliq.com']
 
+
 def set_user():
     env.user_home = "/home/%s" % env.user
     env.ROOT_PATH = "%s/envs/agiliq_env/src/agiliqdotcom" % env.user_home
+
+def get_books():
+    set_user()
+    with cd(env.ROOT_PATH):
+        run("mkdir book_sources")
+        with cd("book_sources"):
+            run("mkdir output")
+            run("mkdir themes")
+            run("git clone git://github.com/agiliq/django-design-patterns.git")
+            run("git clone git://github.com/agiliq/djenofdjango.git")
+            with prefix("source ~/envs/agiliq_env/bin/activate"):
+                with cd("django-design-patterns"):
+                    run("make html")
+                    run("mv build/html ../output/djangodesignpatterns")
+
+                with cd("djenofdjango/src"):
+                    run("make html")
+                    run("mv build/html ../../output/djenofdjango")
+
+                with cd("themes"):
+                    run("git clone git://github.com/agiliq/Fusion_Sphinx.git")
+
+
 
 def git_pull():
     set_user()

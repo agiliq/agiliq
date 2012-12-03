@@ -5,7 +5,6 @@ markdown
 django-mailer
 django-compressor
 django-blogango
-django-socialauth==0.1.2c
 dinette
 django-buzz
 MySQL-python

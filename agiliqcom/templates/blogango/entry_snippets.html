@@ -6,7 +6,7 @@
   <div class="left_panel">
     <div class="frame_bg">
         {% if entry.created_by.teammember.photo %}
-          {% thumbnail entry.created_by.teammember.photo "71x72" as im %}
+          {% thumbnail entry.created_by.teammember.photo "71x72" quality=99 as im %}
             <img src="{{ im.url }}" height="72" alt="{{ entry.created_by }}" />
           {% endthumbnail %}
         {% else %}

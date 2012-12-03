@@ -14,7 +14,7 @@
 	<div class="profile" itemscope itemtype="http://schema.org/Person">
 		<div class="left">
 			{% if profile.photo %}
-				{% thumbnail profile.photo "130x129" as im %}
+				{% thumbnail profile.photo "130x129" quality=99 as im %}
 					<img src="{{ im.url}}" alt="{{ profile.name }}" itemprop="photo" />
 				{% endthumbnail %}
 			{% endif %}

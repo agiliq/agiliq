@@ -39,7 +39,7 @@
             <div class="left">
                 {% if client.logo %}
 
-                    {% thumbnail client.logo "190x100" as im %}
+                    {% thumbnail client.logo "190x100" quality=99 as im %}
                     <img src="{{ im.url }}" width="190" height="100" alt="{{ client.name }}">
                     {% endthumbnail %}
                 {% endif %}
@@ -71,7 +71,7 @@
         <div class="clientblock">
             <div class="left">
                 {% if prod.logo %}
-                    {% thumbnail prod.logo "190x100" as im %}
+                    {% thumbnail prod.logo "190x100" quality=99 as im %}
                         <img src="{{ im.url }}" width="190" height="100" alt="{{ prod.name }}">
                     {% endthumbnail %}
                 {% endif %}

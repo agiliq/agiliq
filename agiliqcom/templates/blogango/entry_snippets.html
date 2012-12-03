@@ -1,11 +1,14 @@
 {% load blogango_filters %}
 {% load agiliq_filters %}
+{% load thumbnail %}
 <article itemscope itemtype="http://schema.org/BlogPosting">
 <div class="comment_block">
   <div class="left_panel">
     <div class="frame_bg">
         {% if entry.created_by.teammember.photo %}
-            <img src="{{ entry.created_by.teammember.photo.url }}" width="71" height="72" alt="{{ entry.created_by }}" />
+          {% thumbnail entry.created_by.teammember.photo "71x72" as im %}
+            <img src="{{ im.url }}" height="72" alt="{{ entry.created_by }}" />
+          {% endthumbnail %}
         {% else %}
             <img src="{{ STATIC_URL }}blogango/images/person_default.jpg" width="71" height="72" alt="{{ entry.created_by }}" />
         {% endif %}

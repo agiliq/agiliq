@@ -1,5 +1,5 @@
-
 {% extends "agiliqpages/base.html" %}
+{% load thumbnail %}
 
 {% block  title %}
     {{ block.super }} | Our work. We love technology, and you would love what we can build with it.
@@ -38,7 +38,10 @@
         <div class="clientblock">
             <div class="left">
                 {% if client.logo %}
-                    <img src="{{ client.logo.url }}" width="190" height="100" alt="{{ client.name }}">
+
+                    {% thumbnail client.logo "190x100" as im %}
+                    <img src="{{ im.url }}" width="190" height="100" alt="{{ client.name }}">
+                    {% endthumbnail %}
                 {% endif %}
             </div>
             <div class="right">

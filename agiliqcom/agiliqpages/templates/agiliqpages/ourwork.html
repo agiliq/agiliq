@@ -71,7 +71,9 @@
         <div class="clientblock">
             <div class="left">
                 {% if prod.logo %}
-                    <img src="{{ prod.logo.url }}" width="190" height="100" alt="{{ prod.name }}">
+                    {% thumbnail prod.logo "190x100" as im %}
+                        <img src="{{ im.url }}" width="190" height="100" alt="{{ prod.name }}">
+                    {% endthumbnail %}
                 {% endif %}
             </div>
             <div class="right">

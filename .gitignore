@@ -9,5 +9,6 @@ logs/*
 localsettings.py
 *.tmp*~
 *CACHE*
+media/
 static/
 agiliqcom/media/images/blog/

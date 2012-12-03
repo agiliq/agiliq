@@ -90,7 +90,6 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.contrib.redirects.middleware.RedirectFallbackMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
-	#'dinette.middleware.UserActivity',
     'openid_consumer.middleware.OpenIDMiddleware',
     'pagination.middleware.PaginationMiddleware'
 )
@@ -117,19 +116,22 @@ INSTALLED_APPS = (
 	'django.contrib.markup',
     'django.contrib.flatpages',
     'django.contrib.staticfiles',
+
+    #Our Apps
     'agiliqpages',
     'blogango',
+    'dinette',
+    'pystories',
+
+    #Third Party apps
     'compressor',
 	'mailer',
     'pingback',
     'django_xmlrpc',
     'taggit',
-    'dinette',
     'sorl.thumbnail',
     'pagination',
     'south',
-    'google_analytics',
-    'pystories',
     'django_wysiwyg',
 )
 
@@ -140,15 +142,9 @@ DEFAULT_FROM_EMAIL = 'Agiliq.com <webmaster@agiliq.com>'
 # The e-mail address that error messages come from
 SERVER_EMAIL = 'developer@agiliq.com'
 
-TWITTER_FOLLOW = ('agiliqdotcom', 'uswaretech')
-
-TWITTER_API_USER = 'agiliqtest'
-TWITTER_API_PASSW = ''
-
 CACHE_DURATION = 60 * 60 * 24
 
 # Dinette Settings
-import os
 from django.conf import global_settings
 
 AUTH_PROFILE_MODULE = 'dinette.DinetteUserProfile'
@@ -166,14 +162,6 @@ LOG_FILE_NAME = logfilename
 
 FLOOD_TIME = 10
 
-import os
-
-HAYSTACK_CONNECTIONS = {
-    'default': {
-        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
-        'PATH': os.path.join(os.path.dirname(__file__), 'whoosh_index'),
-    },
-}
 
 #Site URL
 SITE_URL = "http://agiliq.com/"

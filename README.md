@@ -15,3 +15,5 @@ How to use this
 
 1. Clone this repo.
 2. mkdir logs
+3. cp localsettings.example.py localsettings.py
+4.

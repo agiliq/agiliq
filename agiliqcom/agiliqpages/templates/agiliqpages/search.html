@@ -13,12 +13,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 {% compress css %}
-    <link rel="stylesheet" href="{{ STATIC_URL }}css/skin.css" type="text/css" />
-    <link rel="stylesheet" href="{{ STATIC_URL }}css/home.css" type="text/css" />
-    <link rel="stylesheet" href="{{ STATIC_URL }}css/styles.css" type="text/css" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}agiliqpages/css/skin.css" type="text/css" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}agiliqpages/css/home.css" type="text/css" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}agiliqpages/css/styles.css" type="text/css" />
 
 	<!--jCarousel core stylesheet-->
-	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/jquery.jcarousel.css" />
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}agiliqpages/css/jquery.jcarousel.css" />
 	<!--jCarousel skin stylesheet-->
 
 {% endcompress %}
@@ -41,7 +41,7 @@
 <div id="maincontainer">
   <!--HEADER STARTS HERE-->
   <div id="header">
-    <div id="logo"><a href="/"><img src="{{ STATIC_URL }}images/agiliq_logo.png" alt="Agiliq - Building Amazing Webapps - Django Web Development" width="264" border="0"></a></div>
+    <div id="logo"><a href="/"><img src="{{ STATIC_URL }}agiliqpages/images/agiliq_logo.png" alt="Agiliq - Building Amazing Webapps - Django Web Development" width="264" border="0"></a></div>
     {% include "agiliqpages/menu_frag.html" %}
   </div>
   <!--HEADER ENDS HERE-->
@@ -67,11 +67,11 @@
 
 {% compress js %}
 <!-- jQuery library-->
-<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}agiliqpages/js/jquery-1.3.2.min.js"></script>
 <!-- jCarousel library -->
-<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.jcarousel.pack.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}agiliqpages/js/jquery.jcarousel.pack.js"></script>
 <!-- jCarousel library -->
-<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-ui-1.7.2.custom.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}agiliqpages/js/jquery-ui-1.7.2.custom.min.js"></script>
 <script type="text/javascript">
 
 jQuery(document).ready(function() {

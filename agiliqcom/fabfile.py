@@ -36,6 +36,13 @@ def collect_static():
         with prefix("source ~/envs/agiliq_env/bin/activate"):
             run("python manage.py collectstatic")
 
+def thumbnail_reset():
+    set_user()
+    with cd("%s/agiliqcom" % env.ROOT_PATH):
+        with prefix("source ~/envs/agiliq_env/bin/activate"):
+            run("python manage.py thumbnail clear")
+            run("python manage.py thumbnail cleanup")
+
 def migrate_db():
     set_user()
     with cd("%s/agiliqcom" % env.ROOT_PATH):
@@ -52,6 +59,7 @@ def deploy():
     git_pull()
     install_requirements()
     collect_static()
+    thumbnail_reset()
     sync_db()
     migrate_db()
     gunicorn_restart()

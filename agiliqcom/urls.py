@@ -11,7 +11,6 @@ handler500 = 'agiliqpages.views.server_error'
 urlpatterns = patterns('',
     url(r'^', include('agiliqpages.urls')),
 	url(r'^forum/', include('dinette.urls')),
-	url(r'^socialauth/', include('socialauth.urls')),
 	url(r'^blog/', include('blogango.urls')),
     url(r'^pystories/', include('pystories.urls')),
 

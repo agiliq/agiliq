@@ -7,10 +7,11 @@ Posts by {{ author|get_full_name }} - {{ block.super }}
 
 {% block breadcrumbs %}
     <li><a href="{% url blogango_index %}" rel="nofollow">Blog</a></li>
-    <li>Author: {{ author }}</li>
+    <li>Author: {{ author|get_full_name }}</li>
 {% endblock %}
 
 {% block content %}
+    <h1></h1>
     {% for entry in author_posts %}
         {% include 'blogango/entry_snippets.html' %}
     {% empty %}

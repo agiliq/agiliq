@@ -109,7 +109,7 @@ class TeamMember(models.Model):
     active = models.NullBooleanField()
     class Meta:
         get_latest_by = ('ordering', )
-        ordering = ('ordering', )
+        ordering = ('-active', 'ordering', )
 
     def __unicode__(self):
         return self.name

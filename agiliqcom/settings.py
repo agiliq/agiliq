@@ -160,6 +160,9 @@ RANKS_NAMES_DATA = ((30, "Member"), (100, "Senior Member"), (300, 'Star'))
 
 DINETTE_LOGIN_TEMPLATE = 'dinette/social_login.html'
 
+FLOOD_TIME = 10
+
+
 #LOG_FILE_PATH in django
 LOG_FILE_PATH = "\""+os.path.join(os.path.join(SITE_ROOT,'logs'),"logs.txt")+"\""
 
@@ -167,7 +170,30 @@ LOG_FILE_PATH = "\""+os.path.join(os.path.join(SITE_ROOT,'logs'),"logs.txt")+"\"
 logfilename =  os.path.join(SITE_ROOT,'logging.conf')
 LOG_FILE_NAME = logfilename
 
-FLOOD_TIME = 10
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse'
+        }
+    },
+    'handlers': {
+        'mail_admins': {
+            'level': 'ERROR',
+            'filters': ['require_debug_false'],
+            'class': 'django.utils.log.AdminEmailHandler'
+        }
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+    }
+}
+
 
 
 #Site URL

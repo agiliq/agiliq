@@ -20,6 +20,9 @@ def get_books():
             run("git clone git://github.com/agiliq/django-design-patterns.git")
             run("git clone git://github.com/agiliq/djenofdjango.git")
             with prefix("source ~/envs/agiliq_env/bin/activate"):
+                with cd("themes"):
+                    run("git clone git://github.com/agiliq/Fusion_Sphinx.git")
+                    run("mv Fusion_Sphinx agiliq")
                 with cd("django-design-patterns"):
                     run("make html")
                     run("mv build/html ../output/djangodesignpatterns")
@@ -28,8 +31,11 @@ def get_books():
                     run("make html")
                     run("mv build/html ../../output/djenofdjango")
 
-                with cd("themes"):
-                    run("git clone git://github.com/agiliq/Fusion_Sphinx.git")
+
+            run("rm -r ../static/books/djangodesignpatterns/")
+            run("rm -r ../static/books/djenofdjango/")
+            run ("mv output/* ../static/books/")
+        run("rm -rf book_sources")
 
 
 

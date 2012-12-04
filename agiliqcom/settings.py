@@ -131,9 +131,14 @@ INSTALLED_APPS = (
     'taggit',
     'sorl.thumbnail',
     'pagination',
-    'south',
+    #'south',
     'django_wysiwyg',
+    'django_coverage',
+    'django_jenkins'
 )
+
+JENKINS_TASKS = ('django_jenkins.tasks.django_tests',)
+PROJECT_APPS = ('agiliqpages', 'blogango', 'dinette')
 
 CACHES = {
     'default': {
@@ -141,6 +146,8 @@ CACHES = {
         'LOCATION': '127.0.0.1:11211',
     }
 }
+
+BACKEND_ENGINE = "django.contrib.sessions.backends.cache"
 
 SEND_BROKEN_LINK_EMAILS = False
 EMAIL_SUBJECT_PREFIX = '[Agiliq] '
@@ -198,8 +205,6 @@ LOGGING = {
 
 #Site URL
 SITE_URL = "http://agiliq.com/"
-
-# FEED_URL = 'http://feeds.feedburner.com/uswarearticles'
 
 
 from localsettings import *

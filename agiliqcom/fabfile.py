@@ -19,6 +19,7 @@ def get_books():
             run("mkdir themes")
             run("git clone git://github.com/agiliq/django-design-patterns.git")
             run("git clone git://github.com/agiliq/djenofdjango.git")
+            run("git clone git://github.com/agiliq/django-gotchas.git")
             with prefix("source ~/envs/agiliq_env/bin/activate"):
                 with cd("themes"):
                     run("git clone git://github.com/agiliq/Fusion_Sphinx.git")
@@ -26,16 +27,37 @@ def get_books():
                 with cd("django-design-patterns"):
                     run("make html")
                     run("mv build/html ../output/djangodesignpatterns")
-
                 with cd("djenofdjango/src"):
                     run("make html")
                     run("mv build/html ../../output/djenofdjango")
+                with cd("django-gotchas/src"):
+                    run("make html")
+                    run("mv build/html ../../output/djangogotchas")
 
 
             run("rm -r ../static/books/djangodesignpatterns/")
             run("rm -r ../static/books/djenofdjango/")
+            run("rm -r ../static/books/djangogotchas/")
             run ("mv output/* ../static/books/")
         run("rm -rf book_sources")
+
+def build_docs():
+    set_user()
+    run("mkdir doc_sources")
+    with cd("doc_sources"):
+        run("mkdir themes")
+        run("mkdir output")
+        run("git clone git://github.com/agiliq/merchant.git")
+        with cd("themes"):
+            run("git clone git://github.com/agiliq/Fusion_Sphinx.git")
+            run("mv Fusion_Sphinx agiliq")
+        with prefix("source ~/envs/agiliq_env/bin/activate"):
+            with cd("merchant/docs"):
+                run("make html")
+                run("mv build/html ../../output/merchant")
+
+        run("rm -rf ../static/docs/merchant/")
+
 
 
 

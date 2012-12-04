@@ -135,6 +135,13 @@ INSTALLED_APPS = (
     'django_wysiwyg',
 )
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': '127.0.0.1:11211',
+    }
+}
+
 SEND_BROKEN_LINK_EMAILS = False
 EMAIL_SUBJECT_PREFIX = '[Agiliq] '
 

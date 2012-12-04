@@ -16,4 +16,5 @@ sorl-thumbnail
 django-xmlrpc
 django-pingback
 BeautifulSoup
+python-memcached
 Pillow

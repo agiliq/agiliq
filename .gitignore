@@ -11,4 +11,7 @@ localsettings.py
 *CACHE*
 media/
 static/
+htmlcov
+.coverage
+reports/
 agiliqcom/media/images/blog/

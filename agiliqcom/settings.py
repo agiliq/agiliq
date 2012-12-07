@@ -131,7 +131,7 @@ INSTALLED_APPS = (
     'taggit',
     'sorl.thumbnail',
     'pagination',
-    #'south',
+    'south',
     'django_wysiwyg',
     'django_coverage',
     'django_jenkins'

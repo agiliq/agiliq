@@ -43,22 +43,23 @@ def get_books():
 
 def build_docs():
     set_user()
-    run("mkdir doc_sources")
-    with cd("doc_sources"):
-        run("mkdir themes")
-        run("mkdir output")
-        run("git clone git://github.com/agiliq/merchant.git")
-        with cd("themes"):
-            run("git clone git://github.com/agiliq/Fusion_Sphinx.git")
-            run("mv Fusion_Sphinx agiliq")
-        with prefix("source ~/envs/agiliq_env/bin/activate"):
-            with cd("merchant/docs"):
-                run("make html")
-                run("mv build/html ../../output/merchant")
+    with cd(env.ROOT_PATH):
+        run("mkdir doc_sources")
 
-        run("rm -rf ../static/docs/merchant/")
+        with cd("doc_sources"):
+            run("mkdir themes")
+            run("mkdir output")
+            run("git clone git://github.com/agiliq/merchant.git")
+            with cd("themes"):
+                run("git clone git://github.com/agiliq/Fusion_Sphinx.git")
+                run("mv Fusion_Sphinx agiliq")
+            with prefix("source ~/envs/agiliq_env/bin/activate"):
+                with cd("merchant/docs"):
+                    run("make html")
+                    run("mv _build/html ../../output/merchant")
 
-
+            run("rm -rf ../static/docs/merchant/")
+            run("mv output/* ../static/docs/")
 
 
 def git_pull():

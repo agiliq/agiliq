@@ -144,6 +144,9 @@
 <script type="text/javascript" src="{{ STATIC_URL }}agiliqpages/js/jquery.jcarousel.pack.js"></script>
 <script type="text/javascript">
 jQuery(document).ready(function() {
+    jQuery('#mycarousel').jcarousel({
+        scroll: 1
+    });
     jQuery("#banners")
         .jcarousel({
             scroll: 1,

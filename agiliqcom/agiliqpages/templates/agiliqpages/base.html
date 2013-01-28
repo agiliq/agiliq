@@ -46,7 +46,7 @@
   <div id="banner">
   	{% block banner %}
     <div id="title">
-      <ul id="banners" class="jcarousel-skin-banner">
+      <ul id="banners" class="jcarousel-skin-banner" style="visibility: hidden">
         <li>
           <h1>Agile <span class="black">web development </span><br/>
             using <span class="black">Django</span></h1>
@@ -144,13 +144,12 @@
 <script type="text/javascript" src="{{ STATIC_URL }}agiliqpages/js/jquery.jcarousel.pack.js"></script>
 <script type="text/javascript">
 jQuery(document).ready(function() {
-    jQuery('#mycarousel').jcarousel({
-        scroll: 1
-   });
-    jQuery('#banners').jcarousel({
-        scroll: 1,
-        auto: 3
-   });
+    jQuery("#banners")
+        .jcarousel({
+            scroll: 1,
+            auto: 3
+        })
+        .css('visibility', 'visible');
 });
 </script>
 

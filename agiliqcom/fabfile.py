@@ -72,7 +72,7 @@ def install_requirements():
     set_user()
     with cd("%s/agiliqcom" % env.ROOT_PATH):
         with prefix("source ~/envs/agiliq_env/bin/activate"):
-            run("pip install -r reqiirements.txt")
+            run("pip install -r --upgrade reqiirements.txt")
 
 
 def gunicorn_restart():

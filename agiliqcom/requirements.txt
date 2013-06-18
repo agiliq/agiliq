@@ -9,7 +9,7 @@ dinette
 django-buzz
 MySQL-python
 docutils
-django-taggit
+django-taggit==0.9.3
 django-wysiwyg
 django-pagination
 sorl-thumbnail

@@ -23,3 +23,4 @@ django-coverage
 django-jenkins
 south
 -e git+https://github.com/agiliq/Django-Socialauth.git@5770480f26430f98ea95c1fdae74f0e37eceb3ad#egg=django_socialauth-dev
+gunicorn

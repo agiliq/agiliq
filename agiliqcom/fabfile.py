@@ -19,6 +19,8 @@ env.VIRTUALENV_ACTIVATE = "%s/bin/activate" % env.VIRTUALENV_PATH
 env.ROOT_PATH = "%s/agiliq" % env.BASE_PATH
 env.DJANGO_PATH = "%s/agiliqcom" % env.ROOT_PATH
 env.REQUIREMENTS_PATH = "%s/requirements.txt" % env.DJANGO_PATH
+env.GUNICORN_PID = "%s/pid/gunicorn.pid" % env.DJANGO_PATH
+env.NGINX_CONF = "%s/deploy/agiliq.com.conf" % env.DJANGO_PATH
 
 env.activate = "source %s" % env.VIRTUALENV_ACTIVATE
 
@@ -32,12 +34,15 @@ def virtualenv(path=env.DJANGO_PATH):
 
 def setup_virtualenv():
     if not files.exists(env.VIRTUALENV_PATH):
-        run("pip install --upgrade virtualenv")
         run("virtualenv %s" % env.VIRTUALENV_PATH)
 
 
+def setup_nginx():
+    sudo("cp %s /etc/nginx/sites-enabled/" % env.NGINX_CONF)
+
+
 def install_packages():
-    sudo("apt-get install git python-dev libmysqlclient-dev")
+    sudo("apt-get install -y git nginx python-pip python-virtualenv python-dev libmysqlclient-dev")
 
 
 def get_books():
@@ -108,15 +113,15 @@ def install_requirements():
 
 
 def gunicorn_restart():
-    with cd(os.path.join("%s/agiliqcom" % env.ROOT_PATH, "pid")):
-        run("kill `cat gunicorn.pid`")
+    if files.exists(env.GUNICORN_PID):
+            run("kill `cat %s`" % env.GUNICORN_PID)
     with virtualenv():
-        run("gunicorn_django -c gunicorn_cfg.py", pty=False)
+        run("gunicorn_django -c deploy/gunicorn.conf.py", pty=False)
 
 
 def collect_static():
     with virtualenv():
-        run("python manage.py collectstatic")
+        run("python manage.py collectstatic --noinput")
 
 
 def thumbnail_reset():
@@ -132,25 +137,41 @@ def migrate_db():
 
 def sync_db():
     with virtualenv():
-        run("python manage.py syncdb")
+        run("python manage.py syncdb --noinput")
 
 
-def deploy():
+def nginx_restart():
+    sudo("service nginx restart")
+
+
+def provision():
     install_packages()
     git_clone()
     git_pull()
     setup_virtualenv()
+    setup_nginx()
+
+
+def deploy():
     install_requirements()
     collect_static()
     thumbnail_reset()
     sync_db()
     migrate_db()
     gunicorn_restart()
+    nginx_restart()
 
 
 def quick_deploy():
     git_pull()
     gunicorn_restart()
+    nginx_restart()
+
+
+def all():
+    provision()
+    deploy()
+
 
 
 if __name__ == "__main__":

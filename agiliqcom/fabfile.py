@@ -1,17 +1,46 @@
+import os
+import getpass
+
 from fabric.api import *
+from fabric.contrib import files
 from fabric.context_managers import prefix
-import os, getpass
+
+from contextlib import contextmanager as _contextmanager
 
 env.warn_only = True
 env.hosts = ['agiliq@agiliq.com']
 
+env.USER = "agiliq"
+env.HOME = "/home/%s" % env.USER
+env.REPO = "git://github.com/agiliq/agiliq.git"
+env.BASE_PATH = "%s/build" % env.HOME
+env.VIRTUALENV_PATH = "%s/env" % env.HOME
+env.VIRTUALENV_ACTIVATE = "%s/bin/activate" % env.VIRTUALENV_PATH
+env.ROOT_PATH = "%s/agiliq" % env.BASE_PATH
+env.DJANGO_PATH = "%s/agiliqcom" % env.ROOT_PATH
+env.REQUIREMENTS_PATH = "%s/requirements.txt" % env.DJANGO_PATH
 
-def set_user():
-    env.user_home = "/home/%s" % env.user
-    env.ROOT_PATH = "%s/envs/agiliq_env/src/agiliqdotcom" % env.user_home
+env.activate = "source %s" % env.VIRTUALENV_ACTIVATE
+
+
+@_contextmanager
+def virtualenv(path=env.DJANGO_PATH):
+    with cd(path):
+        with prefix(env.activate):
+            yield
+
+
+def setup_virtualenv():
+    if not files.exists(env.VIRTUALENV_PATH):
+        run("pip install --upgrade virtualenv")
+        run("virtualenv %s" % env.VIRTUALENV_PATH)
+
+
+def install_packages():
+    sudo("apt-get install git python-dev libmysqlclient-dev")
+
 
 def get_books():
-    set_user()
     with cd(env.ROOT_PATH):
         run("mkdir book_sources")
         with cd("book_sources"):
@@ -20,7 +49,7 @@ def get_books():
             run("git clone git://github.com/agiliq/django-design-patterns.git")
             run("git clone git://github.com/agiliq/djenofdjango.git")
             run("git clone git://github.com/agiliq/django-gotchas.git")
-            with prefix("source ~/envs/agiliq_env/bin/activate"):
+            with prefix("source %s" % env.VIRTUALENV_ACTIVATE):
                 with cd("themes"):
                     run("git clone git://github.com/agiliq/Fusion_Sphinx.git")
                     run("mv Fusion_Sphinx agiliq")
@@ -33,16 +62,14 @@ def get_books():
                 with cd("django-gotchas/src"):
                     run("make html")
                     run("mv build/html ../../output/djangogotchas")
-
-
             run("rm -r ../static/books/djangodesignpatterns/")
             run("rm -r ../static/books/djenofdjango/")
             run("rm -r ../static/books/djangogotchas/")
-            run ("mv output/* ../static/books/")
+            run("mv output/* ../static/books/")
         run("rm -rf book_sources")
 
+
 def build_docs():
-    set_user()
     with cd(env.ROOT_PATH):
         run("mkdir doc_sources")
 
@@ -53,7 +80,7 @@ def build_docs():
             with cd("themes"):
                 run("git clone git://github.com/agiliq/Fusion_Sphinx.git")
                 run("mv Fusion_Sphinx agiliq")
-            with prefix("source ~/envs/agiliq_env/bin/activate"):
+            with prefix("source %s" % env.VIRTUALENV_ACTIVATE):
                 with cd("merchant/docs"):
                     run("make html")
                     run("mv _build/html ../../output/merchant")
@@ -62,60 +89,64 @@ def build_docs():
             run("mv output/* ../static/docs/")
 
 
+def git_clone():
+    if not files.exists(env.ROOT_PATH):
+        if not files.exists(env.BASE_PATH):
+            run("mkdir -p %s" % env.BASE_PATH)
+        with cd(env.BASE_PATH):
+            run("git clone %s" % env.REPO)
+
+
 def git_pull():
-    set_user()
     with cd(env.ROOT_PATH):
-        run("git pull assembla-repo deploy")
-        run("git checkout deploy")
+        run("git pull")
+
 
 def install_requirements():
-    set_user()
-    with cd("%s/agiliqcom" % env.ROOT_PATH):
-        with prefix("source ~/envs/agiliq_env/bin/activate"):
-            run("pip install -r --upgrade reqiirements.txt")
+    with virtualenv():
+        run("pip install --upgrade -r %s" % env.REQUIREMENTS_PATH)
 
 
 def gunicorn_restart():
-    set_user()
     with cd(os.path.join("%s/agiliqcom" % env.ROOT_PATH, "pid")):
         run("kill `cat gunicorn.pid`")
-    with cd("%s/agiliqcom" % env.ROOT_PATH):
-        with prefix("source ~/envs/agiliq_env/bin/activate"):
-            run("gunicorn_django -c gunicorn_cfg.py", pty=False)
+    with virtualenv():
+        run("gunicorn_django -c gunicorn_cfg.py", pty=False)
+
 
 def collect_static():
-    set_user()
-    with cd("%s/agiliqcom" % env.ROOT_PATH):
-        with prefix("source ~/envs/agiliq_env/bin/activate"):
-            run("python manage.py collectstatic")
+    with virtualenv():
+        run("python manage.py collectstatic")
+
 
 def thumbnail_reset():
-    set_user()
-    with cd("%s/agiliqcom" % env.ROOT_PATH):
-        with prefix("source ~/envs/agiliq_env/bin/activate"):
-            run("python manage.py thumbnail clear")
-            run("python manage.py thumbnail cleanup")
+    with virtualenv():
+        run("python manage.py thumbnail clear")
+        run("python manage.py thumbnail cleanup")
+
 
 def migrate_db():
-    set_user()
-    with cd("%s/agiliqcom" % env.ROOT_PATH):
-        with prefix("source ~/envs/agiliq_env/bin/activate"):
-            run("python manage.py migrate")
+    with virtualenv():
+        run("python manage.py migrate")
+
 
 def sync_db():
-    set_user()
-    with cd("%s/agiliqcom" % env.ROOT_PATH):
-        with prefix("source ~/envs/agiliq_env/bin/activate"):
-            run("python manage.py syncdb")
+    with virtualenv():
+        run("python manage.py syncdb")
+
 
 def deploy():
+    install_packages()
+    git_clone()
     git_pull()
+    setup_virtualenv()
     install_requirements()
     collect_static()
     thumbnail_reset()
     sync_db()
     migrate_db()
     gunicorn_restart()
+
 
 def quick_deploy():
     git_pull()

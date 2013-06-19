@@ -201,7 +201,7 @@ LOGGING = {
     }
 }
 
-
+THUMBNAIL_FORMAT = "PNG"
 
 #Site URL
 SITE_URL = "http://agiliq.com/"

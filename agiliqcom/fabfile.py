@@ -45,6 +45,11 @@ def install_packages():
     sudo("apt-get install -y git nginx python-pip python-virtualenv python-dev libmysqlclient-dev")
 
 
+def configure_django_settings():
+    with cd(env.DJANGO_PATH):
+        run("cp localsettings.py-dist localsettings.py")
+
+
 def get_books():
     with cd(env.ROOT_PATH):
         run("mkdir book_sources")
@@ -150,6 +155,7 @@ def provision():
     git_pull()
     setup_virtualenv()
     setup_nginx()
+    configure_django_settings()
 
 
 def deploy():

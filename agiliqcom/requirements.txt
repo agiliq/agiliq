@@ -1,4 +1,5 @@
 Django==1.4.5
+distribute==0.6.34
 django-markupfield
 feedparser
 markdown

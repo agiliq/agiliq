@@ -43,6 +43,7 @@ def setup_nginx():
 
 def install_packages():
     sudo("apt-get install -y git nginx python-pip python-virtualenv python-dev libmysqlclient-dev")
+    sudo("pip install --upgrade pip virtualenv")
 
 
 def configure_django_settings():
@@ -161,8 +162,8 @@ def provision():
 def deploy():
     install_requirements()
     collect_static()
-    thumbnail_reset()
     sync_db()
+    thumbnail_reset()
     migrate_db()
     gunicorn_restart()
     nginx_restart()

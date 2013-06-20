@@ -21,6 +21,7 @@ env.DJANGO_PATH = "%s/agiliqcom" % env.ROOT_PATH
 env.REQUIREMENTS_PATH = "%s/requirements.txt" % env.DJANGO_PATH
 env.GUNICORN_PID = "%s/pid/gunicorn.pid" % env.DJANGO_PATH
 env.NGINX_CONF = "%s/deploy/agiliq.com.conf" % env.DJANGO_PATH
+env.SUPERVISOR_CONF = "%s/deploy/agiliq.supervisor.conf" % env.DJANGO_PATH
 env.BOOKS_PATH = "%s/books" % env.BASE_PATH
 
 env.activate = "source %s" % env.VIRTUALENV_ACTIVATE
@@ -42,8 +43,12 @@ def setup_nginx():
     sudo("cp %s /etc/nginx/sites-enabled/" % env.NGINX_CONF)
 
 
+def setup_supervisor():
+    sudo("cp %s /etc/supervisor/conf.d/" % env.SUPERVISOR_CONF)
+
+
 def install_packages():
-    sudo("apt-get install -y git nginx python-pip python-virtualenv python-dev python-sphinx libmysqlclient-dev")
+    sudo("apt-get install -y git nginx python-pip python-virtualenv python-dev python-sphinx libmysqlclient-dev supervisor")
     sudo("pip install --upgrade pip virtualenv")
 
 
@@ -62,6 +67,7 @@ def build_book(book):
             run("make html")
             if not files.exists(env.BOOKS_PATH):
                 run("mkdir -p %s" % env.BOOKS_PATH)
+            run("rm -rf %s/%s" % (env.BOOKS_PATH, repo))
             run("mv build/html %s/%s" % (env.BOOKS_PATH, repo))
 
 
@@ -88,6 +94,10 @@ def gunicorn_restart():
             run("kill `cat %s`" % env.GUNICORN_PID)
     with virtualenv():
         run("gunicorn_django -c deploy/gunicorn.conf.py", pty=False)
+
+
+def supervisor_restart():
+    sudo("supervisorctl restart agiliq:gunicorn_agiliq")
 
 
 def collect_static():
@@ -121,6 +131,7 @@ def provision():
     git_pull()
     setup_virtualenv()
     setup_nginx()
+    setup_supervisor()
     configure_django_settings()
 
 
@@ -131,13 +142,13 @@ def deploy():
     sync_db()
     thumbnail_reset()
     migrate_db()
-    gunicorn_restart()
+    supervisor_restart()
     nginx_restart()
 
 
 def quick_deploy():
     git_pull()
-    gunicorn_restart()
+    supervisor_restart()
     nginx_restart()
 
 

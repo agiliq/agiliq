@@ -21,6 +21,7 @@ env.DJANGO_PATH = "%s/agiliqcom" % env.ROOT_PATH
 env.REQUIREMENTS_PATH = "%s/requirements.txt" % env.DJANGO_PATH
 env.GUNICORN_PID = "%s/pid/gunicorn.pid" % env.DJANGO_PATH
 env.NGINX_CONF = "%s/deploy/agiliq.com.conf" % env.DJANGO_PATH
+env.BOOKS_PATH = "%s/books" % env.BASE_PATH
 
 env.activate = "source %s" % env.VIRTUALENV_ACTIVATE
 
@@ -42,7 +43,7 @@ def setup_nginx():
 
 
 def install_packages():
-    sudo("apt-get install -y git nginx python-pip python-virtualenv python-dev libmysqlclient-dev")
+    sudo("apt-get install -y git nginx python-pip python-virtualenv python-dev python-sphinx libmysqlclient-dev")
     sudo("pip install --upgrade pip virtualenv")
 
 
@@ -51,61 +52,25 @@ def configure_django_settings():
         run("cp localsettings.py-dist localsettings.py")
 
 
-def get_books():
-    with cd(env.ROOT_PATH):
-        run("mkdir book_sources")
-        with cd("book_sources"):
-            run("mkdir output")
-            run("mkdir themes")
-            run("git clone git://github.com/agiliq/django-design-patterns.git")
-            run("git clone git://github.com/agiliq/djenofdjango.git")
-            run("git clone git://github.com/agiliq/django-gotchas.git")
-            with prefix("source %s" % env.VIRTUALENV_ACTIVATE):
-                with cd("themes"):
-                    run("git clone git://github.com/agiliq/Fusion_Sphinx.git")
-                    run("mv Fusion_Sphinx agiliq")
-                with cd("django-design-patterns"):
-                    run("make html")
-                    run("mv build/html ../output/djangodesignpatterns")
-                with cd("djenofdjango/src"):
-                    run("make html")
-                    run("mv build/html ../../output/djenofdjango")
-                with cd("django-gotchas/src"):
-                    run("make html")
-                    run("mv build/html ../../output/djangogotchas")
-            run("rm -r ../static/books/djangodesignpatterns/")
-            run("rm -r ../static/books/djenofdjango/")
-            run("rm -r ../static/books/djangogotchas/")
-            run("mv output/* ../static/books/")
-        run("rm -rf book_sources")
+def build_book(book):
+    with cd(env.BASE_PATH):
+        _, repo = book.split("/")
+        if not files.exists("%s/%s" %(env.BASE_PATH, repo)):
+            run("git clone --recursive git://github.com/%s.git" % book)
+        with virtualenv(repo):
+            run("git pull")
+            run("make html")
+            if not files.exists(env.BOOKS_PATH):
+                run("mkdir -p %s" % env.BOOKS_PATH)
+            run("mv build/html %s/%s" % (env.BOOKS_PATH, repo))
 
 
-def build_docs():
-    with cd(env.ROOT_PATH):
-        run("mkdir doc_sources")
-
-        with cd("doc_sources"):
-            run("mkdir themes")
-            run("mkdir output")
-            run("git clone git://github.com/agiliq/merchant.git")
-            with cd("themes"):
-                run("git clone git://github.com/agiliq/Fusion_Sphinx.git")
-                run("mv Fusion_Sphinx agiliq")
-            with prefix("source %s" % env.VIRTUALENV_ACTIVATE):
-                with cd("merchant/docs"):
-                    run("make html")
-                    run("mv _build/html ../../output/merchant")
-
-            run("rm -rf ../static/docs/merchant/")
-            run("mv output/* ../static/docs/")
-
-
-def git_clone():
+def git_clone(repo=env.REPO):
     if not files.exists(env.ROOT_PATH):
         if not files.exists(env.BASE_PATH):
             run("mkdir -p %s" % env.BASE_PATH)
         with cd(env.BASE_PATH):
-            run("git clone %s" % env.REPO)
+            run("git clone %s" % repo)
 
 
 def git_pull():
@@ -160,6 +125,7 @@ def provision():
 
 
 def deploy():
+    git_pull()
     install_requirements()
     collect_static()
     sync_db()
@@ -178,7 +144,7 @@ def quick_deploy():
 def all():
     provision()
     deploy()
-
+    build_book("agiliq/djenofdjango")
 
 
 if __name__ == "__main__":

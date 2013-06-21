@@ -4,7 +4,7 @@ feedparser
 markdown
 django-mailer
 django-compressor
-django-blogango
+django-blogango=0.5.4
 dinette
 django-buzz
 MySQL-python

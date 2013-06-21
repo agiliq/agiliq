@@ -53,7 +53,8 @@ def install_packages():
 
 def configure_django_settings():
     with cd(env.DJANGO_PATH):
-        run("cp localsettings.py-dist localsettings.py")
+        if not files.exists("localsettings.py"):
+            run("cp localsettings.py-dist localsettings.py")
 
 
 def build_book(book):

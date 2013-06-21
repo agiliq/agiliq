@@ -158,6 +158,8 @@ def all():
     provision()
     deploy()
     build_book("agiliq/djenofdjango")
+    build_book("agiliq/django-design-patterns")
+    build_book("agiliq/django-gotchas")
 
 
 if __name__ == "__main__":

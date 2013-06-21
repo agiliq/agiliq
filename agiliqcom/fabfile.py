@@ -47,7 +47,7 @@ def setup_supervisor():
 
 
 def install_packages():
-    sudo("apt-get install -y git nginx python-pip python-virtualenv python-dev python-sphinx libmysqlclient-dev supervisor")
+    sudo("apt-get install -y make git nginx python-pip python-virtualenv python-dev python-sphinx libmysqlclient-dev supervisor")
     sudo("pip install --upgrade pip virtualenv")
 
 
@@ -89,6 +89,7 @@ def install_requirements():
 
 
 def supervisor_restart():
+    sudo("supervisorctl reload")
     sudo("supervisorctl restart agiliq:gunicorn_agiliq")
 
 

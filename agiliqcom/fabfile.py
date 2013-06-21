@@ -8,7 +8,7 @@ from fabric.context_managers import prefix
 from contextlib import contextmanager as _contextmanager
 
 env.warn_only = True
-env.hosts = ['agiliq@agiliq.com']
+env.hosts = ['agiliq@198.58.97.129']
 
 env.USER = "agiliq"
 env.HOME = "/home/%s" % env.USER
@@ -19,7 +19,6 @@ env.VIRTUALENV_ACTIVATE = "%s/bin/activate" % env.VIRTUALENV_PATH
 env.ROOT_PATH = "%s/agiliq" % env.BASE_PATH
 env.DJANGO_PATH = "%s/agiliqcom" % env.ROOT_PATH
 env.REQUIREMENTS_PATH = "%s/requirements.txt" % env.DJANGO_PATH
-env.GUNICORN_PID = "%s/pid/gunicorn.pid" % env.DJANGO_PATH
 env.NGINX_CONF = "%s/deploy/agiliq.com.conf" % env.DJANGO_PATH
 env.SUPERVISOR_CONF = "%s/deploy/agiliq.supervisor.conf" % env.DJANGO_PATH
 env.BOOKS_PATH = "%s/books" % env.BASE_PATH
@@ -89,13 +88,6 @@ def install_requirements():
         run("pip install --upgrade -r %s" % env.REQUIREMENTS_PATH)
 
 
-def gunicorn_restart():
-    if files.exists(env.GUNICORN_PID):
-            run("kill `cat %s`" % env.GUNICORN_PID)
-    with virtualenv():
-        run("gunicorn_django -c deploy/gunicorn.conf.py", pty=False)
-
-
 def supervisor_restart():
     sudo("supervisorctl restart agiliq:gunicorn_agiliq")
 
@@ -111,14 +103,20 @@ def thumbnail_reset():
         run("python manage.py thumbnail cleanup")
 
 
-def migrate_db():
+def migrate_db(fake=False):
     with virtualenv():
-        run("python manage.py migrate")
+        if fake:
+            run("python manage.py migrate --fake")
+        else:
+            run("python manage.py migrate")
 
 
-def sync_db():
+def sync_db(all=False):
     with virtualenv():
-        run("python manage.py syncdb --noinput")
+        if all:
+            run("python manage.py syncdb --all --noinput")
+        else:
+            run("python manage.py syncdb --noinput")
 
 
 def nginx_restart():
@@ -133,6 +131,9 @@ def provision():
     setup_nginx()
     setup_supervisor()
     configure_django_settings()
+    install_requirements()
+    sync_db(all=True)
+    migrate_db(fake=True)
 
 
 def deploy():

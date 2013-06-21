@@ -90,7 +90,7 @@ def install_requirements():
 
 
 def supervisor_restart():
-    sudo("supervisorctl reload")
+    sudo("supervisorctl reread")
     sudo("supervisorctl restart agiliq:gunicorn_agiliq")
 
 

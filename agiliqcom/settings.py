@@ -134,7 +134,8 @@ INSTALLED_APPS = (
     'south',
     'django_wysiwyg',
     'django_coverage',
-    'django_jenkins'
+    'django_jenkins',
+    'raven.contrib.django.raven_compat'
 )
 
 JENKINS_TASKS = ('django_jenkins.tasks.django_tests',)

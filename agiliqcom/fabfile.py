@@ -29,6 +29,8 @@ env.activate = "source %s" % env.VIRTUALENV_ACTIVATE
 
 
 def graphos():
+    env.SUPERVISOR_CONF = "%s/deploy/graphos.supervisor.conf" % env.DJANGO_PATH
+
     env.REPO = "git://github.com/agiliq/django-graphos.git"
     env.ROOT_PATH = "%s/django-graphos" % env.BASE_PATH
     env.DJANGO_PATH = "%s/demo_project" % env.ROOT_PATH

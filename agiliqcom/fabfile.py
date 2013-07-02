@@ -61,7 +61,7 @@ def setup_supervisor():
 def install_packages():
     sudo("apt-get install -y make git nginx python-pip \
             python-virtualenv python-dev python-sphinx libmysqlclient-dev \
-            supervisor memcached")
+            supervisor memcached mongodb-server")
     sudo("pip install --upgrade pip virtualenv")
 
 

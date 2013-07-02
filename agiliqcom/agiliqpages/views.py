@@ -6,6 +6,9 @@ from django.template import RequestContext
 from django.template.loader import render_to_string
 from django.views.decorators.cache import cache_page
 from django.http import HttpResponseRedirect
+from django.views.generic.base import TemplateView
+from django.views.generic.list import ListView
+from django.utils.decorators import classonlymethod
 
 from django import http
 from django.template import Context, loader
@@ -17,6 +20,28 @@ from agiliqpages.models import Client, Project
 def error_page(request):
     #This page is meant to cause error to test error handling
     raise Exception("This error is expected.")
+
+
+class CachedMixin(object):
+    extra_context = None
+
+    @classonlymethod
+    def as_view(cls, **initkwargs):
+        return cache_page(super(CachedMixin, cls).as_view(**initkwargs), settings.CACHE_DURATION)
+
+
+    def get_context_data(self, **kwargs):
+        context = super(CachedMixin, self).get_context_data(**kwargs)
+        context.update(self.extra_context)
+        return context
+
+
+class CachedTemplateView(CachedMixin, TemplateView):
+    pass
+
+
+class CachedListView(CachedMixin, ListView):
+    pass
 
 
 # @cache_page(settings.CACHE_DURATION)

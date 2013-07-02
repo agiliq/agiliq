@@ -1,11 +1,14 @@
 {% extends "pystories/base.html" %}
 
+{% load url from future %}
+
+
 {% block content %}
 
 <div id="content">
 <div id="leftbox">
 
-    <iframe src ="{% url pystories_widget topic.slug %}"    id="doloto_iframe"   frameborder=0  border=0  width="250px" height="650px"
+    <iframe src ="{% url 'pystories_widget' topic.slug %}"    id="doloto_iframe"   frameborder=0  border=0  width="250px" height="650px"
          style = "padding-top : 5px">
     </iframe>
 
@@ -17,7 +20,7 @@
             <div id="middlebox">
              <p>Use the following code to embed the widget*: <br/>
                  <textarea id="widgetcode" cols="45" rows="6">
-                    <iframe src ="{{site_url}}{% url pystories_widget topic.slug %}"   id="doloto_iframe"  width="250px" height="525px"  frameborder=0  border=0    style = "padding-top : 5px"> </iframe>
+                    <iframe src ="{{site_url}}{% url 'pystories_widget' topic.slug %}"   id="doloto_iframe"  width="250px" height="525px"  frameborder=0  border=0    style = "padding-top : 5px"> </iframe>
                  </textarea>
                </p>
             <span class="verysmall">  * Please modify the width and height of the iframe suitable to your needs.</span>

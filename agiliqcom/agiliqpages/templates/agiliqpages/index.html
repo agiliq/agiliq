@@ -1,5 +1,8 @@
 {% extends "agiliqpages/base.html" %}
 
+{% load url from future %}
+
+
 {% block  title %}
 	{{ block.super }} | Django Web Development | Mobile App Development
 {% endblock %}
@@ -16,10 +19,10 @@
         We develop custom web applications using Django, Python and Jquery. We build native mobile apps using Java, Objective-C, Phonegap and other modern tools.
         We primarily work with startups, small businesses and other agencies.
         </p>
-        <p>We love <strong>building amazing apps</strong>. We have <a href="{% url agiliqpages_ourwork %}">done it in the past</a>. We are doing it right now, and <a href="{% url agiliqpages_contactus %}">we can do it for you</a>.
+        <p>We love <strong>building amazing apps</strong>. We have <a href="{% url 'agiliqpages_ourwork' %}">done it in the past</a>. We are doing it right now, and <a href="{% url 'agiliqpages_contactus' %}">we can do it for you</a>.
         </p>
         <p>
-            Interested? <a href="{% url agiliqpages_contactus %}#contact_form">Contact us today.</a>
+            Interested? <a href="{% url 'agiliqpages_contactus' %}#contact_form">Contact us today.</a>
         </p>
     </div>
 {% endblock content %}

@@ -1,3 +1,4 @@
+{% load url from future %}
 <div id="footer">
     <div class="footer_links">
     <div class="footerelement">
@@ -18,16 +19,16 @@
     <h4>Agiliq</h4>
     <ul>
         <li>
-            <a href="{% url agiliqpages_index %}">Home</a>
+            <a href="{% url 'agiliqpages_index' %}">Home</a>
         </li>
         <li>
-            <a href="{% url agiliqpages_ourwork %}">Our Work</a>
+            <a href="{% url 'agiliqpages_ourwork' %}">Our Work</a>
         </li>
         <li>
-            <a href="{% url agiliqpages_contactus %}">Contact Us</a>
+            <a href="{% url 'agiliqpages_contactus' %}">Contact Us</a>
         </li>
         <li>
-            <a href="{% url agiliqcom_search %}">Search</a>
+            <a href="{% url 'agiliqcom_search' %}">Search</a>
         </li>
         <li>
             <a href="http://github.com/agiliq">Github</a>
@@ -40,7 +41,7 @@
     <h4>Read</h4>
     <ul>
         <li>
-            <a href="{% url blogango_index %}">Blog</a>
+            <a href="{% url 'blogango_index' %}">Blog</a>
         </li>
         <li>
             <a href="/forum/">Forum</a>

@@ -1,32 +1,33 @@
+{% load url from future %}
 <div id="menu">
 	<ul id="nav-example">
 		<li  id="nav-example-01"> 
-			<a href="{% url agiliqpages_index %}" {% ifequal sitepage 'home' %}class="home"{% endifequal %}>
+			<a href="{% url 'agiliqpages_index' %}" {% ifequal sitepage 'home' %}class="home"{% endifequal %}>
 				<span>Home</span>
 			</a> 
 		</li>
 		<li id="nav-example-02"> 
-			<a href="{% url agiliqpages_whoweare %}" {% ifequal sitepage 'whoweare'%}class='whoweare'{% endifequal %}>
+			<a href="{% url 'agiliqpages_whoweare' %}" {% ifequal sitepage 'whoweare'%}class='whoweare'{% endifequal %}>
 				<span>Who we are</span>
 			</a> 
 		</li>
 		<li id="nav-example-03"> 
-			<a href="{% url agiliqpages_whatwedo %}" {% ifequal sitepage 'whatwedo'%}class='whatwedo'{% endifequal %}>
+			<a href="{% url 'agiliqpages_whatwedo' %}" {% ifequal sitepage 'whatwedo'%}class='whatwedo'{% endifequal %}>
 				<span>What we do</span>
 			</a> 
 		</li>
 		<li id="nav-example-04">
-			 <a href="{% url agiliqpages_ourwork %}" {% ifequal sitepage 'ourwork'%}class='ourwork'{% endifequal %}>
+			 <a href="{% url 'agiliqpages_ourwork' %}" {% ifequal sitepage 'ourwork'%}class='ourwork'{% endifequal %}>
 				<span>Our work</span>
 			</a>
 		</li>
 		<li id="nav-example-05"> 
-			<a href="{% url agiliqpages_contactus %}" {% ifequal sitepage 'contactus'%}class='contactus'{% endifequal %}>
+			<a href="{% url 'agiliqpages_contactus' %}" {% ifequal sitepage 'contactus'%}class='contactus'{% endifequal %}>
 				<span>Contact us</span>
 			</a> 
 		</li>
 		<li id="nav-example-06" >
-			<a href="{% url blogango_index %}">
+			<a href="{% url 'blogango_index' %}">
 				<span>Blog</span>
 			</a>
 		</li>

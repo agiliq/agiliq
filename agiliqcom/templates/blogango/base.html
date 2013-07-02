@@ -1,3 +1,4 @@
+{% load url from future %}
 {% load blogango_filters %}
 {% load compress %}
 {% blogango_extra_context %}
@@ -20,7 +21,7 @@
 {% if canonical_url %}
     <link rel="canonical" href='{{ canonical_url }}' />
 {% endif %}
-{# <link rel="pingback" href="{% url xmlrpc %}" /> #}
+{# <link rel="pingback" href="{% url 'xmlrpc' %}" /> #}
 <link rel="pingback" href="{{ pingback_xmlrpc_url }}" />
 
 </head>
@@ -89,7 +90,7 @@
           <div class="block_title">Topics</div>
           <ul class="list_left">
               {% for tag in tags %}
-                  <li><a href="{% url blogango_tag_details tag.slug %}" class='{% cycle "left" "right" %}' rel="nofollow">{{ tag.name }}</a></li>
+                  <li><a href="{% url 'blogango_tag_details' tag.slug %}" class='{% cycle "left" "right" %}' rel="nofollow">{{ tag.name }}</a></li>
               {% endfor %}
           </ul>
           <div class="clear"></div>
@@ -101,7 +102,7 @@
           <div class="block_title">Archives</div>
           <ul class="list_left">
             {% for month in archive_months %}
-                <li><a href="{% url blogango_archives month|date:'Y' month|date:'b' %}" class='{% cycle "left" "right" %}' rel="nofollow">{{ month|date:'F Y' }}</a></li>
+                <li><a href="{% url 'blogango_archives' month|date:'Y' month|date:'b' %}" class='{% cycle "left" "right" %}' rel="nofollow">{{ month|date:'F Y' }}</a></li>
             {% endfor %}
           </ul>
           <div class="clear"></div>

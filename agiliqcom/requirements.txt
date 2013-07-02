@@ -1,11 +1,11 @@
-Django==1.4.5
+Django==1.5
 django-markupfield
 feedparser
 markdown
 django-mailer
 django-compressor
 django-blogango==0.5.4
-dinette
+dinette=1.4e
 django-buzz
 MySQL-python
 docutils

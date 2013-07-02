@@ -12,23 +12,33 @@ env.hosts = ['agiliq@198.58.97.129']
 
 env.USER = "agiliq"
 env.HOME = "/home/%s" % env.USER
-env.REPO = "git://github.com/agiliq/agiliq.git"
 env.BASE_PATH = "%s/build" % env.HOME
 env.VIRTUALENV_PATH = "%s/env" % env.HOME
 env.VIRTUALENV_ACTIVATE = "%s/bin/activate" % env.VIRTUALENV_PATH
+env.BOOKS_PATH = "%s/books" % env.BASE_PATH
+
+env.REPO = "git://github.com/agiliq/agiliq.git"
 env.ROOT_PATH = "%s/agiliq" % env.BASE_PATH
 env.DJANGO_PATH = "%s/agiliqcom" % env.ROOT_PATH
 env.REQUIREMENTS_PATH = "%s/requirements.txt" % env.DJANGO_PATH
 env.NGINX_CONF = "%s/deploy/agiliq.nginx.conf" % env.DJANGO_PATH
 env.SUPERVISOR_CONF = "%s/deploy/agiliq.supervisor.conf" % env.DJANGO_PATH
-env.BOOKS_PATH = "%s/books" % env.BASE_PATH
+env.SOUTH_ENABLED = True
 
 env.activate = "source %s" % env.VIRTUALENV_ACTIVATE
 
 
+def graphos():
+    env.REPO = "git://github.com/agiliq/django-graphos.git"
+    env.ROOT_PATH = "%s/django-graphos" % env.BASE_PATH
+    env.DJANGO_PATH = "%s/demo_project" % env.ROOT_PATH
+    env.REQUIREMENTS_PATH = "%s/requirements.txt" % env.DJANGO_PATH
+    env.SOUTH_ENABLED = False
+
+
 @_contextmanager
-def virtualenv(path=env.DJANGO_PATH):
-    with cd(path):
+def virtualenv():
+    with cd(env.DJANGO_PATH):
         with prefix(env.activate):
             yield
 
@@ -47,13 +57,15 @@ def setup_supervisor():
 
 
 def install_packages():
-    sudo("apt-get install -y make git nginx python-pip python-virtualenv python-dev python-sphinx libmysqlclient-dev supervisor")
+    sudo("apt-get install -y make git nginx python-pip \
+            python-virtualenv python-dev python-sphinx libmysqlclient-dev \
+            supervisor memcached")
     sudo("pip install --upgrade pip virtualenv")
 
 
 def configure_django_settings():
     with cd(env.DJANGO_PATH):
-        if not files.exists("localsettings.py"):
+        if not files.exists("localsettings.py") and files.exists("localsettings.py-dist"):
             run("cp localsettings.py-dist localsettings.py")
 
 
@@ -71,12 +83,12 @@ def build_book(book):
             run("mv build/html %s/%s" % (env.BOOKS_PATH, repo))
 
 
-def git_clone(repo=env.REPO):
+def git_clone():
     if not files.exists(env.ROOT_PATH):
         if not files.exists(env.BASE_PATH):
             run("mkdir -p %s" % env.BASE_PATH)
         with cd(env.BASE_PATH):
-            run("git clone %s" % repo)
+            run("git clone %s" % env.REPO)
 
 
 def git_pull():
@@ -107,15 +119,16 @@ def thumbnail_reset():
 
 def migrate_db(fake=False):
     with virtualenv():
-        if fake:
-            run("python manage.py migrate --fake")
-        else:
-            run("python manage.py migrate")
+        if env.SOUTH_ENABLED:
+            if fake:
+                run("python manage.py migrate --fake")
+            else:
+                run("python manage.py migrate")
 
 
 def sync_db(all=False):
     with virtualenv():
-        if all:
+        if all and env.SOUTH_ENABLED:
             run("python manage.py syncdb --all --noinput")
         else:
             run("python manage.py syncdb --noinput")
@@ -156,11 +169,17 @@ def quick_deploy():
 
 
 def all():
+
     provision()
     deploy()
+
     build_book("agiliq/djenofdjango")
     build_book("agiliq/django-design-patterns")
     build_book("agiliq/django-gotchas")
+
+    graphos()
+    provision()
+    deploy()
 
 
 if __name__ == "__main__":

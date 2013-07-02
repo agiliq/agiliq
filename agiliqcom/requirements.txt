@@ -4,8 +4,8 @@ feedparser
 markdown
 django-mailer
 django-compressor
-django-blogango==0.5.4
-dinette=1.4e
+django-blogango==0.6
+dinette==1.4e
 django-buzz
 MySQL-python
 docutils

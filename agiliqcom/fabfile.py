@@ -19,7 +19,7 @@ env.VIRTUALENV_ACTIVATE = "%s/bin/activate" % env.VIRTUALENV_PATH
 env.ROOT_PATH = "%s/agiliq" % env.BASE_PATH
 env.DJANGO_PATH = "%s/agiliqcom" % env.ROOT_PATH
 env.REQUIREMENTS_PATH = "%s/requirements.txt" % env.DJANGO_PATH
-env.NGINX_CONF = "%s/deploy/agiliq.com.conf" % env.DJANGO_PATH
+env.NGINX_CONF = "%s/deploy/agiliq.nginx.conf" % env.DJANGO_PATH
 env.SUPERVISOR_CONF = "%s/deploy/agiliq.supervisor.conf" % env.DJANGO_PATH
 env.BOOKS_PATH = "%s/books" % env.BASE_PATH
 

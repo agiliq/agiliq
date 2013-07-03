@@ -146,6 +146,8 @@ def sync_db(all=False):
 def nginx_restart():
     sudo("service nginx restart")
 
+def mysql_restart():
+    sudo("service mysql restart")
 
 def provision():
     install_packages()
@@ -185,6 +187,7 @@ def all():
     build_sphinx("agiliq/djenofdjango")
     build_sphinx("agiliq/django-design-patterns")
     build_sphinx("agiliq/django-gotchas")
+    build_sphinx("agiliq/merchant", type="docs", docs="docs", build="_build")
 
     graphos()
     provision()

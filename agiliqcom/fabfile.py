@@ -1,4 +1,5 @@
 import os
+import time
 import getpass
 
 from fabric.api import *
@@ -8,7 +9,7 @@ from fabric.context_managers import prefix
 from contextlib import contextmanager as _contextmanager
 
 env.warn_only = True
-env.hosts = ['agiliq@198.58.97.129']
+env.hosts = ['agiliq@agiliq.com']
 
 env.USER = "agiliq"
 env.HOME = "/home/%s" % env.USER
@@ -25,6 +26,7 @@ env.REQUIREMENTS_PATH = "%s/requirements.txt" % env.DJANGO_PATH
 env.NGINX_CONF = "%s/deploy/agiliq.nginx.conf" % env.DJANGO_PATH
 env.SUPERVISOR_CONF = "%s/deploy/agiliq.supervisor.conf" % env.DJANGO_PATH
 env.SOUTH_ENABLED = True
+env.BACKUP_PATH = "%s/backups" % env.HOME
 
 env.activate = "source %s" % env.VIRTUALENV_ACTIVATE
 
@@ -146,8 +148,33 @@ def sync_db(all=False):
 def nginx_restart():
     sudo("service nginx restart")
 
+
 def mysql_restart():
     sudo("service mysql restart")
+
+
+def mysql_backup(database):
+    require('DB_USER')
+    require('DB_PASS')
+
+    date = time.strftime('%Y%m%d%H%M%S')
+    fname = '%(location)s/%(database)s-backup-%(date)s.sql.gz' % {
+        'location': env.BACKUP_PATH,
+        'database': database,
+        'date': date
+    }
+
+    if files.exists(fname):
+        run('rm "%s"' % fname)
+
+    run('mysqldump -u %(username)s -p%(password)s %(database)s | '
+        'gzip > %(fname)s' % {'username': env.DB_USER,
+                              'password': env.DB_PASS,
+                              'database': database,
+                              'fname': fname})
+
+    get(fname, os.path.basename(fname))
+
 
 def provision():
     install_packages()

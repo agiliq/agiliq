@@ -24,6 +24,8 @@ env.ROOT_PATH = "%s/agiliq" % env.BASE_PATH
 env.DJANGO_PATH = "%s/agiliqcom" % env.ROOT_PATH
 env.REQUIREMENTS_PATH = "%s/requirements.txt" % env.DJANGO_PATH
 env.NGINX_CONF = "%s/deploy/agiliq.nginx.conf" % env.DJANGO_PATH
+env.APACHE2_CONF = "%s/deploy/agiliq_newsletter.apache.conf" % env.DJANGO_PATH
+env.APACHE2_PORTS_CONF = "%s/deploy/ports.conf" % env.DJANGO_PATH
 env.SUPERVISOR_CONF = "%s/deploy/agiliq.supervisor.conf" % env.DJANGO_PATH
 env.SOUTH_ENABLED = True
 env.BACKUP_PATH = "%s/backups" % env.HOME
@@ -57,6 +59,11 @@ def setup_nginx():
     sudo("cp %s /etc/nginx/sites-enabled/" % env.NGINX_CONF)
 
 
+def setup_apache2():
+    sudo("cp %s /etc/apache2" % env.APACHE2_PORTS_CONF)
+    sudo("cp %s /etc/apache2/sites-enabled" % env.APACHE2_CONF)
+
+
 def setup_supervisor():
     sudo("cp %s /etc/supervisor/conf.d/" % env.SUPERVISOR_CONF)
 
@@ -64,7 +71,8 @@ def setup_supervisor():
 def install_packages():
     sudo("apt-get install -y make git nginx python-pip \
             python-virtualenv python-dev python-sphinx libmysqlclient-dev \
-            supervisor memcached mysql-server mysql-client mongodb-server")
+            supervisor memcached mysql-server mysql-client mongodb-server \
+            apache2")
     sudo("pip install --upgrade pip virtualenv")
 
 
@@ -151,6 +159,10 @@ def nginx_restart():
 
 def mysql_restart():
     sudo("service mysql restart")
+
+
+def apache2_restart():
+    sudo("service apache2 restart")
 
 
 def mysql_backup(database):

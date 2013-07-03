@@ -72,7 +72,7 @@ def install_packages():
     sudo("apt-get install -y make git nginx python-pip \
             python-virtualenv python-dev python-sphinx libmysqlclient-dev \
             supervisor memcached mysql-server mysql-client mongodb-server \
-            apache2")
+            apache2 apache2-mpm-prefork libapache2-mod-php5 php5-mysql")
     sudo("pip install --upgrade pip virtualenv")
 
 

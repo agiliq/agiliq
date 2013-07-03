@@ -9,7 +9,7 @@ from fabric.context_managers import prefix
 from contextlib import contextmanager as _contextmanager
 
 env.warn_only = True
-env.hosts = ['agiliq@agiliq.com']
+env.hosts = ['agiliq@198.58.97.129']
 
 env.USER = "agiliq"
 env.HOME = "/home/%s" % env.USER
@@ -64,7 +64,7 @@ def setup_supervisor():
 def install_packages():
     sudo("apt-get install -y make git nginx python-pip \
             python-virtualenv python-dev python-sphinx libmysqlclient-dev \
-            supervisor memcached mongodb-server")
+            supervisor memcached mysql-server mysql-client mongodb-server")
     sudo("pip install --upgrade pip virtualenv")
 
 
@@ -174,6 +174,31 @@ def mysql_backup(database):
                               'fname': fname})
 
     get(fname, os.path.basename(fname))
+
+
+def mysql_restore(dump):
+    require('DB_USER')
+    require('DB_PASS')
+
+    database = dump.split('-')[0]
+    if not files.exists("%s/%s" % (env.BACKUP_PATH, dump)):
+        put(dump, env.BACKUP_PATH)
+
+    run("echo 'CREATE DATABASE IF NOT EXISTS %(database)s' | mysql -u %(username)s -p%(password)s" %
+        {
+            'username': env.DB_USER,
+            'password': env.DB_PASS,
+            'database': database,
+        })
+
+    run('gunzip < %(backup)s/%(dump)s | mysql -u %(username)s -p%(password)s %(database)s' %
+        {
+            'username': env.DB_USER,
+            'password': env.DB_PASS,
+            'database': database,
+            'backup': env.BACKUP_PATH,
+            'dump': dump
+        })
 
 
 def provision():

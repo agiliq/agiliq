@@ -16,6 +16,7 @@ env.BASE_PATH = "%s/build" % env.HOME
 env.VIRTUALENV_PATH = "%s/env" % env.HOME
 env.VIRTUALENV_ACTIVATE = "%s/bin/activate" % env.VIRTUALENV_PATH
 env.BOOKS_PATH = "%s/books" % env.BASE_PATH
+env.DOCS_PATH = "%s/docs" % env.BASE_PATH
 
 env.REPO = "git://github.com/agiliq/agiliq.git"
 env.ROOT_PATH = "%s/agiliq" % env.BASE_PATH
@@ -71,18 +72,24 @@ def configure_django_settings():
             run("cp localsettings.py-dist localsettings.py")
 
 
-def build_book(book):
-    with cd(env.BASE_PATH):
-        _, repo = book.split("/")
-        if not files.exists("%s/%s" %(env.BASE_PATH, repo)):
-            run("git clone --recursive git://github.com/%s.git" % book)
-        with virtualenv(repo):
-            run("git pull")
-            run("make html")
-            if not files.exists(env.BOOKS_PATH):
-                run("mkdir -p %s" % env.BOOKS_PATH)
-            run("rm -rf %s/%s" % (env.BOOKS_PATH, repo))
-            run("mv build/html %s/%s" % (env.BOOKS_PATH, repo))
+def build_sphinx(github_path, type="book", docs=".", build="build"):
+    with virtualenv():
+        with cd(env.BASE_PATH):
+            _, repo = github_path.split("/")
+            if not files.exists("%s/%s" % (env.BASE_PATH, repo)):
+                run("git clone --recursive git://github.com/%s.git" % github_path)
+            with cd("%s/%s" % (env.BASE_PATH, repo)):
+                run("git pull")
+                with cd(docs):
+                    run("make html")
+                    path = {
+                        "book": env.BOOKS_PATH,
+                        "docs": env.DOCS_PATH
+                    }.get(type)
+                    if not files.exists(path):
+                        run("mkdir -p %s" % path)
+                    run("rm -rf %s/%s" % (path, repo))  # remove old sphinx build
+                    run("mv %s/html %s/%s" % (build, path, repo))
 
 
 def git_clone():
@@ -175,9 +182,9 @@ def all():
     provision()
     deploy()
 
-    build_book("agiliq/djenofdjango")
-    build_book("agiliq/django-design-patterns")
-    build_book("agiliq/django-gotchas")
+    build_sphinx("agiliq/djenofdjango")
+    build_sphinx("agiliq/django-design-patterns")
+    build_sphinx("agiliq/django-gotchas")
 
     graphos()
     provision()

@@ -8,7 +8,6 @@ Some of our important apps we use are:
 
 1. [Blogango](https://github.com/agiliq/django-blogango) at [http://agiliq.com/blog/](http://agiliq.com/blog/)
 2. [Dinette](https://github.com/agiliq/Dinette) at [http://agiliq.com/forum/](http://agiliq.com/forum/)
-3. [Buzz](http://github.com/agiliq/django-buzz/) at [http://agiliq.com/pystories/](http://agiliq.com/pystories/)
 
 Patches are welcome and gratefully accepted, for this site and everything else on our [Github](http://github.com/agiliq).
 

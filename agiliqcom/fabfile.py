@@ -165,6 +165,39 @@ def apache2_restart():
     sudo("service apache2 restart")
 
 
+def backup(directory):
+    date = time.strftime('%Y%m%d%H%M%S')
+    basename = os.path.basename(directory)
+    parent = os.path.dirname(directory)
+
+    fname = '%(location)s/%(basename)s-backup-%(date)s.tar.gz' % {
+        'location': env.BACKUP_PATH,
+        'basename': basename,
+        'date': date
+    }
+    with cd(parent):
+        run('tar -czvf %(fname)s %(basename)s' % {
+            'fname': fname,
+            'basename': basename
+        })
+
+    get(fname, os.path.basename(fname))
+
+
+def restore(targz, directory):
+    if not files.exists(directory):
+        run("mkdir -p %(directory)s" % {'directory': directory})
+
+    if not files.exists("%s/%s" % (env.BACKUP_PATH, targz)):
+        put(targz, env.BACKUP_PATH)
+
+    with cd(directory):
+        run("tar -xzvf %(backup)s/%(targz)s" % {
+            'backup': env.BACKUP_PATH,
+            'targz': targz
+        })
+
+
 def mysql_backup(database):
     require('DB_USER')
     require('DB_PASS')

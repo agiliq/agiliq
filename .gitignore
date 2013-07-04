@@ -13,4 +13,4 @@ htmlcov
 .coverage
 reports/
 agiliqcom/media/images/blog/
-agiliqcom/fabricrc
+agiliqcom/.fabricrc

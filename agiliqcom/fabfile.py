@@ -280,15 +280,17 @@ def all():
 
     provision()
     deploy()
+    build_static()
+    graphos()
+    provision()
+    deploy()
 
+def build_static():    
     build_sphinx("agiliq/djenofdjango")
     build_sphinx("agiliq/django-design-patterns")
     build_sphinx("agiliq/django-gotchas")
     build_sphinx("agiliq/merchant", type="docs", docs="docs", build="_build")
-
-    graphos()
-    provision()
-    deploy()
+    build_sphinx("agiliq/django-graphos", type="docs", docs="docs",)
 
 
 if __name__ == "__main__":

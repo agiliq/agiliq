@@ -9,7 +9,7 @@ from fabric.context_managers import prefix
 from contextlib import contextmanager as _contextmanager
 
 env.warn_only = True
-env.hosts = ['agiliq@198.58.97.129']
+env.hosts = ['agiliq@agiliq.com']
 
 env.USER = "agiliq"
 env.HOME = "/home/%s" % env.USER

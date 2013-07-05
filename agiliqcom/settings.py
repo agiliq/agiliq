@@ -63,9 +63,6 @@ ADMIN_MEDIA_PREFIX = '/media/'
 
 EMAIL_BACKEND = "mailer.backend.DbBackend"
 
-# Make this unique, and don't share it with anybody.
-SECRET_KEY = 'os683(ah9+!==97gy3e9=81d=o(gs&!=#^2!&538sc%@#$hhu*'
-
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',

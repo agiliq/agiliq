@@ -33,3 +33,6 @@ DEFAULT_MARKUP_TYPES.append(('bbcode', render_bbcode))
 MARKUP_RENDERERS = DEFAULT_MARKUP_TYPES
 
 DEFAULT_MARKUP_TYPE = "markdown"
+
+# Make this unique, and don't share it with anybody.
+SECRET_KEY = ''

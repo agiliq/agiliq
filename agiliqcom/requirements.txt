@@ -4,7 +4,6 @@ feedparser
 markdown
 django-compressor
 django-blogango==0.6
-dinette==1.4e
 django-buzz
 MySQL-python
 docutils
@@ -23,5 +22,6 @@ django-jenkins
 south
 git+https://github.com/agiliq/Django-Socialauth.git@5770480f26430f98ea95c1fdae74f0e37eceb3ad#egg=django_socialauth-dev
 git+https://github.com/pinax/django-mailer.git@919805e25fc18b06487b25414d4e5d5e05a92108#egg=django-mailer
+git+https://github.com/agiliq/Dinette@0f6dbd818fdfd3235deb1cf7df87a9a16e73cb58#egg=dinette
 gunicorn
 raven

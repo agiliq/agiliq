@@ -122,8 +122,7 @@ def install_requirements():
 
 def supervisor_restart():
     sudo("supervisorctl reread")
-    sudo("supervisorctl stop all")
-    sudo("supervisorctl start all")
+    sudo("supervisorctl restart all")
 
 
 def collect_static():

@@ -25,3 +25,7 @@ git+https://github.com/pinax/django-mailer.git@919805e25fc18b06487b25414d4e5d5e0
 git+https://github.com/agiliq/Dinette@f0c1663f6c0af9df557cfc48c0289575e125215b#egg=dinette
 gunicorn
 raven
+python-openid>=2.0.0
+oauth>=1.0.0
+facebook-sdk
+hg+https://pylinkedin.googlecode.com/hg/pylinkedin>=0.1

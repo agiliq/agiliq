@@ -61,7 +61,7 @@ STATICFILES_DIRS = (
 # Examples: "http://foo.com/media/", "/media/".
 ADMIN_MEDIA_PREFIX = '/media/'
 
-EMAIL_BACKEND = 'mailer.backends.DbBackend'
+EMAIL_BACKEND = "mailer.backend.DbBackend"
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'os683(ah9+!==97gy3e9=81d=o(gs&!=#^2!&538sc%@#$hhu*'

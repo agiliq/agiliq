@@ -2,7 +2,6 @@ Django==1.5
 django-markupfield
 feedparser
 markdown
-django-mailer
 django-compressor
 django-blogango==0.6
 dinette==1.4e
@@ -22,6 +21,7 @@ coverage
 django-coverage
 django-jenkins
 south
--e git+https://github.com/agiliq/Django-Socialauth.git@5770480f26430f98ea95c1fdae74f0e37eceb3ad#egg=django_socialauth-dev
+git+https://github.com/agiliq/Django-Socialauth.git@5770480f26430f98ea95c1fdae74f0e37eceb3ad#egg=django_socialauth-dev
+git+https://github.com/pinax/django-mailer.git@919805e25fc18b06487b25414d4e5d5e05a92108#egg=django-mailer
 gunicorn
 raven

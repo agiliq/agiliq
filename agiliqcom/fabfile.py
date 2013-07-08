@@ -295,12 +295,19 @@ def all():
     provision()
     deploy()
 
+
 def build_static():
     build_sphinx("agiliq/djenofdjango")
     build_sphinx("agiliq/django-design-patterns")
     build_sphinx("agiliq/django-gotchas")
     build_sphinx("agiliq/merchant", type="docs", docs="docs", build="_build")
     build_sphinx("agiliq/django-graphos", type="docs", docs="docs",)
+    git_clone(
+        repo="git://github.com/agiliq/timezones-helper-chrome-offline",
+        branch="agiliq-timezoneconvertor-with-schedule-link-v2_0",
+        directory="timezones",
+        force=True
+    )
 
 
 if __name__ == "__main__":

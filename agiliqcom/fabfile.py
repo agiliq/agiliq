@@ -3,7 +3,7 @@ import time
 import getpass
 
 from fabric.api import *
-from fabric.contrib import files
+from fabric.contrib import files, console
 from fabric.context_managers import prefix
 
 from contextlib import contextmanager as _contextmanager
@@ -102,12 +102,22 @@ def build_sphinx(github_path, type="book", docs=".", build="build"):
                     run("mv %s/html %s/%s" % (build, path, repo))
 
 
-def git_clone():
-    if not files.exists(env.ROOT_PATH):
+def git_clone(repo=None, branch="master", directory=None, force=False):
+    repo = repo or env.REPO
+    directory = directory or os.path.basename(repo).rstrip(".git")
+    destination = "%s/%s" % (env.BASE_PATH, directory)
+    if force:
+        confirm = console.confirm("wARNING: Directory will be deleted. Sure?")
+        if confirm:
+            run("rm -rf %s" % destination)
+    if not files.exists(destination):
         if not files.exists(env.BASE_PATH):
             run("mkdir -p %s" % env.BASE_PATH)
         with cd(env.BASE_PATH):
-            run("git clone %s" % env.REPO)
+            run("git clone %s %s" % (repo, destination))
+            if branch != "master":
+                with cd(directory):
+                    run("git checkout %s" % branch)
 
 
 def git_pull():
@@ -285,7 +295,7 @@ def all():
     provision()
     deploy()
 
-def build_static():    
+def build_static():
     build_sphinx("agiliq/djenofdjango")
     build_sphinx("agiliq/django-design-patterns")
     build_sphinx("agiliq/django-gotchas")

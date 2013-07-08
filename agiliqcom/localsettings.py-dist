@@ -1,3 +1,8 @@
+import os
+
+import markdown
+from docutils.core import publish_parts
+
 
 DATABASES = {
     'default': {
@@ -18,9 +23,6 @@ TEMPLATE_DEBUG = DEBUG
 
 BACKTYPE_API_KEY = ''
 
-import markdown
-from docutils.core import publish_parts
-
 def render_rest(markup):
     parts = publish_parts(source=markup, writer_name="html4css1")
     return parts["fragment"]
@@ -35,4 +37,4 @@ MARKUP_RENDERERS = DEFAULT_MARKUP_TYPES
 DEFAULT_MARKUP_TYPE = "markdown"
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = ''
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY") or ''

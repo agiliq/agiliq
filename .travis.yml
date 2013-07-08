@@ -4,5 +4,9 @@ python:
   - "2.7"
 # command to install dependencies
 install: "pip install -r agiliqcom/requirements.txt --use-mirrors"
+before_script:
+    cp agiliqcom/localsettings.py-dist agiliqcom/localsettings.py
+env:
+    DJANGO_SECRET_KEY=travis
 # command to run tests
 script: python agiliqcom/manage.py test agiliqpages dinette blogango

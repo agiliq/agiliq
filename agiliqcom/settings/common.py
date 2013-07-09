@@ -1,17 +1,14 @@
 import os
-SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
-
+SITE_ROOT = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 
 DEBUG = False
 TEMPLATE_DEBUG = True
-
 
 ADMINS = (
     # ('Your Name', 'your_email@domain.com'),
 )
 
 MANAGERS = ADMINS
-
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -30,7 +27,7 @@ SITE_ID = 1
 
 TEMPLATE_DIRS = (
     os.path.join(SITE_ROOT, "templates/"),
-    )
+)
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
@@ -54,7 +51,7 @@ STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(SITE_ROOT, 'static/')
 STATICFILES_DIRS = (
     os.path.join(SITE_ROOT, 'static_seed/'),
-  )
+)
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
@@ -113,6 +110,7 @@ INSTALLED_APPS = (
 	'django.contrib.markup',
     'django.contrib.flatpages',
     'django.contrib.staticfiles',
+    'django.contrib.comments',
 
     #Our Apps
     'agiliqpages',
@@ -167,13 +165,13 @@ DINETTE_LOGIN_TEMPLATE = 'dinette/social_login.html'
 
 FLOOD_TIME = 10
 
+REPLY_PAGE_SIZE = 10
 
 #LOG_FILE_PATH in django
 LOG_FILE_PATH = "\""+os.path.join(os.path.join(SITE_ROOT,'logs'),"logs.txt")+"\""
 
 #LOG FILE NAME In django
-logfilename =  os.path.join(SITE_ROOT,'logging.conf')
-LOG_FILE_NAME = logfilename
+LOG_FILE_NAME = os.path.join(SITE_ROOT, 'logging.conf')
 
 LOGGING = {
     'version': 1,

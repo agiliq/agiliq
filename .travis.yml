@@ -9,4 +9,4 @@ before_script:
 env:
     DJANGO_SECRET_KEY=travis
 # command to run tests
-script: python agiliqcom/manage.py test agiliqpages dinette blogango
+script: python agiliqcom/manage.py test agiliqpages dinette blogango --settings=agiliqcom.settings.test

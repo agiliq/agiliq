@@ -206,4 +206,8 @@ SITE_URL = "http://agiliq.com/"
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'agiliq.com', 'www.agiliq.com', ]
 
-from localsettings import *
+from markupfield.markup import DEFAULT_MARKUP_TYPES
+from dinette.libs.postmarkup import render_bbcode
+
+DEFAULT_MARKUP_TYPES.append(('bbcode', render_bbcode))
+MARKUP_RENDERERS = DEFAULT_MARKUP_TYPES

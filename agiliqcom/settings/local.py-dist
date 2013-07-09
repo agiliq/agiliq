@@ -1,8 +1,6 @@
+from .common import *
+
 import os
-
-import markdown
-from docutils.core import publish_parts
-
 
 DATABASES = {
     'default': {
@@ -15,26 +13,11 @@ DATABASES = {
     }
 }
 
-
-
 REPLY_PAGE_SIZE = 10
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 BACKTYPE_API_KEY = ''
-
-def render_rest(markup):
-    parts = publish_parts(source=markup, writer_name="html4css1")
-    return parts["fragment"]
-
-
-from markupfield.markup import DEFAULT_MARKUP_TYPES
-from dinette.libs.postmarkup import render_bbcode
-
-DEFAULT_MARKUP_TYPES.append(('bbcode', render_bbcode))
-MARKUP_RENDERERS = DEFAULT_MARKUP_TYPES
-
-DEFAULT_MARKUP_TYPE = "markdown"
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY") or ''

@@ -4,7 +4,6 @@
 *.swp
 *pydev*
 .project
-localsettings.py
 *.tmp*~
 *CACHE*
 media/
@@ -14,3 +13,4 @@ htmlcov
 reports/
 agiliqcom/media/images/blog/
 agiliqcom/.fabricrc
+agiliqcom/settings/local.py

@@ -8,6 +8,7 @@ Some of our important apps we use are:
 
 1. [Blogango](https://github.com/agiliq/django-blogango) at [http://agiliq.com/blog/](http://agiliq.com/blog/)
 2. [Dinette](https://github.com/agiliq/Dinette) at [http://agiliq.com/forum/](http://agiliq.com/forum/)
+3. [Graphos](https://github.com/agiliq/django-graphos) at [http://agiliq.com/demo/graphos/](http://agiliq.com/forum/)
 
 Patches are welcome and gratefully accepted, for this site and everything else on our [Github](http://github.com/agiliq).
 
@@ -21,7 +22,6 @@ How to use this
 
 Deployment
 
-1. `fab deploy` for the full monty.
+1. `fab all` for the full monty.
 2. `fab quickdeploy` if the db schema hasn't changed.
-3. `fab build_books` for creating the books.
-4. `fab build_docs` for creating the docs.
+3. `fab build_static` for creating the books/docs.

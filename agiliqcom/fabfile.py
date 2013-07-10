@@ -77,9 +77,9 @@ def install_packages():
 
 
 def configure_django_settings():
-    with cd(env.DJANGO_PATH):
-        if not files.exists("localsettings.py") and files.exists("localsettings.py-dist"):
-            run("cp localsettings.py-dist localsettings.py")
+    with cd("%s/settings" % env.DJANGO_PATH):
+        if not files.exists("local.py") and files.exists("local.py-dist"):
+            run("cp local.py-dist local.py")
 
 
 def build_sphinx(github_path, type="book", docs=".", build="build"):

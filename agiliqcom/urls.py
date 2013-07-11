@@ -30,8 +30,5 @@ if settings.DEBUG or getattr(settings, 'SERVE_MEDIA', False):
                                         'show_indexes': True }),
 
     )
-    urlpatterns += patterns('django.contrib.staticfiles.views',
-        url(r'^static/(?P<path>.*)$', 'serve'),
-    )
 
 urlpatterns += socialauth_urlpatterns

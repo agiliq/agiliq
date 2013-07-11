@@ -7,7 +7,6 @@
 *.tmp*~
 *CACHE*
 media/
-static/
 htmlcov
 .coverage
 reports/

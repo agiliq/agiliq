@@ -7,4 +7,5 @@ install: "pip install -r agiliqcom/requirements.txt --use-mirrors"
 env:
     DJANGO_SECRET_KEY=travis
 # command to run tests
-script: python agiliqcom/manage.py test agiliqpages dinette blogango --settings=agiliqcom.settings.test
+script:
+  -  python agiliqcom/manage.py test agiliqpages dinette blogango --settings=agiliqcom.settings.test

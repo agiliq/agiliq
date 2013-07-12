@@ -3,7 +3,7 @@ django-markupfield
 feedparser
 markdown
 django-compressor
-django-blogango==0.6
+django-blogango==0.6.1
 django-buzz
 MySQL-python
 docutils

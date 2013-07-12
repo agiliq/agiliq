@@ -16,7 +16,6 @@ urlpatterns = patterns('',
     url(r'^', include('agiliqpages.urls')),
 	url(r'^demo/dinette/', include('dinette.urls')),
 	url(r'^blog/', include('blogango.urls')),
-    url(r'^pystories/', include('pystories.urls')),
     url(r'^login/$', login, name='dinette_login'),
 
     url(r'^admin/', include(admin.site.urls)),

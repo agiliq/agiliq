@@ -116,7 +116,6 @@ INSTALLED_APPS = (
     'agiliqpages',
     'blogango',
     'dinette',
-    'pystories',
 
     #Third Party apps
     'compressor',

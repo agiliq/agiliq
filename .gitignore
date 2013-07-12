@@ -7,7 +7,7 @@
 *.tmp*~
 *CACHE*
 media/
-static/
+agiliqcom/static/
 htmlcov
 .coverage
 reports/

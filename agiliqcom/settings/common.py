@@ -208,3 +208,5 @@ from dinette.libs.postmarkup import render_bbcode
 
 DEFAULT_MARKUP_TYPES.append(('bbcode', render_bbcode))
 MARKUP_RENDERERS = DEFAULT_MARKUP_TYPES
+
+LOGIN_URL  = "/login"

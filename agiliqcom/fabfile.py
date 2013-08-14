@@ -43,6 +43,17 @@ def graphos():
     env.SOUTH_ENABLED = False
 
 
+def responsive():
+    env.HOME = "%s/other_envs/responsive" % env.HOME
+    env.SUPERVISOR_CONF = "%s/deploy/responsive.supervisor.conf" % env.DJANGO_PATH
+
+    env.REPO = "git@github.com:agiliq/responsive-images.git"
+    env.ROOT_PATH = "%s/responsive-images" % env.BASE_PATH
+    env.DJANGO_PATH = env.ROOT_PATH
+    env.REQUIREMENTS_PATH = "%s/requirements.txt" % env.DJANGO_PATH
+    env.SOUTH_ENABLED = False
+
+
 @_contextmanager
 def virtualenv():
     with cd(env.DJANGO_PATH):
@@ -292,6 +303,7 @@ def all():
     deploy()
     build_static()
     graphos()
+    responsive()
     provision()
     deploy()
 

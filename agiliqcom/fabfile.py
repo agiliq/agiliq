@@ -57,6 +57,19 @@ def responsive():
     env.VIRTUALENV_ACTIVATE = "%s/bin/activate" % env.VIRTUALENV_PATH
 
 
+def parsley():
+    env.SUPERVISOR_CONF = "%s/deploy/parsley.supervisor.conf" % env.DJANGO_PATH
+
+    env.REPO = "git@github.com:agiliq/Django-parsley.git"
+    env.ROOT_PATH = "%s/Django-parsley" % env.BASE_PATH
+    env.DJANGO_PATH = "%s/example" % env.ROOT_PATH
+    env.REQUIREMENTS_PATH = "%s/requirements.txt" % env.DJANGO_PATH
+    env.SOUTH_ENABLED = False
+
+    env.VIRTUALENV_PATH = "%s/env/parsley" % env.HOME
+    env.VIRTUALENV_ACTIVATE = "%s/bin/activate" % env.VIRTUALENV_PATH
+
+
 @_contextmanager
 def virtualenv():
     with cd(env.DJANGO_PATH):
@@ -311,6 +324,9 @@ def all():
     provision()
     deploy()
     responsive()
+    provision()
+    deploy()
+    parsley()
     provision()
     deploy()
 

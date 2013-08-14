@@ -30,8 +30,6 @@ env.SUPERVISOR_CONF = "%s/deploy/agiliq.supervisor.conf" % env.DJANGO_PATH
 env.SOUTH_ENABLED = True
 env.BACKUP_PATH = "%s/backups" % env.HOME
 
-env.activate = "source %s" % env.VIRTUALENV_ACTIVATE
-
 
 def graphos():
     env.SUPERVISOR_CONF = "%s/deploy/graphos.supervisor.conf" % env.DJANGO_PATH
@@ -42,11 +40,28 @@ def graphos():
     env.REQUIREMENTS_PATH = "%s/requirements.txt" % env.DJANGO_PATH
     env.SOUTH_ENABLED = False
 
+    env.VIRTUALENV_PATH = "%s/env/graphos" % env.HOME
+    env.VIRTUALENV_ACTIVATE = "%s/bin/activate" % env.VIRTUALENV_PATH
+
+
+def responsive():
+    env.SUPERVISOR_CONF = "%s/deploy/responsive.supervisor.conf" % env.DJANGO_PATH
+
+    env.REPO = "git://github.com/agiliq/responsive-images.git"
+    env.ROOT_PATH = "%s/responsive-images" % env.BASE_PATH
+    env.DJANGO_PATH = env.ROOT_PATH
+    env.REQUIREMENTS_PATH = "%s/requirements.txt" % env.DJANGO_PATH
+    env.SOUTH_ENABLED = False
+
+    env.VIRTUALENV_PATH = "%s/env/responsive" % env.HOME
+    env.VIRTUALENV_ACTIVATE = "%s/bin/activate" % env.VIRTUALENV_PATH
+
 
 @_contextmanager
 def virtualenv():
     with cd(env.DJANGO_PATH):
-        with prefix(env.activate):
+        activate = "source %s" % env.VIRTUALENV_ACTIVATE
+        with prefix(activate):
             yield
 
 
@@ -292,6 +307,9 @@ def all():
     deploy()
     build_static()
     graphos()
+    provision()
+    deploy()
+    responsive()
     provision()
     deploy()
 

@@ -60,7 +60,7 @@ def responsive():
 def parsley():
     env.SUPERVISOR_CONF = "%s/deploy/parsley.supervisor.conf" % env.DJANGO_PATH
 
-    env.REPO = "git@github.com:agiliq/Django-parsley.git"
+    env.REPO = "git://github.com/agiliq/Django-parsley.git"
     env.ROOT_PATH = "%s/Django-parsley" % env.BASE_PATH
     env.DJANGO_PATH = "%s/example" % env.ROOT_PATH
     env.REQUIREMENTS_PATH = "%s/requirements.txt" % env.DJANGO_PATH

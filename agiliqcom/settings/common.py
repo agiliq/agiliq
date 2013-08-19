@@ -166,12 +166,6 @@ FLOOD_TIME = 10
 
 REPLY_PAGE_SIZE = 10
 
-#LOG_FILE_PATH in django
-LOG_FILE_PATH = "\""+os.path.join(os.path.join(SITE_ROOT,'logs'),"logs.txt")+"\""
-
-#LOG FILE NAME In django
-LOG_FILE_NAME = os.path.join(SITE_ROOT, 'logging.conf')
-
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,

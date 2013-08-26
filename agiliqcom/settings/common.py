@@ -204,3 +204,4 @@ DEFAULT_MARKUP_TYPES.append(('bbcode', render_bbcode))
 MARKUP_RENDERERS = DEFAULT_MARKUP_TYPES
 
 LOGIN_URL  = "/login"
+LOGIN_REDIRECT_URL = '/'

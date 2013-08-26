@@ -6,8 +6,6 @@ from django.contrib import admin
 from django.contrib.auth.views import login
 from django.views.generic.base import TemplateView
 
-from socialauth.urls import urlpatterns as socialauth_urlpatterns
-
 admin.autodiscover()
 
 handler500 = 'agiliqpages.views.server_error'
@@ -25,5 +23,3 @@ urlpatterns = patterns('',
 )
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-urlpatterns += socialauth_urlpatterns

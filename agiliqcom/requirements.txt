@@ -25,7 +25,6 @@ raven==3.4.0
 python-openid==2.2.5
 oauth==1.0.1
 facebook-sdk==0.4.0
-git+https://github.com/agiliq/Django-Socialauth.git@master#egg=django_socialauth-dev
 git+https://github.com/pinax/django-mailer.git@master#egg=django-mailer
 git+https://github.com/agiliq/Dinette@master#egg=dinette
 hg+https://pylinkedin.googlecode.com/hg/pylinkedin>=0.1

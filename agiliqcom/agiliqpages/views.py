@@ -22,7 +22,7 @@ from agiliqpages.models import Client, Project
 class UserCreationView(FormView):
     template_name = 'registration/registration.html'
     form_class = RegistrationForm
-    success_url = '/admin'
+    success_url = '/'
 
     def form_valid(self, form):
         form.save()

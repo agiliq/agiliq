@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.core.mail import mail_managers, send_mail
+from django.contrib import messages
 from django.core.urlresolvers import reverse
 from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
@@ -8,13 +9,25 @@ from django.views.decorators.cache import cache_page
 from django.http import HttpResponseRedirect
 from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
+from django.views.generic.edit import FormView
 from django.utils.decorators import classonlymethod
 
 from django import http
 from django.template import Context, loader
 
-from agiliqpages.forms import ContactUsForm
+from agiliqpages.forms import ContactUsForm, RegistrationForm
 from agiliqpages.models import Client, Project
+
+
+class UserCreationView(FormView):
+    template_name = 'registration/registration.html'
+    form_class = RegistrationForm
+    success_url = '/admin'
+
+    def form_valid(self, form):
+        form.save()
+        messages.success(self.request, 'User created successfully')
+        return super(UserCreationView, self).form_valid(form)
 
 
 def error_page(request):

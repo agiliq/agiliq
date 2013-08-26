@@ -1,0 +1,38 @@
+{% extends 'dinette/base.html' %}
+
+{% block title %} Registration  {% endblock %}
+
+{% block extra_header %}
+    <style>
+        label { width: 70px; display: inline-block; }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+<div id="brd-wrap" class="brd">
+  <div id="brd-index" class="brd-page basic-page">
+	{% include 'dinette/header_frag.html' %}
+	{% include 'dinette/announce_frag.html' %}
+	<p></p>
+
+    <form method="post" action="">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <input type="submit" value="Register" />
+    <input type="hidden" name="next" value="{{ next }}" />
+    </form>
+	
+
+<div> &nbsp; </div>
+<div id="brd-pagepost-end" class="main-pagepost gen-content"> </div>
+
+{{ block.super }}
+
+  </div>
+</div>
+
+
+{% endblock %}
+

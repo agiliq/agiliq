@@ -1,8 +1,11 @@
 
 import re
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 from agiliqpages.models import ContactUs
+
 
 class ContactUsForm(forms.ModelForm):
 	
@@ -19,3 +22,10 @@ class ContactUsForm(forms.ModelForm):
 		if phone_number and not re.match('^[0-9-]+$', phone_number):
 			raise forms.ValidationError('Only numbers and - are allowed in phone number')
 		return phone_number
+
+
+class RegistrationForm(UserCreationForm):
+    email = forms.EmailField(label='Email')
+    class Meta:
+        model = User
+        fields = ("username", "email")

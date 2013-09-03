@@ -1,6 +1,6 @@
 {% extends 'dinette/base.html' %}
 
-{% block title %} Dinette login {% endblock %}
+{% block title %} Registration  {% endblock %}
 
 {% block extra_header %}
     <style>
@@ -16,20 +16,14 @@
 	{% include 'dinette/announce_frag.html' %}
 	<p></p>
 
-    <form method="post" action="{% url 'django.contrib.auth.views.login' %}">
+    <form method="post" action="">
     {% csrf_token %}
     {{ form.as_p }}
 
-    <input type="submit" value="login" />
+    <input type="submit" value="Register" />
     <input type="hidden" name="next" value="{{ next }}" />
     </form>
 	
-	<div class="hr"><hr /></div>
-	<div id="errorbox"> 
-        {% if form.errors %}
-        <span> Your username and password didn't match. Please try again.</span>
-        {% endif %}
-    </div>
 
 <div> &nbsp; </div>
 <div id="brd-pagepost-end" class="main-pagepost gen-content"> </div>

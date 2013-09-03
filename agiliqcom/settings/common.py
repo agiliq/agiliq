@@ -84,7 +84,6 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.contrib.redirects.middleware.RedirectFallbackMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
-    'openid_consumer.middleware.OpenIDMiddleware',
     'pagination.middleware.PaginationMiddleware'
 )
 
@@ -204,3 +203,4 @@ DEFAULT_MARKUP_TYPES.append(('bbcode', render_bbcode))
 MARKUP_RENDERERS = DEFAULT_MARKUP_TYPES
 
 LOGIN_URL  = "/login"
+LOGIN_REDIRECT_URL = '/'

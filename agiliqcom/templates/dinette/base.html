@@ -10,11 +10,15 @@
 
 <head>
   {% compress css %}
-    <link rel="stylesheet" type="text/css" media="screen" href="{{ STATIC_URL }}dinette/css/oxygen.css" />
-    <link rel="stylesheet" type="text/css" media="screen"  href="{{ STATIC_URL }}dinette/css/oxygen_cs.css" />
+  <link href="{{ STATIC_URL }}dinette/css/bootstrap.css" rel="stylesheet" />
     <!--[if lte IE 6]><link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}dinette/css/Oxygen_ie6.css" /><![endif]-->
     <!--[if IE 7]><link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}dinette/css/Oxygen_ie7.css" /><![endif]-->
-    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}dinette/css/djorumstyle.css">
+    <link href="{{ STATIC_URL }}dinette/css/style.css" rel="stylesheet" />
+    <style type="text/css">
+        .well {
+            margin-bottom: 0px;
+        }
+    </style>
   {% endcompress %}
 
   <title>
@@ -25,14 +29,17 @@
 
 <body>
 
-{% block main_content %} {% endblock %}
-{% block content %}
+<div class='container'>
+{% block main_content %} {% endblock %}   
+{% block content %} 
 
-    <div id="brd-about" class="gen-content">
-      <p id="copyright">Powered by <strong><a href="{% url 'dinette_category' %}">Dinette</a></strong></p>
-      <p id="extensions-used">Copyright &copy; 2010 <a href="http://{% get_main_site_domain %}">{% get_main_site_name %}</a></p>
-    </div>
+
 {% endblock %}
+	<div id="brd-about" class="well well-small">
+	  <p id="copyright" class='pull-right'>Powered by <strong><a href="{% url 'dinette_category' %}">Dinette</a></strong></p>
+      <p id="extensions-used" class='pull-left'> Copyright &copy; 2010 <a href="http://{% get_main_site_domain %}">{% get_main_site_name %}</a></p>
+	</div>
+</div>
 
 {% compress js %}
   <script type="text/javascript" src="{{ STATIC_URL }}dinette/scripts/jquery13.js"></script>
@@ -40,19 +47,5 @@
   <script type="text/javascript" src="{{ STATIC_URL }}dinette/scripts/dinetteajax.js"></script>
 {% endcompress  %}
 
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-367368-15']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
-
-</body>
+</body>    
 </html>

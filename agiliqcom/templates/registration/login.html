@@ -5,6 +5,7 @@
 {% block extra_header %}
     <style>
         label { width: 70px; display: inline-block; }
+        body { color: white; }
     </style>
 {% endblock %}
 
@@ -20,7 +21,7 @@
     {% csrf_token %}
     {{ form.as_p }}
 
-    <input type="submit" value="login" />
+    <input type="submit" value="login" class='btn btn-primary' />
     <input type="hidden" name="next" value="{{ next }}" />
     </form>
 	

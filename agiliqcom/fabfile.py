@@ -70,6 +70,19 @@ def parsley():
     env.VIRTUALENV_ACTIVATE = "%s/bin/activate" % env.VIRTUALENV_PATH
 
 
+def merchant():
+    env.SUPERVISOR_CONF = "%s/deploy/merchant.supervisor.conf" % env.DJANGO_PATH
+
+    env.REPO = "git://github.com/agiliq/merchant.git"
+    env.ROOT_PATH = "%s/merchant" % env.BASE_PATH
+    env.DJANGO_PATH = "%s/example" % env.ROOT_PATH
+    env.REQUIREMENTS_PATH = "%s/requirements.txt" % env.ROOT_PATH
+    env.SOUTH_ENABLED = False
+
+    env.VIRTUALENV_PATH = "%s/env/merchant" % env.HOME
+    env.VIRTUALENV_ACTIVATE = "%s/bin/activate" % env.VIRTUALENV_PATH
+
+
 @_contextmanager
 def virtualenv():
     with cd(env.DJANGO_PATH):

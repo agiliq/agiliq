@@ -174,6 +174,7 @@ def install_requirements():
 
 def supervisor_restart():
     sudo("supervisorctl reread")
+    sudo("supervisorctl update")
     sudo("supervisorctl restart all")
 
 
@@ -327,21 +328,20 @@ def quick_deploy():
     supervisor_restart()
     nginx_restart()
 
+def setup_project(project=None):
+    if project:
+        project()
+    provision()
+    deploy()
 
 def all():
 
-    provision()
-    deploy()
+    setup_project()
     build_static()
-    graphos()
-    provision()
-    deploy()
-    responsive()
-    provision()
-    deploy()
-    parsley()
-    provision()
-    deploy()
+    setup_project(graphos)
+    setup_project(responsive)
+    setup_project(parsley)
+    setup_project(merchant)
 
 
 def build_static():

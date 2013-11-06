@@ -153,8 +153,6 @@ SERVER_EMAIL = 'developer@agiliq.com'
 CACHE_DURATION = 60 * 60 * 24
 
 # Dinette Settings
-from django.conf import global_settings
-
 AUTH_PROFILE_MODULE = 'dinette.DinetteUserProfile'
 
 RANKS_NAMES_DATA = ((30, "Member"), (100, "Senior Member"), (300, 'Star'))

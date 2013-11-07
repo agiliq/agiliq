@@ -41,7 +41,6 @@ class CachedMixin(object):
     def as_view(cls, **initkwargs):
         return cache_page(super(CachedMixin, cls).as_view(**initkwargs), settings.CACHE_DURATION)
 
-
     def get_context_data(self, **kwargs):
         context = super(CachedMixin, self).get_context_data(**kwargs)
         context.update(self.extra_context)

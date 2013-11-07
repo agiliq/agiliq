@@ -35,24 +35,28 @@ def error_page(request):
 
 
 class CachedMixin(object):
-    extra_context = None
 
     @classonlymethod
     def as_view(cls, **initkwargs):
         return cache_page(super(CachedMixin, cls).as_view(**initkwargs), settings.CACHE_DURATION)
 
+
+class CachedTemplateView(CachedMixin, TemplateView):
+    extra_context = None
+
     def get_context_data(self, **kwargs):
-        context = super(CachedMixin, self).get_context_data(**kwargs)
+        context = super(CachedTemplateView, self).get_context_data(**kwargs)
         context.update(self.extra_context)
         return context
 
 
-class CachedTemplateView(CachedMixin, TemplateView):
-    pass
-
-
 class CachedListView(CachedMixin, ListView):
-    pass
+    extra_context = None
+
+    def get_context_data(self, **kwargs):
+        context = super(CachedListView, self).get_context_data(**kwargs)
+        context.update(self.extra_context)
+        return context
 
 
 # @cache_page(settings.CACHE_DURATION)

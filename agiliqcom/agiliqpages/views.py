@@ -1,12 +1,11 @@
 from django.conf import settings
-from django.core.mail import mail_managers, send_mail
+from django.core.mail import send_mail
 from django.contrib import messages
 from django.core.urlresolvers import reverse
 from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
 from django.template.loader import render_to_string
 from django.views.decorators.cache import cache_page
-from django.http import HttpResponseRedirect
 from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
 from django.views.generic.edit import FormView

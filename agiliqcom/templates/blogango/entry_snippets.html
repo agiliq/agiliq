@@ -37,18 +37,24 @@
     {% if post_detail %}
       <p>{{ entry.text|safe }}</p>
 
-    {% related_posts entry as related_posts %}
-    {% if related_posts %}
-      <h4>Related Posts</h4>
-      <ul>
+      {% if user.teammember.twitter %}
+          <div class="twitter_follow">
+              You can read all of <a href="{% url 'blogango_author' entry.created_by %}">{{ entry.created_by }}'s post</a>, and <a href="{{user.teammember.twitter}}">follow {{entry.created_by}} on Twitter</a>
+          </div>
+      {% endif %}
 
-      {% for post in related_posts %}
-          <li>
-              <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
-          </li>
-      {% endfor %}
-      </ul>
-    {% endif %}
+      {% related_posts entry as related_posts %}
+      {% if related_posts %}
+        <h4>Related Posts</h4>
+        <ul>
+
+        {% for post in related_posts %}
+            <li>
+                <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+            </li>
+        {% endfor %}
+        </ul>
+      {% endif %}
 
       <hr />
       <p>Can we help you build amazing apps? <a href="/contactus">Contact us today.</a>
@@ -58,21 +64,12 @@
     {% if not post_detail %}
       <a href="{{ entry.get_absolute_url }}" class="moreinfo">more info..</a>
     {% endif %}
-    {% if user.teammember.twitter %}
-        <div class="topics_blogango">
-    {% else %}
-        <div class="topics"> 
-    {% endif %}
+    <div class="topics"> 
     {% for tag in entry.tags.all %}
       {% if forloop.first %}Topics : {% endif %}
       <a href="{% url 'blogango_tag_details' tag.slug %}">{{ tag.name }}</a>
     {% endfor %}
     </div> 
-    {% if user.teammember.twitter %}
-      <div class="twitter_follow">
-          You can read all of <a href="{% url 'blogango_author' entry.created_by %}">{{ entry.created_by }}'s post</a>, and <a href="{{user.teammember.twitter}}">follow {{entry.created_by}} on Twitter</a>
-      </div>
-    {% endif %}  
 
 
   </div>

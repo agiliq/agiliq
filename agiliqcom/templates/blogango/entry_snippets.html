@@ -70,7 +70,7 @@
     </div> 
     {% if user.teammember.twitter %}
       <div class="twitter_follow">
-          You can follow <a href="{% url 'blogango_author' entry.created_by %}">{{ entry.created_by|get_full_name }}</a> on <a href="{{user.teammember.twitter}}">twitter</a>
+          You can read all of <a href="{% url 'blogango_author' entry.created_by %}">{{ entry.created_by }}'s post</a>, and <a href="{{user.teammember.twitter}}">follow {{entry.created_by}} on Twitter</a>
       </div>
     {% endif %}  
 

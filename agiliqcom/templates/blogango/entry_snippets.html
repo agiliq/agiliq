@@ -60,8 +60,6 @@
       <p>Can we help you build amazing apps? <a href="/contactus">Contact us today.</a>
     {% else %}
       <p>{{ entry.text|truncatewords_html:100|safe }} </p>
-    {% endif %}
-    {% if not post_detail %}
       <a href="{{ entry.get_absolute_url }}" class="moreinfo">more info..</a>
     {% endif %}
     <div class="topics"> 

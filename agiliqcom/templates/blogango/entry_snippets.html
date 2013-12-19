@@ -37,9 +37,9 @@
     {% if post_detail %}
       <p>{{ entry.text|safe }}</p>
 
-      {% if user.teammember.twitter %}
+      {% if entry.created_by.teammember.twitter %}
           <div class="twitter_follow">
-              You can read all of <a href="{% url 'blogango_author' entry.created_by %}">{{ entry.created_by }}'s post</a>, and <a href="{{user.teammember.twitter}}">follow {{entry.created_by}} on Twitter</a>
+              You can read all of <a href="{% url 'blogango_author' entry.created_by %}">{{ entry.created_by }}'s post</a>, and <a href="{{entry.created_by.teammember.twitter}}">follow {{entry.created_by}} on Twitter</a>
           </div>
       {% endif %}
 

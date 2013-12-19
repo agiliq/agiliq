@@ -38,6 +38,7 @@
       <p>{{ entry.text|safe }}</p>
 
       {% if entry.created_by.teammember.twitter %}
+          <hr/>
           <div class="twitter_follow">
               You can read all of <a href="{% url 'blogango_author' entry.created_by %}">{{ entry.created_by }}'s post</a>, and <a href="{{entry.created_by.teammember.twitter}}">follow {{entry.created_by}} on Twitter</a>
           </div>

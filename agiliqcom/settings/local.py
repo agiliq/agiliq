@@ -21,9 +21,6 @@ BACKTYPE_API_KEY = ''
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY") or '6567duysgdu678w6e86wed'
 
-LOG_FILE_NAME = "test.log"
-LOG_FILE_PATH = os.path.join(SITE_ROOT, "logs")
-
 
 if 'agiliq_heroku' in os.environ:
     import dj_database_url

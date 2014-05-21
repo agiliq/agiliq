@@ -22,8 +22,9 @@ BACKTYPE_API_KEY = ''
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY") or '6567duysgdu678w6e86wed'
 
 
-import dj_database_url
-DATABASES['default'] =  dj_database_url.config()
+if 'agiliq_heroku' in os.environ:
+    import dj_database_url
+    DATABASES['default'] =  dj_database_url.config()
 
-# Honor the 'X-Forwarded-Proto' header for request.is_secure()
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    # Honor the 'X-Forwarded-Proto' header for request.is_secure()
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')

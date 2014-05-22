@@ -19,14 +19,14 @@ TEMPLATE_DEBUG = DEBUG
 BACKTYPE_API_KEY = ''
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = os.getenv("DJANGO_SECRET_KEY") or '6567duysgdu678w6e86wed'
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY") or ''
 
 
 if 'agiliq_heroku' in os.environ:
     AWS_QUERYSTRING_AUTH = False
-    AWS_ACCESS_KEY_ID = 'AKIAJ6SQGD6SLKYH225Q'
-    AWS_SECRET_ACCESS_KEY = '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'
-    AWS_STORAGE_BUCKET_NAME = 'agiliq-media'
+    AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+    AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+    AWS_STORAGE_BUCKET_NAME = os.environ['S3_BUCKET_NAME']
 
     STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 

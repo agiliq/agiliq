@@ -31,10 +31,11 @@ if 'agiliq_heroku' in os.environ:
     AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
     AWS_STORAGE_BUCKET_NAME = os.environ['S3_BUCKET_NAME']
 
-    STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+    #STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
     DEFAULT_FILE_STORAGE = "storages.backends.s3boto.S3BotoStorage"
 
-    MEDIA_URL = 'http://' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/media/'
+    MEDIA_URL = 'https://' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/media/'
+    MEDIA_ROOT = ''
 
     import dj_database_url
     DATABASES['default'] =  dj_database_url.config()

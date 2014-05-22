@@ -23,6 +23,17 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY") or '6567duysgdu678w6e86wed'
 
 
 if 'agiliq_heroku' in os.environ:
+    AWS_QUERYSTRING_AUTH = False
+    AWS_ACCESS_KEY_ID = 'AKIAJ6SQGD6SLKYH225Q'
+    AWS_SECRET_ACCESS_KEY = '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'
+    AWS_STORAGE_BUCKET_NAME = 'agiliq-media'
+
+    STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+
+    STATIC_URL = 'http://' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/'
+    ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
+
     import dj_database_url
     DATABASES['default'] =  dj_database_url.config()
 

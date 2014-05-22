@@ -40,3 +40,4 @@ sorl-thumbnail==11.12
 static==1.0.2
 termcolor==1.1.0
 wsgiref==0.1.2
+django-storages

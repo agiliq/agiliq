@@ -19,7 +19,7 @@ TEMPLATE_DEBUG = DEBUG
 BACKTYPE_API_KEY = ''
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = os.getenv("DJANGO_SECRET_KEY") or ''
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY") or 'isids798d987s9'
 
 
 if 'agiliq_heroku' in os.environ:
@@ -31,7 +31,7 @@ if 'agiliq_heroku' in os.environ:
     STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
     MEDIA_URL = 'http://' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/media/'
-    MEDIA_ROOT = ''
+    MEDIA_ROOT = MEDIA_URL
 
     import dj_database_url
     DATABASES['default'] =  dj_database_url.config()

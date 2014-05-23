@@ -8,4 +8,4 @@ env:
     DJANGO_SECRET_KEY=travis
 # command to run tests
 script:
-  -  python agiliqcom/manage.py test agiliqpages dinette blogango --settings=agiliqcom.settings.test
+  -  python agiliqcom/manage.py test agiliqpages blogango --settings=agiliqcom.settings.test

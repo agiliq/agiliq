@@ -1,0 +1,140 @@
+<html><body><div>Without much ado:</div>
+ 
+
+
+
+ 
+
+<div><strong>1. Has Google Analytics or equivalent software.</strong></div>
+
+ 
+
+<div>Why is this important?</div>
+
+ 
+
+<div>You should be tracking how your pages are doing, which pages are popular and which of your pages are making money. Use Google Analytics or equivalent software. (<a href="http://haveamint.com" target="_blank">haveamint.com</a>, Kissmetrics.com or Mixpanel.com)</div>
+
+ 
+
+<div><strong>2. Has been tested with Pagespeed(<a href="http://code.google.com/speed/page-speed/" target="_blank">http://code.google.com/speed/page-speed/</a>) and Yslow(<a href="http://developer.yahoo.com/yslow/" target="_blank">http://developer.yahoo.com/yslow/</a>).</strong></div>
+
+ 
+
+<div>This is important as 70% of user visible speed improvements come via improving the client-side optimizations. Pagespeed and Yslow check your site's conformance to best practices and can suggest areas of improvement.</div>
+
+ 
+
+<div><strong>3. Has a usability testing done via <a href="http://feedbackarmy.com" target="_blank">feedbackarmy.com</a> and <a href="http://usertesting.com" target="_blank">usertesting.com</a>.</strong></div>
+
+ 
+
+<div>This is important as customers drop unusable websites to go to competitors. Even testing with 5 users can find 85% of the usability issues. These websites make usability testing simple and affordable.</div>
+
+ 
+
+<div><strong>4. Admins get error emails when site error happens.</strong></div>
+
+ 
+
+<div>No matter how much you have tested, users are going to do unexpected things to your website, which can cause site errors. If you get a email informing about this, you can fix this proactively.</div>
+
+ 
+
+<div><strong>5. Has monitoring setup with Siteuptime.com/Pingdom.com or equivalent.</strong></div>
+
+ 
+
+<div>No matter how good your infrastructure, sites crash. A site-monitoring service can inform you before your customers do.</div>
+
+ 
+
+<div><strong>6. Media and database are backed up.</strong></div>
+
+ 
+
+<div>Servers die, humans make errors. Your website data is too precious and backups are affordable.</div>
+
+ 
+
+<div>Your web host can generally provide you a option to backup entire servers. You should also be backing up your database and media to a separate server from your main host.</div>
+
+ 
+
+<div><strong>7. Backups are tested.</strong></div>
+
+ 
+
+<div>Doing backups is useless if you never test them. Too many people miss this obvious step when they setup their backups.</div>
+
+ 
+
+<div><strong>8. Has a sitemap.xml</strong></div>
+
+ 
+
+<div>Search engines are good at finding all your pages, but with sitemap you can guide and hint them, as well as guide about the relative importance of the pages.</div>
+
+ 
+
+<div><strong>9. Has a robots.txt</strong></div>
+
+ 
+
+<div>You may have a lot of things you do not want the world to know about. (Eg user uploaded media). Use robots.txt to hide them from search engines.</div>
+
+ 
+
+<div><strong>10. Has been tested in multiple browsers.</strong></div>
+
+ 
+
+<div>Your development team may have only tested a subset of browsers. Use a service like <a href="http://browsershots.org/">browsershots.org</a> and you can ensure your site looks good in all browsers.</div>
+
+ 
+
+<div><strong>11. Users have a way to contact admins</strong></div>
+
+ 
+
+<div>You should have a contact page and make it easy to contact you and email you.</div>
+
+ 
+
+<div><strong>12. Admins get emails on broken links.</strong></div>
+
+ 
+
+<div>Pages are moved around, and links break. These links can be extrnal or internal. If you are notified when a user gets a 404, you can respond. (For example put the redirect at the old url.)</div>
+
+ 
+
+<div><strong>13. Has a whats new section and/or a RSS feed.</strong></div>
+
+ 
+
+<div>Your customers would like to know about you. They should not have to search to get this info. If you use a blog software a RSS feed should be automatic.</div>
+
+ 
+
+
+
+<a href="/newsletter/wp-content/uploads/2011/08/website-launch-checklist-1.pdf">You can download this checklist as pdf here</a>.
+
+<div><a href="http://agiliq.com/newsletter/the-website-launch-checklist-part-2/">You can read the part 2 here</a></div>
+
+ 
+
+
+
+<hr>
+
+
+
+<div>Did I miss anything? Email us at hello@agiliq.com</div>
+
+Have you joined our newsletter yet <a href="http://eepurl.com/e1zk2" target="_blank">http://eepurl.com/e1zk2</a>
+
+<div>We cover Webdev, Django, SaaS, Mobile and cloud computing and</div>
+
+<div>help you "Build amazing webapps".</div></body></html>

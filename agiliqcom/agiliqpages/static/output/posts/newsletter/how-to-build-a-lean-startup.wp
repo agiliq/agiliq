@@ -1,0 +1,77 @@
+<html><body><p>We are working with a new client who are building a healthcare startup. I was talking to him about Lean Startups, and he sent me a long email with some great tips about what Lean is and how to build a Lean Startup. This is the best resource I have found with links to more great stuff, and I have blogged it here with his permission. Thanks to Subbu Arumugam from <a href="http://Sufo.org">Sufo.org</a> and <a href="http://sugarsnap.com/">SugarSnap</a>. Mail follow. (Very slightly redacted.)
+
+
+--------
+
+
+
+<!--more-->
+
+
+
+Super happy you're reading about lean startup philosophies and methodologies. I attend most of the <a href="http://www.chicagoleanstartup.com/" target="_blank">chicago lean startup circle meetups</a>. The last one was great because they discuss how to properly conduct "problem" interviews and "solution" interviews - which is very unnatural for first timers - and it's the most important step. They filmed it, but the video isn't up yet. I'll send you a link when it goes up.
+
+</p><div>We got started in this "cult" about 3 years ago when marc andreessen <a href="http://pmarca-archive.posterous.com/book-of-the-week-best-book-for-tech-entrepren" target="_blank">mentioned steve blank's book in his blog</a> - the post was actually deleted by him accidentally, but <a href="http://bit.ly/1z2b3V" target="_blank">someone saved all of the old content here</a>. If you're interested in his old stuff, definitely great reading, nothing/ little to do with lean.</div>
+
+<div>
+
+<div>Once we got turned on to <a href="http://www.amazon.com/Four-Steps-Epiphany-Steven-Blank/dp/0976470705/" target="_blank">steve blank and his book</a> - who is the father of lean - his star pupil eric ries tried to make steve's difficult-to-read book more practical - and <a href="http://www.startuplessonslearned.com/" target="_blank">started blogging about it</a>. He even <a href="http://www.sllconf.com/" target="_blank">started a conference</a>, and <a href="http://www.amazon.com/Lean-Startup-Entrepreneurs-Continuous-Innovation/dp/0307887898/" target="_blank">recently published a book</a>. His stuff used to be great, now it's just okay. <a href="http://www.justin.tv/startuplessonslearned/videos" target="_blank">Videos from the this year's conference and the first conference are here</a>.</div>
+
+<div>Others started getting in on the party. <a href="http://custdev.com/" target="_blank">brad cooper and patrick vlaskovits created a "cheat sheet" book</a> based on the first two steps of steve's very difficult-to-read book. It's a practical "how to" do customer development which is the central theme, and most important first step.</div>
+
+<div>And then <a href="http://www.ashmaurya.com/" target="_blank">ash maurya</a>, an indian entrepreneur in Austin, Texas, wrote what is arguably <a href="http://www.runningleanhq.com/" target="_blank">the best book on this topic</a>, from a practical standpoint. Very actionable.</div>
+
+<div>Steve Blank defines a startup as an organization formed to search for a repeatable and scalable business model. Most of the folks above, including Steve believe that you've figured it out when you've reached product-market fit. so while all of the above was happening, there was a startup marketer - Sean Ellis - who was doing his own thing consulting for scores of startups, completely oblivious to the lean movement, and <a href="http://startup-marketing.com/the-startup-pyramid/" target="_blank">he noticed that product-market fit was achieved when 40% of your early customers say they're "very disappointed" if you take away your product</a>. He then started realizing that his philosophies were very similar to the lean movement. Sean blogs very infrequently now since he is involved in his own startup.</div>
+
+<div>We found ourselves following more and more of the practical lean philosophies as earlier iterations of Sufo didn't work.</div>
+
+<div>The core philosophies are:</div>
+
+<div>
+
+<ol>
+	<li>Finding a top three problem, not a four through ten problem - and maybe even working on three "top three" problems concurrently - via customer interviews (people want their top problems solved, and will pay for them to be solved, they will continue to use their own work-arounds for their lower priority problems) (<a href="http://www.slideshare.net/ashmaurya/building-a-lean-startup" target="_blank">see slide ten in this deck</a> - the deck itself is awesome.)</li>
+	<li>Create a solution via wireframe or paper drawings - and ask customers if they would (a) use the solution and (b) would they pay for it - via solution interviews</li>
+	<li>Some of this can be tested without interviews - a "minimum viable product" can be a sign up form (like the wufoo form that we have on the current live version of sufo) - or even an adwords campaign ("buy a hover car") and see if people click through before building the product</li>
+	<li>Make sure your cost to acquire customers, and operations of your business, can be subsidized by the price you're charging for your solution</li>
+	<li>Keep iterating til you get product-market fit</li>
+</ol>
+
+</div>
+
+<div>Our first version of sufo didn't solve an existing problem ("linkedin for doctors"), the second one did (filming conferences and charging doctors $ to access the video content), but not enough doctors would pay for it, and when asked why, they wanted (1) CME credit, and (2) said our content wasn't refreshed frequently enough (which is the nature of filming conferences) - so this version of Sufo addresses both of those concerns.</div>
+
+<div>Not all lean philosophies work well when applied to health tech startups - it seems to be better applied for consumer apps. We're documenting what we're finding, along with a friend who has his own health tech startup. We plan to present on this in april. I help co-organize the <a href="http://www.meetup.com/chicagohealthtech/" target="_blank">chicago health 2.0/ tech meetup group</a>, and we ran a pitch contest this past june - we pushed for entrepreneurs to use lean principles. One of the toughest things the applicants had was playing in the "two sided market" area... where value isn't created for your users until you already have another group of users on board using your product - think ebay and other marketplaces.</div>
+
+<div>Many health tech startups are two sided markets. In fact, our version of Sufo is the first step to creating one side of a marketplace, where the other side is interested in information from doctors. We have to get doctors using Sufo first at scale before we can bring on analysts interested in what doctors do/say.</div>
+
+<div>With very little to do with lean, here's some great reading on two sided markets:</div>
+
+<div>
+
+<div>
+
+<div>
+
+<ol>
+	<li><a href="http://cdixon.org/2010/08/21/the-bowling-pin-strategy/" target="_blank">http://cdixon.org/2010/08/21/<wbr>the-bowling-pin-strategy/</wbr></a></li>
+	<li><a href="http://cdixon.org/2009/08/25/six-strategies-for-overcoming-chicken-and-egg-problems/" target="_blank">http://cdixon.org/2009/08/25/<wbr>six-strategies-for-overcoming-<wbr>chicken-and-egg-problems/</wbr></wbr></a></li>
+	<li><a href="http://cdixon.org/2010/10/16/the-ladies-night-strategy/" target="_blank">http://cdixon.org/2010/10/16/<wbr>the-ladies-night-strategy/</wbr></a></li>
+	<li><a href="http://cdixon.org/2010/12/26/the-thin-edge-of-the-wedge-strategy/" target="_blank">http://cdixon.org/2010/12/26/<wbr>the-thin-edge-of-the-wedge-<wbr>strategy/</wbr></wbr></a></li>
+</ol>
+
+</div>
+
+</div>
+
+</div>
+
+<div>But back to where the lean movement is now :)</div>
+
+<div>Steve Blank has been teaching engineers how to be entrepreneurs for the past 7 years - he lectures at Stanford, Berkeley and Columbia. His class at stanford is very practical. Students must apply to be part of the class with a pre-formed team and idea to get started with. He found it difficult to keep track of progress, and learned about "business modeling" from one of the co-professors, Ann Miura-Ko (who is also a VC). Over the last two years he has had his students keep business models/ canvases on the core aspects of their startups, and blog about their issues and progress so others in the class (students and professors) can participate easily and offer quick advice on their own schedules. This has actually <a href="http://leanlaunchlab.com/" target="_blank">spawned a startup in its own right</a> - where the users are lean entrepreneurs. here's <a href="http://www.ashmaurya.com/2010/08/businessmodelcanvas/" target="_blank">the best post on how to create a business model aka lean canvas</a> - by ash maurya.</div>
+
+</div>
+
+<div>-------</div>
+
+<div><!--more--><a href="https://twitter.com/#!/subbu4">You should follow Subbu on twitter here</a>.</div></body></html>

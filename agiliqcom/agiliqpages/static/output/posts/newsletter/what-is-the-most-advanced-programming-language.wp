@@ -1,0 +1,86 @@
+<html><body><p>Google allows you to filter search results by "<a href="http://support.google.com/websearch/bin/answer.py?hl=en&amp;answer=1095407">reading level</a>", and shows what percent of that query results are "Basic", "Intermediate" or "Advanced".
+
+
+This can be used to find out how frequently advanced articles gets written about a topic. Lets run a sanity test. I axiomatically claim that advanced articles about Knuth gets written more frequently than advanced articles Kardashian. (In percentage terms.). Lets ask Google, and graph that.
+
+
+
+<iframe src="https://ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.html?json=%7B%22chartType%22:%22ColumnChart%22,%22chartName%22:%22Chart+1%22,%22state%22:%7B%7D,%22options%22:%7B%22vAxes%22:%5B%7B%22viewWindowMode%22:%22pretty%22,%22viewWindow%22:%7B%7D%7D,%7B%22viewWindowMode%22:%22pretty%22,%22viewWindow%22:%7B%7D%7D%5D,%22booleanRole%22:%22certainty%22,%22useFormatFromData%22:true,%22height%22:371,%22animation%22:%7B%22duration%22:500%7D,%22width%22:600,%22isStacked%22:true%7D,%22dataSourceUrl%22:%22https:%5C/%5C/docs.google.com%5C/a%5C/agiliq.com%5C/spreadsheet%5C/tq?key%3D0Aqqb8SO5JnsvdDEyS2NlTVpoZDJvZmhhakdWNVJKV2c%26headers%3D1%26transpose%3D0%26gid%3D0%26range%3DA1:D9%26pub%3D1%22%7D" width="620" height="375"></iframe>
+
+
+
+
+
+(Hover over the chart to see the breakdown.)
+
+
+
+Lets run another quick test. I claim that academic websites about programming and mathematics would have more advanced content than general interest websites. I am using the "site:" operator.
+
+
+
+<iframe src="https://ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.html?json=%7B%22chartType%22:%22ColumnChart%22,%22chartName%22:%22Chart+5%22,%22state%22:%7B%7D,%22options%22:%7B%22vAxes%22:%5B%7B%22viewWindowMode%22:%22pretty%22,%22viewWindow%22:%7B%7D%7D,%7B%22viewWindowMode%22:%22pretty%22,%22viewWindow%22:%7B%7D%7D%5D,%22booleanRole%22:%22certainty%22,%22useFormatFromData%22:true,%22height%22:371,%22animation%22:%7B%22duration%22:500%7D,%22width%22:600,%22isStacked%22:true%7D,%22dataSourceUrl%22:%22https:%5C/%5C/docs.google.com%5C/a%5C/agiliq.com%5C/spreadsheet%5C/tq?key%3D0Aqqb8SO5JnsvdDEyS2NlTVpoZDJvZmhhakdWNVJKV2c%26headers%3D1%26transpose%3D0%26gid%3D6%26range%3DA1:T101%26pub%3D1%22%7D" width="620" height="375"></iframe>
+
+
+
+
+
+This passes too. Wolframalpha &gt; Quora &gt; Pinterest as expected.
+
+
+
+
+
+Next we want to find which programming language had advanced articles about it. Its easy to intuitively  deduce that non mainstream and academic languages would have basic articles written less frequently than Python or Ruby.
+
+
+
+<iframe src="https://ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.html?json=%7B%22chartType%22:%22ColumnChart%22,%22chartName%22:%22Chart+2%22,%22state%22:%7B%7D,%22options%22:%7B%22vAxes%22:%5B%7B%22viewWindowMode%22:%22pretty%22,%22viewWindow%22:%7B%7D%7D,%7B%22viewWindowMode%22:%22pretty%22,%22viewWindow%22:%7B%7D%7D%5D,%22booleanRole%22:%22certainty%22,%22useFormatFromData%22:true,%22height%22:371,%22animation%22:%7B%22duration%22:500%7D,%22width%22:600,%22isStacked%22:true%7D,%22dataSourceUrl%22:%22https:%5C/%5C/docs.google.com%5C/a%5C/agiliq.com%5C/spreadsheet%5C/tq?key%3D0Aqqb8SO5JnsvdDEyS2NlTVpoZDJvZmhhakdWNVJKV2c%26headers%3D1%26transpose%3D0%26gid%3D1%26range%3DA1:T100%26pub%3D1%22%7D" width="620" height="375"></iframe>
+
+
+
+Looks like Haskell is the most "Advanced" language. :). 
+
+
+
+[Disclaimer after reading some comments]
+
+I am just claiming that Advanced articles about Haskell get written more frequently than Python. Its just an interesting observation, not a rigorous scientific experiment.
+
+
+
+
+
+For some more fun here is the comparison of web frameworks.
+
+
+
+<iframe src="https://ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.html?json=%7B%22chartType%22:%22ColumnChart%22,%22chartName%22:%22Chart+3%22,%22state%22:%7B%7D,%22options%22:%7B%22vAxes%22:%5B%7B%22viewWindowMode%22:%22pretty%22,%22viewWindow%22:%7B%7D%7D,%7B%22viewWindowMode%22:%22pretty%22,%22viewWindow%22:%7B%7D%7D%5D,%22booleanRole%22:%22certainty%22,%22useFormatFromData%22:true,%22height%22:371,%22animation%22:%7B%22duration%22:500%7D,%22width%22:600,%22isStacked%22:true%7D,%22dataSourceUrl%22:%22https:%5C/%5C/docs.google.com%5C/a%5C/agiliq.com%5C/spreadsheet%5C/tq?key%3D0Aqqb8SO5JnsvdDEyS2NlTVpoZDJvZmhhakdWNVJKV2c%26headers%3D1%26transpose%3D0%26gid%3D2%26range%3DA1:E9%26pub%3D1%22%7D" width="620" height="375"></iframe>
+
+
+
+Again, non mainstream frameworks handily are more "Advanced" than Django and Rails.
+
+
+
+One more time, lets graph SEO terms.
+
+
+
+<iframe src="//ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.html?json=%7B%22chartType%22:%22ColumnChart%22,%22chartName%22:%22Chart+2%22,%22state%22:%7B%7D,%22options%22:%7B%22vAxes%22:%5B%7B%22viewWindowMode%22:%22pretty%22,%22viewWindow%22:%7B%7D%7D,%7B%22viewWindowMode%22:%22pretty%22,%22viewWindow%22:%7B%7D%7D%5D,%22booleanRole%22:%22certainty%22,%22useFormatFromData%22:true,%22height%22:371,%22animation%22:%7B%22duration%22:500%7D,%22width%22:600,%22isStacked%22:true%7D,%22dataSourceUrl%22:%22https:%5C/%5C/docs.google.com%5C/spreadsheet%5C/tq?key%3D0Aqqb8SO5JnsvdDEyS2NlTVpoZDJvZmhhakdWNVJKV2c%26headers%3D1%26transpose%3D0%26gid%3D4%26range%3DA1:T100%26pub%3D1%22%7D" width="620" height="375"></iframe>
+
+
+
+Common and beginner SEO terms have more basic articles written about them. Conversion Rate Optimization is an "Advanced" technique, who would have thought. :)
+
+
+
+Here is the raw data.
+
+
+
+<iframe src="https://docs.google.com/spreadsheet/pub?key=0Aqqb8SO5JnsvdFhScHluSUZ2N2h6UUtJMkdrNEJFS0E&amp;output=html" width="500" height="250"></iframe>
+
+
+
+Disclaimer: Its not a rigorous proof of anything. Its just something I found interesting.</p></body></html>

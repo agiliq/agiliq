@@ -1,0 +1,670 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>The Agiliq Newletter (django)</title><link>http://agiliq.com/newsletter/</link><description></description><language>en</language><lastBuildDate>Fri, 23 May 2014 17:37:42 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>How can you build amazing apps like Instagram?</title><link>http://agiliq.com/newsletter/posts/newsletter/how-can-you-build-amazing-apps-like-instagram.html</link><dc:creator>shabda</dc:creator><description>&lt;p&gt;&lt;/p&gt;&lt;p&gt;Did you know that Instagram was a Django site?.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;What is behind Instagram's 1 Billion $ sale?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Unless you have been living under a rock you have heard about Facebook acquiring Instagram for a Billion. You may not know that it was Django which was powering Instagram's success. Read more about it at &lt;a href="http://highscalability.com/blog/2012/4/9/the-instagram-architecture-facebook-bought-for-a-cool-billio.html"&gt;HighScalability.com&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Do you have a mobile first strategy?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Gigaom broke the news and had the most insightful story on the deal. &lt;a href="http://gigaom.com/2012/04/09/here-is-why-did-facebook-bought-instagram/"&gt;Read it here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;"Because Facebook is essentially about photos, and Instagram had found and attacked Facebook's achilles heel - mobile photo sharing."&lt;/p&gt;
+&lt;p&gt;Mobile first is the strategy most successful startups are using. Having a mobile presence has become a must have. Are you ready?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The startup owner's manual&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Are you following the lean startup methodology? Steve Blank, the father of the lean startup, methodology has written &lt;a href="http://www.amazon.com/The-Startup-Owners-Manual-Step-By-Step/dp/0984999302/"&gt;the Startup owner's manual&lt;/a&gt;. Its topping the charts. If you follow &lt;a href="http://agiliq.com/newsletter/how-to-build-a-lean-startup/"&gt;the lean startup methodology&lt;/a&gt;, you need to read this book.&lt;/p&gt;
+&lt;p&gt;At &lt;a href="http://agiliq.com/"&gt;Agiliq&lt;/a&gt; we build amazing web apps using Django and amazing mobile apps using HTML5 technologies. We follow agile processes and work with startups. Think we can help you? Give us a shout anytime at hello@agiliq.com.&lt;/p&gt;
+&lt;p&gt;(Send on May 3, 2012)&lt;/p&gt;</description><category>django</category><guid>http://agiliq.com/newsletter/posts/newsletter/how-can-you-build-amazing-apps-like-instagram.html</guid><pubDate>Fri, 04 May 2012 11:07:57 GMT</pubDate></item><item><title>What is the most "Advanced" programming language?</title><link>http://agiliq.com/newsletter/posts/newsletter/what-is-the-most-advanced-programming-language.html</link><dc:creator>shabda</dc:creator><description>&lt;p&gt;&lt;/p&gt;&lt;p&gt;Google allows you to filter search results by "&lt;a href="http://support.google.com/websearch/bin/answer.py?hl=en&amp;amp;answer=1095407"&gt;reading level&lt;/a&gt;", and shows what percent of that query results are "Basic", "Intermediate" or "Advanced".&lt;/p&gt;
+&lt;p&gt;This can be used to find out how frequently advanced articles gets written about a topic. Lets run a sanity test. I axiomatically claim that advanced articles about Knuth gets written more frequently than advanced articles Kardashian. (In percentage terms.). Lets ask Google, and graph that.&lt;/p&gt;
+&lt;iframe src="https://ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.html?json=%7B%22chartType%22:%22ColumnChart%22,%22chartName%22:%22Chart+1%22,%22state%22:%7B%7D,%22options%22:%7B%22vAxes%22:%5B%7B%22viewWindowMode%22:%22pretty%22,%22viewWindow%22:%7B%7D%7D,%7B%22viewWindowMode%22:%22pretty%22,%22viewWindow%22:%7B%7D%7D%5D,%22booleanRole%22:%22certainty%22,%22useFormatFromData%22:true,%22height%22:371,%22animation%22:%7B%22duration%22:500%7D,%22width%22:600,%22isStacked%22:true%7D,%22dataSourceUrl%22:%22https:%5C/%5C/docs.google.com%5C/a%5C/agiliq.com%5C/spreadsheet%5C/tq?key%3D0Aqqb8SO5JnsvdDEyS2NlTVpoZDJvZmhhakdWNVJKV2c%26headers%3D1%26transpose%3D0%26gid%3D0%26range%3DA1:D9%26pub%3D1%22%7D" width="620" height="375"&gt;&lt;/iframe&gt;
+
+&lt;p&gt;(Hover over the chart to see the breakdown.)&lt;/p&gt;
+&lt;p&gt;Lets run another quick test. I claim that academic websites about programming and mathematics would have more advanced content than general interest websites. I am using the "site:" operator.&lt;/p&gt;
+&lt;iframe src="https://ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.html?json=%7B%22chartType%22:%22ColumnChart%22,%22chartName%22:%22Chart+5%22,%22state%22:%7B%7D,%22options%22:%7B%22vAxes%22:%5B%7B%22viewWindowMode%22:%22pretty%22,%22viewWindow%22:%7B%7D%7D,%7B%22viewWindowMode%22:%22pretty%22,%22viewWindow%22:%7B%7D%7D%5D,%22booleanRole%22:%22certainty%22,%22useFormatFromData%22:true,%22height%22:371,%22animation%22:%7B%22duration%22:500%7D,%22width%22:600,%22isStacked%22:true%7D,%22dataSourceUrl%22:%22https:%5C/%5C/docs.google.com%5C/a%5C/agiliq.com%5C/spreadsheet%5C/tq?key%3D0Aqqb8SO5JnsvdDEyS2NlTVpoZDJvZmhhakdWNVJKV2c%26headers%3D1%26transpose%3D0%26gid%3D6%26range%3DA1:T101%26pub%3D1%22%7D" width="620" height="375"&gt;&lt;/iframe&gt;
+
+&lt;p&gt;This passes too. Wolframalpha &amp;gt; Quora &amp;gt; Pinterest as expected.&lt;/p&gt;
+&lt;p&gt;Next we want to find which programming language had advanced articles about it. Its easy to intuitively  deduce that non mainstream and academic languages would have basic articles written less frequently than Python or Ruby.&lt;/p&gt;
+&lt;iframe src="https://ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.html?json=%7B%22chartType%22:%22ColumnChart%22,%22chartName%22:%22Chart+2%22,%22state%22:%7B%7D,%22options%22:%7B%22vAxes%22:%5B%7B%22viewWindowMode%22:%22pretty%22,%22viewWindow%22:%7B%7D%7D,%7B%22viewWindowMode%22:%22pretty%22,%22viewWindow%22:%7B%7D%7D%5D,%22booleanRole%22:%22certainty%22,%22useFormatFromData%22:true,%22height%22:371,%22animation%22:%7B%22duration%22:500%7D,%22width%22:600,%22isStacked%22:true%7D,%22dataSourceUrl%22:%22https:%5C/%5C/docs.google.com%5C/a%5C/agiliq.com%5C/spreadsheet%5C/tq?key%3D0Aqqb8SO5JnsvdDEyS2NlTVpoZDJvZmhhakdWNVJKV2c%26headers%3D1%26transpose%3D0%26gid%3D1%26range%3DA1:T100%26pub%3D1%22%7D" width="620" height="375"&gt;&lt;/iframe&gt;
+
+&lt;p&gt;Looks like Haskell is the most "Advanced" language. :). &lt;/p&gt;
+&lt;p&gt;[Disclaimer after reading some comments]&lt;/p&gt;
+&lt;p&gt;I am just claiming that Advanced articles about Haskell get written more frequently than Python. Its just an interesting observation, not a rigorous scientific experiment.&lt;/p&gt;
+&lt;p&gt;For some more fun here is the comparison of web frameworks.&lt;/p&gt;
+&lt;iframe src="https://ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.html?json=%7B%22chartType%22:%22ColumnChart%22,%22chartName%22:%22Chart+3%22,%22state%22:%7B%7D,%22options%22:%7B%22vAxes%22:%5B%7B%22viewWindowMode%22:%22pretty%22,%22viewWindow%22:%7B%7D%7D,%7B%22viewWindowMode%22:%22pretty%22,%22viewWindow%22:%7B%7D%7D%5D,%22booleanRole%22:%22certainty%22,%22useFormatFromData%22:true,%22height%22:371,%22animation%22:%7B%22duration%22:500%7D,%22width%22:600,%22isStacked%22:true%7D,%22dataSourceUrl%22:%22https:%5C/%5C/docs.google.com%5C/a%5C/agiliq.com%5C/spreadsheet%5C/tq?key%3D0Aqqb8SO5JnsvdDEyS2NlTVpoZDJvZmhhakdWNVJKV2c%26headers%3D1%26transpose%3D0%26gid%3D2%26range%3DA1:E9%26pub%3D1%22%7D" width="620" height="375"&gt;&lt;/iframe&gt;
+
+&lt;p&gt;Again, non mainstream frameworks handily are more "Advanced" than Django and Rails.&lt;/p&gt;
+&lt;p&gt;One more time, lets graph SEO terms.&lt;/p&gt;
+&lt;iframe src="//ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.html?json=%7B%22chartType%22:%22ColumnChart%22,%22chartName%22:%22Chart+2%22,%22state%22:%7B%7D,%22options%22:%7B%22vAxes%22:%5B%7B%22viewWindowMode%22:%22pretty%22,%22viewWindow%22:%7B%7D%7D,%7B%22viewWindowMode%22:%22pretty%22,%22viewWindow%22:%7B%7D%7D%5D,%22booleanRole%22:%22certainty%22,%22useFormatFromData%22:true,%22height%22:371,%22animation%22:%7B%22duration%22:500%7D,%22width%22:600,%22isStacked%22:true%7D,%22dataSourceUrl%22:%22https:%5C/%5C/docs.google.com%5C/spreadsheet%5C/tq?key%3D0Aqqb8SO5JnsvdDEyS2NlTVpoZDJvZmhhakdWNVJKV2c%26headers%3D1%26transpose%3D0%26gid%3D4%26range%3DA1:T100%26pub%3D1%22%7D" width="620" height="375"&gt;&lt;/iframe&gt;
+
+&lt;p&gt;Common and beginner SEO terms have more basic articles written about them. Conversion Rate Optimization is an "Advanced" technique, who would have thought. :)&lt;/p&gt;
+&lt;p&gt;Here is the raw data.&lt;/p&gt;
+&lt;iframe src="https://docs.google.com/spreadsheet/pub?key=0Aqqb8SO5JnsvdFhScHluSUZ2N2h6UUtJMkdrNEJFS0E&amp;amp;output=html" width="500" height="250"&gt;&lt;/iframe&gt;
+
+&lt;p&gt;Disclaimer: Its not a rigorous proof of anything. Its just something I found interesting.&lt;/p&gt;</description><category>django</category><guid>http://agiliq.com/newsletter/posts/newsletter/what-is-the-most-advanced-programming-language.html</guid><pubDate>Fri, 06 Apr 2012 17:12:34 GMT</pubDate></item><item><title>How to launch a startup (mindmap)</title><link>http://agiliq.com/newsletter/posts/newsletter/how-to-launch-a-startup-mindmap.html</link><dc:creator>shabda</dc:creator><description>&lt;p&gt;&lt;/p&gt;&lt;div class="p_embed p_image_embed"&gt;&lt;img src="http://agiliq.com/newsletter/wp-content/uploads/2011/09/how_to_launch_a_startup-png-scaled-1000.jpg?w=224" alt="How_to_launch_a_startup" width="500" height="668"&gt;&lt;/div&gt;
+ 
+&lt;div&gt;Also available as a pdf.&lt;/div&gt;
+
+&lt;div class="p_embed p_file_embed"&gt;&lt;a href="http://agiliq.com/newsletter/newsletter/wp-content/uploads/2011/09/How_to_launch_a_startup.pdf"&gt;&lt;img src="http://agiliq.com/newsletter/wp-content/uploads/2011/09/pdf.png?w=48" alt=""&gt;&lt;/a&gt;&lt;/div&gt;
+
+&lt;div class="p_embed_description"&gt;&lt;strong&gt;How to launch a startup.pdf&lt;/strong&gt;
+
+&lt;a href="http://agiliq.com/newsletter/newsletter/wp-content/uploads/2011/09/How_to_launch_a_startup.pdf"&gt;Download this file&lt;/a&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+&lt;div&gt;Did I miss anything? Email us at hello@agiliq.com&lt;/div&gt;
+
+&lt;p&gt;Have you joined our newsletter yet &lt;a href="http://eepurl.com/e1zk2" target="_blank"&gt;http://eepurl.com/e1zk2&lt;/a&gt;&lt;/p&gt;
+&lt;div&gt;We cover Webdev, Django, SaaS, Mobile and cloud computing and&lt;/div&gt;
+
+&lt;div&gt;help you "Build amazing webapps".&lt;/div&gt;
+
+&lt;p&gt;&lt;/p&gt;</description><category>django</category><guid>http://agiliq.com/newsletter/posts/newsletter/how-to-launch-a-startup-mindmap.html</guid><pubDate>Fri, 16 Sep 2011 12:02:21 GMT</pubDate></item><item><title>Webapps for website owners: Review of 25+ services</title><link>http://agiliq.com/newsletter/posts/newsletter/big-list-of-webapp-reviews-for-website-owners.html</link><dc:creator>shabda</dc:creator><description>&lt;p&gt;&lt;/p&gt;&lt;div style="background-color: transparent;"&gt;
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;We reviewed the following apps which let you keep track of your site. (scroll down to see the reviews)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;a href="http://www.pingdom.com/"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000099; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline;"&gt;pingdom&lt;/span&gt;&lt;/a&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;Website monitoring&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;a href="http://www.siteuptime.com/"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000099; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline;"&gt;SiteUptime&lt;/span&gt;&lt;/a&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;Website monitoring&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;a href="http://browsershots.org/"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000099; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline;"&gt;Browsershots&lt;/span&gt;&lt;/a&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;Browser Compatibilty Testing&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;a href="https://browserlab.adobe.com/en-us/index.html"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000099; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline;"&gt;Adobe BrowserLab&lt;/span&gt;&lt;/a&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;Browser Compatibility Testing&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;a href="http://crossbrowsertesting.com/"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000099; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline;"&gt;Cross Browser Testing&lt;/span&gt;&lt;/a&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;Browser Compatibilty Testing&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;a href="http://www.google.com/analytics/"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000099; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline;"&gt;Google Analytics &lt;/span&gt;&lt;/a&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;Website analytics&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;a href="http://haveamint.com/"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000099; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline;"&gt;Mint&lt;/span&gt;&lt;/a&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;Website analytics&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;a href="http://www.kissmetrics.com/"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000099; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline;"&gt;KISSmetrics&lt;/span&gt;&lt;/a&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;Person based analytics&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;a href="http://www.clicktale.com/"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000099; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline;"&gt;ClickTale&lt;/span&gt;&lt;/a&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;User Experience Analytics&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;a href="http://www.crazyegg.com/"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000099; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline;"&gt;CrazyEgg&lt;/span&gt;&lt;/a&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;User Experience Analytics&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;a href="http://www.getexceptional.com/"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000099; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline;"&gt;Exceptional&lt;/span&gt;&lt;/a&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;Error Tracking&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;a href="https://www.keyerror.com/"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000099; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline;"&gt;KeyError&lt;/span&gt;&lt;/a&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;Error Tracking&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;a href="http://airbrakeapp.com/pages/home"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000099; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline;"&gt;Airbrake&lt;/span&gt;&lt;/a&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;Error Tracking&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;a href="http://code.google.com/speed/page-speed/"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000099; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline;"&gt;Page Speed&lt;/span&gt;&lt;/a&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;Speed Testing&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;a href="http://developer.yahoo.com/yslow/"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000099; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline;"&gt;YSlow&lt;/span&gt;&lt;/a&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;Speed Testing&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;a href="http://tools.pingdom.com/"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000099; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline;"&gt;pingdom&lt;/span&gt;&lt;/a&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;Speed Testing&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;a href="http://www.feedbackarmy.com/"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000099; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline;"&gt;Feedback Army&lt;/span&gt;&lt;/a&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;Usability Testing&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;a href="http://openhallway.com/"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000099; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline;"&gt;Open Hallway&lt;/span&gt;&lt;/a&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;Usability Testing&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;a href="http://www.usertesting.com/"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000099; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline;"&gt;UserTesting.com&lt;/span&gt;&lt;/a&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;Usability Testing&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;a href="http://uservoice.com/"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000099; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline;"&gt;UserVoice&lt;/span&gt;&lt;/a&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;Customer Feedback&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;/p&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: bold; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;1&amp;gt;Category: Monitoring&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: bold; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;Supervise and monitor site's uptime and performance: &lt;/span&gt;&lt;a href="http://pingdom.com/"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000099; background-color: transparent; font-weight: bold; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline;"&gt;pingdom&lt;/span&gt;&lt;/a&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: bold; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt; and &lt;/span&gt;&lt;a href="http://www.siteuptime.com/"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000099; background-color: transparent; font-weight: bold; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline;"&gt;SiteUptime&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;These web applications provide a service to monitor and supervise the uptime and performance of your web site. They generate uptime and performance reports and send you downtime alert instantly.&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;For both of these applications, you have the option of setting the frequency with which your sites be checked for the status(up or down). You can set it ranging from 1 minute to 60 minute depending on the plan for which you have signed up (You can sign up for a free plan as well, but it lets you monitor a single domain). As soon as your site goes down, you get notified through email and SMS alert so that you can fix at at the earliest and do not loose your valuable customers, money and reputation.&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;These apps also tell you how responsive your site is i.e the time it takes for your site to load on the browser. &lt;a href="http://pingdom.com"&gt;pingdom.com&lt;/a&gt; additionally provides you with visual charts and graphs based on the uptime/downtime log for the month to analyse the uptime, downtime and responsiveness of your site.&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: bold; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;2&amp;gt;Category: Cross-browser compatibility&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: bold; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;Test your web design in different browsers: &lt;/span&gt;&lt;a href="http://browsershots.org/"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000099; background-color: transparent; font-weight: bold; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline;"&gt;Browsershots&lt;/span&gt;&lt;/a&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: bold; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;, &lt;/span&gt;&lt;a href="https://browserlab.adobe.com/en-us/index.html"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000099; background-color: transparent; font-weight: bold; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline;"&gt;Adobe Browser Lab&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;Your customers might not be using the same browser and same operating system as you and your pages might display differently, or might not display at all on their browser. You never know the design flaws of your site just by testing on one or two browsers and you don’t have the time to test it on all browsers, still you want your site to be compatible with different browsers. &lt;a href="http://browsershots.org"&gt;browsershots.org&lt;/a&gt; is your choice in such situation.&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;With browsershots, you can preview website look across different versions of different browsers on different operating systems. It gives you more than 50 different choices to test upon. Optional settings include screen size and color depth. You can set any of java, javascript and flash enabled or disabled while testing on these browsers. Keep your requests speedy by selecting small sample of browsers.&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;Adobe Browser Lab:&lt;/span&gt;&lt;a href="https://browserlab.adobe.com/en-us/index.html"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000099; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline;"&gt;https://browserlab.adobe.com/en-us/index.html&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;Adobe Browser Lab has some advantages over browsershots. To test your site on browsershots, you need to deploy it on the server and provide the url. So, its not possible to test your site for cross browser compatibilty during development. Adobe Browser Lab allows you to integrate itself with Adobe Dreamweaver and you can test the site during development from within Dreamweaver. Testing during development allows you to incorporate changes more quickly. Also, you don’t need to provide the url for each page to test them, just activate the link and you can click through previews in Browser Lab.&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;Another site that provides cross browser testing service is&lt;/span&gt;&lt;a href="http://crossbrowsertesting.com/"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000099; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline;"&gt;crossbrowsertesting.com&lt;/span&gt;&lt;/a&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt; . It provides you many more choices i.e combination of browser, OS and resolution than&lt;/span&gt;&lt;a href="http://browsershots.org/"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000099; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline;"&gt;browsershots.org&lt;/span&gt;&lt;/a&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt; . But you need to pay in order to use their service.&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: bold; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;3&amp;gt;Category: Analytics&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: bold; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;Get insights about your web traffic: &lt;/span&gt;&lt;a href="http://www.google.com/analytics/"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000099; background-color: transparent; font-weight: bold; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline;"&gt;Google Analytics&lt;/span&gt;&lt;/a&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: bold; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt; and &lt;/span&gt;&lt;a href="http://haveamint.com/"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000099; background-color: transparent; font-weight: bold; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline;"&gt;Mint&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;Google Analytics is a web statistics tracking system which generates statistics about the visitors to a website. It provides insights about how people found your site, the most and least effective pages, referrers to your site, keywords used to get to your site, what ads people clicked on to get to your site and much more.&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;Using Google Analytics:&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;Using Google Analytics is fairly simple and easy. You need to signup and provide the website url which you want to track. Once this is done, you will be provided with a javascript code which you need to add to each page of the website. You might worry that adding this code will affect the load time of your page, but don’t worry. The code snippet provided is asynchronous.&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;haveamint is a website analytics program. It provides data about number of visits to the site, number of hits to each particular page, sources that referred to your site, which search engines listed your site and keywords used by them to list your site, most popular and most recently accessed content etc.&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: bold; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;4&amp;gt;Category: Person based analytics&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: bold; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;Get insights about behaviour patterns of your visitors and customers: &lt;/span&gt;&lt;a href="http://www.kissmetrics.com/"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000099; background-color: transparent; font-weight: bold; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline;"&gt;KISSmetrics&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;Customers are the life-blood of any business. A website which does not make money by advertising or page views or events thrives solely on its customers. If your only source of income are your customers, then you need to convert as many visitors to customers as possible. Also, your business wont be a success if your customers are unhappy and stop business with you. So, your next task is retaining your customers. This is where kissmetrics come into picture.&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;kissmetrics offer a number of metrics that you can measure. You can tell your objectives to kissmetrics and it will suggest you the appropriate metrics to track. Once these metrics are tracked, a report is generated which is analysed by kissmetrics and different solutions are suggested which helps you improve your site and achieve your objectives.&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;kissmetrics tells you the channel which brings most customers, (you should look into that channel and understand its content and why it brings the most customer and try having more similar channels), also you might be paying for a channel or advertising which doesn't bring any customer at all, stop paying for these channels. kissmetrics tells you about the conversion rate i.e the number of visitors who turned customers. It tells you the page from which most number of visitors left your site, so that you can improve that page.&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;Your visitors might get through three steps out of required four for registration, but finding the fourth one cumbersome and complex they leave your site. You might be losing thousand of visitors who could have been your customer, had your fourth registration step was as easy as the previous three. kissmetrics tells about this and in the process tells you that your highest priority should be improving and fixing this.&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;No visitor would like a page which makes a call to the server each time something is selected in a select field. A site might have such page. So, as the visitor is using this page, she sees a call being made to the server for every action and eventually the page being refreshed. Most of the visitors would leave the page after two or three refresh. You might be having your core product idea which is fantastic on the very next page but visitors never reach there and you loose a person who could have converted into a customer had s/he seen your core product. kissmetrics gives you a report of this and similar situations.&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;Once you get a customer, your primary concern is to retain him. Your customers might not be able to access full features of your product or your service and hence might not be getting the worth for their expenses, both time and money. Its essential to provide them the worth for their money both ethically and also to build customer relationship. They might be getting stuck at a particular point and might not be able to access the features beyond this. kissmetrics gives an idea and picture of similar problems faced by the customer. Once you have this idea you can address these needs of customers and guide them through the path through an email or through a tutorial.&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;/p&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;&lt;span style="font-family: Times; font-size: medium;"&gt;
+
+&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+
+&lt;div style="background-color: transparent;"&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: bold; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;5&amp;gt;Category: User Experience Analytics&lt;/span&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt; &lt;/span&gt;&lt;/p&gt;
+
+&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt; &lt;/span&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: bold; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;Improve your site's usability and optimize customer experience: &lt;/span&gt;&lt;a href="http://www.clicktale.com/"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000099; background-color: transparent; font-weight: bold; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline;"&gt;ClickTale&lt;/span&gt;&lt;/a&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: bold; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt; and &lt;/span&gt;&lt;a href="http://www.crazyegg.com/"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000099; background-color: transparent; font-weight: bold; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline;"&gt;CrazyEgg&lt;/span&gt;&lt;/a&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt; &lt;/span&gt;&lt;/p&gt;
+
+&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt; &lt;/span&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;How good and helpful it would be if you could see a video of the browsing session and each move taken by the visitor on your site. It would help a great deal if you could analyze the usage pattern on your site. These applications give you a picture of usage pattern on your site.&lt;/span&gt;&lt;/p&gt;
+
+ 
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;Let's consider an example. You have a killer feature or a link that points to that feature, and you consider it worth displaying to all your visitors. And you put that feature or link at the top right corner of your page. Most of your customers see the top left corner and do not notice that particular link and move to another page and in the entire browsing session did not notice that part. So, your return on investment for developing this part is very minimal and you are not even aware about it. In such situations, clicktale.com and crazyegg.com come into picture. They make you aware about the usage pattern for your site.&lt;/span&gt;&lt;/p&gt;
+
+ 
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;These applications provide you with Heatmap and Scrollmap. Heatmap tells you the notice received by each part of the page. So, it basically tells you the hot part of your page and the not part(part which is not hot) of your page. Scrollmap tells you how far down the page do the visitors scroll before they terminate the page. So, these application gives you an idea of where your visitors look, where they click and how far down they scroll.&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;Additionally, clicktale.com provides you with playable videos of entire browsing session of your visitors. Once you have the idea about usage pattern, you can consider changing the layout of your page and putting your core feature or most desired feature in the hot part to make it noticeable to your visitors.&lt;/span&gt;&lt;/p&gt;
+
+ 
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;Also, these applications give you an idea of average time spent on filling a form(if it takes more than few minutes, your site is not usable and visitors would eventually leave), time spent in filling each field of your form, what are the fields which cause your customers to leave.&lt;/span&gt;&lt;/p&gt;
+
+ 
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;How they do it?&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;These sites track and capture your visitor's mouse moves, clicks and keystrokes and aggregate these things for a group of visitors to provide you with heatmap and scrollmap.&lt;/span&gt;&lt;/p&gt;
+
+ 
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;All you need to do to use these applications is signup and add few lines of javascript code to your application and you are done. Moreover these things don't affect your site's performance.&lt;/span&gt;&lt;/p&gt;
+
+ 
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: bold; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;6&amp;gt;Category: Error Tracking&lt;/span&gt;&lt;/p&gt;
+
+ 
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: bold; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;Track the errors in your web app and get notified for every new category of error that occurs: &lt;/span&gt;&lt;a href="http://www.getexceptional.com/"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000099; background-color: transparent; font-weight: bold; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline;"&gt;Exceptional&lt;/span&gt;&lt;/a&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: bold; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;, &lt;/span&gt;&lt;a href="https://www.keyerror.com/"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000099; background-color: transparent; font-weight: bold; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline;"&gt;KeyError&lt;/span&gt;&lt;/a&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: bold; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;, &lt;/span&gt;&lt;a href="http://airbrakeapp.com/pages/home"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000099; background-color: transparent; font-weight: bold; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline;"&gt;Airbrake&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+
+ 
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;So you are finally done with developing your web app, tested it and have deployed it and your site has gone live. Inspite of the hard work you put in to test your site, it is very much possible that some bugs are still there and your app crashes for certain cases. Most of your customers would leave your site as soon as they encounter an error and a very few would care putting up a mail telling you about the nature and the inputs that caused the error. You have already lost a customer because of this error in your app and you don't want to lose more customers and revenue for the very same reason. You need to resolve this error and you need to resolve it fast. But how do you get aware about this error is the first question you need answered. In such situations you have Exceptional, KeyError and Airbrake for your help.&lt;/span&gt;&lt;/p&gt;
+
+ 
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;Once an error occurs, these application notify you about the occurence of the error through email. For high priority and critical applications you want to be notified immediately so that you can react quickly. Exception provides this by including sms notification in their plans. Also, just being aware about the errors does not solve the problem. You need to find the part of code that is causing this error but going through the entire code base and figuring out what caused the error might take a lot of effort as well as time. Don’t worry, these applications provide you with the entire stack trace for the error so that you immediately understand the part which caused the error and can fix it quickly and without much effort.&lt;/span&gt;&lt;/p&gt;
+
+ 
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;Additionally, these applications provide intelligent error grouping. So they are not going to flood your inbox with report of each and every error that occurs. You will not see duplicate error messages being delivered to your inbox. Instead these applications categorise the errors into various categories and notify you only when a different type of error(different from the one which you are already aware about) occurred. The dashboard for these sites let you keep track of the open and closed errors. Once you fix a bug which caused a particular error you can mark the error as closed or resolved. These applications provide you with an option on commenting about an error so that you can work in a team to fix an error bug. You might fix some part and want others in the team to be  aware about it so that they can take on from there. Just leave a comment beneath the error and you are done. No need to set up a meeting or to send an email to your team mate telling about what has been done and what needs to be done. Other features provided by these applications include Lighthouse integration(Lighthouse is a ticket tracking solution) and filter by recency.&lt;/span&gt;&lt;/p&gt;
+
+ 
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: bold; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;7&amp;gt;Category: Speed testing&lt;/span&gt;&lt;/p&gt;
+
+ 
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: bold; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;Your page should load in less than a second:&lt;/span&gt;&lt;/p&gt;
+
+ 
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;Your customers have neither got time nor patience to keep waiting for the page to load. Your app might be great, your page might be providing rich content which the customers want, but its not going to serve the purpose if it takes 10 seconds to load. When a site responds slowly, visitors loose patience and they are less likely to come back.&lt;/span&gt;&lt;/p&gt;
+
+ 
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;a href="http://developer.yahoo.com/yslow/"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000099; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline;"&gt;YSlow&lt;/span&gt;&lt;/a&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt; from Yahoo, &lt;/span&gt;&lt;a href="http://code.google.com/speed/page-speed/"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000099; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline;"&gt;Page Speed&lt;/span&gt;&lt;/a&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt; from Google and &lt;/span&gt;&lt;a href="http://tools.pingdom.com/"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000099; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline;"&gt;pingdom&lt;/span&gt;&lt;/a&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt; let you analyze the load time of your page. Page Speed provides various features, some worth mentioning are Page Speed browser extensions, Page Speed online, mod_pagespeed and Page Speed Service. Page Speed browser extensions provides you the capability to analyse the load time of web page during development. We are aware about the commonly known best web developmement practises which helps reduce the load time of a page, like putting the stylesheets at the top and scripts at the end of the page, putting the scripts in a seperate file, reducing the number of Http requests to the server etc. But there are a lot of other methods as well which when employed, significantly reduce the load time. We are not aware about some of these methods, but PageSpeed is. Page Speed browser extensions analyze your page and provide you with suggestions to optimize the load time of your page. The suggestions provided by PageSpeed might include Gzip compression, making Ajax cacheable, CSS sprites, making the components cacheable by using Expires header.(refer Google for brief explanation of these terms:) )&lt;/span&gt;&lt;/p&gt;
+
+ 
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;If you use Apache Http Server, you even don't need to bother about fixing the performance issues raised by Page Speed. You just need to use mod_pagespeed and your pages get optimized. You can also use Page Speed Service for optimising your pages. Page Speed Service fetches the content of your page from your server, rewrites it considering known best web development practises (few discussed above and many more), and serves the content to the end user.&lt;/span&gt;&lt;/p&gt;
+
+ 
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;a href="http://developer.yahoo.com/yslow/"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000099; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline;"&gt;YSlow&lt;/span&gt;&lt;/a&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt; offers similar services as provided by &lt;/span&gt;&lt;a href="http://code.google.com/speed/page-speed/"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000099; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline;"&gt;Page Speed&lt;/span&gt;&lt;/a&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;. It analyses your web page and provides suggestion to optimize the performance. It also lets you specify your own rules to rank your site. It tells you whether you should consider using a CDN, where you have an empty src tag, how many of it there is and asks you to remove them.&lt;/span&gt;&lt;/p&gt;
+
+ 
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;a href="http://tools.pingdom.com/"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000099; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline;"&gt;tools.pingdom.com&lt;/span&gt;&lt;/a&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt; provides a picture of the time it takes to load each component of the page. The load time of each object is shown visually with time bars. It mimics the loading of a page in an actual browser.&lt;/span&gt;&lt;/p&gt;
+
+ 
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;An additional service provided by Page Speed is Page Speed Mobile analysis. It analyses the pages as if it is being viewed in a mobile browser and provide suggestions for optimizing the sites for mobile devices.&lt;/span&gt;&lt;/p&gt;
+
+ 
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: bold; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;8&amp;gt;Category: Usability Testing&lt;/span&gt;&lt;/p&gt;
+
+ 
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: bold; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;Do your visitors love your site or are they gonna leave because of the design flaws and the inability to access the information you promised them to provide?&lt;/span&gt;&lt;/p&gt;
+
+ 
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;Usability describes the ease of use. Whether you have a content site or a service providing site or a site that describes about your company, you always have a targeted audience. And that targeted audience visits your site with some goals in mind. In case of a content site, their goal is to gather the information in as few clicks as possible. Are the visitors able to accomplish their goals? If they don't get the information that your site boasts of providing or it takes them say five clicks to get to that information, your site is not usable.&lt;/span&gt;&lt;/p&gt;
+
+ 
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;Visitors on your site should be able to figure out what your site does without any tutorial or training. For this, right information must be provided at right place on your site. You want to test all these things before making your site live. Various sites provide Usability testing, some worth mentioning are &lt;/span&gt;&lt;a href="http://www.feedbackarmy.com/"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000099; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline;"&gt;Feedback Army&lt;/span&gt;&lt;/a&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;, &lt;/span&gt;&lt;a href="http://www.usertesting.com/"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000099; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline;"&gt;UserTesting.com&lt;/span&gt;&lt;/a&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;, &lt;/span&gt;&lt;a href="http://openhallway.com/"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000099; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline;"&gt;OpenHallway&lt;/span&gt;&lt;/a&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;, &lt;/span&gt;&lt;a href="http://whatusersdo.com/"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000099; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline;"&gt;whatusersdo&lt;/span&gt;&lt;/a&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
+
+ 
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;Let's consider an example. You have a site which provides information about banks and all the relevant information related to banks, like ifsc code for a branch, micr code for the branch, all the banks in your city, banks near your current location, the branches for a particular bank in a particular city and such sort of information. Say a visitor comes to your site and tries to find ifsc code for State Bank Of India in Madhapur location, in Hyderabad city of India. He should be able to get this information quickly and easily. If it takes him say five minutes to figure out which navigation path to take to find this information or it takes him five clicks to get this work done, he is eventually going to leave your site and never gonna return. These things can be tested prior to making your site live by using the services provided by feedbackarmy, openhallway and usertesting.com.&lt;/span&gt;&lt;/p&gt;
+
+ 
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;How these sites work?&lt;/span&gt;&lt;/p&gt;
+
+ 
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;a href="http://feedbackarmy.com/"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000099; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline;"&gt;feedbackarmy.com&lt;/span&gt;&lt;/a&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt; :&lt;/span&gt;&lt;/p&gt;
+
+ 
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;You need to provide your website address to this site and give 4-6 questions for the reviewers who would be reviewing your site. One question on which you can get the feedback of reviewers is "What the site does?". Your site serves some purpose and you expect a feedback which describes this purpose. If the answers in the feedback differs from what you expected, in the feedback,  it shows users are not able to figure out the main functionality or use of your site. Then its time to work upon the site to make it usable.&lt;/span&gt;&lt;/p&gt;
+
+ 
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;The questions can even be targeted. For the scenario we considered (bank info site), a question could be "Find the micr code for Bank of America, Worli branch, Mumbai". You can ask your reviewers(feedbackarmy.com) to tell you about the time it took them to figure this out or the number of clicks it took them to find out this information. With these feedbacks you will have a fairly good idea about the usability of your site. You can also ask your reviewers to comment on the section of the site which confused them the most.&lt;/span&gt;&lt;/p&gt;
+
+ 
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;a href="http://usertesting.com/"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000099; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline;"&gt;usertesting.com&lt;/span&gt;&lt;/a&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;  :&lt;/span&gt;&lt;/p&gt;
+
+ 
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;The service provided by&lt;/span&gt;&lt;a href="http://usertesting.com/"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000099; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline;"&gt;usertesting.com&lt;/span&gt;&lt;/a&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt; is expensive than that provided by feedbackarmy.com. But with this expense comes some advantage. It provides you with a video of the reviewers speaking their mind i.e telling  you what they are thinking and what they want at which step,  while using your site. You can analyse these videos and make appropriate changes to the site to improve the usability of your site. Also, usertesting provides you with a detailed summary of the problems faced by the reviewers and what they would have liked on the site.&lt;/span&gt;&lt;/p&gt;
+
+ 
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;usertesting allows you to specify user’s demographics and tasks.&lt;/span&gt;&lt;/p&gt;
+
+ 
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;a href="http://openhallway.com/"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000099; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline;"&gt;openhallway.com&lt;/span&gt;&lt;/a&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt; :&lt;/span&gt;&lt;/p&gt;
+
+ 
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;While feedbackarmy uses Mechanical Turk from Amazon to get the reviewers and usertesting has their own representative reviewers, openhallway allows you to select your own testers and reviewers.  Like usertesting, it allows the testers to record the testing session. Additionaly they allow you to create scenarios on which you want usability testing to be done.&lt;/span&gt;&lt;/p&gt;
+
+ 
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;Process:&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;You just need to sign in on openhallway.com, tell the url that you want tested i.e your site’s url (if you have not gone live, give your BETA site url), create a scenario for testing, say registration, put some instruction for the testers and you are almost done. openhallway creates a recording link for you. Depending on who you want to test your site, send them the link through email. You can put this link on twitter or your blog or IM or wherever you wish. Once the tester clicks on the link he gets to see the instructions you set up and can start testing. Prior to testing he needs to start the recording and when he is done he needs to stop the recording. The tester can speak his thoughts while testing. Once the recording is stopped by the tester, he/she is prompted to write a feedback and then a  link is generated which contains the recording and it gets updated in your openhallway account in real time. Also, this link is sent to you via email. You can view this recording to get a feel about the usability of your site.&lt;/span&gt;&lt;/p&gt;
+
+ 
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;An advantage of OpenHallway over other usability testing sites is that it allows you to try OpenHallway for free.&lt;/span&gt;&lt;/p&gt;
+
+ 
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: bold; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;9&amp;gt;Category: Customer Feedback&lt;/span&gt;&lt;/p&gt;
+
+ 
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: bold; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;Listen what your customers have to say and show them that you care: &lt;/span&gt;&lt;a href="http://uservoice.com/"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000099; background-color: transparent; font-weight: bold; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline;"&gt;UserVoice&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+
+ 
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;Your customers feel special when they are listened to. They feel special when their ideas are taken into consideration. Making them feel special is the best way to retain your customers and building a long lasting relationship with them.&lt;/span&gt;&lt;/p&gt;
+
+ 
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;You have a lot of features and functionality in your application and your business is doing great but there is always a scope of improvement. There is always a room for some extra features to be added to your app. There would be some ideas that would not have struck you while developing the app, but it occurred to your customer while using the app. You need to be aware about the features and functionality which when incorporated would help you improve your app. Use UserVoice&lt;/span&gt;&lt;/p&gt;
+
+ 
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;Features of UserVoice:&lt;/span&gt;&lt;/p&gt;
+
+ 
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;Users can suggest their ideas and feedback. Users suggest their ideas in an Input field which is search-as-you-type enabled. So, if User Voice thinks there already exists a similar idea, it would prompt the user to comment or vote on that similar idea rather than creating a duplicate entry. So, you don’t have duplicate ideas in your User Voice account. The best thing about User Voice is that it can be hosted on your domain. So, people don’t need to care about why they are going to a different domain, just to provide you with an idea. No extra signup is required as users have the option of Single Sign On(using the same credentials as they use on  your web site). Also, the interface for User Voice can be customized to provide your own logo, tag line and presentation. So, users are not even aware that they are going to User Voice to provide you with an idea and it makes them feel at home.&lt;/span&gt;&lt;/p&gt;
+
+ 
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;Once an idea is submitted, an inline comment thread is associated with it. People can discuss and comment on that idea. Once you respond to this idea, an email is sent to every individual who was involved in this particular discussion. This shows them that you are listening (making them feel special). Also, your response shows on the top of the page so that every one gets aware about it and you never have to answer the same question twice.&lt;/span&gt;&lt;/p&gt;
+
+ 
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;User Voice also provides you with an option of starting a  forum containing a question which would be visible to your users. Users can post their feedback and opinions about this issue. It helps you keep your users engaged and let them know that you value their opinion.&lt;/span&gt;&lt;/p&gt;
+
+ 
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;With User Voice, you are in full control of the content. Although User Voice keeps spam, profanity and fraud out of your page, you can have even tighter control over the contents. You can turn on manual moderation and then you need to approve every content before it is posted.&lt;/span&gt;&lt;/p&gt;
+
+ 
+
+&lt;p style="text-align: justify; margin-top: 0; margin-bottom: 0;"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt;There are a lot of other interesting features as well. To get to know those features, check &lt;/span&gt;&lt;a href="http://uservoice.com/"&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000099; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline;"&gt;uservoice.com&lt;/span&gt;&lt;/a&gt;&lt;span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;"&gt; . Its worth the time.&lt;/span&gt;&lt;/p&gt;
+
+
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;hr&gt;
+
+&lt;div&gt;Did I miss anything? Email us at hello@agiliq.com&lt;/div&gt;
+
+&lt;p&gt;Have you joined our newsletter yet &lt;a href="http://eepurl.com/e1zk2" target="_blank"&gt;http://eepurl.com/e1zk2&lt;/a&gt;&lt;/p&gt;
+&lt;div&gt;We cover Webdev, Django, SaaS, Mobile and cloud computing and&lt;/div&gt;
+
+&lt;div&gt;help you "Build amazing webapps".&lt;/div&gt;
+
+&lt;p&gt;&lt;/p&gt;</description><category>django</category><guid>http://agiliq.com/newsletter/posts/newsletter/big-list-of-webapp-reviews-for-website-owners.html</guid><pubDate>Tue, 06 Sep 2011 07:42:00 GMT</pubDate></item><item><title>The website launch checklist: part 2</title><link>http://agiliq.com/newsletter/posts/newsletter/the-website-launch-checklist-part-2.html</link><dc:creator>shabda</dc:creator><description>&lt;p&gt;&lt;/p&gt;&lt;div&gt;If you have already read &lt;a href="http://newsletter.agiliq.com/the-quick-website-launch-checklist" target="_blank"&gt;the launch checklist here&lt;/a&gt;, here is the next checklist to optimize your site. (Most of them dont need to be done right before you start, but you should check each of these and mark it as Done/Won't do/Will do this later.)&lt;/div&gt;
+ 
+&lt;div&gt;&lt;strong&gt;1. Optimize your images.&lt;/strong&gt;&lt;/div&gt;
+
+&lt;div&gt;Upto 80% of your page's bandwidth is used up by images. Optimizing it provides one of the best returns on your time. Smushit, &lt;a href="http://www.smushit.com/ysmush.it/" target="_blank"&gt;http://www.smushit.com/ysmush.it/&lt;/a&gt;, can automate this.&lt;/div&gt;
+
+&lt;div&gt;Priority: High&lt;/div&gt;
+
+&lt;div&gt;&lt;strong&gt;2. Compress your CSS and JS&lt;/strong&gt;&lt;/div&gt;
+
+&lt;div&gt;Generally in development, you would be working with a verbose version of your CSS and Javascript files. Depending on your technology you may have an automatic way to do this when your site is deployed. If not you can use,&lt;/div&gt;
+
+&lt;div&gt;&lt;a href="http://developer.yahoo.com/yui/compressor/" target="_blank"&gt;http://developer.yahoo.com/yui/compressor/&lt;/a&gt;&lt;/div&gt;
+
+&lt;div&gt;Priority: High&lt;/div&gt;
+
+&lt;div&gt;&lt;strong&gt;3. Add a favicon&lt;/strong&gt;&lt;/div&gt;
+
+&lt;div&gt;Favicon add a custom icon in user's bookmarks and title bar. It adds a visual identity when your users have many tabs open. You can convert your logo or a png to a favicon via&lt;/div&gt;
+
+&lt;div&gt;&lt;a href="http://www.chami.com/html-kit/services/favicon/" target="_blank"&gt;http://www.chami.com/html-kit/services/favicon/&lt;/a&gt;&lt;/div&gt;
+
+&lt;div&gt;Priority: Medium&lt;/div&gt;
+
+&lt;div&gt;&lt;strong&gt;4. Create custom 404 and 500 error pages&lt;/strong&gt;&lt;/div&gt;
+
+&lt;div&gt;The default 404 and 500 error pages from the server are pretty useless. You should add a more useful page, along with your branding.&lt;/div&gt;
+
+&lt;div&gt;Read more &lt;a href="http://www.useit.com/alertbox/404_improvement.html" target="_blank"&gt;http://www.useit.com/alertbox/404_improvement.html&lt;/a&gt;&lt;/div&gt;
+
+&lt;div&gt;Priority: Medium&lt;/div&gt;
+
+&lt;div&gt;
+
+&lt;div&gt;&lt;strong&gt;5. Reserve social media names&lt;/strong&gt;&lt;/div&gt;
+
+ 
+
+&lt;div&gt;Register your site's name at twitter and other social networks where you plan to interact.&lt;/div&gt;
+
+ 
+
+&lt;div&gt;Priority: Medium&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;div&gt;&lt;strong&gt;6. Remove directory indexes&lt;/strong&gt;&lt;/div&gt;
+
+&lt;div&gt;Many servers default to showing a full list of all your files. This can be a security issue. If you use apache you can stop this by&lt;/div&gt;
+
+&lt;div&gt;&lt;a href="http://www.cyberciti.biz/faq/enabling-apache-file-directory-indexing/" target="_blank"&gt;http://www.cyberciti.biz/faq/enabling-apache-file-directory-indexing/&lt;/a&gt;&lt;/div&gt;
+
+&lt;div&gt;Priority: Medium&lt;/div&gt;
+
+&lt;div&gt;&lt;strong&gt;7. Your admin passwords are secure&lt;/strong&gt;&lt;/div&gt;
+
+&lt;div&gt;You may be using "welcome" as your admin password in development. Many web frameworks have a standard place where the admin areas are.&lt;/div&gt;
+
+&lt;div&gt;Not that you have important data you should change this password.&lt;/div&gt;
+
+&lt;div&gt;Priority: High&lt;/div&gt;
+
+&lt;div&gt;&lt;strong&gt;8. Add your site to Google Webmaster&lt;/strong&gt;&lt;/div&gt;
+
+&lt;div&gt;If you add your site to Google webmaster, they will provide you data such as what are common search terms they display your website for.&lt;/div&gt;
+
+&lt;div&gt;&lt;a href="http://www.google.com/webmasters/" target="_blank"&gt;http://www.google.com/webmasters/&lt;/a&gt;&lt;/div&gt;
+
+&lt;div&gt;Priority: Low&lt;/div&gt;
+
+&lt;div&gt;&lt;strong&gt;9. Spell check your website&lt;/strong&gt;&lt;/div&gt;
+
+&lt;div&gt;Sites like &lt;a href="http://www.texttrust.com/" target="_blank"&gt;http://www.texttrust.com/&lt;/a&gt; &lt;a href="http://checkdog.com/" target="_blank"&gt;http://checkdog.com/&lt;/a&gt; can automatically check your site for any spellng errors.&lt;/div&gt;
+
+&lt;div&gt;Priority: Low&lt;/div&gt;
+
+&lt;div&gt;&lt;strong&gt;10. Validate your Html and CSS.&lt;/strong&gt;&lt;/div&gt;
+
+&lt;div&gt;A valid html site can ease debugging your site and make it more compatible with different browsers.&lt;/div&gt;
+
+&lt;div&gt;Priority: Low&lt;/div&gt;
+
+&lt;div&gt;&lt;a href="http://validator.w3.org/" target="_blank"&gt;http://validator.w3.org/&lt;/a&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;strong&gt;11. Canonical urls&lt;/strong&gt;&lt;/div&gt;
+
+&lt;div&gt;Ensure that your site is available at both www and non www. Some people think that www in url is not useful (&lt;a href="http://no-www.org/" target="_blank"&gt;http://no-www.org/&lt;/a&gt;). Anyway you choose, there should be one canonical url.&lt;/div&gt;
+
+&lt;div&gt;Priority: Low&lt;/div&gt;
+
+&lt;div&gt;&lt;strong&gt;12. Your servers doesn't allow password based ssh login&lt;/strong&gt;&lt;/div&gt;
+
+&lt;div&gt;Your servers should remove password based ssh login, as they are a common vector for attack. Use public/private key login instead.&lt;/div&gt;
+
+&lt;div&gt;Priority: Medium&lt;/div&gt;
+
+&lt;div&gt;&lt;strong&gt;13. Remove placeholder texts.&lt;/strong&gt;&lt;/div&gt;
+
+&lt;div&gt;You might have lorem ipsum or similar copy while developing. Ensure they are removed.&lt;/div&gt;
+
+&lt;div&gt;Tip: Search for "lorem ipsum", "todo" or "remove me".&lt;/div&gt;
+
+&lt;div&gt;Priority: Medium&lt;/div&gt;
+
+&lt;div&gt;&lt;strong&gt;14. Login, Admin and Payment pages are on a HTTPs page&lt;/strong&gt;&lt;/div&gt;
+
+&lt;div&gt;Pages which get critical data from users should be on a HTTPS secured pages. You can get it for affordable prices from Godaddy or &lt;a href="http://rapidssl.com/" target="_blank"&gt;http://rapidssl.com/&lt;/a&gt;&lt;/div&gt;
+
+&lt;div&gt;Priority: Medium&lt;/div&gt;
+
+&lt;div&gt;&lt;strong&gt;15. Server restarts critical services on a service shutdown&lt;/strong&gt;&lt;/div&gt;
+
+&lt;div&gt;Software like Supervisord, Nagios or munin can ensure that your services are automatically bought up when they go down.&lt;/div&gt;
+
+&lt;div&gt;&lt;a href="http://supervisord.org/" target="_blank"&gt;http://supervisord.org/&lt;/a&gt;&lt;/div&gt;
+
+&lt;div&gt;Priority: Medium&lt;/div&gt;
+
+&lt;div&gt;&lt;strong&gt;16. Legal pages are in place&lt;/strong&gt;&lt;/div&gt;
+
+&lt;div&gt;If your site jurisdiction mandates that you have a privacy policy, or a contact us page, ensure you have that in place.&lt;/div&gt;
+
+&lt;div&gt;Priority: Medium&lt;/div&gt;
+
+&lt;div&gt;&lt;strong&gt;17. You have stress tested your site&lt;/strong&gt;&lt;/div&gt;
+
+&lt;div&gt;You should ensure that you site can take appropriate load. Apache AB, siege or a SaaS tool like &lt;a href="http://browsermob.com" target="_blank"&gt;browsermob.com&lt;/a&gt; can make this easy.&lt;/div&gt;
+
+&lt;div&gt;Priority: Low&lt;/div&gt;
+
+&lt;p&gt;&lt;a href="http://agiliq.com/newsletter/newsletter/wp-content/uploads/2011/08/website-launch-checklist-2.pdf"&gt;You can download this checklist as a pdf. &lt;/a&gt;&lt;/p&gt;
+&lt;div&gt;(Many people before us have created a website launch checklists.)&lt;/div&gt;
+
+&lt;div&gt;1. &lt;a href="http://www.boxuk.com/blog/the-ultimate-website-launch-checklist" target="_blank"&gt;http://www.boxuk.com/blog/the-ultimate-website-launch-checklist&lt;/a&gt;&lt;/div&gt;
+
+&lt;div&gt;2. &lt;a href="http://www.conversationmarketing.com/2007/03/website_launch_checklist.htm" target="_blank"&gt;http://www.conversationmarketing.com/2007/03/website_launch_checklist.htm&lt;/a&gt;&lt;/div&gt;
+
+&lt;div&gt;3. &lt;a href="http://boagworld.com/business-strategy/pre-launch-checklist/" target="_blank"&gt;http://boagworld.com/business-strategy/pre-launch-checklist/&lt;/a&gt;&lt;/div&gt;
+
+&lt;div&gt;Here are the urls listed above.&lt;/div&gt;
+
+&lt;div&gt;1. &lt;a href="http://www.smushit.com/ysmush.it/" target="_blank"&gt;http://www.smushit.com/ysmush.it/&lt;/a&gt;&lt;/div&gt;
+
+&lt;div&gt;2. &lt;a href="http://developer.yahoo.com/yui/compressor/" target="_blank"&gt;http://developer.yahoo.com/yui/compressor/&lt;/a&gt;&lt;/div&gt;
+
+&lt;div&gt;3. &lt;a href="http://www.chami.com/html-kit/services/favicon/" target="_blank"&gt;http://www.chami.com/html-kit/services/favicon/&lt;/a&gt;&lt;/div&gt;
+
+&lt;div&gt;4. &lt;a href="http://www.useit.com/alertbox/404_improvement.html" target="_blank"&gt;http://www.useit.com/alertbox/404_improvement.html&lt;/a&gt;&lt;/div&gt;
+
+&lt;div&gt;5. &lt;a href="http://supervisord.org/" target="_blank"&gt;http://supervisord.org/&lt;/a&gt;&lt;/div&gt;
+
+&lt;div&gt;6. &lt;a href="http://www.cyberciti.biz/faq/enabling-apache-file-directory-indexing/" target="_blank"&gt;http://www.cyberciti.biz/faq/enabling-apache-file-directory-indexing/&lt;/a&gt;&lt;/div&gt;
+
+&lt;div&gt;7. &lt;a href="http://airbrakeapp.com/pages/home" target="_blank"&gt;http://airbrakeapp.com/pages/home&lt;/a&gt;&lt;/div&gt;
+
+&lt;div&gt;8. &lt;a href="http://www.google.com/webmasters/" target="_blank"&gt;http://www.google.com/webmasters/&lt;/a&gt;&lt;/div&gt;
+
+&lt;div&gt;9. &lt;a href="http://www.texttrust.com/" target="_blank"&gt;http://www.texttrust.com/&lt;/a&gt; &lt;a href="http://checkdog.com/" target="_blank"&gt;http://checkdog.com/&lt;/a&gt;&lt;/div&gt;
+
+&lt;div&gt;10. &lt;a href="http://validator.w3.org/" target="_blank"&gt;http://validator.w3.org/&lt;/a&gt;&lt;/div&gt;
+
+&lt;div&gt;11. &lt;a href="http://no-www.org/" target="_blank"&gt;http://no-www.org/&lt;/a&gt;&lt;/div&gt;
+
+&lt;div&gt;12. &lt;a href="http://httpd.apache.org/docs/2.0/programs/ab.html" target="_blank"&gt;http://httpd.apache.org/docs/2.0/programs/ab.html&lt;/a&gt;&lt;/div&gt;
+
+&lt;div&gt;13. &lt;a href="http://www.lipsum.com/" target="_blank"&gt;http://www.lipsum.com/&lt;/a&gt;&lt;/div&gt;
+
+&lt;div&gt;14. &lt;a href="http://www.rapidssl.com/" target="_blank"&gt;http://www.rapidssl.com/&lt;/a&gt;&lt;/div&gt;
+
+&lt;hr&gt;
+
+&lt;div&gt;Did I miss anything? Email us at hello@agiliq.com&lt;/div&gt;
+
+&lt;p&gt;Have you joined our newsletter yet &lt;a href="http://eepurl.com/e1zk2" target="_blank"&gt;http://eepurl.com/e1zk2&lt;/a&gt;&lt;/p&gt;
+&lt;div&gt;We cover Webdev, Django, SaaS, Mobile and cloud computing and&lt;/div&gt;
+
+&lt;div&gt;help you "Build amazing webapps".&lt;/div&gt;
+
+&lt;p&gt;&lt;/p&gt;</description><category>django</category><guid>http://agiliq.com/newsletter/posts/newsletter/the-website-launch-checklist-part-2.html</guid><pubDate>Mon, 15 Aug 2011 07:50:00 GMT</pubDate></item><item><title>The quick website launch checklist</title><link>http://agiliq.com/newsletter/posts/newsletter/the-quick-website-launch-checklist.html</link><dc:creator>shabda</dc:creator><description>&lt;p&gt;&lt;/p&gt;&lt;div&gt;Without much ado:&lt;/div&gt;
+ 
+&lt;div&gt;&lt;strong&gt;1. Has Google Analytics or equivalent software.&lt;/strong&gt;&lt;/div&gt;
+
+&lt;div&gt;Why is this important?&lt;/div&gt;
+
+&lt;div&gt;You should be tracking how your pages are doing, which pages are popular and which of your pages are making money. Use Google Analytics or equivalent software. (&lt;a href="http://haveamint.com" target="_blank"&gt;haveamint.com&lt;/a&gt;, Kissmetrics.com or Mixpanel.com)&lt;/div&gt;
+
+&lt;div&gt;&lt;strong&gt;2. Has been tested with Pagespeed(&lt;a href="http://code.google.com/speed/page-speed/" target="_blank"&gt;http://code.google.com/speed/page-speed/&lt;/a&gt;) and Yslow(&lt;a href="http://developer.yahoo.com/yslow/" target="_blank"&gt;http://developer.yahoo.com/yslow/&lt;/a&gt;).&lt;/strong&gt;&lt;/div&gt;
+
+&lt;div&gt;This is important as 70% of user visible speed improvements come via improving the client-side optimizations. Pagespeed and Yslow check your site's conformance to best practices and can suggest areas of improvement.&lt;/div&gt;
+
+&lt;div&gt;&lt;strong&gt;3. Has a usability testing done via &lt;a href="http://feedbackarmy.com" target="_blank"&gt;feedbackarmy.com&lt;/a&gt; and &lt;a href="http://usertesting.com" target="_blank"&gt;usertesting.com&lt;/a&gt;.&lt;/strong&gt;&lt;/div&gt;
+
+&lt;div&gt;This is important as customers drop unusable websites to go to competitors. Even testing with 5 users can find 85% of the usability issues. These websites make usability testing simple and affordable.&lt;/div&gt;
+
+&lt;div&gt;&lt;strong&gt;4. Admins get error emails when site error happens.&lt;/strong&gt;&lt;/div&gt;
+
+&lt;div&gt;No matter how much you have tested, users are going to do unexpected things to your website, which can cause site errors. If you get a email informing about this, you can fix this proactively.&lt;/div&gt;
+
+&lt;div&gt;&lt;strong&gt;5. Has monitoring setup with Siteuptime.com/Pingdom.com or equivalent.&lt;/strong&gt;&lt;/div&gt;
+
+&lt;div&gt;No matter how good your infrastructure, sites crash. A site-monitoring service can inform you before your customers do.&lt;/div&gt;
+
+&lt;div&gt;&lt;strong&gt;6. Media and database are backed up.&lt;/strong&gt;&lt;/div&gt;
+
+&lt;div&gt;Servers die, humans make errors. Your website data is too precious and backups are affordable.&lt;/div&gt;
+
+&lt;div&gt;Your web host can generally provide you a option to backup entire servers. You should also be backing up your database and media to a separate server from your main host.&lt;/div&gt;
+
+&lt;div&gt;&lt;strong&gt;7. Backups are tested.&lt;/strong&gt;&lt;/div&gt;
+
+&lt;div&gt;Doing backups is useless if you never test them. Too many people miss this obvious step when they setup their backups.&lt;/div&gt;
+
+&lt;div&gt;&lt;strong&gt;8. Has a sitemap.xml&lt;/strong&gt;&lt;/div&gt;
+
+&lt;div&gt;Search engines are good at finding all your pages, but with sitemap you can guide and hint them, as well as guide about the relative importance of the pages.&lt;/div&gt;
+
+&lt;div&gt;&lt;strong&gt;9. Has a robots.txt&lt;/strong&gt;&lt;/div&gt;
+
+&lt;div&gt;You may have a lot of things you do not want the world to know about. (Eg user uploaded media). Use robots.txt to hide them from search engines.&lt;/div&gt;
+
+&lt;div&gt;&lt;strong&gt;10. Has been tested in multiple browsers.&lt;/strong&gt;&lt;/div&gt;
+
+&lt;div&gt;Your development team may have only tested a subset of browsers. Use a service like &lt;a href="http://browsershots.org/"&gt;browsershots.org&lt;/a&gt; and you can ensure your site looks good in all browsers.&lt;/div&gt;
+
+&lt;div&gt;&lt;strong&gt;11. Users have a way to contact admins&lt;/strong&gt;&lt;/div&gt;
+
+&lt;div&gt;You should have a contact page and make it easy to contact you and email you.&lt;/div&gt;
+
+&lt;div&gt;&lt;strong&gt;12. Admins get emails on broken links.&lt;/strong&gt;&lt;/div&gt;
+
+&lt;div&gt;Pages are moved around, and links break. These links can be extrnal or internal. If you are notified when a user gets a 404, you can respond. (For example put the redirect at the old url.)&lt;/div&gt;
+
+&lt;div&gt;&lt;strong&gt;13. Has a whats new section and/or a RSS feed.&lt;/strong&gt;&lt;/div&gt;
+
+&lt;div&gt;Your customers would like to know about you. They should not have to search to get this info. If you use a blog software a RSS feed should be automatic.&lt;/div&gt;
+
+&lt;p&gt;&lt;a href="http://agiliq.com/newsletter/newsletter/wp-content/uploads/2011/08/website-launch-checklist-1.pdf"&gt;You can download this checklist as pdf here&lt;/a&gt;.&lt;/p&gt;
+&lt;div&gt;&lt;a href="http://agiliq.com/newsletter/the-website-launch-checklist-part-2/"&gt;You can read the part 2 here&lt;/a&gt;&lt;/div&gt;
+
+&lt;hr&gt;
+
+&lt;div&gt;Did I miss anything? Email us at hello@agiliq.com&lt;/div&gt;
+
+&lt;p&gt;Have you joined our newsletter yet &lt;a href="http://eepurl.com/e1zk2" target="_blank"&gt;http://eepurl.com/e1zk2&lt;/a&gt;&lt;/p&gt;
+&lt;div&gt;We cover Webdev, Django, SaaS, Mobile and cloud computing and&lt;/div&gt;
+
+&lt;div&gt;help you "Build amazing webapps".&lt;/div&gt;
+
+&lt;p&gt;&lt;/p&gt;</description><category>django</category><guid>http://agiliq.com/newsletter/posts/newsletter/the-quick-website-launch-checklist.html</guid><pubDate>Sun, 14 Aug 2011 13:52:00 GMT</pubDate></item><item><title>How to test your web app for cheap</title><link>http://agiliq.com/newsletter/posts/newsletter/how-to-test-your-web-app-for-cheap.html</link><dc:creator>shabda</dc:creator><description>&lt;p&gt;&lt;/p&gt;&lt;div&gt;You are done building your SaaS app and need to start testing. You want to test functionality, usability, scalability. You want this to be more thorough than asking your friends, family and pets. There is a (SaaS) app for that.&lt;/div&gt;
+ 
+&lt;div&gt;&lt;strong&gt;Functionality:&lt;/strong&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;a href="http://www.99tests.com" target="_blank"&gt;www.99tests.com&lt;/a&gt;: You want people to start hitting your website, doing monkey testing, look no further than 99tests.. They are a crowd-sourced testing company which pays users to come to your site, work to a test specs and do log bugs. They then pay money to the top testers, who logged most bugs. For about 400$, you can get 30 people to be brutal to your website.&lt;/div&gt;
+
+&lt;div&gt;&lt;strong&gt;Usability:&lt;/strong&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;a href="http://FeedbackArmy.com" target="_blank"&gt;FeedbackArmy.com&lt;/a&gt; is a similar croudsourced testing tool, but for usability. For $15, you can get 10 people to come to your site and do the usability tasks you ask, and provide feedback.&lt;/div&gt;
+
+&lt;div&gt;&lt;a href="http://UserTesting.com" target="_blank"&gt;UserTesting.com&lt;/a&gt; takes this to the nest level. For $39 one person will create a 10 minute video of using your site. Watching the video of people struggle with the basic tasks is very illuminating. You can filter by demographics or income.&lt;/div&gt;
+
+&lt;div&gt;&lt;strong&gt;Performance:&lt;/strong&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;a href="http://browsermob.com" target="_blank"&gt;browsermob.com&lt;/a&gt; is a app which can take your test scripts and run them on thousand of browsers. It can take a selenium script or you can use their scripting language. Plans start at $500.&lt;/div&gt;
+
+&lt;p&gt;&lt;/p&gt;</description><category>django</category><guid>http://agiliq.com/newsletter/posts/newsletter/how-to-test-your-web-app-for-cheap.html</guid><pubDate>Sat, 13 Aug 2011 02:56:45 GMT</pubDate></item><item><title>App store is a content distribution platform (more than a software distribution platform)</title><link>http://agiliq.com/newsletter/posts/newsletter/app-store-is-a-content-distribution-platform.html</link><dc:creator>shabda</dc:creator><description>&lt;p&gt;&lt;/p&gt;&lt;div&gt;Wikipedia defines app store as,&lt;/div&gt;
+ 
+&lt;div&gt;"The iOS App Store is a digital application distribution platform for iOS developed and maintained by Apple."&lt;/div&gt;
+
+&lt;div&gt;Everyday this &lt;strong&gt;application&lt;/strong&gt; distribution platform is becoming a &lt;strong&gt;content&lt;/strong&gt; distribution platform.&lt;/div&gt;
+
+&lt;div&gt;&lt;a href="http://www.apple.com/iphone/apps-for-iphone/app-of-the-week/"&gt;Apple lists their app of the week here. &lt;/a&gt;&lt;/div&gt;
+
+&lt;div&gt;As on 12 Aug 2011, 6 of the 10 last app of the week were content apps. (A content app is one whose primary value is in the content, not the uniqueness of the software)&lt;/div&gt;
+
+&lt;div&gt;
+
+&lt;div class="p_embed p_image_embed"&gt;&lt;img src="http://agiliq.com/newsletter/newsletter/wp-content/uploads/2011/08/app-store.jpg" alt="Google_chrome-2-1"&gt;&lt;/div&gt;
+
+ 
+
+
+
+&lt;/div&gt;
+
+&lt;div&gt;These apps could have worked almost as well as websites, but the monetization and distribution potential of app store means an app makes more sense.&lt;/div&gt;
+
+&lt;div&gt;What this means for you.&lt;/div&gt;
+
+&lt;div&gt;1. App store is a great place to sell content&lt;/div&gt;
+
+&lt;div&gt;2. Data which was hard to monetize can be monetized. Case:&lt;/div&gt;
+
+&lt;div&gt;It would be a hardsell to get consumers to pay for a website which has zipcode info. Apps like this (&lt;a href="http://itunes.apple.com/us/app/zip-codes/id311107765?mt=8"&gt;http://itunes.apple.com/us/app/zip-codes/id311107765?mt=8&lt;/a&gt;) (and clones) sell everyday in the App store.&lt;/div&gt;
+
+&lt;div&gt;3. Similarly nobody will pay for a wallpaper or a recipe from a website, but wallpaper and recipe apps are one of the top performing apps.&lt;/div&gt;
+
+&lt;div&gt;4. &lt;strong&gt;There are low hanging fruits to make money in the app store. Get started now.&lt;/strong&gt;&lt;/div&gt;
+
+&lt;div&gt;When you have the credit card on file 0.99$ is not so different from $0.&lt;/div&gt;
+
+&lt;p&gt;&lt;/p&gt;</description><category>django</category><guid>http://agiliq.com/newsletter/posts/newsletter/app-store-is-a-content-distribution-platform.html</guid><pubDate>Fri, 12 Aug 2011 16:50:44 GMT</pubDate></item></channel></rss>

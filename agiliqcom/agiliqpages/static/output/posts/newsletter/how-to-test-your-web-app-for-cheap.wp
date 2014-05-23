@@ -1,0 +1,28 @@
+<html><body><div>You are done building your SaaS app and need to start testing. You want to test functionality, usability, scalability. You want this to be more thorough than asking your friends, family and pets. There is a (SaaS) app for that.</div>
+ 
+
+<div><strong>Functionality:</strong></div>
+
+ 
+
+<div><a href="http://www.99tests.com" target="_blank">www.99tests.com</a>: You want people to start hitting your website, doing monkey testing, look no further than 99tests.. They are a crowd-sourced testing company which pays users to come to your site, work to a test specs and do log bugs. They then pay money to the top testers, who logged most bugs. For about 400$, you can get 30 people to be brutal to your website.</div>
+
+ 
+
+<div><strong>Usability:</strong></div>
+
+ 
+
+<div><a href="http://FeedbackArmy.com" target="_blank">FeedbackArmy.com</a> is a similar croudsourced testing tool, but for usability. For $15, you can get 10 people to come to your site and do the usability tasks you ask, and provide feedback.</div>
+
+ 
+
+<div><a href="http://UserTesting.com" target="_blank">UserTesting.com</a> takes this to the nest level. For $39 one person will create a 10 minute video of using your site. Watching the video of people struggle with the basic tasks is very illuminating. You can filter by demographics or income.</div>
+
+ 
+
+<div><strong>Performance:</strong></div>
+
+ 
+
+<div><a href="http://browsermob.com" target="_blank">browsermob.com</a> is a app which can take your test scripts and run them on thousand of browsers. It can take a selenium script or you can use their scripting language. Plans start at $500.</div></body></html>

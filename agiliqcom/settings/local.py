@@ -34,9 +34,6 @@ if 'agiliq_heroku' in os.environ:
     #STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
     DEFAULT_FILE_STORAGE = "storages.backends.s3boto.S3BotoStorage"
 
-    MEDIA_URL = 'https://' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/media/'
-    MEDIA_ROOT = ''
-
     import dj_database_url
     DATABASES['default'] =  dj_database_url.config()
 

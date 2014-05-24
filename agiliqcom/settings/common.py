@@ -127,7 +127,6 @@ INSTALLED_APPS = (
     'south',
     'django_wysiwyg',
     'django_coverage',
-    'django_jenkins',
     'raven.contrib.django.raven_compat'
 )
 

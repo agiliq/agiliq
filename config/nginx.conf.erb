@@ -16,8 +16,8 @@ http {
     server_tokens on;
 
     log_format l2met 'measure#nginx.service=$request_time request_id=$http_x_request_id';
-    access_log /dev/stdout l2met;
-    error_log /dev/stdout info;
+    access_log logs/nginx/access.log l2met;
+    error_log logs/nginx/error.log;
 
     include mime.types;
     default_type application/octet-stream;
@@ -25,6 +25,7 @@ http {
 
     #Must read the body in 5 seconds.
     client_body_timeout 5;
+
 
 
     server {

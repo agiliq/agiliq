@@ -32,8 +32,9 @@ http {
         server_name _;
         keepalive_timeout 5;
 
-        location /newsletter {
+        location / {
           root /app/static_html/newsletter;
+          index  index.html;
         }
     }
 }

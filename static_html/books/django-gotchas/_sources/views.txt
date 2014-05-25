@@ -1,0 +1,66 @@
+===================
+Views
+===================
+
+
+Not returning a HttpResponse
+---------------------------------
+This is very common, but Django complains loudly. So very obvious and easy to fix.
+
+Solution:
+Always return HttpResponse via any of the mechanisms.
+
+Not including RequestContext
+------------------------------
+
+Sometime you mean this::
+
+    return render_to_response('templates/app/template.html', payload, RequestContext(request))
+
+But write::
+
+    return render_to_response('templates/app/template.html', payload,)
+    
+So any of your data from context processors would not be available. Eg, `media_url`.
+
+Solution:
+
+If you must use this, always be sure why you are doing it this way.
+
+    return render_to_response('templates/app/template.html', payload,)
+    
+Filtering on id
+-------------------
+
+A common view function:
+
+    def edit_post(request, id):
+        Post.objects.get(id = id)
+        
+`id` is a builtin in Python and overriding that is probably a bad idea. But this
+happens commonly as Django names the table's PK `id`.
+
+Solution:
+
+Name the variables descriptively or always use `pk`
+
+    def edit_post(request, post_id):
+        Post.objects.get(pk = post_id)
+
+Passing `locals()` to templates
+----------------------------------
+
+It is sometimes very tempting to pass `locals()` to the templates, especially if
+you have used a lot of variables, and most of them are used in templates. 
+
+This is almost always a bad idea as,
+
+1. it makes it harder to debug templates, as you do not know what variables are
+available in the template at one glance.
+2. Make it harder to refactor views, as you can not remove unneeded
+variables from the view after refactoring, as you dont know whether they are
+being used in templates.
+
+Solution: Don't use locals(), always explicitly create a dictionary to pass to
+the templates.
+    

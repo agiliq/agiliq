@@ -1,0 +1,23 @@
+Welcome to Django gotchas documentation!
+==========================================
+
+Contents:
+
+.. toctree::
+   :maxdepth: 2
+   
+   
+   urls
+   views
+   forms
+   models
+   templates
+   contrib
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
+

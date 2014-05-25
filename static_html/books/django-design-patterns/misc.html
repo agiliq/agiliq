@@ -1,0 +1,340 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Misc &mdash; Django Design Patterns</title>
+    
+    <link rel="stylesheet" href="_static/base.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/minify.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Django Design Patterns"
+          href="_static/opensearch.xml"/>
+    <link rel="top" title="Django Design Patterns" href="index.html" />
+    <link rel="prev" title="Workflow" href="workflow.html" /> 
+  </head>
+  <body>
+    <div id="wrap">
+        <div id="headerMeta"></div>
+        <div id="header">
+            <div class="container">
+                <div class="sixteen columns">
+                    <div class="logo">
+                                <h1><a href="../../index.html"><img src="_static/logo.png" alt="Logo"/>
+                                </a></h1>
+                                <h2><div class="headertitle"><a href="index.html">Django Design Patterns</a></div></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="main_wrap">
+            <div id="main">
+                <div class="container">
+            		<div class="twelve columns blog post main-content">
+                        <div class="content no-img">
+                            <div class="twelve columns omega">
+                                    
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="misc">
+<h1>Misc<a class="headerlink" href="misc.html#misc" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="settings-py-and-localsettings-py">
+<h2>settings.py and localsettings.py<a class="headerlink" href="misc.html#settings-py-and-localsettings-py" title="Permalink to this headline">¶</a></h2>
+<p>The settings for your project which are a machine specific should be refactored
+out of settings.py into localsettings.py. In your settings.py, you should do:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">localsettings</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s">&#39;localsettings could not be imported&#39;</span>
+    <span class="k">pass</span> <span class="c">#Or raise</span>
+</pre></div>
+</div>
+<p>This should be at the end of settings.py, so that localsetting.py override
+settings in settings.py</p>
+<p>This file should not be checked in your repository.</p>
+</div>
+<div class="section" id="use-relative-path-in-settings-py">
+<h2>Use relative path in settings.py<a class="headerlink" href="misc.html#use-relative-path-in-settings-py" title="Permalink to this headline">¶</a></h2>
+<p>Instead of writing:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">TEMPLATE_DIRS</span> <span class="o">=</span> <span class="s">&#39;/home/user/project/templates&#39;</span>
+</pre></div>
+</div>
+<p>Do:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#settings.py</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">CURRENT_DIR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">)</span>
+<span class="n">TEMPLATE_DIRS</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">CURRENT_DIR</span><span class="p">,</span> <span class="s">&#39;template&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="apps-should-provide-default-values-for-settings-they-are-trying-to-read">
+<h2>Apps should provide default values for settings they are trying to read.<a class="headerlink" href="misc.html#apps-should-provide-default-values-for-settings-they-are-trying-to-read" title="Permalink to this headline">¶</a></h2>
+<p>As far as possible, apps should have defaults for settings they are trying to
+read. Instead of:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">DEFAULT_SORT_UP</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">DEFAULT_SORT_UP</span>
+</pre></div>
+</div>
+<p>Use:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">DEFAULT_SORT_UP</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="s">&#39;DEFAULT_SORT_UP&#39;</span> <span class="p">,</span> <span class="s">&#39;&amp;uarr;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="use-templatetags-when-the-output-does-not-depend-on-the-request">
+<h2>Use templatetags when the output does not depend on the request<a class="headerlink" href="misc.html#use-templatetags-when-the-output-does-not-depend-on-the-request" title="Permalink to this headline">¶</a></h2>
+<p>In the sidebar, you want to show the 5 latest comments. You do not need
+the request to output this. Make it a templatetag.</p>
+</div>
+<div class="section" id="import-as-if-your-apps-are-on-your-project-path">
+<h2>Import as if your apps are on your project path<a class="headerlink" href="misc.html#import-as-if-your-apps-are-on-your-project-path" title="Permalink to this headline">¶</a></h2>
+<p>Instead of doing <cite>from project.app.models import ModelClass</cite> do <cite>from app.models
+import ModelClass</cite>. This makes you apps reusable as they are not tied to a project.</p>
+</div>
+<div class="section" id="naming-things">
+<h2>Naming things<a class="headerlink" href="misc.html#naming-things" title="Permalink to this headline">¶</a></h2>
+<p>Model class names should be singular, not plural.:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Post</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p>and not:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Posts</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p>Foreign key should use the name of the referenced class.:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Post</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">User</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Querysets should be plural, instances should be singular.:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">posts</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<span class="n">posts</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+
+<span class="n">post</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">post</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">latest</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-pdb-remotely">
+<h2>Using pdb remotely<a class="headerlink" href="misc.html#using-pdb-remotely" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes you will hit bugs which show up on server but not on your local
+system. To handle these, you need to debug on the server. Doing <cite>manage.py
+runserver</cite> only allows local connections. To allow remote connections, use:</p>
+<div class="highlight-python"><pre>python manage.py runserver 0.0.0.0:8000</pre>
+</div>
+<p>So that your <cite>pdb.set_trace()</cite> which are on remote servers are hit when you access
+them from your local system.</p>
+</div>
+<div class="section" id="do-not-use-primary-keys-in-urls">
+<h2>Do not use primary keys in urls<a class="headerlink" href="misc.html#do-not-use-primary-keys-in-urls" title="Permalink to this headline">¶</a></h2>
+<p>If you use PK in urls you are giving away sensitive information, for example,
+the number of entries in your table. It also makes it trivial to guess other urls.</p>
+<p>Use slugs in urls. This has the advantage of being both user and SEO
+friendly.</p>
+<p>If slugs do not make sense, instead use a CRC algorithm.:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Customer</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get_absolute_url</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="kn">import</span> <span class="nn">zlib</span>
+        <span class="c">#Use permalink in real case</span>
+        <span class="k">return</span> <span class="s">&#39;/customer/</span><span class="si">%s</span><span class="s">/&#39;</span> <span class="o">%</span> <span class="n">zlib</span><span class="o">.</span><span class="n">crc32</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pk</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="code-defensively-in-middleware-and-context-processors">
+<h2>Code defensively in middleware and context processors.<a class="headerlink" href="misc.html#code-defensively-in-middleware-and-context-processors" title="Permalink to this headline">¶</a></h2>
+<p>Your middleware and context processors are going to be run for <strong>all</strong> requests.
+Have you handled all cases?</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>def process_request(request):</dt>
+<dd><dl class="first last docutils">
+<dt>if user.is_authenticated():</dt>
+<dd>profile = request.user.get_profile()
+# Hah, I create profiles during
+# registration so this is safe.
+...</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+<p>Or it is? What about users created via <cite>manage.py createsuperuser</cite>? With the
+above middleware, the default user can not access even the admin site.</p>
+<p>Hence handle all scenarios in middleware and context processors. This is one place
+where <cite>try: .. except: ..</cite> (bare except) blocks are acceptable. You do not want one
+middleware  bringing down the entire site.</p>
+</div>
+<div class="section" id="move-long-running-tasks-to-a-message-queue">
+<h2>Move long running tasks to a message queue.<a class="headerlink" href="misc.html#move-long-running-tasks-to-a-message-queue" title="Permalink to this headline">¶</a></h2>
+<p>If you have long running requests they should be handled in a message queue, and not in the request thread. For example, using a lot of API calls, will make your pages crawl. Instead move the API processing to a message queue such as <a class="reference external" href="http://celeryproject.org/">celery</a>.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="four columns sidebar">
+                        <div class="gce-widget">
+                                <form method="get" action="search.html">
+                                    <fieldset>
+                                        <input id="q" class="search_input" type="text" name="q" value="search site" onclick="this.value='';" onfocus="javascript: if (formfield.defaultValue==formfield.value)formfield.value = ''" onblur="this.value=!this.value?'search site':this.value;" />
+                                        <input class="submit" type="submit" value="Search" />
+                                    </fieldset>
+                                </form>
+                        </div>
+                        <div class="pages-widget">
+                                <h3><a href="index.html">Table Of Contents</a></h3>
+                                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="contents.html">Welcome to Django design patterns&#8217;s documentation!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../djangodesignpatterns/urls.html">Urls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="views.html">Views</a></li>
+<li class="toctree-l1"><a class="reference internal" href="forms.html">Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow.html">Workflow</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="misc.html">Misc</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="misc.html#settings-py-and-localsettings-py">settings.py and localsettings.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html#use-relative-path-in-settings-py">Use relative path in settings.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html#apps-should-provide-default-values-for-settings-they-are-trying-to-read">Apps should provide default values for settings they are trying to read.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html#use-templatetags-when-the-output-does-not-depend-on-the-request">Use templatetags when the output does not depend on the request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html#import-as-if-your-apps-are-on-your-project-path">Import as if your apps are on your project path</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html#naming-things">Naming things</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html#using-pdb-remotely">Using pdb remotely</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html#do-not-use-primary-keys-in-urls">Do not use primary keys in urls</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html#code-defensively-in-middleware-and-context-processors">Code defensively in middleware and context processors.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html#move-long-running-tasks-to-a-message-queue">Move long running tasks to a message queue.</a></li>
+</ul>
+</li>
+</ul>
+
+                                    <h3 style="margin-top: 1.5em;">This Page</h3>
+                                        <a href="_sources/misc.txt" rel="nofollow">Show Source</a>
+                        </div>
+                    </div>
+                    <div class="sixteen columns">
+                        <div class="right">
+                                    <a href="workflow.html" title="Workflow" accesskey="P">previous</a> |
+                                    <a href="genindex.html" title="General Index" accesskey="I">index</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="footer">
+            <div class="container">
+                <div class="four columns">
+                    <div class="contact-widget">
+                        <h4>Contact Us</h4>
+                        <ul>
+                            <li><span>Email :</span> <a href="mailto:hello@agiliq.com" class="test">hello@agiliq.com</a></li>
+                            <li><span>Address :</span><p> Agiliq Info Solutions India Pvt Ltd,<br/>
+                            # 302, Siri Sampada Appts,<br/>
+                            Near Madhapur Police Station,<br/>
+                            Hyderabad - 500033. India.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="four columns">
+                    <div class="know-widget">
+                        <h4>Know More</h4>
+                        <ul>
+                            <li> <a class="twitter" rel="nofollow" href="http://twitter.com/agiliqdotcom">Follow us on Twitter</a></li>
+                            <li> <a class="facebook" rel="nofollow"  href="http://facebook.com/agiliq">Connect us on Facebook</a></li>
+                            <li> <a class="linkedin" rel="nofollow" href="http://www.linkedin.com/company/agiliq-info-solutions-india-pvt-ltd">Linkedin</a></li>
+                            <li><a class="youtube" rel="nofollow" href="http://www.youtube.com/user/agiliq">Youtube - Python Screencasts</a></li>
+                            <li> <a class="posterous" rel="nofollow" href="http://people.agiliq.com/">Our Posterous</a></li>
+                            <li> <a class="tumblr" rel="nofollow" href="http://agiliq.tumblr.com/">Our Tumblr</a></li>
+                            <li> <a class="code" rel="nofollow" href="https://github.com/agiliq/">Code</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="four columns">
+                    <div class="books-widget">
+                        <h4>Read</h4>
+                        <ul>
+                            <li>
+                                <a href="../../blog.1">Blog</a>
+                            </li>
+                            <li>
+                                <a href="../../newsletter.1">Newsletter</a>
+                            </li>
+                            <li> <a href="../djangodesignpatterns/index.html">Django Design Patterns</a></li>
+                            <li> <a href="../djenofdjango/index.html">Djen of Django</a></li>
+                            <li> <a href="../djangogotchas/index.html">Django Gotchas</a></li>
+                            <li> <a href="../../softwareconsulting.1">Software Consulting Howto</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+               <div class="four columns">
+                   <div class="links-widget">
+                       <h4>About</h4>
+                       <ul>
+                           <li> <a href="../../index.html">Home</a></li>
+                           <li> <a href="../../contact/index.html">Contact Us</a></li>
+                           <li> <a href="../../whoweare">Who we are</a></li>
+                           <li> <a href="../../whatwedo">What we do</a></li>
+
+                           <li> <a href="../../blog.1">Blog</a></li>
+                           <li> <a href="../../forum/index.html">Forum</a></li>
+
+                       </ul>
+                   </div>
+               </div>
+               <div class="copyright">
+                        
+    <div class="footer">
+        &copy; Copyright 2011, Agiliq.
+      Last updated on Oct 14, 2013.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+               </div>
+            </div>
+        </div>
+    </div>
+    <!-- extra footer -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-367368-15']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </body>
+</html>

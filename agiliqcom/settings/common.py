@@ -213,7 +213,7 @@ THUMBNAIL_FORMAT = "PNG"
 #Site URL
 SITE_URL = "http://agiliq.com/"
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'agiliq.com', 'www.agiliq.com', ]
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'agiliq.com', '.agiliq.com', ]
 
 from markupfield.markup import DEFAULT_MARKUP_TYPES
 from dinette.libs.postmarkup import render_bbcode

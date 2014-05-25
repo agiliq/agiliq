@@ -30,7 +30,7 @@ class UserCreationView(FormView):
 
 
 def error_page(request):
-    #This page is meant to cause error to test error handling
+    # This page is meant to cause error to test error handling
     raise Exception("This error is expected.")
 
 

@@ -1,0 +1,159 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Paylane Gateway &mdash; Merchant Documentation 0.09a documentation</title>
+    
+    <link rel="stylesheet" href="http://agiliq.com/docs/merchant/_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="http://agiliq.com/docs/merchant/_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.09a',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://agiliq.com/docs/merchant/_static/jquery.js"></script>
+    <script type="text/javascript" src="http://agiliq.com/docs/merchant/_static/underscore.js"></script>
+    <script type="text/javascript" src="http://agiliq.com/docs/merchant/_static/doctools.js"></script>
+    <link rel="top" title="Merchant Documentation 0.09a documentation" href="../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="../index.html">Merchant Documentation 0.09a documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="paylane-gateway">
+<h1>Paylane Gateway<a class="headerlink" href="paylane_gateway.html#paylane-gateway" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://paylane.com/">Paylane</a> is a payment processor focussed mainly in Europe.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You will require <a class="reference external" href="https://fedorahosted.org/suds">suds</a> python package to work with the
+the SOAP interface.</p>
+</div>
+<p>Settings attributes required for this gateway are:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">USERNAME</span></tt>: The username provided by Paylane while signing
+up for an account.</li>
+<li><tt class="docutils literal"><span class="pre">PASSWORD</span></tt>: The password you set from the merchant admin
+panel. Not to be confused with the merchant login password.</li>
+<li><tt class="docutils literal"><span class="pre">WSDL</span></tt> (optional): The location of the WSDL file. Defaults
+to <a class="reference external" href="https://direct.paylane.com/wsdl/production/Direct.wsdl">https://direct.paylane.com/wsdl/production/Direct.wsdl</a>.</li>
+<li><tt class="docutils literal"><span class="pre">SUDS_CACHE_DIR</span></tt> (optional): The location of the suds
+cache files. Defaults to <tt class="docutils literal"><span class="pre">/tmp/suds</span></tt>.</li>
+</ul>
+<p>Settings attributes:</p>
+<div class="highlight-python"><pre>MERCHANT_TEST_MODE = True # Toggle for live
+MERCHANT_SETTINGS = {
+    "paylane": {
+        "USERNAME": "???",
+        "PASSWORD": "???",
+    }
+    ...
+}</pre>
+</div>
+<div class="section" id="example">
+<h2>Example:<a class="headerlink" href="paylane_gateway.html#example" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Simple usage:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">paylane</span> <span class="o">=</span> <span class="n">get_gateway</span><span class="p">(</span><span class="s">&quot;paylane&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">credit_card</span> <span class="o">=</span> <span class="n">CreditCard</span><span class="p">(</span><span class="n">first_name</span><span class="o">=</span><span class="s">&quot;Test&quot;</span><span class="p">,</span> <span class="n">last_name</span><span class="o">=</span><span class="s">&quot;User&quot;</span><span class="p">,</span>
+<span class="go">                             month=10, year=2012,</span>
+<span class="go">                             number=&quot;4242424242424242&quot;,</span>
+<span class="go">                             verification_value=&quot;100&quot;)</span>
+
+<span class="go"># Bill the user for 1000 USD</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">resp</span> <span class="o">=</span> <span class="n">paylane</span><span class="o">.</span><span class="n">purchase</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="n">credit_card</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">resp</span><span class="p">[</span><span class="s">&quot;status&quot;</span><span class="p">]</span>
+<span class="go">SUCCESS</span>
+
+<span class="go"># Authorize the card for 1000 USD</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">resp</span> <span class="o">=</span> <span class="n">paylane</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="n">credit_card</span><span class="p">)</span>
+
+<span class="go"># Capture funds (900 USD) from a previously authorized transaction</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">response</span> <span class="o">=</span> <span class="n">paylane</span><span class="o">.</span><span class="n">capture</span><span class="p">(</span><span class="mi">900</span><span class="p">,</span> <span class="n">resp</span><span class="p">[</span><span class="s">&quot;response&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">response</span><span class="p">[</span><span class="s">&quot;status&quot;</span><span class="p">]</span>
+<span class="go">SUCCESS</span>
+
+<span class="go"># A recurring plan charge</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">options</span> <span class="o">=</span> <span class="p">{</span><span class="s">&quot;plan_id&quot;</span><span class="p">:</span> <span class="s">&quot;gold&quot;</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">resp</span> <span class="o">=</span> <span class="n">paylane</span><span class="o">.</span><span class="n">recurring</span><span class="p">(</span><span class="n">credit_card</span><span class="p">,</span> <span class="n">options</span> <span class="o">=</span> <span class="n">options</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">resp</span><span class="p">[</span><span class="s">&quot;status&quot;</span><span class="p">]</span>
+<span class="go">SUCCESS</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="paylane_gateway.html#">Paylane Gateway</a><ul>
+<li><a class="reference internal" href="paylane_gateway.html#example">Example:</a></li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/gateways/paylane_gateway.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="../index.html">Merchant Documentation 0.09a documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Team Agiliq.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

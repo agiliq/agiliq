@@ -1,0 +1,222 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Gateways &mdash; Merchant Documentation 0.09a documentation</title>
+    
+    <link rel="stylesheet" href="http://agiliq.com/docs/merchant/_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="http://agiliq.com/docs/merchant/_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.09a',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://agiliq.com/docs/merchant/_static/jquery.js"></script>
+    <script type="text/javascript" src="http://agiliq.com/docs/merchant/_static/underscore.js"></script>
+    <script type="text/javascript" src="http://agiliq.com/docs/merchant/_static/doctools.js"></script>
+    <link rel="top" title="Merchant Documentation 0.09a documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="index.html">Merchant Documentation 0.09a documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="gateways">
+<h1>Gateways<a class="headerlink" href="gateways.html#gateways" title="Permalink to this headline">¶</a></h1>
+<p>Gateways are the payment processors implemented in <a class="reference external" href="http://github.com/agiliq/merchant">Merchant</a>. This is
+implemented as a class so that it is easy to extend and create as many
+gateways as possible.</p>
+<p>The base gateway class is <cite>billing.gateway.Gateway</cite> which has the following
+methods and attributes.</p>
+<div class="section" id="attribute-reference">
+<h2>Attribute Reference<a class="headerlink" href="gateways.html#attribute-reference" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><strong>test_mode</strong>: This boolean attribute signifies if the gateway is in the test
+mode. By default, it looks up this value from the <cite>MERCHANT_TEST_MODE</cite>
+attribute from the settings file. If the <cite>MERCHANT_TEST_MODE</cite> attribute is not
+found in the settings file, the default value is <cite>True</cite> indicating that the
+gateway is in the test mode. So do not forget to either set the attribute to
+<cite>True</cite> in the subclass or through the settings file.</li>
+<li><strong>default_currency</strong>: This is the currency in which the transactions are settled
+ie the currency in which the payment gateway sends the invoice, transaction reports
+etc. This does not prevent the developer from charging a customer in other currencies
+but the exchange rate conversion has to be manually handled by the developer. This
+is a string, for example <cite>&#8220;USD&#8221;</cite> for US Dollar.</li>
+<li><strong>supported_countries</strong>: This is a <cite>list</cite> of supported countries that are handled
+by the payment gateway. This should contain a list of the country codes as prescribed
+by the <a class="reference external" href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-alpha 2 standard</a>. The <cite>billing.utils.countries</cite> contains a mapping
+of the country names and ISO codes.</li>
+<li><strong>supported_cardtypes</strong>: This is a <cite>list</cite> of supported card types handled by the
+payment gateway. This should contain a list of instances of the
+<a class="reference internal" href="credit_card.html"><em>CreditCard</em></a> class.</li>
+<li><strong>homepage_url</strong>: A string pointing to the URL of the payment gateway. This is just
+a helper attribute that is currently not used.</li>
+<li><strong>display_name</strong>: A string that contains the name of the payment gateway. Another
+helper attribute that is currently not used.</li>
+<li><strong>application_id</strong>: An application name or unique identifier for the gateway. Yet
+another helper attribute not currently used.</li>
+</ul>
+</div>
+<div class="section" id="method-reference">
+<h2>Method Reference<a class="headerlink" href="gateways.html#method-reference" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><strong>validate_card(credit_card)</strong>: This method validates the supplied card by
+checking if it is supported by the gateway (through the <cite>supported_cardtypes</cite>
+attribute) and calls the <cite>is_valid</cite> method of the card and returns a boolean.
+if the card is not supported by the gateway, a <cite>CardNotSupported</cite> exception
+is raised.</li>
+<li><strong>service_url</strong>: A property that returns the url to which the credit card
+and other transaction related details are submitted.</li>
+<li><strong>purchase(money, credit_card, options = None)</strong>: A method that charges the
+given card (one-time) for the given amount <cite>money</cite> using the <cite>options</cite>
+provided. Subclasses have to implement this method.</li>
+<li><strong>authorize(money, credit_card, options = None)</strong>: A method that authorizes
+(for a future transaction) the credit card for the amount <cite>money</cite> using
+the <cite>options</cite> provided. Subclasses have to implement this method.</li>
+<li><strong>capture(money, authorization, options = None)</strong>: A method that captures
+funds from a previously authorized transaction using the <cite>options</cite>
+provided. Subclasses have to implement this method.</li>
+<li><strong>void(identification, options = None)</strong>: A method that nulls/voids/blanks
+an authorized transaction identified by <cite>identification</cite> to prevent a
+subsequent capture. Subclasses have to implement this method.</li>
+<li><strong>credit(money, identification, options = None)</strong>: A method that refunds a
+settled transaction with the transacation id <cite>identification</cite> and given
+<cite>options</cite>. Subclasses must implement this method.</li>
+<li><strong>recurring(money, creditcard, options = None)</strong>: A method that sets up a
+recurring transaction (or a subscription). Subclasses must implement
+this method.</li>
+<li><strong>store(creditcard, options = None)</strong>: A method that stores the credit
+card and user profile information on the payment gateway&#8217;s servers
+for future reference. Subclasses must implement this method.</li>
+<li><strong>unstore(identification, options = None)</strong>: A method that reverses the
+<cite>store</cite> method&#8217;s results. Subclasses must implement this method.</li>
+</ul>
+<p>The <cite>options</cite> dictionary passed to the above methods consists of the following
+keys:</p>
+<ul class="simple">
+<li><strong>order_id</strong>: A unique order identification code (usually set by the gateway).</li>
+<li><strong>ip</strong>: The IP address of the customer making the purchase. This is required
+by certain gateways like PayPal.</li>
+<li><strong>customer</strong>: The name, customer number, or other information that identifies
+the customer. Optional.</li>
+<li><strong>invoice</strong>: The invoice code/number (set by the merchant).</li>
+<li><strong>merchant</strong>: The name or description of the merchant offering the product.</li>
+<li><strong>description</strong>: A description of the product or transaction.</li>
+<li><strong>email</strong>: The email address of the customer. Required by a few gateways.</li>
+<li><strong>currency</strong>: Required when using a currency with a gateway that supports
+multiple currencies. If not specified, the value of the <cite>default_currency</cite>
+attribute of the gateway instance is used.</li>
+<li><strong>billing_address</strong>: A dictionary containing the billing address of the
+customer. Generally required by gateways for address verification (AVS) etc.</li>
+<li><strong>shipping_address</strong>: A dictionary containing the shipping address of the
+customer. Required if the merchant requires shipping of products and where
+billing address is not the same as shipping address.</li>
+</ul>
+<p>The address dictionary for <cite>billing_address</cite> and <cite>shipping_address</cite> should have
+the following keys:</p>
+<ul class="simple">
+<li><strong>name</strong>: The full name of the customer.</li>
+<li><strong>company</strong>: The company name of the customer. Required by a few gateways.</li>
+<li><strong>address1</strong>: The primary street address of the customer. Required by many
+gateways.</li>
+<li><strong>address2</strong>: Additional line for the address. Optional.</li>
+<li><strong>city</strong>: The city of the customer.</li>
+<li><strong>state</strong>: The state of the customer.</li>
+<li><strong>country</strong>: The <a class="reference external" href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-alpha 2 standard</a> code for the country of the
+customer.</li>
+<li><strong>zip</strong>: The zip or postal code of the customer.</li>
+<li><strong>phone</strong>: The phone number of the customer. Optional.</li>
+</ul>
+<p>All the above methods return a standard <cite>response</cite> dictionary containing
+the following keys:</p>
+<ul class="simple">
+<li><strong>status</strong>: Indicating if the transaction is a &#8220;<strong>SUCCESS</strong>&#8221; or a
+&#8220;<strong>FAILURE</strong>&#8220;</li>
+<li><strong>response</strong>: The response object for the transaction. Please consult
+the respective gateway&#8217;s documentation to learn more about it.</li>
+</ul>
+</div>
+<div class="section" id="helper-functions">
+<h2>Helper functions<a class="headerlink" href="gateways.html#helper-functions" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><strong>get_gateway(name, *args, **kwargs)</strong>: A helper function that loads the
+gateway class by the <cite>name</cite> and initializes it with the <cite>args</cite> and <cite>kwargs</cite>.</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="gateways.html#">Gateways</a><ul>
+<li><a class="reference internal" href="gateways.html#attribute-reference">Attribute Reference</a></li>
+<li><a class="reference internal" href="gateways.html#method-reference">Method Reference</a></li>
+<li><a class="reference internal" href="gateways.html#helper-functions">Helper functions</a></li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/gateways.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="index.html">Merchant Documentation 0.09a documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Team Agiliq.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

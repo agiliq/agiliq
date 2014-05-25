@@ -1,0 +1,176 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Authorize.Net Direct Post Method &mdash; Merchant Documentation 0.09a documentation</title>
+    
+    <link rel="stylesheet" href="http://agiliq.com/docs/merchant/_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="http://agiliq.com/docs/merchant/_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.09a',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://agiliq.com/docs/merchant/_static/jquery.js"></script>
+    <script type="text/javascript" src="http://agiliq.com/docs/merchant/_static/underscore.js"></script>
+    <script type="text/javascript" src="http://agiliq.com/docs/merchant/_static/doctools.js"></script>
+    <link rel="top" title="Merchant Documentation 0.09a documentation" href="../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="../index.html">Merchant Documentation 0.09a documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="authorize-net-direct-post-method">
+<h1>Authorize.Net Direct Post Method<a class="headerlink" href="authorize_net_dpm.html#authorize-net-direct-post-method" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="http://developer.authorize.net/api/dpm">Authorize.Net Direct Post Method</a> is a service offered by
+<a class="reference external" href="http://authorize.net/">Authorize.Net</a> to reduce the complexity of PCI compliance.</p>
+<p>Here are the following settings attributes that are required:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">LOGIN_ID</span></tt>: The Login id provided by Authorize.Net. Can be obtained from the
+dashboard.</li>
+<li><tt class="docutils literal"><span class="pre">TRANSACTION_KEY</span></tt>: The Transaction key is used to sign the generated form with
+a shared key to validate against form tampering.</li>
+<li><tt class="docutils literal"><span class="pre">MD5_HASH</span></tt>: This attribute is used to generate a hash that is verified against
+the hash sent by Authorize.Net to confirm the request&#8217;s source.</li>
+</ul>
+<p>Here are the methods and attributes implemented on the <tt class="docutils literal"><span class="pre">AuthorizeNetDpmIntegration</span></tt> class:</p>
+<ul>
+<li><p class="first"><tt class="docutils literal"><span class="pre">__init__(self)</span></tt>: The constructor that configures the Authorize.Net Integration
+environment setting it either to production or sandbox mode based on the value of
+<tt class="docutils literal"><span class="pre">settings.MERCHANT_TEST_MODE</span></tt>.</p>
+</li>
+<li><dl class="first docutils">
+<dt><tt class="docutils literal"><span class="pre">form_class(self)</span></tt>: Returns the form class that is used to generate the form.</dt>
+<dd><p class="first last">Defaults to <tt class="docutils literal"><span class="pre">billing.forms.authorize_net_forms.AuthorizeNetDPMForm</span></tt>.</p>
+</dd>
+</dl>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">generate_form(self)</span></tt>: Renders the form and generates some precomputed field
+values.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">service_url(self)</span></tt>: Returns the Authorize.net url to be set on the form.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">verify_response(self,</span> <span class="pre">request)</span></tt>: Verifies if the relay response originated
+from Authorize.Net.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">get_urls(self)</span></tt>: The method sets the url to which Authorize.Net sends a relay
+response, redirects on a success or failure.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">authorize_net_notify_handler(self,</span> <span class="pre">request)</span></tt>: The view method that handles the
+verification of the response, firing of the signal and sends out the redirect
+snippet to Authorize.Net.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">authorize_net_success_handler(self,</span> <span class="pre">request)</span></tt>: The method that renders the
+<cite>billing/authorize_net_success.html</cite>.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">authorize_net_failure_handler(self,</span> <span class="pre">request)</span></tt>: The method that renders the
+<cite>billing/authorize_net_failure.html</cite>.</p>
+</li>
+</ul>
+<div class="section" id="example">
+<h2>Example:<a class="headerlink" href="authorize_net_dpm.html#example" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><blockquote>
+<div><p>In the views.py:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">int_obj</span> <span class="o">=</span> <span class="n">get_integration</span><span class="p">(</span><span class="s">&quot;authorize_net_dpm&quot;</span><span class="p">)</span>
+<span class="n">fields</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;x_amount&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="s">&#39;x_fp_sequence&#39;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&#39;%Y%m</span><span class="si">%d</span><span class="s">%H%M%S&#39;</span><span class="p">),</span>
+          <span class="s">&#39;x_fp_timestamp&#39;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%s</span><span class="s">&#39;</span><span class="p">),</span>
+          <span class="s">&#39;x_recurring_bill&#39;</span><span class="p">:</span> <span class="s">&#39;F&#39;</span><span class="p">,</span>
+         <span class="p">}</span>
+<span class="n">int_obj</span><span class="o">.</span><span class="n">add_fields</span><span class="p">(</span><span class="n">fields</span><span class="p">)</span>
+<span class="k">return</span> <span class="n">render_to_response</span><span class="p">(</span><span class="s">&quot;some_template.html&quot;</span><span class="p">,</span>
+                          <span class="p">{</span><span class="s">&quot;adp&quot;</span><span class="p">:</span> <span class="n">int_obj</span><span class="p">},</span>
+                          <span class="n">context_instance</span><span class="o">=</span><span class="n">RequestContext</span><span class="p">(</span><span class="n">request</span><span class="p">))</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>In the urls.py:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">int_obj</span> <span class="o">=</span> <span class="n">get_integration</span><span class="p">(</span><span class="s">&quot;authorize_net_dpm&quot;</span><span class="p">)</span>
+<span class="n">urlpatterns</span> <span class="o">+=</span> <span class="n">patterns</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">,</span>
+   <span class="p">(</span><span class="s">r&#39;^authorize_net/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="n">int_obj</span><span class="o">.</span><span class="n">urls</span><span class="p">)),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>In the template:</p>
+<div class="highlight-python"><pre>{% load render_integration from billing_tags %}
+{% render_integration adp %}</pre>
+</div>
+</div></blockquote>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="authorize_net_dpm.html#">Authorize.Net Direct Post Method</a><ul>
+<li><a class="reference internal" href="authorize_net_dpm.html#example">Example:</a></li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/offsite/authorize_net_dpm.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="../index.html">Merchant Documentation 0.09a documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Team Agiliq.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

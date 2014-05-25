@@ -1,0 +1,172 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Braintree Payments Transparent Redirect &mdash; Merchant Documentation 0.09a documentation</title>
+    
+    <link rel="stylesheet" href="http://agiliq.com/docs/merchant/_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="http://agiliq.com/docs/merchant/_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.09a',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://agiliq.com/docs/merchant/_static/jquery.js"></script>
+    <script type="text/javascript" src="http://agiliq.com/docs/merchant/_static/underscore.js"></script>
+    <script type="text/javascript" src="http://agiliq.com/docs/merchant/_static/doctools.js"></script>
+    <link rel="top" title="Merchant Documentation 0.09a documentation" href="../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="../index.html">Merchant Documentation 0.09a documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="braintree-payments-transparent-redirect">
+<h1>Braintree Payments Transparent Redirect<a class="headerlink" href="braintree_payments.html#braintree-payments-transparent-redirect" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="http://www.braintreepayments.com/gateway/api">Braintree Payments Transparent Redirect</a> is a service offered by
+<a class="reference external" href="http://www.braintreepayments.com/">Braintree Payments</a> to reduce the complexity of PCI compliance.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This integration makes use of the official <a class="reference external" href="http://pypi.python.org/pypi/braintree/">braintree</a> python package offered
+by Braintree Payments. Please install it before you use this integration.</p>
+</div>
+<p>Refer to the <tt class="xref doc docutils literal"><span class="pre">Braintree</span> <span class="pre">Payments</span> <span class="pre">Server</span> <span class="pre">to</span> <span class="pre">Server</span></tt> Gateway for the settings attributes.</p>
+<p>Here are the methods and attributes implemented on the <tt class="docutils literal"><span class="pre">BraintreePaymentsIntegration</span></tt> class:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">__init__(self,</span> <span class="pre">options=None)</span></tt>: The constructor method that configures the
+Braintree environment setting it either to production or sandbox mode based on
+the value of <tt class="docutils literal"><span class="pre">settings.MERCHANT_TEST_MODE</span></tt>.</li>
+<li><tt class="docutils literal"><span class="pre">service_url(self)</span></tt>: A property that provides the URL to which the Transparent
+Redirect form is submitted.</li>
+<li><tt class="docutils literal"><span class="pre">get_urls(self)</span></tt>: The method sets the url to which Braintree redirects
+after the form submission is successful. This method is generally mapped
+directly in the <tt class="docutils literal"><span class="pre">urls.py</span></tt>.</li>
+<li><tt class="docutils literal"><span class="pre">braintree_notify_handler(self,</span> <span class="pre">request)</span></tt>: The view method that handles the
+confirmation of the transaction after successful redirection from Braintree.</li>
+<li><tt class="docutils literal"><span class="pre">braintree_success_handler(self,</span> <span class="pre">request,</span> <span class="pre">response)</span></tt>: If the transaction is
+successful, the <tt class="docutils literal"><span class="pre">braintree_notify_handler</span></tt> calls the <tt class="docutils literal"><span class="pre">braintree_success_handler</span></tt>
+which renders the <tt class="docutils literal"><span class="pre">billing/braintree_success.html</span></tt> with the <tt class="docutils literal"><span class="pre">response</span></tt>
+object. The <tt class="docutils literal"><span class="pre">response</span></tt> object is a standard braintree result described <a class="reference external" href="http://www.braintreepayments.com/docs/python/transactions/result_handling">here</a>.</li>
+<li><tt class="docutils literal"><span class="pre">braintree_failure_handler(self,</span> <span class="pre">request,</span> <span class="pre">response)</span></tt>: If the transaction
+fails, the <tt class="docutils literal"><span class="pre">braintree_notify_handler</span></tt> calls the <tt class="docutils literal"><span class="pre">braintree_failure_handler</span></tt>
+which renders the <tt class="docutils literal"><span class="pre">billing/braintree_error.html</span></tt> with the <tt class="docutils literal"><span class="pre">response</span></tt> which
+is a standar braintree error object.</li>
+<li><tt class="docutils literal"><span class="pre">generate_tr_data(self)</span></tt>: The method that calculates the <a class="reference external" href="http://www.braintreepayments.com/docs/python/transactions/create_tr#tr_data">tr_data</a> to
+prevent a form from being tampered post-submission.</li>
+<li><tt class="docutils literal"><span class="pre">generate_form(self)</span></tt>: The method that generates and returns the form (present in
+<tt class="docutils literal"><span class="pre">billing.forms.braintree_payments_form</span></tt>) and populates the initial data
+with the <tt class="docutils literal"><span class="pre">self.fields</span></tt> (added through either the <tt class="docutils literal"><span class="pre">add_fields</span></tt> or <tt class="docutils literal"><span class="pre">add_field</span></tt>
+methods) and <tt class="docutils literal"><span class="pre">tr_data</span></tt>.</li>
+</ul>
+<div class="section" id="example">
+<h2>Example:<a class="headerlink" href="braintree_payments.html#example" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><blockquote>
+<div><p>In the views.py:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">braintree_obj</span> <span class="o">=</span> <span class="n">get_integration</span><span class="p">(</span><span class="s">&quot;braintree_payments&quot;</span><span class="p">)</span>
+<span class="c"># Standard braintree fields</span>
+<span class="n">fields</span> <span class="o">=</span> <span class="p">{</span><span class="s">&quot;transaction&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">&quot;order_id&quot;</span><span class="p">:</span> <span class="s">&quot;some_unique_id&quot;</span><span class="p">,</span>
+            <span class="s">&quot;type&quot;</span><span class="p">:</span> <span class="s">&quot;sale&quot;</span><span class="p">,</span>
+            <span class="s">&quot;options&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s">&quot;submit_for_settlement&quot;</span><span class="p">:</span> <span class="bp">True</span>
+              <span class="p">},</span>
+            <span class="p">},</span>
+            <span class="s">&quot;site&quot;</span><span class="p">:</span> <span class="s">&quot;</span><span class="si">%s</span><span class="s">://</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span><span class="p">(</span><span class="s">&quot;https&quot;</span> <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">is_secure</span><span class="p">()</span> <span class="k">else</span> <span class="s">&quot;http&quot;</span><span class="p">,</span>
+                                <span class="n">RequestSite</span><span class="p">(</span><span class="n">request</span><span class="p">)</span><span class="o">.</span><span class="n">domain</span><span class="p">)</span>
+         <span class="p">}</span>
+<span class="n">braintree_obj</span><span class="o">.</span><span class="n">add_fields</span><span class="p">(</span><span class="n">fields</span><span class="p">)</span>
+<span class="k">return</span> <span class="n">render_to_response</span><span class="p">(</span><span class="s">&quot;some_template.html&quot;</span><span class="p">,</span>
+                          <span class="p">{</span><span class="s">&quot;bp&quot;</span><span class="p">:</span> <span class="n">braintree_obj</span><span class="p">},</span>
+                          <span class="n">context_instance</span><span class="o">=</span><span class="n">RequestContext</span><span class="p">(</span><span class="n">request</span><span class="p">))</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>In the urls.py:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">braintree_obj</span> <span class="o">=</span> <span class="n">get_integration</span><span class="p">(</span><span class="s">&quot;braintree_payments&quot;</span><span class="p">)</span>
+<span class="n">urlpatterns</span> <span class="o">+=</span> <span class="n">patterns</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">,</span>
+   <span class="p">(</span><span class="s">r&#39;^braintree/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="n">braintree</span><span class="o">.</span><span class="n">urls</span><span class="p">)),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>In the template:</p>
+<div class="highlight-python"><pre>{% load render_integration from billing_tags %}
+{% render_integration bp %}</pre>
+</div>
+</div></blockquote>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="braintree_payments.html#">Braintree Payments Transparent Redirect</a><ul>
+<li><a class="reference internal" href="braintree_payments.html#example">Example:</a></li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/offsite/braintree_payments.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="../index.html">Merchant Documentation 0.09a documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Team Agiliq.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

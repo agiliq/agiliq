@@ -1,0 +1,222 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Amazon Flexible Payment Service &mdash; Merchant Documentation 0.09a documentation</title>
+    
+    <link rel="stylesheet" href="http://agiliq.com/docs/merchant/_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="http://agiliq.com/docs/merchant/_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.09a',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://agiliq.com/docs/merchant/_static/jquery.js"></script>
+    <script type="text/javascript" src="http://agiliq.com/docs/merchant/_static/underscore.js"></script>
+    <script type="text/javascript" src="http://agiliq.com/docs/merchant/_static/doctools.js"></script>
+    <link rel="top" title="Merchant Documentation 0.09a documentation" href="../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="../index.html">Merchant Documentation 0.09a documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="amazon-flexible-payment-service">
+<h1>Amazon Flexible Payment Service<a class="headerlink" href="amazon_fps.html#amazon-flexible-payment-service" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="http://aws.amazon.com/fps/">Amazon FPS</a>, is a service that allows for building very flexible payment systems.
+The service can be classified as a part Gateway and part Integration (offsite processor).
+This is because the customer is redirected to the Amazon site where he authorizes the
+payment and after this the customer is redirected back to the merchant site with a token
+that is used by the merchant to transact with the customer. In plain offsite processors,
+the authorization and transaction take place in one shot almost simultaneously.</p>
+<p>Since the service isn&#8217;t conventional (though very flexible), implementing FPS in merchant
+takes a couple of steps more.</p>
+<p>The documentation for the service is available at <a class="reference external" href="http://aws.amazon.com/documentation/fps/">Amazon FPS Docs</a>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This integration has a dependency on <tt class="docutils literal"><span class="pre">boto</span></tt>, a popular AWS library for python.</p>
+</div>
+<p>Settings attributes required for this integration are:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">AWS_ACCESS_KEY</span></tt>: The Amazon AWS access key available from the user&#8217;s AWS dashboard.</li>
+<li><tt class="docutils literal"><span class="pre">AWS_SECRET_ACCESS_KEY</span></tt>: The Amazon AWS secret access key also available from the
+user&#8217;s dashboard. Shouldn&#8217;t be distributed to anyone.</li>
+</ul>
+<p>Settings attributes:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">MERCHANT_TEST_MODE</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="n">MERCHANT_SETTINGS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&quot;amazon_fps&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;AWS_ACCESS_KEY&quot;</span><span class="p">:</span> <span class="s">&quot;???&quot;</span><span class="p">,</span>
+        <span class="s">&quot;AWS_SECRET_ACCESS_KEY&quot;</span><span class="p">:</span> <span class="s">&quot;???&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Here are the methods and attributes implemented on the <tt class="docutils literal"><span class="pre">AmazonFpsIntegration</span></tt> class:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">__init__(options</span> <span class="pre">=</span> <span class="pre">{})</span></tt>: The constructor takes a dictionary of options that are
+used to initialize the underlying <tt class="docutils literal"><span class="pre">FPSConnection</span></tt> that is bundled with <tt class="docutils literal"><span class="pre">boto</span></tt>.</li>
+<li><tt class="docutils literal"><span class="pre">service_url</span></tt>: A property that returns the API Endpoint depending on whether the
+the integration is in <tt class="docutils literal"><span class="pre">test_mode</span></tt> or not.</li>
+<li><tt class="docutils literal"><span class="pre">link_url</span></tt>: A property that returns the link which redirects the customer to the
+Amazon Payments site to authorize the transaction.</li>
+<li><tt class="docutils literal"><span class="pre">purchase(amount,</span> <span class="pre">options={})</span></tt>: The method that charges a customer right away for
+the amount <tt class="docutils literal"><span class="pre">amount</span></tt> after receiving a successful token from Amazon. The <tt class="docutils literal"><span class="pre">options</span></tt>
+dictionary is generated from the <tt class="docutils literal"><span class="pre">return_url</span></tt> on successful redirect from the
+Amazon payments page. This method returns a dictionary with two items, <tt class="docutils literal"><span class="pre">status</span></tt>
+representing the status and <tt class="docutils literal"><span class="pre">response</span></tt> representing the response as described
+by <tt class="docutils literal"><span class="pre">boto.fps.response.FPSResponse</span></tt>.</li>
+<li><tt class="docutils literal"><span class="pre">authorize(amount,</span> <span class="pre">options={})</span></tt>: Similar to the <tt class="docutils literal"><span class="pre">purchase</span></tt> method except that
+it reserves the payment and doesn&#8217;t not charge until a <tt class="docutils literal"><span class="pre">capture</span></tt> (settle) is not
+called. The response is the same as that of <tt class="docutils literal"><span class="pre">purchase</span></tt>.</li>
+<li><tt class="docutils literal"><span class="pre">capture(amount,</span> <span class="pre">options={})</span></tt>: Captures funds from an authorized transaction. The
+response is the same as the above two methods.</li>
+<li><tt class="docutils literal"><span class="pre">credit(amount,</span> <span class="pre">options={})</span></tt>: Refunds a part of full amount of the transaction.</li>
+<li><tt class="docutils literal"><span class="pre">void(identification,</span> <span class="pre">options={})</span></tt>: Cancel/Null an authorized transaction.</li>
+<li><tt class="docutils literal"><span class="pre">fps_ipn_handler</span></tt>: A method that handles the asynchronous HTTP POST request from
+the Amazon IPN and saves into the <tt class="docutils literal"><span class="pre">AmazonFPSResponse</span></tt> model.</li>
+<li><tt class="docutils literal"><span class="pre">fps_return_url</span></tt>: This method verifies the source of the return URL from Amazon
+and directs to the transaction.</li>
+<li><tt class="docutils literal"><span class="pre">transaction</span></tt>: This is the main method that charges/authorizes funds from the
+customer. This method has to be subclassed to implement the logic for the
+transaction on return from the Amazon Payments page.</li>
+</ul>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="amazon_fps.html#example" title="Permalink to this headline">¶</a></h2>
+<p>In any app that is present in the <tt class="docutils literal"><span class="pre">settings.INSTALLED_APPS</span></tt>, subclass the
+<tt class="docutils literal"><span class="pre">AmazonFpsIntegration</span></tt> and implement the <tt class="docutils literal"><span class="pre">transaction</span></tt> method. The file
+should be available under <tt class="docutils literal"><span class="pre">&lt;app&gt;/integrations/&lt;integration_name&gt;_integration.py</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">FpsIntegration</span><span class="p">(</span><span class="n">AmazonFpsIntegration</span><span class="p">):</span>
+    <span class="c"># The class name is based on the filename.</span>
+    <span class="c"># So if the files exists in &lt;app&gt;/integrations/fps_integration.py</span>
+    <span class="c"># then the class name should be FpsIntegration</span>
+    <span class="k">def</span> <span class="nf">transaction</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+        <span class="c"># Logic to decide if the user should</span>
+        <span class="c"># be charged immediately or funds</span>
+        <span class="c"># authorized and then redirect the user</span>
+        <span class="c"># Below is an example:</span>
+        <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">purchase</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="p">{</span><span class="o">...</span><span class="p">})</span>
+        <span class="k">if</span> <span class="n">resp</span><span class="p">[</span><span class="s">&quot;status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s">&quot;Success&quot;</span><span class="p">:</span>
+           <span class="k">return</span> <span class="n">HttpResponseRedirect</span><span class="p">(</span><span class="s">&quot;/success/&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">HttpResponseRedirect</span><span class="p">(</span><span class="s">&quot;/failure/&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In urls.py:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">billing</span> <span class="kn">import</span> <span class="n">get_integration</span>
+<span class="n">amazon_fps</span> <span class="o">=</span> <span class="n">get_integration</span><span class="p">(</span><span class="s">&quot;fps&quot;</span><span class="p">)</span>
+<span class="n">urlpatterns</span> <span class="o">+=</span> <span class="n">patterns</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">,</span>
+  <span class="p">(</span><span class="s">r&#39;^amazon_fps/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="n">amazon_fps</span><span class="o">.</span><span class="n">urls</span><span class="p">)),</span>
+  <span class="c"># You&#39;ll have to register /amazon_fps/fps-notify-handler/ in the</span>
+  <span class="c"># Amazon FPS admin dashboard for the notification URL</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>In views.py:</p>
+<div class="highlight-python"><pre>from billing import get_integration
+def productPage(request):
+   amazon_fps = get_integration("fps")
+   url_scheme = "http"
+   if request.is_secure():
+       url_scheme = "https"
+   domain = RequestSite(request).domain
+   fields = {"transactionAmount": "100",
+             "pipelineName": "SingleUse",
+             "paymentReason": "Merchant Test",
+             "paymentPage": request.build_absolute_uri(),
+             # Send the correct url where the redirect should happen
+             "returnURL": "%s://%s%s" % (url_scheme,
+                                         domain,
+                                         reverse("fps_return_url")),
+            }
+    # You might want to save the fields["callerReference"] that
+    # is auto-generated in the db or session to uniquely identify
+    # this user (or use the user id as the callerReference) because
+    # amazon passes this callerReference back in the return URL.
+    amazon_fps.add_fields(fields)
+    return render_to_response("some_template.html",
+                              {"fps": amazon_fps},
+                              context_instance=RequestContext(request))</pre>
+</div>
+<p>In some_template.html:</p>
+<div class="highlight-python"><pre>{% load render_integration from billing_tags %}
+{% render_integration fps %}</pre>
+</div>
+<p>The above template renders the following code:</p>
+<div class="highlight-python"><pre>&lt;p&gt;&lt;a href="https://authorize.payments-sandbox.amazon.com/cobranded-ui/actions/start?callerKey=AKIAI74UIJQ37QS6XLTA&amp;callerReference=5d37ac69-82ac-4bb1-98a4-18c3f9ff15f4&amp;paymentReason=Merchant%20Test&amp;pipelineName=SingleUse&amp;returnURL=http%3A%2F%2Fmerchant.agiliq.com%2Ffps%2Ffps-return-url%2F&amp;signature=wh9PSXAyKfPKizPL%2FRdrYbb24XsoE0efrtMGQBBSs3k%3D&amp;signatureMethod=HmacSHA256&amp;signatureVersion=2&amp;transactionAmount=100"&gt;&lt;img src="http://g-ecx.images-amazon.com/images/G/01/cba/b/p3.gif" alt="Amazon Payments" /&gt;&lt;/a&gt;</pre>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="amazon_fps.html#">Amazon Flexible Payment Service</a><ul>
+<li><a class="reference internal" href="amazon_fps.html#example">Example</a></li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/offsite/amazon_fps.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="../index.html">Merchant Documentation 0.09a documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Team Agiliq.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

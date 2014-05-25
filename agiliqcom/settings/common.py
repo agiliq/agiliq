@@ -1,4 +1,5 @@
 import os
+import sys
 SITE_ROOT = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 
 DEBUG = False
@@ -132,7 +133,6 @@ INSTALLED_APPS = (
     'raven.contrib.django.raven_compat'
 )
 
-JENKINS_TASKS = ('django_jenkins.tasks.django_tests',)
 PROJECT_APPS = ('agiliqpages', 'blogango', 'dinette')
 
 CACHES = {
@@ -172,12 +172,26 @@ LOGGING = {
             '()': 'django.utils.log.RequireDebugFalse'
         }
     },
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
     'handlers': {
         'mail_admins': {
             'level': 'ERROR',
             'filters': ['require_debug_false'],
             'class': 'django.utils.log.AdminEmailHandler'
-        }
+        },
+        'console':{
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose'
+        },
+
     },
     'loggers': {
         'django.request': {
@@ -185,6 +199,12 @@ LOGGING = {
             'level': 'ERROR',
             'propagate': True,
         },
+        "": {
+            "handlers": ["console"],
+            'level': 'INFO',
+            'propagate': True,
+            'stream': sys.stdout
+        }
     }
 }
 
@@ -193,7 +213,7 @@ THUMBNAIL_FORMAT = "PNG"
 #Site URL
 SITE_URL = "http://agiliq.com/"
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'agiliq.com', 'www.agiliq.com', ]
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'agiliq.com', '.agiliq.com', ]
 
 from markupfield.markup import DEFAULT_MARKUP_TYPES
 from dinette.libs.postmarkup import render_bbcode

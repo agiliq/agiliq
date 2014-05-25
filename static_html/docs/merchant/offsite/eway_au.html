@@ -1,0 +1,416 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>eWAY Payment Integration &mdash; Merchant Documentation 0.09a documentation</title>
+    
+    <link rel="stylesheet" href="http://agiliq.com/docs/merchant/_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="http://agiliq.com/docs/merchant/_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.09a',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://agiliq.com/docs/merchant/_static/jquery.js"></script>
+    <script type="text/javascript" src="http://agiliq.com/docs/merchant/_static/underscore.js"></script>
+    <script type="text/javascript" src="http://agiliq.com/docs/merchant/_static/doctools.js"></script>
+    <link rel="top" title="Merchant Documentation 0.09a documentation" href="../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="../index.html">Merchant Documentation 0.09a documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="eway-payment-integration">
+<h1>eWAY Payment Integration<a class="headerlink" href="eway_au.html#eway-payment-integration" title="Permalink to this headline">¶</a></h1>
+<p>The eWAY integration functionality interfaces with eWAY&#8217;s Merchant Hosted
+Payments facility. Their service makes it extremely easy to be PCI-DSS
+compliant by allowing you to never receive customer credit card information.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This integration requires the <a class="reference external" href="https://fedorahosted.org/suds/">suds</a> package. Please install it before you
+use this integration.</p>
+</div>
+<p>The basic data flow is as follows:</p>
+<ol class="arabic simple">
+<li>Request an <em>access code</em> from eWAY.</li>
+<li>Create an HTML form with the <em>access code</em> and user credit card fields.</li>
+<li>Encourage the user to submit the form to eWAY and they&#8217;ll be redirected back
+to your site.</li>
+<li>Use the <em>access code</em> to ask eWAY if the transaction was successful.</li>
+</ol>
+<p>You must add the following to project&#8217;s settings:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">MERCHANT_SETTINGS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&quot;eway&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;CUSTOMER_ID&quot;</span><span class="p">:</span> <span class="s">&quot;???&quot;</span><span class="p">,</span>
+        <span class="s">&quot;USERNAME&quot;</span><span class="p">:</span> <span class="s">&quot;???&quot;</span><span class="p">,</span>
+        <span class="s">&quot;PASSWORD&quot;</span><span class="p">:</span> <span class="s">&quot;???&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The integration class is used to request an <em>access code</em> and also to check its
+success after the redirect:</p>
+<dl class="class">
+<dt id="EwayIntegration">
+<em class="property">class </em><tt class="descname">EwayIntegration</tt><big>(</big><em>access_code=None</em><big>)</big><a class="headerlink" href="eway_au.html#EwayIntegration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates an integration object for use with eWAY.</p>
+<p><em>access_code</em> is optional, but must be configured prior to using
+<a class="reference internal" href="eway_au.html#check_transaction" title="check_transaction"><tt class="xref py py-func docutils literal"><span class="pre">check_transaction()</span></tt></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="request_access_code">
+<tt class="descname">request_access_code</tt><big>(</big><em>payment</em>, <em>redirect_url</em>, <em>customer=None</em>, <em>billing_country=None</em>, <em>ip_address=None</em><big>)</big><a class="headerlink" href="eway_au.html#request_access_code" title="Permalink to this definition">¶</a></dt>
+<dd><p>Requests an <em>access code</em> from eWAY to use with a transaction.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>payment</strong> (<em>dict</em>) &#8211; Information about the payment</li>
+<li><strong>redirect_url</strong> (<em>unicode</em>) &#8211; URL to redirect the user to after payment</li>
+<li><strong>customer</strong> (<em>dict</em>) &#8211; Customer related information</li>
+<li><strong>billing_country</strong> (<em>unicode alpha-2 country code (as per ISO 3166)</em>) &#8211; Customer&#8217;s billing country</li>
+<li><strong>ip_address</strong> (<em>unicode</em>) &#8211; Customer&#8217;s IP address</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">(access_code, customer)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>The integration is automatically updated with the returned access code.</p>
+<p><strong>Supported keys in</strong> <tt class="docutils literal"><span class="pre">customer</span></tt>:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="44%" />
+<col width="56%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Key</td>
+<td>Notes</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">token_customer_id</span></tt></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">save_token</span></tt></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">reference</span></tt></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">title</span></tt></td>
+<td>required for <tt class="docutils literal"><span class="pre">save_token</span></tt></td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">first_name</span></tt></td>
+<td>required for <tt class="docutils literal"><span class="pre">save_token</span></tt></td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">last_name</span></tt></td>
+<td>required for <tt class="docutils literal"><span class="pre">save_token</span></tt></td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">company_name</span></tt></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">job_description</span></tt></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">street</span></tt></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">city</span></tt></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">state</span></tt></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">postal_code</span></tt></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">country</span></tt></td>
+<td>required for <tt class="docutils literal"><span class="pre">save_token</span></tt></td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">email</span></tt></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">phone</span></tt></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">mobile</span></tt></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">comments</span></tt></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">fax</span></tt></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">url</span></tt></td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Supported keys in</strong> <tt class="docutils literal"><span class="pre">payment</span></tt>:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="43%" />
+<col width="57%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Key</td>
+<td>Notes</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">total_amount</span></tt></td>
+<td><em>required</em> (<strong>must be cents</strong>)</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">invoice_number</span></tt></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">invoice_description</span></tt></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">invoice_reference</span></tt></td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p>To add extra security, it&#8217;s a good idea to specify <tt class="docutils literal"><span class="pre">ip_address</span></tt>. The
+value is given to eWAY to allow them to ensure that the POST request they
+receive comes from the given address. E.g.:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">payment</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">integration</span> <span class="o">=</span> <span class="n">get_integration</span><span class="p">(</span><span class="s">&quot;eway_au&quot;</span><span class="p">)</span>
+    <span class="n">access_code</span><span class="p">,</span> <span class="n">customer</span> <span class="o">=</span> <span class="n">integration</span><span class="o">.</span><span class="n">request_access_code</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">ip_address</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">META</span><span class="p">[</span><span class="s">&quot;REMOTE_ADDR&quot;</span><span class="p">])</span>
+    <span class="c"># ...</span>
+</pre></div>
+</div>
+<p><strong>Returned value</strong></p>
+<p>The returned value is a tuple <tt class="docutils literal"><span class="pre">(access_code,</span> <span class="pre">customer)</span></tt>. <tt class="docutils literal"><span class="pre">access_code</span></tt>
+is the access code granted by eWAY that must be included in the HTML form,
+and is used to request transaction status after the redirect.</p>
+<p><tt class="docutils literal"><span class="pre">customer</span></tt> is a dict containing information about the customer. This is
+particularly useful if you make use of <tt class="docutils literal"><span class="pre">save_token</span></tt> and
+<tt class="docutils literal"><span class="pre">token_customer_id</span></tt> to save customer details on eWAY&#8217;s servers. Keys in
+the dict are:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">token_customer_id</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">save_token</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">reference</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">title</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">first_name</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">last_name</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">company_name</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">job_description</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">street</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">city</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">state</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">postal_code</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">country</span></tt> &#8211; e.g. <tt class="docutils literal"><span class="pre">au</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">email</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">phone</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">mobile</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">comments</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">fax</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">url</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">card_number</span></tt> &#8211; e.g. <tt class="docutils literal"><span class="pre">444433XXXXXX1111</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">card_name</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">card_expiry_month</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">card_expiry_year</span></tt></li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="check_transaction">
+<tt class="descname">check_transaction</tt><big>(</big><big>)</big><a class="headerlink" href="eway_au.html#check_transaction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check with eWAY what happened with a transaction.</p>
+<p>This method requires <tt class="docutils literal"><span class="pre">access_code</span></tt> has been configured.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="63%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Key</td>
+<td>Example</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">access_code</span></tt></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">authorisation_code</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">&quot;198333&quot;</span></tt></td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">response_code</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">&quot;00&quot;</span></tt></td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">response_message</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">&quot;Transaction</span> <span class="pre">Approved&quot;</span></tt> or <tt class="docutils literal"><span class="pre">None</span></tt></td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">option_1</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">&quot;a1b2c3&quot;</span></tt></td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">option_2</span></tt></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">option_3</span></tt></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">invoice_number</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">&quot;19832261&quot;</span></tt></td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">invoice_reference</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">&quot;19832261-AA12/1&quot;</span></tt></td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">total_amount</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">&quot;1000&quot;</span></tt></td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">transaction_id</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">&quot;7654321&quot;</span></tt></td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">transaction_status</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">True</span></tt></td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">error_message</span></tt></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">token_customer_id</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">&quot;1234567890123456&quot;</span></tt></td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">beagle_score</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">10.23</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="section" id="example">
+<h2>Example:<a class="headerlink" href="eway_au.html#example" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># views.py</span>
+<span class="kn">from</span> <span class="nn">billing</span> <span class="kn">import</span> <span class="n">get_integration</span>
+<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">get_object_or_404</span>
+
+
+<span class="k">def</span> <span class="nf">payment</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">cart_pk</span><span class="p">):</span>
+    <span class="c"># Pretend some &#39;Order&#39; model exists with a &#39;total_price&#39; in dollars</span>
+    <span class="n">order</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Order</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">cart_pk</span><span class="p">)</span>
+
+    <span class="n">integration</span> <span class="o">=</span> <span class="n">get_integration</span><span class="p">(</span><span class="s">&quot;eway_au&quot;</span><span class="p">)</span>
+    <span class="n">access_code</span><span class="p">,</span> <span class="n">customer</span> <span class="o">=</span> <span class="n">integration</span><span class="o">.</span><span class="n">request_access_code</span><span class="p">(</span>
+        <span class="n">customer</span><span class="o">=</span><span class="p">{</span><span class="s">&quot;first_name&quot;</span><span class="p">:</span> <span class="s">&quot;Bradley&quot;</span><span class="p">,</span> <span class="s">&quot;last_name&quot;</span><span class="p">:</span> <span class="s">&quot;Ayers&quot;</span><span class="p">},</span>
+        <span class="n">payment</span><span class="o">=</span><span class="p">{</span><span class="s">&quot;total_amount&quot;</span><span class="p">:</span> <span class="n">order</span><span class="o">.</span><span class="n">total_price</span> <span class="o">*</span> <span class="mi">100</span><span class="p">},</span>
+        <span class="n">return_url</span><span class="o">=</span><span class="n">reverse</span><span class="p">(</span><span class="n">payment_done</span><span class="p">))</span>
+    <span class="n">request</span><span class="o">.</span><span class="n">session</span><span class="p">[</span><span class="s">&quot;eway_access_code&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">integration</span><span class="o">.</span><span class="n">access_code</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">&quot;payment.html&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s">&quot;integration&quot;</span><span class="p">:</span> <span class="n">integration</span><span class="p">})</span>
+
+
+<span class="k">def</span> <span class="nf">payment_done</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">cart_pk</span><span class="p">):</span>
+    <span class="n">order</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Order</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">cart_pk</span><span class="p">)</span>
+    <span class="n">access_code</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">session</span><span class="p">[</span><span class="s">&quot;access_code&quot;</span><span class="p">]</span>
+    <span class="n">integration</span> <span class="o">=</span> <span class="n">get_integration</span><span class="p">(</span><span class="s">&quot;eway_au&quot;</span><span class="p">,</span> <span class="n">access_code</span><span class="o">=</span><span class="n">access_code</span><span class="p">)</span>
+    <span class="c"># Retrieve transaction status from eWAY</span>
+    <span class="n">status</span> <span class="o">=</span> <span class="n">integration</span><span class="o">.</span><span class="n">check_transaction</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">status</span><span class="p">[</span><span class="s">&quot;response_code&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&quot;00&quot;</span><span class="p">,</span> <span class="s">&quot;08&quot;</span><span class="p">,</span> <span class="s">&quot;11&quot;</span><span class="p">):</span>
+        <span class="n">order</span><span class="o">.</span><span class="n">is_paid</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="n">order</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="n">template</span> <span class="o">=</span> <span class="s">&quot;receipt.html&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">template</span> <span class="o">=</span> <span class="s">&quot;payment_failed.html&quot;</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">template</span><span class="p">,</span> <span class="p">{</span><span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="n">status</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>In order for eWAY to process the transaction, the user must submit the payment
+HTML form directly to eWAY. The helper tag <tt class="docutils literal"><span class="pre">{%</span> <span class="pre">eway</span> <span class="pre">%}</span></tt> makes this trivial:</p>
+<div class="highlight-django"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">load</span> <span class="nv">render_integration</span> <span class="nv">from</span> <span class="nv">billing_tags</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">render_integration</span> <span class="nv">integration</span> <span class="cp">%}</span><span class="x"></span>
+</pre></div>
+</div>
+<p>For a more configurable form, use the following pattern:</p>
+<div class="highlight-django"><div class="highlight"><pre><span class="x">&lt;form method=&quot;post&quot; action=&quot;</span><span class="cp">{{</span> <span class="nv">integration.service_url</span> <span class="cp">}}</span><span class="x">&quot;&gt;</span>
+<span class="x">    </span><span class="cp">{{</span> <span class="nv">integration.generate_form.as_p</span> <span class="cp">}}</span><span class="x"></span>
+<span class="x">    &lt;input type=&quot;submit&quot;/&gt;</span>
+<span class="x">&lt;/form&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="eway_au.html#">eWAY Payment Integration</a><ul>
+<li><a class="reference internal" href="eway_au.html#example">Example:</a></li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/offsite/eway_au.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="../index.html">Merchant Documentation 0.09a documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Team Agiliq.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

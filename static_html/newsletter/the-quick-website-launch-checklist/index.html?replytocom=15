@@ -1,0 +1,483 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>The quick website launch checklist</title>
+<meta name="robots" content="noodp, noydir" />
+<meta name="description" content="Without much ado: &nbsp; &nbsp; 1. Has Google Analytics or equivalent software. &nbsp; Why is this important? &nbsp; You should be tracking how your pages are doing, which pages are popular and which of your pages are making money. Use" />
+<link rel="stylesheet" href="../wp-content/themes/thesis_182/style.css" type="text/css" media="screen, projection" />
+<link rel="stylesheet" href="../wp-content/themes/thesis_182/custom/layout.css" type="text/css" media="screen, projection" />
+<!--[if lte IE 8]><link rel="stylesheet" href="http://agiliq.com/newsletter/wp-content/themes/thesis_182/lib/css/ie.css" type="text/css" media="screen, projection" /><![endif]-->
+<link rel="stylesheet" href="../wp-content/themes/thesis_182/custom/custom.css" type="text/css" media="screen, projection" />
+<link rel="canonical" href="index.html" />
+<link rel="alternate" type="application/rss+xml" title="The Agiliq Newletter RSS Feed" href="../feed/index.html" />
+<link rel="pingback" href="../xmlrpc.php" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../xmlrpc.php?rsd" />
+<link rel="alternate" type="application/rss+xml" title="The Agiliq Newletter &raquo; The quick website launch checklist Comments Feed" href="feed/index.html" />
+<script type='text/javascript' src='http://agiliq.com/newsletter/wp-includes/js/comment-reply.min.js?ver=3.5.2'></script>
+<meta name='robots' content='noindex,nofollow' />
+</head>
+<body class="custom">
+<div id="container">
+<div id="page">
+<ul class="menu">
+<li class="tab tab-home"><a href="../../index.html">Home</a></li>
+<li class="tab tab-home"><a href="../../newsletter.1">Newsletter</a></li>
+<li class="tab tab-1"><a href="../about/index.html" title="About">About</a></li>
+<li class="tab tab-2"><a href="../downloads/index.html" title="Downloads">Downloads</a></li>
+<li class="tab tab-3"><a href="../subscribe/index.html" title="Subscribe">Subscribe</a></li>
+<li><a href="../../contact/index.html">Contact Us</a></li>
+<li><a href="../../whatwedo">What we do</a></li>
+<li><a href="../../whoweare">Who we are</a></li>
+</ul>
+	<div id="header">
+		<p id="logo"><a href="../../newsletter.1">The Agiliq Newletter</a></p>
+		<p id="tagline">We build amazing webapps. We can help you &quot;Build Amazing Webapps&quot;. Subscribe today.</p>
+	</div>
+	<div id="content_box">
+		<div id="content" class="hfeed">
+
+			<div class="post-41 post type-post status-publish format-standard hentry category-django post_box top" id="post-41">
+				<div class="headline_area">
+					<h1 class="entry-title">The quick website launch checklist</h1>
+				</div>
+				<div class="format_text entry-content">
+<div>Without much ado:</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div><strong>1. Has Google Analytics or equivalent software.</strong></div>
+<p>&nbsp;</p>
+<div>Why is this important?</div>
+<p>&nbsp;</p>
+<div>You should be tracking how your pages are doing, which pages are popular and which of your pages are making money. Use Google Analytics or equivalent software. (<a onclick="javascript:_gaq.push(['_trackPageview', '/out/haveamint.com']);"  href="http://haveamint.com" target="_blank">haveamint.com</a>, Kissmetrics.com or Mixpanel.com)</div>
+<p>&nbsp;</p>
+<div><strong>2. Has been tested with Pagespeed(<a onclick="javascript:_gaq.push(['_trackPageview', '/out/code.google.com/speed/page-speed/']);"  href="http://code.google.com/speed/page-speed/" target="_blank">http://code.google.com/speed/page-speed/</a>) and Yslow(<a onclick="javascript:_gaq.push(['_trackPageview', '/out/developer.yahoo.com/yslow/']);"  href="http://developer.yahoo.com/yslow/" target="_blank">http://developer.yahoo.com/yslow/</a>).</strong></div>
+<p>&nbsp;</p>
+<div>This is important as 70% of user visible speed improvements come via improving the client-side optimizations. Pagespeed and Yslow check your site&#8217;s conformance to best practices and can suggest areas of improvement.</div>
+<p>&nbsp;</p>
+<div><strong>3. Has a usability testing done via <a onclick="javascript:_gaq.push(['_trackPageview', '/out/feedbackarmy.com']);"  href="http://feedbackarmy.com" target="_blank">feedbackarmy.com</a> and <a onclick="javascript:_gaq.push(['_trackPageview', '/out/usertesting.com']);"  href="http://usertesting.com" target="_blank">usertesting.com</a>.</strong></div>
+<p>&nbsp;</p>
+<div>This is important as customers drop unusable websites to go to competitors. Even testing with 5 users can find 85% of the usability issues. These websites make usability testing simple and affordable.</div>
+<p>&nbsp;</p>
+<div><strong>4. Admins get error emails when site error happens.</strong></div>
+<p>&nbsp;</p>
+<div>No matter how much you have tested, users are going to do unexpected things to your website, which can cause site errors. If you get a email informing about this, you can fix this proactively.</div>
+<p>&nbsp;</p>
+<div><strong>5. Has monitoring setup with Siteuptime.com/Pingdom.com or equivalent.</strong></div>
+<p>&nbsp;</p>
+<div>No matter how good your infrastructure, sites crash. A site-monitoring service can inform you before your customers do.</div>
+<p>&nbsp;</p>
+<div><strong>6. Media and database are backed up.</strong></div>
+<p>&nbsp;</p>
+<div>Servers die, humans make errors. Your website data is too precious and backups are affordable.</div>
+<p>&nbsp;</p>
+<div>Your web host can generally provide you a option to backup entire servers. You should also be backing up your database and media to a separate server from your main host.</div>
+<p>&nbsp;</p>
+<div><strong>7. Backups are tested.</strong></div>
+<p>&nbsp;</p>
+<div>Doing backups is useless if you never test them. Too many people miss this obvious step when they setup their backups.</div>
+<p>&nbsp;</p>
+<div><strong>8. Has a sitemap.xml</strong></div>
+<p>&nbsp;</p>
+<div>Search engines are good at finding all your pages, but with sitemap you can guide and hint them, as well as guide about the relative importance of the pages.</div>
+<p>&nbsp;</p>
+<div><strong>9. Has a robots.txt</strong></div>
+<p>&nbsp;</p>
+<div>You may have a lot of things you do not want the world to know about. (Eg user uploaded media). Use robots.txt to hide them from search engines.</div>
+<p>&nbsp;</p>
+<div><strong>10. Has been tested in multiple browsers.</strong></div>
+<p>&nbsp;</p>
+<div>Your development team may have only tested a subset of browsers. Use a service like <a onclick="javascript:_gaq.push(['_trackPageview', '/out/browsershots.org/']);"  href="http://browsershots.org/">browsershots.org</a> and you can ensure your site looks good in all browsers.</div>
+<p>&nbsp;</p>
+<div><strong>11. Users have a way to contact admins</strong></div>
+<p>&nbsp;</p>
+<div>You should have a contact page and make it easy to contact you and email you.</div>
+<p>&nbsp;</p>
+<div><strong>12. Admins get emails on broken links.</strong></div>
+<p>&nbsp;</p>
+<div>Pages are moved around, and links break. These links can be extrnal or internal. If you are notified when a user gets a 404, you can respond. (For example put the redirect at the old url.)</div>
+<p>&nbsp;</p>
+<div><strong>13. Has a whats new section and/or a RSS feed.</strong></div>
+<p>&nbsp;</p>
+<div>Your customers would like to know about you. They should not have to search to get this info. If you use a blog software a RSS feed should be automatic.</div>
+<p>&nbsp;</p>
+<p><a onclick="javascript:_gaq.push(['_trackPageview', '/download/newsletter/wp-content/uploads/2011/08/website-launch-checklist-1.pdf']);"  href="../wp-content/uploads/2011/08/website-launch-checklist-1.pdf">You can download this checklist as pdf here</a>.</p>
+<div><a href="../the-website-launch-checklist-part-2.1">You can read the part 2 here</a></div>
+<p>&nbsp;</p>
+<hr />
+<div>Did I miss anything? Email us at hello@agiliq.com</div>
+<p>Have you joined our newsletter yet <a onclick="javascript:_gaq.push(['_trackPageview', '/out/eepurl.com/e1zk2']);"  href="http://eepurl.com/e1zk2" target="_blank">http://eepurl.com/e1zk2</a></p>
+<div>We cover Webdev, Django, SaaS, Mobile and cloud computing and</div>
+<div>help you &#8220;Build amazing webapps&#8221;.</div>
+				</div>
+			</div>
+
+			<div id="comments">
+				<div id="comments_intro" class="comments_intro">
+					<p><span class="bracket">{</span> <span>20</span> comments&#8230; read them below or <a href="index.html?replytocom=15#respond" rel="nofollow">add one</a> <span class="bracket">}</span></p>
+				</div>
+
+				<dl id="comment_list">
+					<dt class="comment even thread-even depth-1" id="comment-2">
+<span class="avatar"><img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=44' class='avatar avatar-44 photo avatar-default' height='44' width='44' /></span>
+<span class="comment_author">_benji</span>
+<span class="comment_time"><a href="index.html?replytocom=15#comment-2" title="Permalink to this comment" rel="nofollow">August 14, 2011 at 3:09 pm</a></span>
+
+					</dt>
+					<dd class="comment even thread-even depth-1">
+<div class="format_text" id="comment-body-2">
+<p>&gt; 4. Admins get error emails when site error happens.For Python applications, see KeyError: <a href="https://www.keyerror.com/" rel="nofollow">https://www.keyerror.com/</a></p>
+<p class="reply"><a class='comment-reply-link' href='index.html?replytocom=2#respond' onclick='return addComment.moveForm("comment-body-2", "2", "respond", "41")'>Reply</a></p>
+</div>
+					</dd>
+					<dt class="comment odd alt thread-odd thread-alt depth-1" id="comment-3">
+<span class="avatar"><img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=44' class='avatar avatar-44 photo avatar-default' height='44' width='44' /></span>
+<span class="comment_author">AndyJ</span>
+<span class="comment_time"><a href="index.html?replytocom=15#comment-3" title="Permalink to this comment" rel="nofollow">August 14, 2011 at 3:14 pm</a></span>
+
+					</dt>
+					<dd class="comment odd alt thread-odd thread-alt depth-1">
+<div class="format_text" id="comment-body-3">
+<p>browsershots.org not browsershots.comThanks for the heads up on that, and all your other tips!</p>
+<p class="reply"><a class='comment-reply-link' href='index.html?replytocom=3#respond' onclick='return addComment.moveForm("comment-body-3", "3", "respond", "41")'>Reply</a></p>
+</div>
+					</dd>
+					<dt class="comment even thread-even depth-1" id="comment-4">
+<span class="avatar"><img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=44' class='avatar avatar-44 photo avatar-default' height='44' width='44' /></span>
+<span class="comment_author">Eric</span>
+<span class="comment_time"><a href="index.html?replytocom=15#comment-4" title="Permalink to this comment" rel="nofollow">August 14, 2011 at 3:42 pm</a></span>
+
+					</dt>
+					<dd class="comment even thread-even depth-1">
+<div class="format_text" id="comment-body-4">
+<p>Another useful tool for performance profiling is the Pingdom Tools.<a href="http://tools.pingdom.com/It" rel="nofollow">http://tools.pingdom.com/It</a> fetches your page directly from their servers and can be useful in troubleshooting issues that may not be apparent from the developer&#8217;s browser/location.</p>
+<p class="reply"><a class='comment-reply-link' href='index.html?replytocom=4#respond' onclick='return addComment.moveForm("comment-body-4", "4", "respond", "41")'>Reply</a></p>
+</div>
+					</dd>
+					<dt class="comment odd alt thread-odd thread-alt depth-1" id="comment-5">
+<span class="avatar"><img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=44' class='avatar avatar-44 photo avatar-default' height='44' width='44' /></span>
+<span class="comment_author">Shabda Raaj</span>
+<span class="comment_time"><a href="index.html?replytocom=15#comment-5" title="Permalink to this comment" rel="nofollow">August 14, 2011 at 3:50 pm</a></span>
+
+					</dt>
+					<dd class="comment odd alt thread-odd thread-alt depth-1">
+<div class="format_text" id="comment-body-5">
+<p>AndyJ: Fixed, thanks.</p>
+<p class="reply"><a class='comment-reply-link' href='index.html?replytocom=5#respond' onclick='return addComment.moveForm("comment-body-5", "5", "respond", "41")'>Reply</a></p>
+</div>
+					</dd>
+					<dt class="comment even thread-even depth-1" id="comment-6">
+<span class="avatar"><img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=44' class='avatar avatar-44 photo avatar-default' height='44' width='44' /></span>
+<span class="comment_author">simonpantzare</span>
+<span class="comment_time"><a href="index.html?replytocom=15#comment-6" title="Permalink to this comment" rel="nofollow">August 14, 2011 at 4:24 pm</a></span>
+
+					</dt>
+					<dd class="comment even thread-even depth-1">
+<div class="format_text" id="comment-body-6">
+<p>Sentry (<a href="http://readthedocs.org/docs/sentry/en/latest/index.html" rel="nofollow">http://readthedocs.org/docs/sentry/en/latest/index.html</a>) is another option for Django sites. Admin error emails can be dangerous because you can get banned from  services like Gmail if they are too frequent.</p>
+<p class="reply"><a class='comment-reply-link' href='index.html?replytocom=6#respond' onclick='return addComment.moveForm("comment-body-6", "6", "respond", "41")'>Reply</a></p>
+</div>
+					</dd>
+					<dt class="comment odd alt thread-odd thread-alt depth-1" id="comment-7">
+<span class="avatar"><img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=44' class='avatar avatar-44 photo avatar-default' height='44' width='44' /></span>
+<span class="comment_author">rrwhite</span>
+<span class="comment_time"><a href="index.html?replytocom=15#comment-7" title="Permalink to this comment" rel="nofollow">August 14, 2011 at 4:36 pm</a></span>
+
+					</dt>
+					<dd class="comment odd alt thread-odd thread-alt depth-1">
+<div class="format_text" id="comment-body-7">
+<p>UserVoice (uservoice.com) is a great way for users to be able to contact admins for help or with feedback (#11).</p>
+<p class="reply"><a class='comment-reply-link' href='index.html?replytocom=7#respond' onclick='return addComment.moveForm("comment-body-7", "7", "respond", "41")'>Reply</a></p>
+</div>
+					</dd>
+					<dt class="comment even thread-even depth-1" id="comment-8">
+<span class="avatar"><img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=44' class='avatar avatar-44 photo avatar-default' height='44' width='44' /></span>
+<span class="comment_author">Glemnitz</span>
+<span class="comment_time"><a href="index.html?replytocom=15#comment-8" title="Permalink to this comment" rel="nofollow">August 14, 2011 at 5:02 pm</a></span>
+
+					</dt>
+					<dd class="comment even thread-even depth-1">
+<div class="format_text" id="comment-body-8">
+<p>Nice list. TXH!</p>
+<p class="reply"><a class='comment-reply-link' href='index.html?replytocom=8#respond' onclick='return addComment.moveForm("comment-body-8", "8", "respond", "41")'>Reply</a></p>
+</div>
+					</dd>
+					<dt class="comment odd alt thread-odd thread-alt depth-1" id="comment-9">
+<span class="avatar"><img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=44' class='avatar avatar-44 photo avatar-default' height='44' width='44' /></span>
+<span class="comment_author">Brian McQuay</span>
+<span class="comment_time"><a href="index.html?replytocom=15#comment-9" title="Permalink to this comment" rel="nofollow">August 14, 2011 at 5:05 pm</a></span>
+
+					</dt>
+					<dd class="comment odd alt thread-odd thread-alt depth-1">
+<div class="format_text" id="comment-body-9">
+<p>You forgot one super important thing: Security ReviewOne thing I always do before launching is having a security review. Launching and falling flat on your face because of obvious security problems is almost worse than having bug ridden code and a crappy UX. A week or two delay by being proactive and conducting a security review will save you countless hours and sleepless nights of being reactive &#8216;when&#8217;, not &#8216;if&#8217;, your site is compromised.</p>
+<p class="reply"><a class='comment-reply-link' href='index.html?replytocom=9#respond' onclick='return addComment.moveForm("comment-body-9", "9", "respond", "41")'>Reply</a></p>
+</div>
+					</dd>
+					<dt class="comment even thread-even depth-1" id="comment-10">
+<span class="avatar"><img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=44' class='avatar avatar-44 photo avatar-default' height='44' width='44' /></span>
+<span class="comment_author">Shabda Raaj</span>
+<span class="comment_time"><a href="index.html?replytocom=15#comment-10" title="Permalink to this comment" rel="nofollow">August 14, 2011 at 5:06 pm</a></span>
+
+					</dt>
+					<dd class="comment even thread-even depth-1">
+<div class="format_text" id="comment-body-10">
+<p>Brian: I didnot add that as apart from paying someone big bucks, what is the easy way to do this?</p>
+<p class="reply"><a class='comment-reply-link' href='index.html?replytocom=10#respond' onclick='return addComment.moveForm("comment-body-10", "10", "respond", "41")'>Reply</a></p>
+</div>
+					</dd>
+					<dt class="comment odd alt thread-odd thread-alt depth-1" id="comment-11">
+<span class="avatar"><img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=44' class='avatar avatar-44 photo avatar-default' height='44' width='44' /></span>
+<span class="comment_author">Brian McQuay</span>
+<span class="comment_time"><a href="index.html?replytocom=15#comment-11" title="Permalink to this comment" rel="nofollow">August 14, 2011 at 6:29 pm</a></span>
+
+					</dt>
+					<dd class="comment odd alt thread-odd thread-alt depth-1">
+<div class="format_text" id="comment-body-11">
+<p>It obviously depends on the specific site you&#8217;re building of course and what framework if any is utilized. One thing I find often is that there is sometimes an implicit reliance on the UI to restrict what a user can access.I work in Rails and an extremely common thing I find is an authentication before_filter which forces a logged in user before access to any actions in a controller is given. Beyond that there sometimes isn&#8217;t any other restrictions other than relying on what the UI allows. For instance, a things_controller might have a before filter to require a logged in user and the UI might force URLs that a logged in user access to look something like /things/4 where 4 is the thing&#8217;s db id. The UI forces all the URLs to be correct but a user could easily manually change the url to /things/5 and get access to a thing that&#8217;s not that user&#8217;s data. This type of thing happens all the time, especially when you&#8217;ve got a ton of different controllers and data that can be accessed by different users. The correct behavior should be to explicitly check that the logged in user has permissions to access any of the data. Instead of doing Thing.find(params[:id]) you should be doing something like current_user.things.find(params[:id]) to make sure that the current user is only able to access its own data and no other. Its obvious to spot and extremely simple to fix but it happens over and over and over again.I always try to take the time to review all the code in the app for obvious problems like this. Its pretty easy to spot and it happens enough that it a security review is well justified. Another thing I do is try to clean up any unused code and routes. Even before your site gets launched there will likely be a handful of code that was created in the development process that isn&#8217;t being used anymore. By removing unused code or unused routes, you reduce the potential attack vectors on your app.There&#8217;s always improvements that can be made regarding security and you could go down a rabbit hole of what-ifs. However, there are some extremely simple and quick things you can do to greatly improve the security of your application before it launches. An hour spent being proactive is worth a week being reactive.</p>
+<p class="reply"><a class='comment-reply-link' href='index.html?replytocom=11#respond' onclick='return addComment.moveForm("comment-body-11", "11", "respond", "41")'>Reply</a></p>
+</div>
+					</dd>
+					<dt class="comment even thread-even depth-1" id="comment-12">
+<span class="avatar"><img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=44' class='avatar avatar-44 photo avatar-default' height='44' width='44' /></span>
+<span class="comment_author">Brad Greenlee</span>
+<span class="comment_time"><a href="index.html?replytocom=15#comment-12" title="Permalink to this comment" rel="nofollow">August 14, 2011 at 7:57 pm</a></span>
+
+					</dt>
+					<dd class="comment even thread-even depth-1">
+<div class="format_text" id="comment-body-12">
+<p>You do not want to do #12 (Admins get emails on broken links), unless you have a way to filter out all the hits from bots looking for common vulns.</p>
+<p class="reply"><a class='comment-reply-link' href='index.html?replytocom=12#respond' onclick='return addComment.moveForm("comment-body-12", "12", "respond", "41")'>Reply</a></p>
+</div>
+					</dd>
+					<dt class="comment odd alt thread-odd thread-alt depth-1" id="comment-13">
+<span class="avatar"><img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=44' class='avatar avatar-44 photo avatar-default' height='44' width='44' /></span>
+<span class="comment_author">Alexander Ainslie (@AAinslie)</span>
+<span class="comment_time"><a href="index.html?replytocom=15#comment-13" title="Permalink to this comment" rel="nofollow">August 15, 2011 at 3:17 am</a></span>
+
+					</dt>
+					<dd class="comment odd alt thread-odd thread-alt depth-1">
+<div class="format_text" id="comment-body-13">
+<p class="reply"><a class='comment-reply-link' href='index.html?replytocom=13#respond' onclick='return addComment.moveForm("comment-body-13", "13", "respond", "41")'>Reply</a></p>
+</div>
+					</dd>
+					<dt class="comment even thread-even depth-1" id="comment-14">
+<span class="avatar"><img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=44' class='avatar avatar-44 photo avatar-default' height='44' width='44' /></span>
+<span class="comment_author">Shawn</span>
+<span class="comment_time"><a href="index.html?replytocom=15#comment-14" title="Permalink to this comment" rel="nofollow">August 15, 2011 at 4:36 am</a></span>
+
+					</dt>
+					<dd class="comment even thread-even depth-1">
+<div class="format_text" id="comment-body-14">
+<p>Why pay that much for website monitoring &#8211; only $10 at NodePing (nodeping.com) to watch up to 1000 sites/services at one minute intervals.  Best deal out there.</p>
+<p class="reply"><a class='comment-reply-link' href='index.html?replytocom=14#respond' onclick='return addComment.moveForm("comment-body-14", "14", "respond", "41")'>Reply</a></p>
+</div>
+					</dd>
+					<dt class="comment odd alt thread-odd thread-alt depth-1" id="comment-15">
+<span class="avatar"><img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=44' class='avatar avatar-44 photo avatar-default' height='44' width='44' /></span>
+<span class="comment_author">luckymurari</span>
+<span class="comment_time"><a href="index.html?replytocom=15#comment-15" title="Permalink to this comment" rel="nofollow">August 15, 2011 at 7:26 pm</a></span>
+
+					</dt>
+					<dd class="comment odd alt thread-odd thread-alt depth-1">
+<div class="format_text" id="comment-body-15">
+<p class="reply"><a class='comment-reply-link' href='index.html?replytocom=15#respond' onclick='return addComment.moveForm("comment-body-15", "15", "respond", "41")'>Reply</a></p>
+</div>
+					</dd>
+					<dt class="comment even thread-even depth-1" id="comment-16">
+<span class="avatar"><img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=44' class='avatar avatar-44 photo avatar-default' height='44' width='44' /></span>
+<span class="comment_author">loupvert</span>
+<span class="comment_time"><a href="index.html?replytocom=15#comment-16" title="Permalink to this comment" rel="nofollow">August 15, 2011 at 10:05 pm</a></span>
+
+					</dt>
+					<dd class="comment even thread-even depth-1">
+<div class="format_text" id="comment-body-16">
+<p>One checklist item to address re: security is verifying that every single database call within the site&#8217;s backend is run through a sanitizer.  SQL Injection seems to be the dominant method of breaking into websites, and has been consistently effective for years.</p>
+<p class="reply"><a class='comment-reply-link' href='index.html?replytocom=16#respond' onclick='return addComment.moveForm("comment-body-16", "16", "respond", "41")'>Reply</a></p>
+</div>
+					</dd>
+					<dt class="comment odd alt thread-odd thread-alt depth-1" id="comment-17">
+<span class="avatar"><img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=44' class='avatar avatar-44 photo avatar-default' height='44' width='44' /></span>
+<span class="comment_author">makash</span>
+<span class="comment_time"><a href="index.html?replytocom=15#comment-17" title="Permalink to this comment" rel="nofollow">August 16, 2011 at 6:39 am</a></span>
+
+					</dt>
+					<dd class="comment odd alt thread-odd thread-alt depth-1">
+<div class="format_text" id="comment-body-17">
+<p>Open Web Application Security Project ( <a href="http://OWASP.org" rel="nofollow">http://OWASP.org</a> ) has some cheatsheets on testing for web security issues. These can easily be added as a checklist and a basic security review is a possibility. Although unless the coverage is complete one can never has the assurance of a secure website but doing a basic security review will ensure some glaring security issues can be taken care of.</p>
+<p class="reply"><a class='comment-reply-link' href='index.html?replytocom=17#respond' onclick='return addComment.moveForm("comment-body-17", "17", "respond", "41")'>Reply</a></p>
+</div>
+					</dd>
+					<dt class="comment even thread-even depth-1" id="comment-18">
+<span class="avatar"><img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=44' class='avatar avatar-44 photo avatar-default' height='44' width='44' /></span>
+<span class="comment_author">Sasha</span>
+<span class="comment_time"><a href="index.html?replytocom=15#comment-18" title="Permalink to this comment" rel="nofollow">August 16, 2011 at 4:25 pm</a></span>
+
+					</dt>
+					<dd class="comment even thread-even depth-1">
+<div class="format_text" id="comment-body-18">
+<p>It&#8217;s easy to forget the basics while you&#8217;re in the middle of launching your website. This list is a nice reminder. Thanks.</p>
+<p class="reply"><a class='comment-reply-link' href='index.html?replytocom=18#respond' onclick='return addComment.moveForm("comment-body-18", "18", "respond", "41")'>Reply</a></p>
+</div>
+					</dd>
+					<dt class="comment odd alt thread-odd thread-alt depth-1" id="comment-19">
+<span class="avatar"><img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=44' class='avatar avatar-44 photo avatar-default' height='44' width='44' /></span>
+<span class="comment_author">13_7byl</span>
+<span class="comment_time"><a href="index.html?replytocom=15#comment-19" title="Permalink to this comment" rel="nofollow">August 18, 2011 at 9:45 pm</a></span>
+
+					</dt>
+					<dd class="comment odd alt thread-odd thread-alt depth-1">
+<div class="format_text" id="comment-body-19">
+<p>This is a good list thanks. I was inspired by &gt;&gt; 4. Admins get error emails when site error happens.to examine this a little further. I think there are plenty of triggers which can be used get such email so I wrote a post on it. <a href="http://13.7billionyearslater.net/2011/checklist-of-webmaster-error-notificati" rel="nofollow">http://13.7billionyearslater.net/2011/checklist-of-webmaster-error-notificati</a>&#8230;</p>
+<p class="reply"><a class='comment-reply-link' href='index.html?replytocom=19#respond' onclick='return addComment.moveForm("comment-body-19", "19", "respond", "41")'>Reply</a></p>
+</div>
+					</dd>
+					<dt class="comment even thread-even depth-1" id="comment-20">
+<span class="avatar"><img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=44' class='avatar avatar-44 photo avatar-default' height='44' width='44' /></span>
+<span class="comment_author">Patrick</span>
+<span class="comment_time"><a href="index.html?replytocom=15#comment-20" title="Permalink to this comment" rel="nofollow">August 23, 2011 at 10:00 pm</a></span>
+
+					</dt>
+					<dd class="comment even thread-even depth-1">
+<div class="format_text" id="comment-body-20">
+<p>I&#8217;d also add FavIcons, I&#8217;ll admit, I don&#8217;t use them, however if not used, they clog up your Apache error_log and also waste server requests, plus if someone bookmarks your site, at least there&#8217;s an icon. Small yes, but I think it&#8217;s something to look out for.</p>
+<p class="reply"><a class='comment-reply-link' href='index.html?replytocom=20#respond' onclick='return addComment.moveForm("comment-body-20", "20", "respond", "41")'>Reply</a></p>
+</div>
+					</dd>
+					<dt class="comment odd alt thread-odd thread-alt depth-1" id="comment-21">
+<span class="avatar"><img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=44' class='avatar avatar-44 photo avatar-default' height='44' width='44' /></span>
+<span class="comment_author">Shabda Raaj</span>
+<span class="comment_time"><a href="index.html?replytocom=15#comment-21" title="Permalink to this comment" rel="nofollow">August 24, 2011 at 4:55 am</a></span>
+
+					</dt>
+					<dd class="comment odd alt thread-odd thread-alt depth-1">
+<div class="format_text" id="comment-body-21">
+<p>Patrick: <a href="../the-website-launch-checklist-part-2.1" rel="nofollow">http://agiliq.com/newsletter/the-website-launch-checklist-part-2</a></p>
+<p class="reply"><a class='comment-reply-link' href='index.html?replytocom=21#respond' onclick='return addComment.moveForm("comment-body-21", "21", "respond", "41")'>Reply</a></p>
+</div>
+					</dd>
+				</dl>
+				<div id="respond">
+					<div id="respond_intro">
+<a rel="nofollow" id="cancel-comment-reply-link" href="index.html#respond">Cancel reply</a>						<p>Leave a Comment</p>
+					</div>
+					<form action="http://agiliq.com/newsletter/wp-comments-post.php" method="post" id="commentform">
+						<p><input class="text_input" type="text" name="author" id="author" value="" tabindex="1" aria-required="true" /><label for="author">Name <span class="required" title="Required">*</span></label></p>
+						<p><input class="text_input" type="text" name="email" id="email" value="" tabindex="2" aria-required="true" /><label for="email">E-mail <span class="required" title="Required">*</span></label></p>
+						<p><input class="text_input" type="text" name="url" id="url" value="" tabindex="3" /><label for="url">Website</label></p>
+						<p class="comment_box">
+							<textarea name="comment" id="comment" tabindex="4" cols="40" rows="8"></textarea>
+						</p>
+						<p class="remove_bottom_margin">
+							<input name="submit" class="form_submit" type="submit" id="submit" tabindex="5" value="Submit" />
+<input type='hidden' name='comment_post_ID' value='41' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='15' />
+						</p>
+<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="02378de45e" /></p>					</form>
+				</div>
+			</div>
+<div class="subscribe_cta">
+<div id="mc_embed_signup"><form id="mc-embedded-subscribe-form-footer" class="validate footer_signup" action="http://ipadapps.us1.list-manage.com/subscribe/post?u=7a9f9fd9614090a17f2a7456c&amp;id=58a7a26727" method="post" name="mc-embedded-subscribe-form" target="_blank"><label for="mce-EMAIL">Subscribe to our mailing list</label> <input id="mce-EMAIL" class="email" type="email" name="EMAIL" value="" />
+<div class="clear"><input id="mc-embedded-subscribe" class="button" type="submit" name="subscribe" value="Subscribe" /></div>
+</form></div>
+</div>
+
+					<div class="prev_next post_nav">
+						<p class="previous">Previous post: <a href="../how-to-test-your-web-app-for-cheap/index.html" rel="prev">How to test your web app for cheap</a></p>
+						<p>Next post: <a href="../the-website-launch-checklist-part-2.1" rel="next">The website launch checklist: part 2</a></p>
+					</div>
+		</div>
+
+		<div id="sidebars">
+			<div id="multimedia_box" class="custom_box">
+				<div id="custom_box">
+<!-- Begin MailChimp Signup Form -->
+<link href="http://cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+	#mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
+	/* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
+	   We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+</style>
+<div id="mc_embed_signup">
+<form action="http://ipadapps.us1.list-manage.com/subscribe/post?u=7a9f9fd9614090a17f2a7456c&amp;id=58a7a26727" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+	<label for="mce-EMAIL">Want to get articles like this? Subscribe to our newletter.</label>
+	<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+	<div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+</form>
+</div>
+
+<!--End mc_embed_signup-->
+				</div>
+			</div>
+			<div id="sidebar_1" class="sidebar">
+				<ul class="sidebar_list">
+		<li class="widget widget_recent_entries" id="recent-posts-3">		<h3>You should also read</h3>		<ul>
+					<li>
+				<a href="../how-to-optimize-your-linkedin-profile-for-b2b-leads/index.html" title="How to optimize your LinkedIn profile for B2B leads?">How to optimize your LinkedIn profile for B2B leads?</a>
+						</li>
+					<li>
+				<a href="../how-can-you-build-amazing-apps-like-instagram/index.html" title="How can you build amazing apps like Instagram?">How can you build amazing apps like Instagram?</a>
+						</li>
+					<li>
+				<a href="../what-is-the-most-advanced-programming-language/index.html" title="What is the most &#8220;Advanced&#8221; programming language?">What is the most &#8220;Advanced&#8221; programming language?</a>
+						</li>
+					<li>
+				<a href="../how-to-build-a-lean-startup/index.html" title="How to build a lean startup">How to build a lean startup</a>
+						</li>
+					<li>
+				<a href="../how-to-launch-a-startup-mindmap/index.html" title="How to launch a startup (mindmap)">How to launch a startup (mindmap)</a>
+						</li>
+				</ul>
+		</li><li class="widget widget_archive" id="archives-3"><h3>Archives</h3>		<ul>
+			<li><a href='../2012/06/index.html' title='June 2012'>June 2012</a></li>
+	<li><a href='../2012/05/index.html' title='May 2012'>May 2012</a></li>
+	<li><a href='../2012/04/index.html' title='April 2012'>April 2012</a></li>
+	<li><a href='../2011/11/index.html' title='November 2011'>November 2011</a></li>
+	<li><a href='../2011/09/index.html' title='September 2011'>September 2011</a></li>
+	<li><a href='../2011/08/index.html' title='August 2011'>August 2011</a></li>
+		</ul>
+</li>				</ul>
+			</div>
+		</div>
+	</div>
+	<div id="footer">
+    <div id="footer_1" class="sidebar">
+            <ul class="sidebar_list footer_list">
+<li class="widget"><a href="../../index.html">Home</a></li>
+<li class="widget"><a href="../../whoweare">Who are are</a></li>
+<li class="widget"><a href="../../whatwedo">What we do</a></li>
+<li class="widget"><a href="../../contact/index.html">Contact us</a></li>
+<li class="widget"><a href="../../blog.1">Blog</a></li>
+<li class="widget"><a href="../../newsletter.1">Newsletter</a></li>
+ <li class="widget"><a href="../../forum/index.html">Forum</a></li>
+
+<li class="widget"><a href="../subscribe/index.html">Subscribe</a></li>
+<li class="widget">We build amazing web apps. Email us: <a href="mailto:hello@agiliq.com">hello@agiliq.com</a></li>
+
+
+</ul>
+                                                                                                                                                                                    </div>
+
+<!-- Google Analytics Code added by Web Ninja Google Analytics plugin v1.0.7: http://josh-fowler.com/?page_id=70 -->
+<script type='text/javascript'>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-367368-15']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- Web Ninja Google Analytics Done -->
+	</div>
+</div>
+</div>
+<!--[if lte IE 8]>
+<div id="ie_clear"></div>
+<![endif]-->
+</body>
+</html>
+<!-- Dynamic page generated in 1.082 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2013-10-21 21:18:36 -->

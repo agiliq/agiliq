@@ -1,0 +1,160 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>PayPal Gateway &mdash; Merchant Documentation 0.09a documentation</title>
+    
+    <link rel="stylesheet" href="http://agiliq.com/docs/merchant/_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="http://agiliq.com/docs/merchant/_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.09a',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://agiliq.com/docs/merchant/_static/jquery.js"></script>
+    <script type="text/javascript" src="http://agiliq.com/docs/merchant/_static/underscore.js"></script>
+    <script type="text/javascript" src="http://agiliq.com/docs/merchant/_static/doctools.js"></script>
+    <link rel="top" title="Merchant Documentation 0.09a documentation" href="../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="../index.html">Merchant Documentation 0.09a documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="paypal-gateway">
+<h1>PayPal Gateway<a class="headerlink" href="paypal_gateway.html#paypal-gateway" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This gateway is a wrapper to the <a class="reference external" href="http://github.com/dcramer/django-paypal/">django-paypal</a> package. Please download
+it to be able to use the gateway.</p>
+</div>
+<p>The PayPal gateway is an implementation of the <a class="reference external" href="https://merchant.paypal.com/cgi-bin/marketingweb?cmd=_render-content&amp;content_ID=merchant/wp_pro">PayPal Website Payments Pro</a>
+product.</p>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="paypal_gateway.html#usage" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">Setup a PayPal Website Payments Pro account and obtain the API details.</p>
+</li>
+<li><p class="first">Add <cite>paypal.standard</cite> and <cite>paypal.pro</cite> (apps from <a class="reference external" href="http://github.com/dcramer/django-paypal/">django-paypal</a>) to the
+<cite>INSTALLED_APPS</cite> in your <cite>settings.py</cite>.</p>
+</li>
+<li><p class="first">Also add the following attributes to your <cite>settings.py</cite>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">MERCHANT_TEST_MODE</span> <span class="o">=</span> <span class="bp">True</span>    <span class="c"># Toggle for live transactions</span>
+<span class="n">MERCHANT_SETTINGS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&quot;pay_pal&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;WPP_USER&quot;</span> <span class="p">:</span> <span class="s">&quot;???&quot;</span><span class="p">,</span>
+        <span class="s">&quot;WPP_PASSWORD&quot;</span> <span class="p">:</span> <span class="s">&quot;???&quot;</span><span class="p">,</span>
+        <span class="s">&quot;WPP_SIGNATURE&quot;</span> <span class="p">:</span> <span class="s">&quot;???&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c"># Since merchant relies on django-paypal</span>
+<span class="c"># you have to additionally provide the</span>
+<span class="c"># below attributes</span>
+<span class="n">PAYPAL_TEST</span> <span class="o">=</span> <span class="n">MERCHANT_TEST_MODE</span>
+<span class="n">PAYPAL_WPP_USER</span> <span class="o">=</span> <span class="n">MERCHANT_SETTINGS</span><span class="p">[</span><span class="s">&quot;pay_pal&quot;</span><span class="p">][</span><span class="s">&quot;WPP_USER&quot;</span><span class="p">]</span>
+<span class="n">PAYPAL_WPP_PASSWORD</span> <span class="o">=</span> <span class="n">MERCHANT_SETTINGS</span><span class="p">[</span><span class="s">&quot;pay_pal&quot;</span><span class="p">][</span><span class="s">&quot;WPP_PASSWORD&quot;</span><span class="p">]</span>
+<span class="n">PAYPAL_WPP_SIGNATURE</span> <span class="o">=</span> <span class="n">MERCHANT_SETTINGS</span><span class="p">[</span><span class="s">&quot;pay_pal&quot;</span><span class="p">][</span><span class="s">&quot;WPP_SIGNATURE&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Run <cite>python manage.py syncdb</cite> to get the response tables.</p>
+</li>
+<li><p class="first">Use the gateway instance:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">g1</span> <span class="o">=</span> <span class="n">get_gateway</span><span class="p">(</span><span class="s">&quot;pay_pal&quot;</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span> <span class="o">=</span> <span class="n">CreditCard</span><span class="p">(</span><span class="n">first_name</span><span class="o">=</span> <span class="s">&quot;Test&quot;</span><span class="p">,</span>
+<span class="gp">... </span>               <span class="n">last_name</span> <span class="o">=</span> <span class="s">&quot;User&quot;</span><span class="p">,</span>
+<span class="gp">... </span>               <span class="n">month</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">year</span><span class="o">=</span><span class="mi">2011</span><span class="p">,</span>
+<span class="gp">... </span>               <span class="n">number</span><span class="o">=</span><span class="s">&quot;4222222222222&quot;</span><span class="p">,</span>
+<span class="gp">... </span>               <span class="n">verification_value</span><span class="o">=</span><span class="s">&quot;100&quot;</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">response1</span> <span class="o">=</span> <span class="n">g1</span><span class="o">.</span><span class="n">purchase</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">cc</span><span class="p">,</span> <span class="n">options</span> <span class="o">=</span> <span class="p">{</span><span class="s">&quot;request&quot;</span><span class="p">:</span> <span class="n">request</span><span class="p">,</span> <span class="o">...</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">response1</span>
+<span class="go">{&quot;status&quot;: &quot;SUCCESS&quot;, &quot;response&quot;: &lt;PayPalNVP object&gt;}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The PayPal gateway expects you pass the <cite>request</cite> object as a part of
+the <cite>options</cite> dictionary because the client&#8217;s IP address may be used for
+fraud detection.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="paypal_gateway.html#">PayPal Gateway</a><ul>
+<li><a class="reference internal" href="paypal_gateway.html#usage">Usage</a></li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/gateways/paypal_gateway.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="../index.html">Merchant Documentation 0.09a documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Team Agiliq.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

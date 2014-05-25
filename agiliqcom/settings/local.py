@@ -37,8 +37,8 @@ if 'agiliq_heroku' in os.environ:
     import dj_database_url
     DATABASES['default'] =  dj_database_url.config()
 
-    DEBUG = False
-    COMPRESS_ENABLED = False
+    DEBUG = "DJANGO_DEBUG" in os.environ
+    COMPRESS_ENABLED = "DJANGO_COMPRESS" in os.environ
 
     # Honor the 'X-Forwarded-Proto' header for request.is_secure()
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')

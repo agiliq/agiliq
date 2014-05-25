@@ -20,6 +20,7 @@ AWS_STORAGE_BUCKET_NAME = os.environ['S3_BUCKET_NAME']
 #STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 DEFAULT_FILE_STORAGE = "storages.backends.s3boto.S3BotoStorage"
 
+DATABASES = {}
 DATABASES['default'] =  dj_database_url.config()
 
 DEBUG = "DJANGO_DEBUG" in os.environ

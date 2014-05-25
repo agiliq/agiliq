@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
 
+
 class ContactUs(models.Model):
     name = models.CharField(max_length=75)
     phone = models.CharField(max_length=20, blank=True, null=True)
@@ -16,9 +17,12 @@ class ContactUs(models.Model):
     def __unicode__(self):
         return '%s - %s - %s' % (self.name, self.email, self.company)
 
+
 class TestimonialManager(models.Manager):
+
     def get_query_set(self, *args, **kwargs):
         return super(TestimonialManager, self).get_query_set().filter(is_active=True)
+
 
 class Testimonial(models.Model):
     testimonial = models.TextField(null=True, blank=True)
@@ -37,11 +41,14 @@ class Testimonial(models.Model):
         ordering = ('ordering', )
 
     def __unicode__(self):
-        return self.testimonial[:30]+" ..."
+        return self.testimonial[:30] + " ..."
+
 
 class ClientManager(models.Manager):
+
     def get_query_set(self, *args, **kwargs):
         return super(ClientManager, self).get_query_set(*args, **kwargs).filter(is_active=True)
+
 
 class Client(models.Model):
     name = models.CharField(max_length=100)
@@ -59,6 +66,7 @@ class Client(models.Model):
     def __unicode__(self):
         return self.name
 
+
 class Contact(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
@@ -73,15 +81,16 @@ class Contact(models.Model):
     def __unicode__(self):
         return self.name
 
+
 class BlogEntry(models.Model):
     feed_url = models.URLField()
 
-    #Entry
+    # Entry
     entry_title = models.CharField(max_length=100)
     entry_url = models.URLField(unique=True)
     entry_summary = models.TextField()
 
-    #Who columns
+    # Who columns
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
 
@@ -91,12 +100,13 @@ class BlogEntry(models.Model):
     def __unicode__(self):
         return self.entry_title
 
+
 class TeamMember(models.Model):
     name = models.CharField(max_length=100)
     bio = models.TextField()
     photo = models.ImageField(upload_to='people/', null=True, blank=True,
-        help_text="Provide a high resolution square image."
-        "Will be resized as needed.")
+                              help_text="Provide a high resolution square image."
+                              "Will be resized as needed.")
     designation = models.CharField(max_length=100)
 
     user = models.OneToOneField(User, blank=True, null=True)
@@ -109,12 +119,14 @@ class TeamMember(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     active = models.NullBooleanField()
+
     class Meta:
         get_latest_by = ('ordering', )
         ordering = ('-active', 'ordering', )
 
     def __unicode__(self):
         return self.name
+
 
 class Project(models.Model):
     name = models.CharField(max_length=100)
@@ -126,12 +138,12 @@ class Project(models.Model):
         ('Web App', 'Web App'),
         ('Android App', 'Android App'),
         ('iOS App', 'iOS App'),
-        ), max_length=100, default="Web App")
+    ), max_length=100, default="Web App")
     ordering = models.PositiveSmallIntegerField(default=0)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     is_active = models.NullBooleanField(default=True)
-    is_featured = models.NullBooleanField(default = False)
+    is_featured = models.NullBooleanField(default=False)
 
     class Meta:
         get_latest_by = ('ordering', )
@@ -140,10 +152,11 @@ class Project(models.Model):
     def __unicode__(self):
         return self.name
 
+
 class Whitepaper(models.Model):
     name = models.CharField(max_length=100)
     details = models.TextField()
-    paper =  models.FileField(upload_to='whitepapers/')
+    paper = models.FileField(upload_to='whitepapers/')
 
     ordering = models.PositiveSmallIntegerField(default=0)
     created_on = models.DateTimeField(auto_now_add=True)
@@ -153,9 +166,9 @@ class Whitepaper(models.Model):
         get_latest_by = ('ordering', )
         ordering = ('ordering', )
 
-
     def __unicode__(self):
         return self.name
+
 
 class ContentBlock(models.Model):
     name = models.CharField(max_length=255)

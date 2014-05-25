@@ -1,2 +1,2 @@
-https://github.com/jhnwsk/heroku-buildpack-python.git
+git@github.com:heroku/heroku-buildpack-python.git
 https://github.com/shabda/nginx-buildpack.git#a3d9bece0b943c9558cac1bc4f08eb3e64492e53

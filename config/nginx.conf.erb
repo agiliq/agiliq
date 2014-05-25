@@ -36,13 +36,6 @@ http {
         server_name _;
         keepalive_timeout 5;
 
-        location / {
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header Host $http_host;
-            proxy_redirect off;
-            proxy_pass http://app_server;
-        }
-
         location /newsletter/ {
           root /app/static_html;
           index  index.html;
@@ -52,5 +45,7 @@ http {
           root /app/static_html;
           index  index.html;
         }
+
+
     }
 }

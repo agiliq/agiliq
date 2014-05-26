@@ -1,0 +1,80 @@
+===================
+Models
+===================
+
+Not adding a max_length to models.CharField
+----------------------------------------------
+If you do not add a max_length to CharFields your models will not validate.
+
+Solution:
+
+Add a max_length. If you want a field with unlimited length, use a TextField.
+
+Adding null=True on subclasses of CharField
+---------------------------------------------
+
+Read `about null <https://docs.djangoproject.com/en/dev/ref/models/fields/#null>`_ to find out why null=True should not be used for CharField.
+Often people keep this in mind but still use null=True on fields like EmailField, SlugField etc. Note that these fields are subclasses of
+CharField and hence not making them as null applies to these fields too.
+
+Not handling for ModelClass.DoesNotExist and ModelClass.MultipleObjectsReturned
+---------------------------------------------------------------------------------
+
+If you are doing a `ModelClass.objects.get(this = that) unless you are doing it
+for a unique key, this has a potential to raise `ModelClass.MultipleObjectsReturned`
+and `ModelClass.DoesNotExist`. This needs to be handled.
+
+Solution:
+If one of the query criteria is on an unique field, put it in a `try: .. except ModelClass.DoesNotExits:..`.
+If there criteria has no unique field, handle both `DoesNotExist` and `MultipleObjectsReturned`.
+In a view function use django.shortcuts.get_object_or_404(ModelClass, criteria = criteria)
+ 
+
+Overriding .save()
+------------------------
+Most of the times you would be using `model_obj.save()` without any parameters,
+so you may override `.save` as::
+
+    def save(self):
+        ...
+        super(ModelClass, self).save()
+        
+This would work until, `.save` is called with a parameter. For example,
+when you use `get_or_create`, `.save` is called with as `.save(force_insert = True)`,
+which will fail.
+
+Solution:
+Override save as::
+
+    def save(self, *args, **kwargs):
+        ...
+        super(ModelClass, self).save(*args, **kwargs)
+        
+Trying qs.get('foo') 
+------------------------
+
+Django `.get` and '.filter` takes only keywords argument. So `ModelClass.objects.get(foo)`
+gives an error. Similarly creating objects as `ModelClass(foo=foo)` takes only
+keyword arguments.
+
+Solution:
+Use keyword arguments.
+
+Trying to use an stale object
+------------------------------------
+What is wrong with code?::
+
+    def foo(req):
+      obj =ModelClass.objects.get(pk = 5)
+      magic(obj.pk)
+      payload{'obj':obj} 
+      return render_to_response(template, payload, ..)
+
+Django does not have object identity, hence any change made to the database
+within obj within `magic` won't be available in the function.
+
+Solution:
+There is no easy solution to it, but you can keep
+youself from being bitten by this behaviour. Pull objects close to
+their use. Keep track of when an used object is updated and pull them again from
+the database if updated.

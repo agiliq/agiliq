@@ -1,0 +1,172 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>WorldPay &mdash; Merchant Documentation 0.09a documentation</title>
+    
+    <link rel="stylesheet" href="http://agiliq.com/docs/merchant/_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="http://agiliq.com/docs/merchant/_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.09a',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://agiliq.com/docs/merchant/_static/jquery.js"></script>
+    <script type="text/javascript" src="http://agiliq.com/docs/merchant/_static/underscore.js"></script>
+    <script type="text/javascript" src="http://agiliq.com/docs/merchant/_static/doctools.js"></script>
+    <link rel="top" title="Merchant Documentation 0.09a documentation" href="../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="../index.html">Merchant Documentation 0.09a documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="worldpay">
+<h1>WorldPay<a class="headerlink" href="rbs_worldpay.html#worldpay" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="http://www.rbsworldpay.com/">WorldPay</a>, provides a hosted payments page for offsite transactions for
+merchants who cannot guarantee PCI compliance. The documentation for
+the service is available <a class="reference external" href="http://rbsworldpay.com/support/bg/index.php?page=development&amp;sub=integration&amp;c=UK">here</a>.</p>
+<p>After a transaction, WorldPay pings the notification URL and all the
+data sent is stored in the <cite>RBSResponse</cite> model instance that can be
+viewed from the django admin.</p>
+<p>The settings attribute required for this integration are:</p>
+<ul class="simple">
+<li><strong>MD5_SECRET_KEY</strong>: The MD5 secret key chosen by the user
+while signing up for the WorldPay Hosted Payments Service.</li>
+</ul>
+<p>Settings Attributes:</p>
+<div class="highlight-python"><pre>MERCHANT_TEST_MODE = True # Toggle for live
+MERCHANT_SETTINGS = {
+    "world_pay": {
+        "MD5_SECRET_KEY": "???"
+    }
+    ...
+}</pre>
+</div>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="rbs_worldpay.html#example" title="Permalink to this headline">¶</a></h2>
+<p>In urls.py:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">world_pay</span> <span class="o">=</span> <span class="n">get_integration</span><span class="p">(</span><span class="s">&quot;world_pay&quot;</span><span class="p">)</span>
+<span class="n">urlpatterns</span> <span class="o">+=</span> <span class="n">patterns</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">,</span>
+  <span class="p">(</span><span class="s">r&#39;^world_pay/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="n">world_pay</span><span class="o">.</span><span class="n">urls</span><span class="p">)),</span>
+  <span class="c"># You&#39;ll have to register /world_pay/rbs-notify-handler/ in the</span>
+  <span class="c"># WorldPay admin dashboard for the notification URL</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>In views.py:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">billing</span> <span class="kn">import</span> <span class="n">get_integration</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">world_pay</span> <span class="o">=</span> <span class="n">get_integration</span><span class="p">(</span><span class="s">&quot;world_pay&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">world_pay</span><span class="o">.</span><span class="n">add_fields</span><span class="p">({</span>
+<span class="gp">... </span>   <span class="s">&quot;instId&quot;</span><span class="p">:</span> <span class="s">&quot;WP_ID&quot;</span><span class="p">,</span>
+<span class="gp">... </span>   <span class="s">&quot;cartId&quot;</span><span class="p">:</span> <span class="s">&quot;TEST123&quot;</span><span class="p">,</span>
+<span class="gp">... </span>   <span class="s">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+<span class="gp">... </span>   <span class="s">&quot;currency&quot;</span><span class="p">:</span> <span class="s">&quot;USD&quot;</span><span class="p">,</span>
+<span class="gp">... </span>   <span class="s">&quot;desc&quot;</span><span class="p">:</span> <span class="s">&quot;Test Item&quot;</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">return</span> <span class="n">render_to_response</span><span class="p">(</span><span class="s">&quot;some_template.html&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                          <span class="p">{</span><span class="s">&quot;obj&quot;</span><span class="p">:</span> <span class="n">world_pay</span><span class="p">},</span>
+<span class="gp">... </span>                          <span class="n">context_instance</span><span class="o">=</span><span class="n">RequestContext</span><span class="p">(</span><span class="n">request</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>In some_template.html:</p>
+<div class="highlight-python"><pre>{% load render_integration from billing_tags %}
+{% render_integration obj %}</pre>
+</div>
+<p>Template renders to something like below:</p>
+<div class="highlight-python"><pre>&lt;form method='post' action='https://select-test.wp3.rbsworldpay.com/wcc/purchase'&gt;
+  &lt;input type="hidden" name="futurePayType" id="id_futurePayType" /&gt;
+  &lt;input type="hidden" name="intervalUnit" id="id_intervalUnit" /&gt;
+  &lt;input type="hidden" name="intervalMult" id="id_intervalMult" /&gt;
+  &lt;input type="hidden" name="option" id="id_option" /&gt;
+  &lt;input type="hidden" name="noOfPayments" id="id_noOfPayments" /&gt;
+  &lt;input type="hidden" name="normalAmount" id="id_normalAmount" /&gt;
+  &lt;input type="hidden" name="startDelayUnit" id="id_startDelayUnit" /&gt;
+  &lt;input type="hidden" name="startDelayMult" id="id_startDelayMult" /&gt;
+  &lt;input type="hidden" name="instId" value="WP_ID" id="id_instId" /&gt;
+  &lt;input type="hidden" name="cartId" value="TEST123" id="id_cartId" /&gt;
+  &lt;input type="hidden" name="amount" value="100" id="id_amount" /&gt;
+  &lt;input type="hidden" name="currency" value="USD" id="id_currency" /&gt;
+  &lt;input type="hidden" name="desc" value="Test Item" id="id_desc" /&gt;
+  &lt;input type="hidden" name="testMode" value="100" id="id_testMode" /&gt;
+  &lt;input type="hidden" name="signatureFields" value="instId:amount:cartId" id="id_signatureFields" /&gt;
+  &lt;input type="hidden" name="signature" value="6c165d7abea54bf6c1ce19af60359a59" id="id_signature" /&gt;
+  &lt;input type='submit' value='Pay through WorldPay'/&gt;
+&lt;/form&gt;</pre>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="rbs_worldpay.html#">WorldPay</a><ul>
+<li><a class="reference internal" href="rbs_worldpay.html#example">Example</a></li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/offsite/rbs_worldpay.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="../index.html">Merchant Documentation 0.09a documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Team Agiliq.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

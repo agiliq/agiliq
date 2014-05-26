@@ -1,0 +1,33 @@
+/*
+File:			custom.css
+Description:	Custom styles for Thesis
+More Info:		http://diythemes.com/thesis/rtfm/custom-css/
+*/
+
+.subscribe_cta{
+   background-color: yellow;
+   border: 1px solid;
+}
+.mc_embed_signup{
+   background-color: yellow;
+}
+
+ul.footer_list li{
+text-align: left;
+display:inline;
+padding-right: 15px;
+}
+#footer{
+text-align: left;
+}
+
+.footer_signup{
+color: #fff;
+background-color: #00428D;
+
+}
+
+#mc-embedded-subscribe{
+background-color: green;
+}
+

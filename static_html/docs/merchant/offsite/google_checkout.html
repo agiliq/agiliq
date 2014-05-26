@@ -1,0 +1,1035 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Google Checkout &mdash; Merchant Documentation 0.09a documentation</title>
+    
+    <link rel="stylesheet" href="http://agiliq.com/docs/merchant/_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="http://agiliq.com/docs/merchant/_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.09a',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://agiliq.com/docs/merchant/_static/jquery.js"></script>
+    <script type="text/javascript" src="http://agiliq.com/docs/merchant/_static/underscore.js"></script>
+    <script type="text/javascript" src="http://agiliq.com/docs/merchant/_static/doctools.js"></script>
+    <link rel="top" title="Merchant Documentation 0.09a documentation" href="../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="../index.html">Merchant Documentation 0.09a documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="google-checkout">
+<h1>Google Checkout<a class="headerlink" href="google_checkout.html#google-checkout" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://checkout.google.com/">Google Checkout</a> is an online payment processing solution provided by Google.
+The API docs for Google Checkout are available <a class="reference external" href="http://code.google.com/apis/checkout/">here</a>.</p>
+<p>After a transaction, Google Checkout sends a mail to the subscriber, updates
+the <a class="reference external" href="http://code.google.com/apis/checkout/developer/Google_Checkout_Glossary.html#merchant_center">Merchant Center</a> dashboard and pings the merchant at the Notification
+URL. The HTTP POST data is stored in the <cite>GCResponse</cite> model instance that
+can be viewed from the django admin.</p>
+<p>The setting attributes required for this integration are:</p>
+<ul class="simple">
+<li><strong>MERCHANT_ID</strong>: The merchant id assigned by Google after
+signing up for the service.</li>
+<li><strong>MERCHANT_KEY</strong>: A secret key assigned by Google after
+signing up for the service.</li>
+</ul>
+<p>Settings attributes:</p>
+<div class="highlight-python"><pre>MERCHANT_TEST_MODE = True # Toggle for live
+MERCHANT_SETTINGS = {
+    "google_checkout": {
+        "MERCHANT_ID": "???",
+        "MERCHANT_KEY": "???"
+    }
+    ...
+}</pre>
+</div>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="google_checkout.html#example" title="Permalink to this headline">¶</a></h2>
+<p>In urls.py:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">billing</span> <span class="kn">import</span> <span class="n">get_integration</span>
+<span class="n">gc</span> <span class="o">=</span> <span class="n">get_integration</span><span class="p">(</span><span class="s">&quot;google_checkout&quot;</span><span class="p">)</span>
+<span class="n">urlpatterns</span> <span class="o">+=</span> <span class="n">patterns</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">,</span>
+  <span class="p">(</span><span class="s">r&#39;^gc/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="n">gc</span><span class="o">.</span><span class="n">urls</span><span class="p">)),</span>
+  <span class="c"># You&#39;ll have to add /gc/gc-notify-handler/ to the</span>
+  <span class="c"># Google Checkout settings-&gt;Integration page for the callback URL</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>In views.py:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">billing</span> <span class="kn">import</span> <span class="n">get_integration</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gc</span> <span class="o">=</span> <span class="n">get_integration</span><span class="p">(</span><span class="s">&quot;google_checkout&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gc</span><span class="o">.</span><span class="n">add_fields</span><span class="p">({</span><span class="s">&#39;items&#39;</span><span class="p">:</span> <span class="p">[{</span>
+<span class="gp">... </span>   <span class="s">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+<span class="gp">... </span>   <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Name of the Item&quot;</span><span class="p">,</span>
+<span class="gp">... </span>   <span class="s">&quot;description&quot;</span><span class="p">:</span> <span class="s">&quot;Item&#39;s description&quot;</span><span class="p">,</span>
+<span class="gp">... </span>   <span class="s">&quot;currency&quot;</span><span class="p">:</span> <span class="s">&quot;USD&quot;</span><span class="p">,</span>
+<span class="gp">... </span>   <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="s">&quot;item_id&quot;</span><span class="p">,</span>
+<span class="gp">... </span>   <span class="s">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+<span class="gp">... </span>   <span class="s">&quot;private-item-data&quot;</span><span class="p">:</span> <span class="s">&quot;Popular item - order more if needed&quot;</span><span class="p">},</span>
+<span class="gp">... </span>   <span class="o">....</span>
+<span class="gp">... </span><span class="p">],</span>
+<span class="gp">... </span><span class="s">&quot;return_url&quot;</span><span class="p">:</span> <span class="s">&quot;http://example.com/return/&quot;</span><span class="p">,</span> <span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">return</span> <span class="n">render_to_response</span><span class="p">(</span><span class="s">&quot;some_template.html&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                          <span class="p">{</span><span class="s">&quot;obj&quot;</span><span class="p">:</span> <span class="n">gc</span><span class="p">},</span>
+<span class="gp">... </span>                          <span class="n">context_instance</span><span class="o">=</span><span class="n">RequestContext</span><span class="p">(</span><span class="n">request</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>In some_template.html:</p>
+<div class="highlight-python"><pre>{% load render_integration from billing_tags %}
+{% render_integration obj %}</pre>
+</div>
+<p>Template renders to something like below:</p>
+<div class="highlight-python"><pre>&lt;form action="https://sandbox.google.com/checkout/api/checkout/v2/checkout/Merchant/646831507676008" method="post"&gt;
+  &lt;input type="hidden" name="cart" value="PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48Y2hlY2tvdXQtc2hvcHBpbmctY2FydCB4bWxucz0iaHR0cDovL2NoZWNrb3V0Lmdvb2dsZS5jb20vc2NoZW1hLzIiPjxzaG9wcGluZy1jYXJ0PjxpdGVtcz48aXRlbT48aXRlbS1uYW1lPm5hbWUgb2YgdGhlIGl0ZW08L2l0ZW0tbmFtZT48aXRlbS1kZXNjcmlwdGlvbj5JdGVtIGRlc2NyaXB0aW9uPC9pdGVtLWRlc2NyaXB0aW9uPjx1bml0LXByaWNlIGN1cnJlbmN5PSJVU0QiPjE8L3VuaXQtcHJpY2U+PHF1YW50aXR5PjE8L3F1YW50aXR5PjxtZXJjaGFudC1pdGVtLWlkPjk5OUFYWjwvbWVyY2hhbnQtaXRlbS1pZD48L2l0ZW0+PC9pdGVtcz48L3Nob3BwaW5nLWNhcnQ+PC9jaGVja291dC1zaG9wcGluZy1jYXJ0Pg==" /&gt;
+  &lt;input type="hidden" name="signature" value="3jkvhENlILC3GTVNrXwmvldds4U=" /&gt;
+  &lt;input type="image" name="Google Checkout" alt="Fast checkout through Google" src="http://sandbox.google.com/checkout/buttons/checkout.gif?merchant_id=646831507676008&amp;amp;w=180&amp;amp;h=46&amp;amp;style=white&amp;amp;variant=text&amp;amp;loc=en_US" height="46" width="180" /&gt;
+&lt;/form&gt;</pre>
+</div>
+</div>
+<div class="section" id="private-data">
+<h2>Private Data:<a class="headerlink" href="google_checkout.html#private-data" title="Permalink to this headline">¶</a></h2>
+<p>If you need to add some extra information (order number, etc) you can use the private data field.</p>
+<p>The private_data can contain any well-formed XML sequence that should accompany an order. Google Checkout will return this XML in the &lt;merchant-calculation-callback&gt; and the &lt;new-order-notification&gt; for the order.</p>
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">gc</span><span class="o">.</span><span class="n">add_fields</span><span class="p">({</span><span class="s">&#39;items&#39;</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span>
+<span class="go">    &#39;private_data&#39;: &quot;my order number 76543&quot;,</span>
+<span class="go">})</span>
+</pre></div>
+</div>
+<div class="section" id="item">
+<h3>Item<a class="headerlink" href="google_checkout.html#item" title="Permalink to this headline">¶</a></h3>
+<p>You can do the same thing on items as well using the private-item-data field on item. (see view.py example above)</p>
+</div>
+</div>
+<div class="section" id="digital-content">
+<h2>Digital Content:<a class="headerlink" href="google_checkout.html#digital-content" title="Permalink to this headline">¶</a></h2>
+<p>The following digital goods identifying are supported: email delivery, key/URL delivery, description-based delivery</p>
+</div>
+<div class="section" id="subscriptions">
+<h2>Subscriptions:<a class="headerlink" href="google_checkout.html#subscriptions" title="Permalink to this headline">¶</a></h2>
+<p>The following subscriptions types are supported: google-handled, merchant-handled</p>
+</div>
+<div class="section" id="taxes">
+<h2>Taxes:<a class="headerlink" href="google_checkout.html#taxes" title="Permalink to this headline">¶</a></h2>
+<p>The following tax methods are supported: default-tax-table and alternate-tax-tables</p>
+<div class="section" id="default-tax-table">
+<h3>default-tax-table:<a class="headerlink" href="google_checkout.html#default-tax-table" title="Permalink to this headline">¶</a></h3>
+<p>Here are the examples from the <a class="reference external" href="https://developers.google.com/checkout/developer/Google_Checkout_XML_API_Taxes#XML_Examples_for_Tax_Tables">Google Checkouts Developer Docs</a> converted to django-merchant</p>
+<p>These are only showing the shipping methods section, you still need items and everything else.</p>
+<div class="section" id="example-1-charging-a-single-tax-rate-in-one-state">
+<h4>Example 1: Charging a single tax rate in one state:<a class="headerlink" href="google_checkout.html#example-1-charging-a-single-tax-rate-in-one-state" title="Permalink to this headline">¶</a></h4>
+<p>The following example explains how to charge a single tax rate in one state. The example is for a merchant in Connecticut, where there is a 6 percent sales tax. The example contains a single tax rule. In addition, since shipping charges in Connecticut are taxed, the &lt;shipping-taxed&gt; tag is included in this request with a value of true. (If shipping charges are not subject to tax in a state where you charge tax, you can omit the &lt;shipping-taxed&gt; tag from the tax rule for that state or set the tag&#8217;s value to false.)</p>
+<p>XML:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;tax-tables&gt;</span>
+      <span class="nt">&lt;default-tax-table&gt;</span>
+        <span class="nt">&lt;tax-rules&gt;</span>
+
+          <span class="nt">&lt;default-tax-rule&gt;</span>
+            <span class="nt">&lt;shipping-taxed&gt;</span>true<span class="nt">&lt;/shipping-taxed&gt;</span>
+            <span class="nt">&lt;rate&gt;</span>0.0600<span class="nt">&lt;/rate&gt;</span>
+            <span class="nt">&lt;tax-area&gt;</span>
+              <span class="nt">&lt;us-state-area&gt;</span>
+                <span class="nt">&lt;state&gt;</span>CT<span class="nt">&lt;/state&gt;</span>
+              <span class="nt">&lt;/us-state-area&gt;</span>
+            <span class="nt">&lt;/tax-area&gt;</span>
+          <span class="nt">&lt;/default-tax-rule&gt;</span>
+
+        <span class="nt">&lt;/tax-rules&gt;</span>
+      <span class="nt">&lt;/default-tax-table&gt;</span>
+    <span class="nt">&lt;/tax-tables&gt;</span>
+</pre></div>
+</div>
+<p>Python:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">gc</span><span class="o">.</span><span class="n">add_fields</span><span class="p">({</span><span class="s">&#39;items&#39;</span><span class="p">:</span> <span class="o">...</span> <span class="p">,</span>
+<span class="go">        &#39;tax-tables&#39;: {</span>
+<span class="go">            &#39;default-tax-table&#39;: {</span>
+<span class="go">                &#39;tax-rules&#39;: [</span>
+<span class="go">                    {</span>
+<span class="go">                        &#39;shipping-taxed&#39;: True,</span>
+<span class="go">                        &#39;rate&#39;: 0.0600,</span>
+<span class="go">                        &#39;tax-area&#39;: {</span>
+<span class="go">                            &#39;us-state-area&#39;: [&#39;CT&#39;],</span>
+<span class="go">                         }</span>
+<span class="go">                    }</span>
+<span class="go">                ]</span>
+<span class="go">            }</span>
+<span class="go">        }</span>
+<span class="go">    })</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="example-2-charging-tax-in-two-non-overlapping-geographic-areas">
+<h4>Example 2: Charging tax in two non-overlapping geographic areas<a class="headerlink" href="google_checkout.html#example-2-charging-tax-in-two-non-overlapping-geographic-areas" title="Permalink to this headline">¶</a></h4>
+<p>The following example demonstrates how to create tax tables if you charge tax in more than one geographic area. In this example, the two areas are Connecticut and Maryland. Since the areas do not overlap – a shipping address can only be associated with one state – the tax rules can be specified in any order. As in the previous example, shipping charges in Connecticut are taxed; however, shipping charges in Maryland are not subject to tax.</p>
+<p>XML:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;tax-tables&gt;</span>
+  <span class="nt">&lt;default-tax-table&gt;</span>
+    <span class="nt">&lt;tax-rules&gt;</span>
+
+      <span class="nt">&lt;default-tax-rule&gt;</span>
+        <span class="nt">&lt;shipping-taxed&gt;</span>true<span class="nt">&lt;/shipping-taxed&gt;</span>
+        <span class="nt">&lt;rate&gt;</span>0.0600<span class="nt">&lt;/rate&gt;</span>
+        <span class="nt">&lt;tax-area&gt;</span>
+          <span class="nt">&lt;us-state-area&gt;</span>
+            <span class="nt">&lt;state&gt;</span>CT<span class="nt">&lt;/state&gt;</span>
+          <span class="nt">&lt;/us-state-area&gt;</span>
+        <span class="nt">&lt;/tax-area&gt;</span>
+      <span class="nt">&lt;/default-tax-rule&gt;</span>
+
+      <span class="nt">&lt;default-tax-rule&gt;</span>
+        <span class="nt">&lt;rate&gt;</span>0.0500<span class="nt">&lt;/rate&gt;</span>
+        <span class="nt">&lt;tax-area&gt;</span>
+          <span class="nt">&lt;us-state-area&gt;</span>
+            <span class="nt">&lt;state&gt;</span>MD<span class="nt">&lt;/state&gt;</span>
+          <span class="nt">&lt;/us-state-area&gt;</span>
+        <span class="nt">&lt;/tax-area&gt;</span>
+      <span class="nt">&lt;/default-tax-rule&gt;</span>
+
+    <span class="nt">&lt;/tax-rules&gt;</span>
+  <span class="nt">&lt;/default-tax-table&gt;</span>
+<span class="nt">&lt;/tax-tables&gt;</span>
+</pre></div>
+</div>
+<p>Python:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">gc</span><span class="o">.</span><span class="n">add_fields</span><span class="p">({</span><span class="s">&#39;items&#39;</span><span class="p">:</span> <span class="o">...</span> <span class="p">,</span>
+<span class="go">        &#39;tax-tables&#39;: {</span>
+<span class="go">                &#39;default-tax-table&#39;: {</span>
+<span class="go">                    &#39;tax-rules&#39;: [</span>
+<span class="go">                        {</span>
+<span class="go">                            &#39;shipping-taxed&#39;: True,</span>
+<span class="go">                            &#39;rate&#39;: 0.0600,</span>
+<span class="go">                            &#39;tax-area&#39;: {</span>
+<span class="go">                                &#39;us-state-area&#39;: [&#39;CT&#39;],</span>
+<span class="go">                             }</span>
+<span class="go">                        },</span>
+<span class="go">                        {</span>
+<span class="go">                            &#39;rate&#39;: 0.0500,</span>
+<span class="go">                            &#39;tax-area&#39;: {</span>
+<span class="go">                                &#39;us-state-area&#39;: [&#39;MD&#39;],</span>
+<span class="go">                             }</span>
+<span class="go">                        }</span>
+<span class="go">                    ]</span>
+<span class="go">                }</span>
+<span class="go">            }</span>
+<span class="go">        })</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="example-3-charging-tax-in-two-overlapping-geographic-areas">
+<h4>Example 3: Charging tax in two overlapping geographic areas<a class="headerlink" href="google_checkout.html#example-3-charging-tax-in-two-overlapping-geographic-areas" title="Permalink to this headline">¶</a></h4>
+<p>The following example also demonstrates how to create tax tables if you charge tax in more than one geographic area. However, in this example, the two areas are in the same state.</p>
+<ul class="simple">
+<li>The first area defines a set of zip codes in Manhattan, where there is an 8.375 percent sales tax.</li>
+<li>The second area defines a rule for charging 4 percent sales tax in the state of New York.</li>
+</ul>
+<p>Since Google will select the first tax rule that matches the shipping address for the order, the tax rule that defines the narrower geographic area must be listed first. (See the Ordering Tax Rules in XML Requests section for more information.)</p>
+<p>XML:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;tax-tables&gt;</span>
+  <span class="nt">&lt;default-tax-table&gt;</span>
+    <span class="nt">&lt;tax-rules&gt;</span>
+
+      <span class="nt">&lt;default-tax-rule&gt;</span>
+        <span class="nt">&lt;shipping-taxed&gt;</span>false<span class="nt">&lt;/shipping-taxed&gt;</span>
+        <span class="nt">&lt;rate&gt;</span>0.08375<span class="nt">&lt;/rate&gt;</span>
+        <span class="nt">&lt;tax-area&gt;</span>
+          <span class="nt">&lt;us-zip-area&gt;</span>
+            <span class="nt">&lt;zip-pattern&gt;</span>100*<span class="nt">&lt;/zip-pattern&gt;</span>
+          <span class="nt">&lt;/us-zip-area&gt;</span>
+        <span class="nt">&lt;/tax-area&gt;</span>
+      <span class="nt">&lt;/default-tax-rule&gt;</span>
+
+      <span class="nt">&lt;default-tax-rule&gt;</span>
+        <span class="nt">&lt;shipping-taxed&gt;</span>true<span class="nt">&lt;/shipping-taxed&gt;</span>
+        <span class="nt">&lt;rate&gt;</span>0.0400<span class="nt">&lt;/rate&gt;</span>
+        <span class="nt">&lt;tax-area&gt;</span>
+          <span class="nt">&lt;us-state-area&gt;</span>
+            <span class="nt">&lt;state&gt;</span>NY<span class="nt">&lt;/state&gt;</span>
+          <span class="nt">&lt;/us-state-area&gt;</span>
+        <span class="nt">&lt;/tax-area&gt;</span>
+      <span class="nt">&lt;/default-tax-rule&gt;</span>
+
+    <span class="nt">&lt;/tax-rules&gt;</span>
+  <span class="nt">&lt;/default-tax-table&gt;</span>
+<span class="nt">&lt;/tax-tables&gt;</span>
+</pre></div>
+</div>
+<p>Python:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">gc</span><span class="o">.</span><span class="n">add_fields</span><span class="p">({</span><span class="s">&#39;items&#39;</span><span class="p">:</span> <span class="o">...</span> <span class="p">,</span>
+<span class="go">        &#39;tax-tables&#39;: {</span>
+<span class="go">                &#39;default-tax-table&#39;: {</span>
+<span class="go">                    &#39;tax-rules&#39;: [</span>
+<span class="go">                        {</span>
+<span class="go">                            &#39;shipping-taxed&#39;: False,</span>
+<span class="go">                            &#39;rate&#39;: 0.08375,</span>
+<span class="go">                            &#39;tax-area&#39;: {</span>
+<span class="go">                                &#39;us-zip-area&#39;: [&#39;100*&#39;],</span>
+<span class="go">                             }</span>
+<span class="go">                        },</span>
+<span class="go">                        {</span>
+<span class="go">                            &#39;shipping-taxed&#39;: True,</span>
+<span class="go">                            &#39;rate&#39;: 0.0400,</span>
+<span class="go">                            &#39;tax-area&#39;: {</span>
+<span class="go">                                &#39;us-state-area&#39;: [&#39;NY&#39;],</span>
+<span class="go">                             }</span>
+<span class="go">                        }</span>
+<span class="go">                    ]</span>
+<span class="go">                }</span>
+<span class="go">            }</span>
+<span class="go">    })</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="alternate-tax-tables">
+<h3>alternate-tax-tables:<a class="headerlink" href="google_checkout.html#alternate-tax-tables" title="Permalink to this headline">¶</a></h3>
+<p>Alternate tax tables are good for dealing with non-standard taxing issues. For example, having taxable, and tax free items in the same shopping cart.</p>
+<div class="section" id="example-4-alternate-tax-rules">
+<h4>Example 4: Alternate tax rules<a class="headerlink" href="google_checkout.html#example-4-alternate-tax-rules" title="Permalink to this headline">¶</a></h4>
+<p>This example shows how to create an alternate tax table for an item that is tax-exempt. The tax tables in this example indicate that the merchant charges sales tax in Connecticut and Maryland. In Connecticut, sales of bicycle helmets are tax-exempt. (Google does not return any search results indicating that bicycle helmet sales are also tax-exempt in Maryland.)</p>
+<p>In this example, the XML contains an alternate tax table for bicycle helmets. That tax table contains one alternate tax rule, which indicates that Connecticut does not charge tax for items associated with that tax table. Please note that value of the &lt;alternate-tax-table&gt; tag&#8217;s standalone attribute is set to false, which is that element&#8217;s default value. As a result, if an item specifies the &#8220;bicycle helmets&#8221; tax table, and there is no alternate tax rule for the shipping address, Google will use the default tax table to calculate tax for the item. Therefore, if the item is shipped to Connecticut, no tax will be charged. However, if the item is shipped to Maryland, the regular tax rate will be assessed.</p>
+<p>XML:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;shopping-cart&gt;</span>
+  <span class="nt">&lt;items&gt;</span>
+    <span class="nt">&lt;item&gt;</span>
+      <span class="nt">&lt;item-name&gt;</span>Bike Helmet<span class="nt">&lt;/item-name&gt;</span>
+      <span class="nt">&lt;item-description&gt;</span>Black helmet that is tax-exempt in CT but not MD.<span class="nt">&lt;/item-description&gt;</span>
+      <span class="nt">&lt;unit-price</span> <span class="na">currency=</span><span class="s">&quot;USD&quot;</span><span class="nt">&gt;</span>49.99<span class="nt">&lt;/unit-price&gt;</span>
+      <span class="nt">&lt;quantity&gt;</span>1<span class="nt">&lt;/quantity&gt;</span>
+      <span class="nt">&lt;tax-table-selector&gt;</span>bicycle_helmets<span class="nt">&lt;/tax-table-selector&gt;</span>
+    <span class="nt">&lt;/item&gt;</span>
+  <span class="nt">&lt;/items&gt;</span>
+<span class="nt">&lt;/shopping-cart&gt;</span>
+<span class="nt">&lt;checkout-flow-support&gt;</span>
+  <span class="nt">&lt;merchant-checkout-flow-support&gt;</span>
+    <span class="nt">&lt;tax-tables&gt;</span>
+      <span class="nt">&lt;default-tax-table&gt;</span>
+        <span class="nt">&lt;tax-rules&gt;</span>
+
+          <span class="nt">&lt;default-tax-rule&gt;</span>
+            <span class="nt">&lt;shipping-taxed&gt;</span>true<span class="nt">&lt;/shipping-taxed&gt;</span>
+            <span class="nt">&lt;rate&gt;</span>0.0600<span class="nt">&lt;/rate&gt;</span>
+            <span class="nt">&lt;tax-area&gt;</span>
+              <span class="nt">&lt;us-state-area&gt;</span>
+                <span class="nt">&lt;state&gt;</span>CT<span class="nt">&lt;/state&gt;</span>
+              <span class="nt">&lt;/us-state-area&gt;</span>
+            <span class="nt">&lt;/tax-area&gt;</span>
+          <span class="nt">&lt;/default-tax-rule&gt;</span>
+
+          <span class="nt">&lt;default-tax-rule&gt;</span>
+            <span class="nt">&lt;rate&gt;</span>0.0500<span class="nt">&lt;/rate&gt;</span>
+            <span class="nt">&lt;tax-area&gt;</span>
+              <span class="nt">&lt;us-state-area&gt;</span>
+                <span class="nt">&lt;state&gt;</span>MD<span class="nt">&lt;/state&gt;</span>
+              <span class="nt">&lt;/us-state-area&gt;</span>
+            <span class="nt">&lt;/tax-area&gt;</span>
+          <span class="nt">&lt;/default-tax-rule&gt;</span>
+
+        <span class="nt">&lt;/tax-rules&gt;</span>
+      <span class="nt">&lt;/default-tax-table&gt;</span>
+
+      <span class="nt">&lt;alternate-tax-tables&gt;</span>
+        <span class="nt">&lt;alternate-tax-table</span> <span class="na">standalone=</span><span class="s">&quot;false&quot;</span> <span class="na">name=</span><span class="s">&quot;bicycle_helmets&quot;</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;alternate-tax-rules&gt;</span>
+            <span class="nt">&lt;alternate-tax-rule&gt;</span>
+              <span class="nt">&lt;rate&gt;</span>0<span class="nt">&lt;/rate&gt;</span>
+              <span class="nt">&lt;tax-area&gt;</span>
+                <span class="nt">&lt;us-state-area&gt;</span>
+                  <span class="nt">&lt;state&gt;</span>CT<span class="nt">&lt;/state&gt;</span>
+                <span class="nt">&lt;/us-state-area&gt;</span>
+              <span class="nt">&lt;/tax-area&gt;</span>
+            <span class="nt">&lt;/alternate-tax-rule&gt;</span>
+          <span class="nt">&lt;/alternate-tax-rules&gt;</span>
+        <span class="nt">&lt;/alternate-tax-table&gt;</span>
+      <span class="nt">&lt;/alternate-tax-tables&gt;</span>
+
+    <span class="nt">&lt;/tax-tables&gt;</span>
+  <span class="nt">&lt;/merchant-checkout-flow-support&gt;</span>
+<span class="nt">&lt;/checkout-flow-support&gt;</span>
+</pre></div>
+</div>
+<p>Python:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">gc</span><span class="o">.</span><span class="n">add_fields</span><span class="p">({</span><span class="s">&#39;items&#39;</span><span class="p">:</span> <span class="p">[{</span>
+<span class="go">  &quot;amount&quot;: 49.99,</span>
+<span class="go">  &quot;name&quot;: &quot;Bike Helmet&quot;,</span>
+<span class="go">  &quot;description&quot;: &quot;Black helmet that is tax-exempt in CT but not MD.&quot;,</span>
+<span class="go">  &quot;currency&quot;: &quot;USD&quot;,</span>
+<span class="go">  &quot;id&quot;: &quot;item_id&quot;,</span>
+<span class="go">  &quot;quantity&quot;: 1,</span>
+<span class="go">  &quot;tax-table-selector&quot;: &quot;bicycle_helmets&quot;</span>
+<span class="go">  }],</span>
+<span class="go">  &#39;tax-tables&#39;: {</span>
+<span class="go">            &#39;default-tax-table&#39;: {</span>
+<span class="go">                    &#39;tax-rules&#39;: [</span>
+<span class="go">                        {</span>
+<span class="go">                            &#39;shipping-taxed&#39;: True,</span>
+<span class="go">                            &#39;rate&#39;: 0.06,</span>
+<span class="go">                            &#39;tax-area&#39;: {</span>
+<span class="go">                                &#39;us-state-area&#39;: [&#39;CT&#39;],</span>
+<span class="go">                             }</span>
+<span class="go">                        },</span>
+<span class="go">                        {</span>
+<span class="go">                            &#39;rate&#39;: 0.05,</span>
+<span class="go">                            &#39;tax-area&#39;: {</span>
+<span class="go">                                &#39;us-state-area&#39;: [&#39;MD&#39;],</span>
+<span class="go">                             }</span>
+<span class="go">                        }</span>
+<span class="go">                    ]</span>
+<span class="go">                },</span>
+<span class="go">            &#39;alternate-tax-tables&#39;: [</span>
+<span class="go">                {&#39;name&#39;: &#39;bicycle_helmets&#39;,</span>
+<span class="go">                 &#39;standalone&#39;: False,</span>
+<span class="go">                 &#39;alternative-tax-rules&#39;: [</span>
+<span class="go">                    { &#39;rate&#39;: 0,</span>
+<span class="go">                      &#39;tax-area&#39;: {</span>
+<span class="go">                        &#39;us-state-area&#39;: [&#39;CT&#39;],</span>
+<span class="go">                      }</span>
+<span class="go">                    }</span>
+<span class="go">                  ]</span>
+<span class="go">                }</span>
+<span class="go">              ]</span>
+<span class="go">    })</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="example-5-alternate-tax-rules-for-items-that-are-always-tax-exempt">
+<h4>Example 5: Alternate tax rules for items that are always tax-exempt<a class="headerlink" href="google_checkout.html#example-5-alternate-tax-rules-for-items-that-are-always-tax-exempt" title="Permalink to this headline">¶</a></h4>
+<p>This example shows how to identify an item that is always tax-exempt, regardless of the shipping address. The tax tables indicate that the merchant charges sales tax in Connecticut and Maryland, and sales of nonprescription drugs are tax-exempt in both states. In this example, the XML contains an alternate tax table for tax-exempt goods, and that tax table does not specify any alternate tax rules. However, since the value of the &lt;alternate-tax-table&gt; tag&#8217;s standalone attribute is set to true, Google will not calculate taxes for an item if it specifies the tax-exempt tax table and there is no alternate tax rule for the shipping address. Since the item in the example is always tax-exempt for this merchant, the tax table does not need to specify any tax rules.</p>
+<p>XML:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;shopping-cart&gt;</span>
+  <span class="nt">&lt;items&gt;</span>
+    <span class="nt">&lt;item&gt;</span>
+      <span class="nt">&lt;item-name&gt;</span>Tylenol Caplets<span class="nt">&lt;/item-name&gt;</span>
+      <span class="nt">&lt;item-description&gt;</span>Fast relief without a prescription.<span class="nt">&lt;/item-description&gt;</span>
+      <span class="nt">&lt;unit-price</span> <span class="na">currency=</span><span class="s">&quot;USD&quot;</span><span class="nt">&gt;</span>7.99<span class="nt">&lt;/unit-price&gt;</span>
+      <span class="nt">&lt;quantity&gt;</span>1<span class="nt">&lt;/quantity&gt;</span>
+      <span class="nt">&lt;tax-table-selector&gt;</span>tax_exempt<span class="nt">&lt;/tax-table-selector&gt;</span>
+    <span class="nt">&lt;/item&gt;</span>
+  <span class="nt">&lt;/items&gt;</span>
+<span class="nt">&lt;/shopping-cart&gt;</span>
+<span class="nt">&lt;checkout-flow-support&gt;</span>
+  <span class="nt">&lt;merchant-checkout-flow-support&gt;</span>
+    <span class="nt">&lt;tax-tables&gt;</span>
+      <span class="nt">&lt;default-tax-table&gt;</span>
+        <span class="nt">&lt;tax-rules&gt;</span>
+
+          <span class="nt">&lt;default-tax-rule&gt;</span>
+            <span class="nt">&lt;shipping-taxed&gt;</span>true<span class="nt">&lt;/shipping-taxed&gt;</span>
+            <span class="nt">&lt;rate&gt;</span>0.0600<span class="nt">&lt;/rate&gt;</span>
+            <span class="nt">&lt;tax-area&gt;</span>
+              <span class="nt">&lt;us-state-area&gt;</span>
+                <span class="nt">&lt;state&gt;</span>CT<span class="nt">&lt;/state&gt;</span>
+              <span class="nt">&lt;/us-state-area&gt;</span>
+            <span class="nt">&lt;/tax-area&gt;</span>
+          <span class="nt">&lt;/default-tax-rule&gt;</span>
+
+          <span class="nt">&lt;default-tax-rule&gt;</span>
+            <span class="nt">&lt;rate&gt;</span>0.0500<span class="nt">&lt;/rate&gt;</span>
+            <span class="nt">&lt;tax-area&gt;</span>
+              <span class="nt">&lt;us-state-area&gt;</span>
+                <span class="nt">&lt;state&gt;</span>MD<span class="nt">&lt;/state&gt;</span>
+              <span class="nt">&lt;/us-state-area&gt;</span>
+            <span class="nt">&lt;/tax-area&gt;</span>
+          <span class="nt">&lt;/default-tax-rule&gt;</span>
+
+        <span class="nt">&lt;/tax-rules&gt;</span>
+      <span class="nt">&lt;/default-tax-table&gt;</span>
+
+      <span class="nt">&lt;alternate-tax-tables&gt;</span>
+        <span class="nt">&lt;alternate-tax-table</span> <span class="na">standalone=</span><span class="s">&quot;true&quot;</span> <span class="na">name=</span><span class="s">&quot;tax_exempt&quot;</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;alternate-tax-rules/&gt;</span>
+        <span class="nt">&lt;/alternate-tax-table&gt;</span>
+      <span class="nt">&lt;/alternate-tax-tables&gt;</span>
+    <span class="nt">&lt;/tax-tables&gt;</span>
+  <span class="nt">&lt;/merchant-checkout-flow-support&gt;</span>
+<span class="nt">&lt;/checkout-flow-support&gt;</span>
+</pre></div>
+</div>
+<p>Python:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">gc</span><span class="o">.</span><span class="n">add_fields</span><span class="p">({</span><span class="s">&#39;items&#39;</span><span class="p">:</span> <span class="p">[{</span>
+<span class="go">  &quot;amount&quot;: 7.99,</span>
+<span class="go">  &quot;name&quot;: &quot;Tylenol Caplets&quot;,</span>
+<span class="go">  &quot;description&quot;: &quot;Fast relief without a prescription.&quot;,</span>
+<span class="go">  &quot;currency&quot;: &quot;USD&quot;,</span>
+<span class="go">  &quot;id&quot;: &quot;item_id&quot;,</span>
+<span class="go">  &quot;quantity&quot;: 1,</span>
+<span class="go">  &quot;tax-table-selector&quot;: &quot;tax_exempt&quot;</span>
+<span class="go">  }],</span>
+<span class="go">  &#39;tax-tables&#39;: {</span>
+<span class="go">            &#39;default-tax-table&#39;: {</span>
+<span class="go">                    &#39;tax-rules&#39;: [</span>
+<span class="go">                        {</span>
+<span class="go">                            &#39;shipping-taxed&#39;: True,</span>
+<span class="go">                            &#39;rate&#39;: 0.06,</span>
+<span class="go">                            &#39;tax-area&#39;: {</span>
+<span class="go">                                &#39;us-state-area&#39;: [&#39;CT&#39;],</span>
+<span class="go">                             }</span>
+<span class="go">                        },</span>
+<span class="go">                        {</span>
+<span class="go">                            &#39;rate&#39;: 0.05,</span>
+<span class="go">                            &#39;tax-area&#39;: {</span>
+<span class="go">                                &#39;us-state-area&#39;: [&#39;MD&#39;],</span>
+<span class="go">                             }</span>
+<span class="go">                        }</span>
+<span class="go">                    ]</span>
+<span class="go">                },</span>
+<span class="go">            &#39;alternate-tax-tables&#39;: [</span>
+<span class="go">                {&#39;name&#39;: &#39;tax_exempt&#39;,</span>
+<span class="go">                 &#39;standalone&#39;: True,</span>
+<span class="go">                }</span>
+<span class="go">            ]</span>
+<span class="go">    })</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="example-6-applying-a-tax-rule-in-multiple-geographic-areas">
+<h4>Example 6: Applying a tax rule in multiple geographic areas<a class="headerlink" href="google_checkout.html#example-6-applying-a-tax-rule-in-multiple-geographic-areas" title="Permalink to this headline">¶</a></h4>
+<p>This example demonstrates how to use the &lt;tax-areas&gt; tag to apply a tax rule in multiple geographic areas. This example applies the same tax rule in multiple European countries. The same principle could be used to apply a tax rule in multiple U.S. states or zip code ranges.</p>
+<p>XML:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;tax-tables&gt;</span>
+  <span class="nt">&lt;default-tax-table&gt;</span>
+    <span class="nt">&lt;tax-rules&gt;</span>
+
+      <span class="nt">&lt;default-tax-rule&gt;</span>
+        <span class="nt">&lt;shipping-taxed&gt;</span>true<span class="nt">&lt;/shipping-taxed&gt;</span>
+        <span class="nt">&lt;rate&gt;</span>0.175<span class="nt">&lt;/rate&gt;</span>
+        <span class="nt">&lt;tax-areas&gt;</span>
+          <span class="nt">&lt;postal-area&gt;</span>
+            <span class="nt">&lt;country-code&gt;</span>DE<span class="nt">&lt;/country-code&gt;</span>
+          <span class="nt">&lt;/postal-area&gt;</span>
+          <span class="nt">&lt;postal-area&gt;</span>
+            <span class="nt">&lt;country-code&gt;</span>ES<span class="nt">&lt;/country-code&gt;</span>
+          <span class="nt">&lt;/postal-area&gt;</span>
+          <span class="nt">&lt;postal-area&gt;</span>
+            <span class="nt">&lt;country-code&gt;</span>GB<span class="nt">&lt;/country-code&gt;</span>
+          <span class="nt">&lt;/postal-area&gt;</span>
+        <span class="nt">&lt;/tax-areas&gt;</span>
+      <span class="nt">&lt;/default-tax-rule&gt;</span>
+
+    <span class="nt">&lt;/tax-rules&gt;</span>
+  <span class="nt">&lt;/default-tax-table&gt;</span>
+<span class="nt">&lt;/tax-tables&gt;</span>
+</pre></div>
+</div>
+<p>Python:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">gc</span><span class="o">.</span><span class="n">add_fields</span><span class="p">({</span><span class="s">&#39;items&#39;</span><span class="p">:</span> <span class="o">...</span> <span class="p">,</span>
+<span class="go">    &#39;tax-tables&#39;: {</span>
+<span class="go">        &#39;default-tax-table&#39;: {</span>
+<span class="go">                &#39;tax-rules&#39;: [</span>
+<span class="go">                    {</span>
+<span class="go">                        &#39;shipping-taxed&#39;: True,</span>
+<span class="go">                        &#39;rate&#39;: 0.175,</span>
+<span class="go">                        &#39;tax-area&#39;: {</span>
+<span class="go">                            &#39;postal-area&#39;: [</span>
+<span class="go">                                {&#39;country-code&#39;: &#39;DE&#39;},</span>
+<span class="go">                                {&#39;country-code&#39;: &#39;ES&#39;},</span>
+<span class="go">                                {&#39;country-code&#39;: &#39;GB&#39;},</span>
+<span class="go">                            ],</span>
+<span class="go">                         },</span>
+<span class="go">                    },</span>
+<span class="go">                ]</span>
+<span class="go">            },</span>
+<span class="go">        }</span>
+<span class="go">    })</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="example-7-alternate-tax-tables-for-u-k-merchants">
+<h4>Example 7: Alternate tax tables for U.K. merchants<a class="headerlink" href="google_checkout.html#example-7-alternate-tax-tables-for-u-k-merchants" title="Permalink to this headline">¶</a></h4>
+<p>This example shows a common way to structure tax tables in the United Kingdom. The order includes three items. The first item uses the default tax rate of 17.5 percent, the second item uses a reduced tax rate of 5 percent, and the third item is untaxed. Note that the cost of each item is £10.00. When you click the Checkout button for this order, Google Checkout displays the price for each item inclusive of tax.</p>
+<p>XML:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;shopping-cart&gt;</span>
+  <span class="nt">&lt;items&gt;</span>
+    <span class="nt">&lt;item&gt;</span>
+      <span class="nt">&lt;item-name&gt;</span>Regular Test Item<span class="nt">&lt;/item-name&gt;</span>
+      <span class="nt">&lt;item-description&gt;</span>Regular Test Item<span class="nt">&lt;/item-description&gt;</span>
+      <span class="nt">&lt;unit-price</span> <span class="na">currency=</span><span class="s">&quot;GBP&quot;</span><span class="nt">&gt;</span>10.0<span class="nt">&lt;/unit-price&gt;</span>
+      <span class="nt">&lt;quantity&gt;</span>1<span class="nt">&lt;/quantity&gt;</span>
+    <span class="nt">&lt;/item&gt;</span>
+    <span class="nt">&lt;item&gt;</span>
+      <span class="nt">&lt;item-name&gt;</span>Reduced Test Item<span class="nt">&lt;/item-name&gt;</span>
+      <span class="nt">&lt;item-description&gt;</span>Reduced Test Item<span class="nt">&lt;/item-description&gt;</span>
+      <span class="nt">&lt;unit-price</span> <span class="na">currency=</span><span class="s">&quot;GBP&quot;</span><span class="nt">&gt;</span>10.0<span class="nt">&lt;/unit-price&gt;</span>
+      <span class="nt">&lt;quantity&gt;</span>1<span class="nt">&lt;/quantity&gt;</span>
+      <span class="nt">&lt;tax-table-selector&gt;</span>reduced<span class="nt">&lt;/tax-table-selector&gt;</span>
+    <span class="nt">&lt;/item&gt;</span>
+    <span class="nt">&lt;item&gt;</span>
+      <span class="nt">&lt;item-name&gt;</span>Zero Test Item<span class="nt">&lt;/item-name&gt;</span>
+      <span class="nt">&lt;item-description&gt;</span>Zero Test Item<span class="nt">&lt;/item-description&gt;</span>
+      <span class="nt">&lt;unit-price</span> <span class="na">currency=</span><span class="s">&quot;GBP&quot;</span><span class="nt">&gt;</span>10.0<span class="nt">&lt;/unit-price&gt;</span>
+      <span class="nt">&lt;quantity&gt;</span>1<span class="nt">&lt;/quantity&gt;</span>
+      <span class="nt">&lt;tax-table-selector&gt;</span>tax_exempt<span class="nt">&lt;/tax-table-selector&gt;</span>
+    <span class="nt">&lt;/item&gt;</span>
+  <span class="nt">&lt;/items&gt;</span>
+<span class="nt">&lt;/shopping-cart&gt;</span>
+<span class="nt">&lt;checkout-flow-support&gt;</span>
+  <span class="nt">&lt;merchant-checkout-flow-support&gt;</span>
+    <span class="nt">&lt;tax-tables&gt;</span>
+      <span class="nt">&lt;default-tax-table&gt;</span>
+        <span class="nt">&lt;tax-rules&gt;</span>
+
+          <span class="nt">&lt;default-tax-rule&gt;</span>
+            <span class="nt">&lt;shipping-taxed&gt;</span>true<span class="nt">&lt;/shipping-taxed&gt;</span>
+            <span class="nt">&lt;rate&gt;</span>0.175<span class="nt">&lt;/rate&gt;</span>
+            <span class="nt">&lt;tax-area&gt;</span>
+              <span class="nt">&lt;world-area/&gt;</span>
+            <span class="nt">&lt;/tax-area&gt;</span>
+          <span class="nt">&lt;/default-tax-rule&gt;</span>
+
+        <span class="nt">&lt;/tax-rules&gt;</span>
+      <span class="nt">&lt;/default-tax-table&gt;</span>
+
+      <span class="nt">&lt;alternate-tax-tables&gt;</span>
+        <span class="nt">&lt;alternate-tax-table</span> <span class="na">name=</span><span class="s">&quot;reduced&quot;</span> <span class="na">standalone=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;alternate-tax-rules&gt;</span>
+            <span class="nt">&lt;alternate-tax-rule&gt;</span>
+              <span class="nt">&lt;rate&gt;</span>0.05<span class="nt">&lt;/rate&gt;</span>
+              <span class="nt">&lt;tax-area&gt;</span>
+                <span class="nt">&lt;world-area/&gt;</span>
+              <span class="nt">&lt;/tax-area&gt;</span>
+            <span class="nt">&lt;/alternate-tax-rule&gt;</span>
+          <span class="nt">&lt;/alternate-tax-rules&gt;</span>
+        <span class="nt">&lt;/alternate-tax-table&gt;</span>
+
+        <span class="nt">&lt;alternate-tax-table</span> <span class="na">standalone=</span><span class="s">&quot;true&quot;</span> <span class="na">name=</span><span class="s">&quot;tax_exempt&quot;</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;alternate-tax-rules/&gt;</span>
+        <span class="nt">&lt;/alternate-tax-table&gt;</span>
+      <span class="nt">&lt;/alternate-tax-tables&gt;</span>
+
+    <span class="nt">&lt;/tax-tables&gt;</span>
+  <span class="nt">&lt;/merchant-checkout-flow-support&gt;</span>
+<span class="nt">&lt;/checkout-flow-support&gt;</span>
+</pre></div>
+</div>
+<p>Python:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">gc</span><span class="o">.</span><span class="n">add_fields</span><span class="p">({</span><span class="s">&#39;items&#39;</span><span class="p">:</span> <span class="p">[{</span>
+<span class="go">  &quot;amount&quot;: 10.0,</span>
+<span class="go">  &quot;name&quot;: &quot;Regular Test Item&quot;,</span>
+<span class="go">  &quot;description&quot;: &quot;Regular Test Item&quot;,</span>
+<span class="go">  &quot;currency&quot;: &quot;GBP&quot;,</span>
+<span class="go">  &quot;quantity&quot;: 1,</span>
+<span class="go">  },{</span>
+<span class="go">  &quot;amount&quot;: 10.0,</span>
+<span class="go">  &quot;name&quot;: &quot;Reduced Test Item&quot;,</span>
+<span class="go">  &quot;description&quot;: &quot;Reduced Test Item&quot;,</span>
+<span class="go">  &quot;currency&quot;: &quot;GBP&quot;,</span>
+<span class="go">  &quot;quantity&quot;: 1,</span>
+<span class="go">  &quot;tax-table-selector&quot;: &quot;reduced&quot;</span>
+<span class="go">  },{</span>
+<span class="go">  &quot;amount&quot;: 10.0,</span>
+<span class="go">  &quot;name&quot;: &quot;Zero Test Item&quot;,</span>
+<span class="go">  &quot;description&quot;: &quot;Zero Test Item&quot;,</span>
+<span class="go">  &quot;currency&quot;: &quot;GBP&quot;,</span>
+<span class="go">  &quot;quantity&quot;: 1,</span>
+<span class="go">  &quot;tax-table-selector&quot;: &quot;tax_exempt&quot;</span>
+<span class="go">  }],</span>
+<span class="go">  &#39;tax-tables&#39;: {</span>
+<span class="go">            &#39;default-tax-table&#39;: {</span>
+<span class="go">                    &#39;tax-rules&#39;: [</span>
+<span class="go">                        {</span>
+<span class="go">                            &#39;shipping-taxed&#39;: True,</span>
+<span class="go">                            &#39;rate&#39;: 0.175,</span>
+<span class="go">                            &#39;tax-area&#39;: {</span>
+<span class="go">                                &#39;world-area&#39;: True,</span>
+<span class="go">                             },</span>
+<span class="go">                        },</span>
+<span class="go">                    ]</span>
+<span class="go">                },</span>
+<span class="go">            &#39;alternate-tax-tables&#39;: [</span>
+<span class="go">                {&#39;name&#39;: &#39;reduced&#39;,</span>
+<span class="go">                 &#39;standalone&#39;: True,</span>
+<span class="go">                 &#39;alternative-tax-rules&#39;: [</span>
+<span class="go">                    { &#39;rate&#39;: 0.05,</span>
+<span class="go">                      &#39;tax-area&#39;: {</span>
+<span class="go">                        &#39;world-area&#39;: True,</span>
+<span class="go">                      }</span>
+<span class="go">                    },</span>
+<span class="go">                  ]</span>
+<span class="go">                 },</span>
+<span class="go">                { &#39;name&#39;: &#39;tax_exempt&#39;,</span>
+<span class="go">                 &#39;standalone&#39;: True,</span>
+<span class="go">                }</span>
+<span class="go">            ]</span>
+<span class="go">    })</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="shipping">
+<h2>Shipping:<a class="headerlink" href="google_checkout.html#shipping" title="Permalink to this headline">¶</a></h2>
+<p>The following shipping methods are supported: flat-rate-shipping, merchant-calculated-shipping, pickup. carrier-calculated-shipping is not supported yet.</p>
+<div class="section" id="flat-rate-shipping-pickup">
+<h3>Flat-rate shipping + Pickup<a class="headerlink" href="google_checkout.html#flat-rate-shipping-pickup" title="Permalink to this headline">¶</a></h3>
+<p>Here are the examples from the <a class="reference external" href="https://developers.google.com/checkout/developer/Google_Checkout_XML_API_Flat_Rate_Shipping">Google Checkouts Developer Docs</a> converted to django-merchant.</p>
+<p>These are only showing the shipping methods section, you still need items and everything else.</p>
+<div class="section" id="example-1-using-flat-rate-shipping">
+<h4>Example 1 - Using Flat-rate Shipping:<a class="headerlink" href="google_checkout.html#example-1-using-flat-rate-shipping" title="Permalink to this headline">¶</a></h4>
+<p>The following example shows two flat-rate shipping methods. The first shipping method, which is for UPS Next Day Air shipping, costs $20.00. The second option, which is for UPS Ground Shipping, costs $15.00.</p>
+<p>XML:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;shipping-methods&gt;</span>
+  <span class="nt">&lt;flat-rate-shipping</span> <span class="na">name=</span><span class="s">&quot;UPS Next Day Air&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;price</span> <span class="na">currency=</span><span class="s">&quot;USD&quot;</span><span class="nt">&gt;</span>20.00<span class="nt">&lt;/price&gt;</span>
+  <span class="nt">&lt;/flat-rate-shipping&gt;</span>
+  <span class="nt">&lt;flat-rate-shipping</span> <span class="na">name=</span><span class="s">&quot;UPS Ground&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;price</span> <span class="na">currency=</span><span class="s">&quot;USD&quot;</span><span class="nt">&gt;</span>15.00<span class="nt">&lt;/price&gt;</span>
+  <span class="nt">&lt;/flat-rate-shipping&gt;</span>
+<span class="nt">&lt;/shipping-methods&gt;</span>
+</pre></div>
+</div>
+<p>Python:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">gc</span><span class="o">.</span><span class="n">add_fields</span><span class="p">({</span><span class="s">&#39;items&#39;</span><span class="p">:</span> <span class="o">...</span> <span class="p">,</span>
+<span class="go">    &#39;shipping-methods&#39;: [</span>
+<span class="go">        {&#39;shipping_type&#39;:&#39;flat-rate-shipping&#39;,</span>
+<span class="go">         &#39;name&#39;:&quot;UPS Next Day Air&quot;,</span>
+<span class="go">         &#39;currency&#39;:&quot;USD&quot;,</span>
+<span class="go">         &#39;price&#39;:20.00},</span>
+<span class="go">        {&#39;shipping_type&#39;:&#39;flat-rate-shipping&#39;,</span>
+<span class="go">         &#39;name&#39;:&quot;UPS Ground&quot;,</span>
+<span class="go">         &#39;currency&#39;:&quot;USD&quot;,</span>
+<span class="go">         &#39;price&#39;:15.00},</span>
+<span class="go">    ]})</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="example-2-using-shipping-restrictions">
+<h4>Example 2 - Using Shipping Restrictions:<a class="headerlink" href="google_checkout.html#example-2-using-shipping-restrictions" title="Permalink to this headline">¶</a></h4>
+<p>In this example, the merchant offers the same two shipping options as in example 1. However, in this example, the merchant has added shipping restrictions to both shipping methods. These restrictions specify that neither option will be offered if the shipping address is a P.O. box. In addition, the next-day shipping option will also be unavailable if the shipping address is in either Alaska or Hawaii.</p>
+<p>The following list explains how Google Checkout will handle different shipping addresses based on the XML in the example:</p>
+<ul class="simple">
+<li>Google Checkout will not allow the buyer to complete the order if the selected shipping address is a P.O. box.</li>
+<li>If the buyer selects a shipping address in Alaska or Hawaii (that is not a P.O. box), then Google Checkout will only offer the second shipping option (for ground shipping) to the buyer.</li>
+<li>If the buyer selects any shipping address that is not a P.O. box and is not in Alaska or Hawaii, then Google Checkout will offer both shipping options to the buyer.</li>
+</ul>
+<p>XML:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;shipping-methods&gt;</span>
+    <span class="nt">&lt;flat-rate-shipping</span> <span class="na">name=</span><span class="s">&quot;UPS Next Day Air&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;price</span> <span class="na">currency=</span><span class="s">&quot;USD&quot;</span><span class="nt">&gt;</span>20.00<span class="nt">&lt;/price&gt;</span>
+      <span class="nt">&lt;shipping-restrictions&gt;</span>
+        <span class="nt">&lt;excluded-areas&gt;</span>
+          <span class="nt">&lt;us-state-area&gt;</span>
+            <span class="nt">&lt;state&gt;</span>AK<span class="nt">&lt;/state&gt;</span>
+          <span class="nt">&lt;/us-state-area&gt;</span>
+          <span class="nt">&lt;us-state-area&gt;</span>
+            <span class="nt">&lt;state&gt;</span>HI<span class="nt">&lt;/state&gt;</span>
+          <span class="nt">&lt;/us-state-area&gt;</span>
+        <span class="nt">&lt;/excluded-areas&gt;</span>
+        <span class="nt">&lt;allow-us-po-box&gt;</span>false<span class="nt">&lt;/allow-us-po-box&gt;</span>
+      <span class="nt">&lt;/shipping-restrictions&gt;</span>
+    <span class="nt">&lt;/flat-rate-shipping&gt;</span>
+
+    <span class="nt">&lt;flat-rate-shipping</span> <span class="na">name=</span><span class="s">&quot;UPS Ground&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;price</span> <span class="na">currency=</span><span class="s">&quot;USD&quot;</span><span class="nt">&gt;</span>15.00<span class="nt">&lt;/price&gt;</span>
+      <span class="nt">&lt;shipping-restrictions&gt;</span>
+        <span class="nt">&lt;allow-us-po-box&gt;</span>false<span class="nt">&lt;/allow-us-po-box&gt;</span>
+      <span class="nt">&lt;/shipping-restrictions&gt;</span>
+    <span class="nt">&lt;/flat-rate-shipping&gt;</span>
+<span class="nt">&lt;/shipping-methods&gt;</span>
+</pre></div>
+</div>
+<p>Python:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">gc</span><span class="o">.</span><span class="n">add_fields</span><span class="p">({</span><span class="s">&#39;items&#39;</span><span class="p">:</span> <span class="o">...</span> <span class="p">,</span>
+<span class="go">    &#39;shipping-methods&#39;: [</span>
+<span class="go">        {&#39;shipping_type&#39;:&#39;flat-rate-shipping&#39;,</span>
+<span class="go">         &#39;name&#39;:&quot;UPS Next Day Air&quot;,</span>
+<span class="go">         &#39;currency&#39;:&quot;USD&quot;,</span>
+<span class="go">         &#39;price&#39;:20.00,</span>
+<span class="go">         &#39;shipping-restrictions&#39;: {</span>
+<span class="go">            &#39;allow-us-po-box&#39;: False,</span>
+<span class="go">            &#39;excluded-areas&#39;: {</span>
+<span class="go">                    &#39;us-state-area&#39; : [&#39;AK&#39;, &#39;HI&#39;]</span>
+<span class="go">                    }</span>
+<span class="go">            }</span>
+<span class="go">         },</span>
+<span class="go">        {&#39;shipping_type&#39;:&#39;flat-rate-shipping&#39;,</span>
+<span class="go">         &#39;name&#39;:&quot;UPS Ground&quot;,</span>
+<span class="go">         &#39;currency&#39;:&quot;USD&quot;,</span>
+<span class="go">         &#39;price&#39;:15.00,</span>
+<span class="go">         &#39;shipping-restrictions&#39;: {</span>
+<span class="go">            &#39;allow-us-po-box&#39;: False,</span>
+<span class="go">            }</span>
+<span class="go">        },</span>
+<span class="go">    ]})</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="example-3-offering-delivery-or-pickup-with-flat-rate-shipping-options">
+<h4>Example 3 - Offering Delivery or Pickup with Flat-Rate Shipping Options:<a class="headerlink" href="google_checkout.html#example-3-offering-delivery-or-pickup-with-flat-rate-shipping-options" title="Permalink to this headline">¶</a></h4>
+<p>This example demonstrates how you could offer free delivery using a flat-rate shipping method. The example also includes a &lt;pickup&gt; shipping method. In this example, the request uses shipping restrictions to specify that delivery is only available in two zip codes in Manhattan&#8217;s Upper East Side neighborhood. You can charge a fee for delivery by setting the value of the &lt;price&gt; tag to the delivery fee amount.</p>
+<p>XML:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;shipping-methods&gt;</span>
+    <span class="nt">&lt;flat-rate-shipping</span> <span class="na">name=</span><span class="s">&quot;Delivery&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;price</span> <span class="na">currency=</span><span class="s">&quot;USD&quot;</span><span class="nt">&gt;</span>0.00<span class="nt">&lt;/price&gt;</span>
+      <span class="nt">&lt;shipping-restrictions&gt;</span>
+        <span class="nt">&lt;allowed-areas&gt;</span>
+          <span class="nt">&lt;us-zip-area&gt;</span>
+            <span class="nt">&lt;zip-pattern&gt;</span>10021<span class="nt">&lt;/zip-pattern&gt;</span>
+          <span class="nt">&lt;/us-zip-area&gt;</span>
+          <span class="nt">&lt;us-zip-area&gt;</span>
+            <span class="nt">&lt;zip-pattern&gt;</span>10022<span class="nt">&lt;/zip-pattern&gt;</span>
+          <span class="nt">&lt;/us-zip-area&gt;</span>
+        <span class="nt">&lt;/allowed-areas&gt;</span>
+        <span class="nt">&lt;allow-us-po-box&gt;</span>false<span class="nt">&lt;/allow-us-po-box&gt;</span>
+      <span class="nt">&lt;/shipping-restrictions&gt;</span>
+    <span class="nt">&lt;/flat-rate-shipping&gt;</span>
+
+    <span class="nt">&lt;pickup</span> <span class="na">name=</span><span class="s">&quot;Pickup&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;price</span> <span class="na">currency=</span><span class="s">&quot;USD&quot;</span><span class="nt">&gt;</span>0.00<span class="nt">&lt;/price&gt;</span>
+    <span class="nt">&lt;/pickup&gt;</span>
+  <span class="nt">&lt;/shipping-methods&gt;</span>
+</pre></div>
+</div>
+<p>Python:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">gc</span><span class="o">.</span><span class="n">add_fields</span><span class="p">({</span><span class="s">&#39;items&#39;</span><span class="p">:</span> <span class="o">...</span> <span class="p">,</span>
+<span class="go">    &#39;shipping-methods&#39;: [</span>
+<span class="go">        {&#39;shipping_type&#39;:&#39;flat-rate-shipping&#39;,</span>
+<span class="go">         &#39;name&#39;:&quot;Delivery&quot;,</span>
+<span class="go">         &#39;currency&#39;:&quot;USD&quot;,</span>
+<span class="go">         &#39;price&#39;:0.00,</span>
+<span class="go">         &#39;shipping-restrictions&#39;: {</span>
+<span class="go">            &#39;allow-us-po-box&#39;: False,</span>
+<span class="go">            &#39;allowed-areas&#39;: {</span>
+<span class="go">                    &#39;us-zip-area&#39; : [10021, 10022]</span>
+<span class="go">                    }</span>
+<span class="go">            }</span>
+<span class="go">         },</span>
+<span class="go">        {&#39;shipping_type&#39;:&#39;pickup&#39;,</span>
+<span class="go">         &#39;name&#39;:&quot;Pickup&quot;,</span>
+<span class="go">         &#39;currency&#39;:&quot;USD&quot;,</span>
+<span class="go">         &#39;price&#39;:0.00,</span>
+<span class="go">        },</span>
+<span class="go">    ]})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="merchant-calculated-shipping">
+<h3>Merchant-calculated Shipping<a class="headerlink" href="google_checkout.html#merchant-calculated-shipping" title="Permalink to this headline">¶</a></h3>
+<p>Here are the examples from the <a class="reference external" href="https://developers.google.com/checkout/developer/Google_Checkout_XML_API_Merchant_Calculated_Shipping">Google Checkouts Developer Docs</a> converted to django-merchant.</p>
+<p>These are only showing the shipping methods section, you still need items and everything else.</p>
+<div class="section" id="example-1-using-merchant-calculated-shipping">
+<h4>Example 1 - Using Merchant Calculated Shipping<a class="headerlink" href="google_checkout.html#example-1-using-merchant-calculated-shipping" title="Permalink to this headline">¶</a></h4>
+<p>The following example shows an order for a U.S. merchant with one item and two merchant-calculated shipping methods. The first shipping method, which is for UPS Next Day Air shipping, has a default price of $20.00. This option also will not be offered if the shipping address is a P.O. box in the United States. The second option, which is for UPS Ground Shipping, has a default price of $15.00. The example also specifies that the merchant will calculate taxes as well as price adjustments associated with coupons or gift certificates.</p>
+<p>XML:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;shipping-methods&gt;</span>
+
+    <span class="nt">&lt;merchant-calculated-shipping</span> <span class="na">name=</span><span class="s">&quot;UPS Next Day Air&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;price</span> <span class="na">currency=</span><span class="s">&quot;USD&quot;</span><span class="nt">&gt;</span>20.00<span class="nt">&lt;/price&gt;</span>
+      <span class="nt">&lt;address-filters&gt;</span>
+        <span class="nt">&lt;allow-us-po-box&gt;</span>false<span class="nt">&lt;allow-us-po-box&gt;</span>
+      <span class="nt">&lt;/address-filters&gt;</span>
+    <span class="nt">&lt;/merchant-calculated-shipping&gt;</span>
+
+    <span class="nt">&lt;merchant-calculated-shipping</span> <span class="na">name=</span><span class="s">&quot;UPS Ground&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;price</span> <span class="na">currency=</span><span class="s">&quot;USD&quot;</span><span class="nt">&gt;</span>15.00<span class="nt">&lt;/price&gt;</span>
+    <span class="nt">&lt;/merchant-calculated-shipping&gt;</span>
+
+  <span class="nt">&lt;/shipping-methods&gt;</span>
+</pre></div>
+</div>
+<p>Python:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">gc</span><span class="o">.</span><span class="n">add_fields</span><span class="p">({</span><span class="s">&#39;items&#39;</span><span class="p">:</span> <span class="o">...</span> <span class="p">,</span>
+<span class="go">&#39;shipping-methods&#39;: [</span>
+<span class="go">    {&#39;shipping_type&#39;:&#39;merchant-calculated-shipping&#39;,</span>
+<span class="go">     &#39;name&#39;:&quot;UPS Next Day Air&quot;,</span>
+<span class="go">     &#39;currency&#39;:&quot;USD&quot;,</span>
+<span class="go">     &#39;price&#39;:20.00,</span>
+<span class="go">     &#39;address-filters&#39;: {</span>
+<span class="go">        &#39;allow-us-po-box&#39;: False,</span>
+<span class="go">        }</span>
+<span class="go">     },</span>
+<span class="go">    {&#39;shipping_type&#39;:&#39;merchant-calculated-shipping&#39;,</span>
+<span class="go">     &#39;name&#39;:&quot;UPS Ground&quot;,</span>
+<span class="go">     &#39;currency&#39;:&quot;USD&quot;,</span>
+<span class="go">     &#39;price&#39;:15.00,</span>
+<span class="go">    },</span>
+<span class="go">]})</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="example-2-using-address-filters-and-shipping-restrictions">
+<h4>Example 2 - Using Address Filters and Shipping Restrictions:<a class="headerlink" href="google_checkout.html#example-2-using-address-filters-and-shipping-restrictions" title="Permalink to this headline">¶</a></h4>
+<p>In this example, the merchant offers the same two shipping options as in example 1. However, in this example, the merchant has added shipping restrictions to specify that the next-day shipping option will not be available if the &lt;merchant-calculation-callback&gt; request fails and the shipping address is in either Alaska or Hawaii.</p>
+<p>The following list explains how Google Checkout will handle different shipping addresses based on the XML in the example:</p>
+<ul>
+<li><p class="first">If the customer enters any U.S. postal address that is not a P.O. box, Google Checkout will send a callback request instructing the merchant to calculate shipping costs for both shipping options.</p>
+<blockquote>
+<div><ul class="simple">
+<li>If the callback request is successful, then Google will offer the two shipping options to the buyer using the shipping costs from the merchant&#8217;s &lt;merchant-calculation-response&gt;.</li>
+<li>If the callback request is not successful, and the shipping address is in the continental United States, Google will let the buyer choose either of the two shipping methods. In this case, the next-day shipping method will cost $20.00 and the ground shipping method will cost $15.00.</li>
+<li>If the callback request is not successful, and the shipping address is in Alaska or Hawaii, Google will only offer the second shipping option at a cost of $15.00.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">If the customer enters a U.S. postal address that is a P.O. box, Google Checkout will send a callback request instructing the merchant to calculate the shipping cost for the second shipping option, which is for ground shipping. Since the address filter for the first shipping option indicates that that option is not available for P.O. boxes, Google will not allow the customer to select that shipping option and will not ask the merchant to calculate the cost of that shipping option.</p>
+</li>
+</ul>
+<p>XML:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;shipping-methods&gt;</span>
+
+    <span class="nt">&lt;merchant-calculated-shipping</span> <span class="na">name=</span><span class="s">&quot;UPS Next Day Air&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;price</span> <span class="na">currency=</span><span class="s">&quot;USD&quot;</span><span class="nt">&gt;</span>20.00<span class="nt">&lt;/price&gt;</span>
+      <span class="nt">&lt;address-filters&gt;</span>
+        <span class="nt">&lt;allow-us-po-box&gt;</span>false<span class="nt">&lt;allow-us-po-box&gt;</span>
+      <span class="nt">&lt;/address-filters&gt;</span>
+      <span class="nt">&lt;shipping-restrictions&gt;</span>
+        <span class="nt">&lt;excluded-areas&gt;</span>
+          <span class="nt">&lt;us-state-area&gt;</span>
+            <span class="nt">&lt;state&gt;</span>AK<span class="nt">&lt;/state&gt;</span>
+          <span class="nt">&lt;/us-state-area&gt;</span>
+          <span class="nt">&lt;us-state-area&gt;</span>
+            <span class="nt">&lt;state&gt;</span>HI<span class="nt">&lt;/state&gt;</span>
+          <span class="nt">&lt;/us-state-area&gt;</span>
+        <span class="nt">&lt;/excluded-areas&gt;</span>
+      <span class="nt">&lt;/shipping-restrictions&gt;</span>
+    <span class="nt">&lt;/merchant-calculated-shipping&gt;</span>
+
+    <span class="nt">&lt;merchant-calculated-shipping</span> <span class="na">name=</span><span class="s">&quot;UPS Ground&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;price</span> <span class="na">currency=</span><span class="s">&quot;USD&quot;</span><span class="nt">&gt;</span>15.00<span class="nt">&lt;/price&gt;</span>
+    <span class="nt">&lt;/merchant-calculated-shipping&gt;</span>
+
+  <span class="nt">&lt;/shipping-methods&gt;</span>
+</pre></div>
+</div>
+<p>Python:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">gc</span><span class="o">.</span><span class="n">add_fields</span><span class="p">({</span><span class="s">&#39;items&#39;</span><span class="p">:</span> <span class="o">...</span> <span class="p">,</span>
+<span class="go">&#39;shipping-methods&#39;: [</span>
+<span class="go">    {&#39;shipping_type&#39;:&#39;merchant-calculated-shipping&#39;,</span>
+<span class="go">     &#39;name&#39;:&quot;UPS Next Day Air&quot;,</span>
+<span class="go">     &#39;currency&#39;:&quot;USD&quot;,</span>
+<span class="go">     &#39;price&#39;:20.00,</span>
+<span class="go">     &#39;address-filters&#39;: {</span>
+<span class="go">        &#39;allow-us-po-box&#39;: False,</span>
+<span class="go">        }</span>
+<span class="go">     },</span>
+<span class="go">     &#39;shipping-restrictions&#39;: {</span>
+<span class="go">        &#39;allow-us-po-box&#39;: False,</span>
+<span class="go">        &#39;excluded-areas&#39;: {</span>
+<span class="go">                &#39;us-state-area&#39; : [&#39;AK&#39;, &#39;HI&#39;]</span>
+<span class="go">                }</span>
+<span class="go">        }</span>
+<span class="go">     },</span>
+<span class="go">    {&#39;shipping_type&#39;:&#39;merchant-calculated-shipping&#39;,</span>
+<span class="go">     &#39;name&#39;:&quot;UPS Ground&quot;,</span>
+<span class="go">     &#39;currency&#39;:&quot;USD&quot;,</span>
+<span class="go">     &#39;price&#39;:15.00,</span>
+<span class="go">    },</span>
+<span class="go">]})</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="google_checkout.html#">Google Checkout</a><ul>
+<li><a class="reference internal" href="google_checkout.html#example">Example</a></li>
+<li><a class="reference internal" href="google_checkout.html#private-data">Private Data:</a><ul>
+<li><a class="reference internal" href="google_checkout.html#item">Item</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="google_checkout.html#digital-content">Digital Content:</a></li>
+<li><a class="reference internal" href="google_checkout.html#subscriptions">Subscriptions:</a></li>
+<li><a class="reference internal" href="google_checkout.html#taxes">Taxes:</a><ul>
+<li><a class="reference internal" href="google_checkout.html#default-tax-table">default-tax-table:</a><ul>
+<li><a class="reference internal" href="google_checkout.html#example-1-charging-a-single-tax-rate-in-one-state">Example 1: Charging a single tax rate in one state:</a></li>
+<li><a class="reference internal" href="google_checkout.html#example-2-charging-tax-in-two-non-overlapping-geographic-areas">Example 2: Charging tax in two non-overlapping geographic areas</a></li>
+<li><a class="reference internal" href="google_checkout.html#example-3-charging-tax-in-two-overlapping-geographic-areas">Example 3: Charging tax in two overlapping geographic areas</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="google_checkout.html#alternate-tax-tables">alternate-tax-tables:</a><ul>
+<li><a class="reference internal" href="google_checkout.html#example-4-alternate-tax-rules">Example 4: Alternate tax rules</a></li>
+<li><a class="reference internal" href="google_checkout.html#example-5-alternate-tax-rules-for-items-that-are-always-tax-exempt">Example 5: Alternate tax rules for items that are always tax-exempt</a></li>
+<li><a class="reference internal" href="google_checkout.html#example-6-applying-a-tax-rule-in-multiple-geographic-areas">Example 6: Applying a tax rule in multiple geographic areas</a></li>
+<li><a class="reference internal" href="google_checkout.html#example-7-alternate-tax-tables-for-u-k-merchants">Example 7: Alternate tax tables for U.K. merchants</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="google_checkout.html#shipping">Shipping:</a><ul>
+<li><a class="reference internal" href="google_checkout.html#flat-rate-shipping-pickup">Flat-rate shipping + Pickup</a><ul>
+<li><a class="reference internal" href="google_checkout.html#example-1-using-flat-rate-shipping">Example 1 - Using Flat-rate Shipping:</a></li>
+<li><a class="reference internal" href="google_checkout.html#example-2-using-shipping-restrictions">Example 2 - Using Shipping Restrictions:</a></li>
+<li><a class="reference internal" href="google_checkout.html#example-3-offering-delivery-or-pickup-with-flat-rate-shipping-options">Example 3 - Offering Delivery or Pickup with Flat-Rate Shipping Options:</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="google_checkout.html#merchant-calculated-shipping">Merchant-calculated Shipping</a><ul>
+<li><a class="reference internal" href="google_checkout.html#example-1-using-merchant-calculated-shipping">Example 1 - Using Merchant Calculated Shipping</a></li>
+<li><a class="reference internal" href="google_checkout.html#example-2-using-address-filters-and-shipping-restrictions">Example 2 - Using Address Filters and Shipping Restrictions:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/offsite/google_checkout.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="../index.html">Merchant Documentation 0.09a documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Team Agiliq.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,241 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Credit Card &mdash; Merchant Documentation 0.09a documentation</title>
+    
+    <link rel="stylesheet" href="http://agiliq.com/docs/merchant/_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="http://agiliq.com/docs/merchant/_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.09a',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="http://agiliq.com/docs/merchant/_static/jquery.js"></script>
+    <script type="text/javascript" src="http://agiliq.com/docs/merchant/_static/underscore.js"></script>
+    <script type="text/javascript" src="http://agiliq.com/docs/merchant/_static/doctools.js"></script>
+    <link rel="top" title="Merchant Documentation 0.09a documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="index.html">Merchant Documentation 0.09a documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="credit-card">
+<h1>Credit Card<a class="headerlink" href="credit_card.html#credit-card" title="Permalink to this headline">¶</a></h1>
+<p>The <cite>CreditCard</cite> class is a helper class with some useful methods mainly for
+validation. This class is available in <cite>billing.utils.credit_card</cite>.</p>
+<div class="section" id="attribute-reference">
+<h2>Attribute Reference<a class="headerlink" href="credit_card.html#attribute-reference" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><cite>regexp</cite>: The compiled regular expression that matches all card numbers for
+the card issuing authority. For the <cite>CreditCard</cite> class, this is <cite>None</cite>. It
+is overridden by subclasses.</li>
+<li><cite>card_type</cite>: Points to a one of <cite>CreditCard</cite>&#8216;s subclasses. This attribute is
+set by the <cite>validate_card</cite> method of the selected gateway.</li>
+<li><cite>card_name</cite>: Card issuing authority name. Generally not required, but some
+gateways expect the user to figure out the credit card type to send  with
+the requests.</li>
+</ul>
+</div>
+<div class="section" id="method-reference">
+<h2>Method Reference<a class="headerlink" href="credit_card.html#method-reference" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first"><cite>__init__</cite>: This method expects 6 <strong>compulsory</strong> keyword arguments. They are</p>
+<ul class="simple">
+<li><cite>first_name</cite>: The first name of the credit card holder.</li>
+<li><cite>last_name</cite>: The last name of the credit card holder.</li>
+<li><cite>month</cite>: The expiration month of the credit card as an integer.</li>
+<li><cite>year</cite>: The expiration year of the credit card as an integer.</li>
+<li><cite>number</cite>: The credit card number (generally 16 digits).</li>
+<li><cite>verification_value</cite>: The card security code (CVV2).</li>
+</ul>
+</li>
+<li><p class="first"><cite>is_luhn_valid</cite>: Checks the validity of the credit card number by using the
+<cite>Luhn&#8217;s algorithm</cite> and returns a boolean. This method takes no arguments.</p>
+</li>
+<li><p class="first"><cite>is_expired</cite>: Checks if the expiration date of the card is beyond today and
+returns a boolean. This method takes no arguments.</p>
+</li>
+<li><p class="first"><cite>valid_essential_attributes</cite>: Verifies if all the 6 arguments provided to the
+<cite>__init__</cite> method are filled and returns a boolean.</p>
+</li>
+<li><p class="first"><cite>is_valid</cite>: Checks the validity of the card by calling the <cite>is_luhn_valid</cite>,
+<cite>is_expired</cite> and <cite>valid_essential_attributes</cite> method and returns a boolean.
+This method takes no arguments.</p>
+</li>
+<li><p class="first"><cite>expire_date</cite>: Returns the card expiry date in the &#8220;MM-YYYY&#8221; format. This is
+also available as a property.</p>
+</li>
+<li><dl class="first docutils">
+<dt><cite>name</cite>: Returns the full name of the credit card holder by concatenating the</dt>
+<dd><p class="first last"><cite>first_name</cite> and <cite>last_name</cite>. This is also available as a property.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="subclasses">
+<h2>Subclasses<a class="headerlink" href="credit_card.html#subclasses" title="Permalink to this headline">¶</a></h2>
+<p>The various credit cards and debit cards supported by <a class="reference external" href="http://github.com/agiliq/merchant">Merchant</a> are:</p>
+<div class="section" id="credit-cards">
+<h3>Credit Cards<a class="headerlink" href="credit_card.html#credit-cards" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><cite>Visa</cite><ul>
+<li>card_name = &#8220;Visa&#8221;</li>
+<li>regexp = re.compile(&#8216;^4d{12}(d{3})?$&#8217;)</li>
+</ul>
+</li>
+<li><cite>MasterCard</cite><ul>
+<li>card_name = &#8220;MasterCard&#8221;</li>
+<li>regexp = re.compile(&#8216;^(5[1-5]d{4}|677189)d{10}$&#8217;)</li>
+</ul>
+</li>
+<li><cite>Discover</cite><ul>
+<li>card_name = &#8220;Discover&#8221;</li>
+<li>regexp = re.compile(&#8216;^(6011|65d{2})d{12}$&#8217;)</li>
+</ul>
+</li>
+<li><cite>AmericanExpress</cite><ul>
+<li>card_name = &#8220;Amex&#8221;</li>
+<li>regexp = re.compile(&#8216;^3[47]d{13}$&#8217;)</li>
+</ul>
+</li>
+<li><cite>DinersClub</cite><ul>
+<li>card_name = &#8220;DinersClub&#8221;</li>
+<li>regexp = re.compile(&#8216;^3(0[0-5]|[68]d)d{11}$&#8217;)</li>
+</ul>
+</li>
+<li><cite>JCB</cite><ul>
+<li>card_name = &#8220;JCB&#8221;</li>
+<li>regexp = re.compile(&#8216;^35(28|29|[3-8]d)d{12}$&#8217;)</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="debit-cards">
+<h3>Debit Cards<a class="headerlink" href="credit_card.html#debit-cards" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><cite>Switch</cite><ul>
+<li>card_name = &#8220;Switch&#8221;</li>
+<li>regexp = re.compile(&#8216;^6759d{12}(d{2,3})?$&#8217;)</li>
+</ul>
+</li>
+<li><cite>Solo</cite><ul>
+<li>card_name = &#8220;Solo&#8221;</li>
+<li>regexp = re.compile(&#8216;^6767d{12}(d{2,3})?$&#8217;)</li>
+</ul>
+</li>
+<li><cite>Dankort</cite><ul>
+<li>card_name = &#8220;Dankort&#8221;</li>
+<li>regexp = re.compile(&#8216;^5019d{12}$&#8217;)</li>
+</ul>
+</li>
+<li><cite>Maestro</cite><ul>
+<li>card_name = &#8220;Maestro&#8221;</li>
+<li>regexp = re.compile(&#8216;^(5[06-8]|6d)d{10,17}$&#8217;)</li>
+</ul>
+</li>
+<li><cite>Forbrugsforeningen</cite><ul>
+<li>card_name = &#8220;Forbrugsforeningen&#8221;</li>
+<li>regexp = re.compile(&#8216;^600722d{10}$&#8217;)</li>
+</ul>
+</li>
+<li><cite>Laser</cite><ul>
+<li>card_name = &#8220;Laser&#8221;</li>
+<li>regexp = re.compile(&#8216;^(6304|6706|6771|6709)d{8}(d{4}|d{6,7})?$&#8217;)</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="helpers">
+<h3>Helpers<a class="headerlink" href="credit_card.html#helpers" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>all_credit_cards = [Visa, MasterCard, Discover, AmericanExpress, DinersClub, JCB]</li>
+<li>all_debit_cards  = [Switch, Solo, Dankort, Maestro, Forbrugsforeningen, Laser]</li>
+<li>all_cards = all_credit_cards + all_debit_cards</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="credit_card.html#">Credit Card</a><ul>
+<li><a class="reference internal" href="credit_card.html#attribute-reference">Attribute Reference</a></li>
+<li><a class="reference internal" href="credit_card.html#method-reference">Method Reference</a></li>
+<li><a class="reference internal" href="credit_card.html#subclasses">Subclasses</a><ul>
+<li><a class="reference internal" href="credit_card.html#credit-cards">Credit Cards</a></li>
+<li><a class="reference internal" href="credit_card.html#debit-cards">Debit Cards</a></li>
+<li><a class="reference internal" href="credit_card.html#helpers">Helpers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/credit_card.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="index.html">Merchant Documentation 0.09a documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Team Agiliq.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

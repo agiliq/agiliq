@@ -174,7 +174,7 @@ LOGGING = {
     },
     'formatters': {
         'verbose': {
-            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
+            'format': '[DJANGO] %(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
         },
         'simple': {
             'format': '%(levelname)s %(message)s'
@@ -201,7 +201,7 @@ LOGGING = {
         },
         "": {
             "handlers": ["console"],
-            'level': 'INFO',
+            'level': 'DEBUG',
             'propagate': True,
             'stream': sys.stdout
         }

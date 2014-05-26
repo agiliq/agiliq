@@ -1,0 +1,3 @@
+[submodule "ddp"]
+	path = ddp
+	url = https://github.com/agiliq/django-design-patterns.git

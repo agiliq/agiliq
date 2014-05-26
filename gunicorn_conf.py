@@ -2,6 +2,6 @@ import os
 
 bind = "unix:/tmp/nginx.socket"
 errorlog = '-'
-loglevel = 'info'
+loglevel = 'debug'
 accesslog = '-'
 os.system("touch /tmp/app-initialized")

@@ -15,6 +15,7 @@ urlpatterns = patterns('',
 	#url(r'^demo/dinette/', include('dinette.urls')),
 	url(r'^blog/', include('blogango.urls')),
     url(r'^login/$', login, name='dinette_login'),
+    url(r'^demo/graphos/', include('demo.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
     url('^404$', TemplateView.as_view(template_name="404.html"), name='agiliqcom_notfound'),

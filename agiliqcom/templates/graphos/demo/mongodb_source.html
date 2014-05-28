@@ -1,0 +1,314 @@
+{% extends 'graphos/base.html' %}
+
+{% block extra_head %}
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+        google.load("visualization", "1", {packages:["corechart"]});
+    </script>
+
+	<script type="text/javascript">
+
+	$(function() {
+
+		datasets = {{ datasets|safe }}
+
+		default_options = {
+					yaxis: {
+						min: 0
+					},
+					xaxis: {
+						tickDecimals: 0
+					}
+				}
+
+		options = default_options
+
+		var i = 0;
+		$.each(datasets, function(key, val) {
+			val.color = i;
+			++i;
+		});
+
+		var reset_state = function(){
+			datasets = {{ datasets|safe }}
+			options = default_options
+
+			$(".text-control").val("");
+			$(".check-control").attr("checked", false)
+			$.each(datasets, function(key, val){
+				plotAccordingToChoices();
+			});
+		};
+
+		$("#reset").click(reset_state);
+
+		// insert checkboxes
+		var choiceContainer = $("#choices");
+		$.each(datasets, function(key, val) {
+			choiceContainer.append("<br />"
+				+ val.label +" <input type='checkbox' name='"+key+"' checked='checked' id='id" + key + "'></input>"
+				+"<br />"
+				+"color: <input type='textinput' class='text-control' id='color"+key+"'></input>"
+				+"label: <input type='textinput' class='text-control' id='label"+key+"'></input>"
+				+"points: <input type='checkbox' class='check-control' id='points"+key+"'></input>");
+		});
+
+		choiceContainer.append("<br />"
+			+"xmin: <input type='textinput' class='text-control' id='xmin'></input>"
+			+"xmax: <input type='textinput' class='text-control' id='xmax'></input>"
+			+"ymin: <input type='textinput' class='text-control' id='ymin'></input>"
+			+"ymax: <input type='textinput' class='text-control' id='ymax'></input>"
+			+"<br />");
+
+		choiceContainer.find('input[type="checkbox"]').click(plotAccordingToChoices);
+		choiceContainer.find('input[type="textinput"]').blur(plotAccordingToChoices);
+
+		function plotAccordingToChoices() {
+
+			var data = [];
+
+			xmin = $("#xmin").val();
+			xmax = $("#xmax").val();
+			ymin = $("#ymin").val();
+			ymax = $("#ymax").val();
+
+			if(xmin){
+				options.xaxis.min = xmin;
+			}
+			if(xmax){
+				options.xaxis.max = xmax;
+			}
+			if(ymin){
+				options.yaxis.min = ymin;
+			}
+			if(ymax){
+				options.yaxis.max = ymax
+			}
+
+			choiceContainer.find("input:checked").each(function () {
+				var key = $(this).attr("name");
+				color = $("#color"+key).val();
+				label = $("#label"+key).val();
+				points = $("#points"+key).attr("checked");
+				points = Boolean(points);
+
+				if(color){
+					datasets[key].color=color;
+				}
+				if(label){
+					datasets[key].label=label;
+				}
+
+				if(points){
+					datasets[key].points = {"show": points};
+					datasets[key].lines = {"show": true};
+				}
+
+				if (key && datasets[key]) {
+					data.push(datasets[key]);
+				}
+			});
+
+			if (data.length > 0) {
+				$.plot("#placeholder", data, options);
+			}
+		}
+
+		plotAccordingToChoices();
+	});
+
+	$(function(){
+		$("#get-data-1").on("click", function(){
+			$.getJSON("/mongo-json/", function(data){
+
+			data_custom.push(data);
+			console.log(data_custom);
+			$.plot($("#custom_chart"), data_custom, {});
+			});
+		return false;
+		});
+		$("#get-data-2").on("click", function(){
+			$.getJSON("/mongo-json2/", function(data){
+
+			data_custom.push(data);
+			console.log(data_custom);
+			$.plot($("#custom_chart"), data_custom, {});
+			});
+		return false;
+		});
+		$("#replot").on("click", function(){
+			fields = ["Year"]
+			$('input[name="field_names"]:checked').each(function(){
+			    fields.push($(this).val())
+			});
+			$.getJSON("/mongo-json-multi/", {fields: fields}, function(data){
+			    console.log(data)
+			    $.plot($("#custom_chart2"), data, {});
+			})
+			console.log(fields)
+		});
+		time_series_options = {xaxis: {mode: "time"}}
+		$("#id_add_series").on("click", function(e){
+			var resolution = $("#id_resolution").val();
+			var color = $("id_color");
+			label = $("#id_label")
+			var post_data = $("#id_chart_5").serialize();
+			$.getJSON("/mongo-json-multi2/", post_data, function(data){
+				$("#chart_5_holder").plot(data, time_series_options);
+			});
+			e.preventDefault();
+		});
+		update_chart_5 = function(){
+			$.getJSON("/mongo-json-multi2/", function(data){
+			    $("#chart_5_holder").plot(data, time_series_options);
+			});
+		}
+		update_chart_5();
+
+
+	});
+	</script>
+{% endblock %}
+
+{% block menu %}
+  <ul class="nav nav-tabs">
+      <li><a href="{% url 'demo_home' %}">Home</a></li>
+      <li><a href="{% url 'demo_tutorial' %}">Tutorial</a></li>
+      <li><a href="{% url 'demo_gchart_demo' %}">Gchart</a></li>
+      <li><a href="{% url 'demo_morris_demo' %}">Morris</a></li>
+      <li><a href="{% url 'demo_matplotlib_demo' %}">Matplotlib</a></li>
+      <li><a href="{% url 'demo_flot_demo' %}">Flot</a></li>
+      <li><a href="{% url 'demo_yui_demo' %}">Yui</a></li>
+      <li class="active"><a href="{% url 'demo_time_series_example' %}">Time Series Example</a></li>
+  </ul>
+{%  endblock %}
+
+{% block content %}
+		<div class="demo-container">
+
+			<div id="placeholder" class="demo-placeholder" style="width:700px; height: 400px"></div>
+			<div id="choices"></div>
+			<a href="" id="reset" class="btn">reset</a>
+		</div>
+
+		<div id="chart_2">
+			{{ chart_2.as_html }}
+		</div>
+
+		<div id="chart_3">
+
+			{{ chart_3.as_html }}
+			<a href="#" class="btn" id="get-data-1">Plot Items Sold</a>
+			<a href="#" class="btn" id="get-data-2">Plot Net Profit</a>
+		</div>
+
+		<div id="chart_4">
+
+			{{ chart_4.as_html }}
+			<label class="checkbox">
+				<input type="checkbox" name="field_names" value="Sales" checked="checked">Sales
+		    </label>
+		    <label class="checkbox">
+				<input type="checkbox" name="field_names" value="Expenses">Expenses
+		    </label>
+		    <label class="checkbox">
+				<input type="checkbox" name="field_names" value="Items Sold">Items Sold
+		    </label>
+		    <label class="checkbox">
+				<input type="checkbox" name="field_names" value="Net Profit">Net Profit
+		    </label>
+		    <button type="submit" class="btn" id="replot">Replot</button>
+		</div>
+
+		<div id="chart_5_holder" style="width:800px;height:400px;"></div>
+
+		<h2>Chart 5</h2>
+
+		Pick Table
+
+		<form name="chart5_form" id="id_chart_5">
+			<select name="resource">
+
+			<option value="time_record">Time Record</option>
+
+			<option value="other_time_record">Other Time Record</option>
+
+			</select>
+
+			<br/>
+
+		Pick Field:
+
+		<select name="field">
+
+		<option value="hours">Hours</option>
+
+		</select>
+
+		<br/>
+
+		Pick a filter:
+
+		<select name="filter">
+			<option value="employee=/example/employee/500ff1b8e147f74f7000000c/" />Emp 1</option>
+			<option value="employee=/example/employee/500ff1b8e147f74f7000000d/" />Emp 2</option>
+			<option value="client=/example/client/5045cc4ce147f79b4100001f/" />Client A</option>
+		</select><br/>
+
+
+		Pick Resolution
+
+		<select name="resolution" id="id_resolution">
+
+			<option value="daily">Daily</option>
+
+			<option value="weekly">Weekly</option>
+
+			<option value="monthly">Monthly</option>
+
+		</select>
+
+		<br/>
+
+
+		Pick Color:
+
+		<input type="color" name="color" id="id_color" placeholder="Eg blue, pink, rgb(255, 100, 123)"><br/>
+
+
+		Add a label
+
+		<input type="text" name="label" id="id_label" placeholder="Any text label"><br/>
+
+
+		Start Date
+
+		<input type="text" name="start_date" id="id_start_date"><br/>
+
+
+		End Date
+
+		<input type="text" name="end_date" id="id_end_date"><br/>
+
+
+		Chart Type
+
+		<select name="chart_type" id="id_chart_type">
+
+			<option value="bar">Bar</option>
+
+			<option value="line">Line</option>
+
+		</select>
+
+
+		<br/>
+
+		<input type="checkbox" name="show_points" value="true">Show Points?<br/>
+		    <button type="submit" class="btn" id="id_add_series">Add Series</button>
+		    <a class="btn" id="id_del_all_series" href="{% url 'demo_mongo_json_multi2' %}?delete=yes">Remove All Series</a>
+
+	</form>
+
+{% endblock %}
+nam

@@ -1,0 +1,82 @@
+{% extends 'graphos/base.html' %}
+
+{% block extra_head %}
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+    google.load("visualization", "1", {packages:["corechart", "treemap"]});
+</script>
+<script>
+  $(function(){
+    $("#get-data").on("click", function(){
+        alert(10);
+        $.getJSON("/ghcart-json/", function(data){
+          alert(data);
+          //custom_line_chart.draw()
+
+        });
+    });
+
+  });
+</script>
+{% endblock %}
+
+{% block menu %}
+  <ul class="nav nav-tabs">
+      <li><a href="{% url 'demo_home' %}">Home</a></li>
+      <li><a href="{% url 'demo_tutorial' %}">Tutorial</a></li>
+      <li class="active"><a href="{% url 'demo_gchart_demo' %}">Gchart</a></li>
+      <li><a href="{% url 'demo_morris_demo' %}">Morris</a></li>
+      <li><a href="{% url 'demo_matplotlib_demo' %}">Matplotlib</a></li>
+      <li><a href="{% url 'demo_flot_demo' %}">Flot</a></li>
+      <li><a href="{% url 'demo_yui_demo' %}">Yui</a></li>
+      <li><a href="{% url 'demo_highcharts_demo' %}">Highcharts</a></li>
+      <li><a href="{% url 'demo_time_series_example' %}">Time Series Example</a></li>
+  </ul>
+{%  endblock %}
+
+{% block content %}
+    <div>
+        <p>
+            graphos.renderer.gchart provides charting via Google Charts API.
+        </p>
+    </div>
+
+    <div id="line_chart" class="well">
+
+        {{ line_chart.as_html }}
+        <pre class="code">
+            data_source = ModelDataSource(queryset, fields=['year', 'sales',],)
+            gchart.LineChart(data_source, options={'title': "Sales Growth"})
+        </pre>
+    </div>
+    <br />
+
+    <div id="column_chart">
+        {{ column_chart.as_html }}
+    </div>
+
+    <br />
+
+    <div id="bar_chart">
+        {{ bar_chart.as_html }}
+    </div>
+    <br />
+
+    <div id="candlestick_chart">
+        {{ candlestick_chart.as_html }}
+    </div>
+
+    <div id="pie_chart">
+        {{ pie_chart.as_html }}
+    </div>
+
+    <div id="treemap_chart">
+        {{ treemap_chart.as_html }}
+    </div>
+
+    <div>
+      {{ custom_chart.as_html }}
+      <a href="#" id="get-data" class="btn">Get Data</a>
+    </div>
+    <br />
+{% endblock %}

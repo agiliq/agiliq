@@ -117,6 +117,8 @@ INSTALLED_APPS = (
     #Our Apps
     'agiliqpages',
     'blogango',
+    'demo',
+    'graphos',
     #'dinette',
 
     #Third Party apps

@@ -7,3 +7,6 @@
 [submodule "djenofdjango"]
 	path = djenofdjango
 	url = https://github.com/agiliq/djenofdjango.git
+[submodule "merchant"]
+	path = merchant
+	url = https://github.com/agiliq/merchant.git

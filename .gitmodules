@@ -1,3 +1,9 @@
 [submodule "ddp"]
 	path = ddp
 	url = https://github.com/agiliq/django-design-patterns.git
+[submodule "django-gotchas"]
+	path = django-gotchas
+	url = https://github.com/agiliq/django-gotchas.git
+[submodule "djenofdjango"]
+	path = djenofdjango
+	url = https://github.com/agiliq/djenofdjango.git

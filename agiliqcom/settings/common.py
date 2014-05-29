@@ -47,8 +47,6 @@ MEDIA_ROOT = os.path.join(SITE_ROOT, 'media/')
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
 MEDIA_URL = '/media/'
 
-STATIC_HTML = os.path.join(SITE_ROOT, 'agiliqpages/static/output/')
-
 
 STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(SITE_ROOT, 'static/')
@@ -117,6 +115,8 @@ INSTALLED_APPS = (
     #Our Apps
     'agiliqpages',
     'blogango',
+    'demo',
+    'graphos',
     #'dinette',
 
     #Third Party apps

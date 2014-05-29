@@ -1,0 +1,37 @@
+{% extends 'graphos/base.html' %}
+
+{% block extra_head %}
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+        google.load("visualization", "1", {packages:["corechart"]});
+    </script>
+{% endblock %}
+
+{% block content %}
+<div class='font-set'>
+    <h1>Graphos Examples</h1>
+    <p class='font-set'>
+        Graphos is an app for django to plot data into a graph. We currently support
+        Flot, Google Chart API and YUI Charts. Graphos can read data from CSV, Models, MongoDB and Redis.
+    </p>
+<br>
+
+
+
+<h2>Flot Chart</h2>
+{{ chart.as_html }}
+<!--
+This is where magic happens.
+-->
+<br />
+<h2>Google charts<h2>
+
+{{ g_chart.as_html }}
+
+
+<h2>Mongo Data with LineChart</h2>
+{{ m_chart.as_html }}
+
+<br />
+</div>
+{% endblock %}

@@ -5,8 +5,8 @@ from .models import Account
 import os
 
 
-DB_HOST = ["localhost"]
-DB_PORT = 27017
+DB_HOST = os.environ['MONGO_HOST']
+DB_PORT = os.environ['MONGO_PORT']
 
 
 def get_db(db_name):

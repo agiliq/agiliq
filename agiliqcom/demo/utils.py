@@ -5,28 +5,30 @@ from .models import Account
 import os
 
 
-DB_HOST = os.environ['MONGO_HOST']
-DB_PORT = os.environ['MONGO_PORT']
+DB_HOST = os.environ.get('MONGO_HOST') or ["localhost"]
+DB_PORT = os.environ.get('MONGO_PORT') or 27017
 
 
 def get_db(db_name):
-    DB_HOST = os.environ['MONGO_HOST']
-    DB_PORT = os.environ['MONGO_PORT']
-    USERNAME = os.environ['MONGO_USERNAME']
-    PASSWORD = os.environ['MONGO_PASSWORD']
-    db_name = os.environ['MONGO_DB_NAME']
+    DB_HOST = os.environ.get('MONGO_HOST') or ["localhost"]
+    DB_PORT = os.environ.get('MONGO_PORT') or 27017
+    db_name = os.environ.get('MONGO_DB_NAME') or db_name
     db = pymongo.Connection(DB_HOST, int(DB_PORT))[db_name]
-    db.authenticate(USERNAME, PASSWORD)
+    if 'agiliq_heroku' in os.environ:
+      USERNAME = os.environ.get('MONGO_USERNAME')
+      PASSWORD = os.environ.get('MONGO_PASSWORD')
+      db.authenticate(USERNAME, PASSWORD)
     return db
 
 
 def get_mongo_cursor(db_name, collection_name, max_docs=100):
-    db_name = os.environ['MONGO_DB_NAME']
-    USERNAME = os.environ['MONGO_USERNAME']
-    PASSWORD = os.environ['MONGO_PASSWORD']
+    db_name = os.environ.get('MONGO_DB_NAME') or db_name
     db = pymongo.Connection(host=DB_HOST,
                             port=int(DB_PORT))[db_name]
-    db.authenticate(USERNAME, PASSWORD)
+    if 'agiliq_heroku' in os.environ:
+      USERNAME = os.environ.get('MONGO_USERNAME')
+      PASSWORD = os.environ.get('MONGO_PASSWORD')
+      db.authenticate(USERNAME, PASSWORD)
     collection = db[collection_name]
     cursor = collection.find()
     if cursor.count >= max_docs:
@@ -126,7 +128,7 @@ def create_demo_accounts():
 
 
 def create_demo_mongo():
-    accounts = get_db(os.environ['MONGO_DB_NAME'])
+    accounts = get_db(os.environ.get('MONGO_DB_NAME') or "accounts")
     docs = accounts.docs
     docs.drop()
 

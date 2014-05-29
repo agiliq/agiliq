@@ -2,6 +2,8 @@ import pymongo
 
 from .models import Account
 
+import os
+
 
 DB_HOST = ["localhost"]
 DB_PORT = 27017
@@ -9,8 +11,11 @@ DB_PORT = 27017
 
 def get_db(db_name):
     DB_HOST = ["localhost"]
-    DB_PORT = 27017
+    DB_PORT = os.environ['MONGO_PORT']
+    USERNAME = os.environ['MONOGO_USERNAME']
+    PASSWORD = os.environ['MONOGO_PASSWORD']
     db = pymongo.Connection(DB_HOST, DB_PORT)[db_name]
+    db.authenticate()
     return db
 
 

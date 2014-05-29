@@ -23,7 +23,6 @@ urlpatterns = patterns('',
     url('^500$', TemplateView.as_view(template_name="500.html"), name='agiliqcom_error'),
     url('^search$', TemplateView.as_view(template_name="agiliqpages/search.html"), name='agiliqcom_search'),
 
-    url(r'^newsletter/(?P<path>.*)$', 'django.views.static.serve', kwargs={'document_root': settings.STATIC_HTML})
 )
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

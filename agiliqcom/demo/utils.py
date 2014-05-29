@@ -21,6 +21,7 @@ def get_db(db_name):
 
 
 def get_mongo_cursor(db_name, collection_name, max_docs=100):
+    db_name = os.environ['MONGO_DB_NAME']
     db = pymongo.Connection(host=DB_HOST,
                             port=int(DB_PORT))[db_name]
     collection = db[collection_name]

@@ -126,7 +126,7 @@ def create_demo_accounts():
 
 
 def create_demo_mongo():
-    accounts = get_db("accounts")
+    accounts = get_db(os.environ['MONGO_DB_NAME'])
     docs = accounts.docs
     docs.drop()
 

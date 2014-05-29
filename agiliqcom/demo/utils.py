@@ -15,7 +15,7 @@ def get_db(db_name):
     USERNAME = os.environ['MONGO_USERNAME']
     PASSWORD = os.environ['MONGO_PASSWORD']
     db_name = os.environ['MONGO_DB_NAME']
-    db = pymongo.Connection(DB_HOST, DB_PORT)[db_name]
+    db = pymongo.Connection(DB_HOST, int(DB_PORT))[db_name]
     db.authenticate(USERNAME, PASSWORD)
     return db
 

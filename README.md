@@ -25,3 +25,4 @@ Deployment
 1. `fab all` for the full monty.
 2. `fab quickdeploy` if the db schema hasn't changed.
 3. `fab build_static` for creating the books/docs.
+

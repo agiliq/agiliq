@@ -117,9 +117,12 @@ INSTALLED_APPS = (
     'blogango',
     'demo',
     'graphos',
+    'app',
+    'billing',
     #'dinette',
 
     #Third Party apps
+    'crispy_forms',
     'compressor',
 	'mailer',
     'pingback',

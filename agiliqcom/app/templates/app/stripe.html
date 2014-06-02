@@ -1,0 +1,7 @@
+{% extends "app/base.html" %}
+{% load render_integration from billing_tags %}
+
+{% block content %}
+{% if status %}<h2>{{ status }}</h2>{% endif %}
+{% render_integration stripe_obj %}
+{% endblock %}

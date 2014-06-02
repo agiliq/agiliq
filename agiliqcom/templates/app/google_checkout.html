@@ -1,0 +1,12 @@
+{% extends 'app/base.html' %}
+{% load render_integration from billing_tags %}
+
+{% block content %}
+    Required Parameters from the view
+    <ul>
+        <li> item_name </li>
+        <li> amount </li>
+        <li> return_url </li>
+    </ul>
+    {% render_integration gc_obj %}
+{% endblock %}

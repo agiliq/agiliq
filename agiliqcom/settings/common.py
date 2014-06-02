@@ -119,6 +119,7 @@ INSTALLED_APPS = (
     'graphos',
     'app',
     'billing',
+    'paypal.pro',
     #'dinette',
 
     #Third Party apps

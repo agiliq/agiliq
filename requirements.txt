@@ -1,11 +1,10 @@
--r merchant_requirements.txt
-
 BeautifulSoup==3.2.1
 Django==1.5.1
+FormEncode==1.2.6
 Jinja2==2.7.2
 Markdown==2.3.1
 MarkupSafe==0.23
-MySQL-python==1.2.5
+MySQL-python==1.2.4
 Pillow==2.1.0
 PyYAML==3.11
 Pygments==1.6
@@ -13,6 +12,9 @@ South==0.8.1
 Sphinx==1.2b1
 argparse==1.2.1
 astroid==1.1.1
+bitcoin-python==0.3
+boto==2.8.0
+braintree==2.20.0
 coverage==3.6
 dinette==1.4e
 distribute==0.6.34
@@ -23,11 +25,15 @@ django-blogango==0.6.2
 django-buzz==0.4b
 django-compressor==1.3
 django-coverage==1.2.4
-git+https://github.com/agiliq/django-graphos.git
+django-crispy-forms==1.2.5
+django-graphos==0.0.2a0
 django-jenkins==0.14.0
-django-mailer
+django-mailer==0.2a2
 django-markupfield==1.1.1
+-e git://github.com/agiliq/merchant.git@a9e1d8be1cbc63f73c3f74c8785c1ff4969338a1#egg=django_merchant-dev
+django-ogone==0.1
 django-pagination==1.0.7
+django-paypal==0.1.2
 django-pingback==0.3
 django-taggit==0.9.3
 django-toolbelt==0.0.1
@@ -38,7 +44,9 @@ feedparser==5.1.3
 gunicorn==17.5
 ipython==2.0.0
 logilab-common==0.61.0
+lxml==3.3.1
 matplotlib==1.3.1
+mock==1.0.1
 nose==1.3.3
 numpy==1.8.1
 psycopg2==2.5.3
@@ -47,15 +55,18 @@ pylint==1.2.1
 pymongo==2.5.1
 pyparsing==2.0.1
 pystache==0.5.4
+python-beanstream==0.1
 python-dateutil==1.5
 python-memcached==1.53
-raven==3.4.0
+raven==3.5.2
 redis==2.7.4
 requests==1.2.0
 six==1.6.1
 sorl-thumbnail==11.12
 static==1.0.2
+stripe==1.7.10
+suds==0.4
 termcolor==1.1.0
 tornado==3.1
+wepay==0.1.5
 wsgiref==0.1.2
-

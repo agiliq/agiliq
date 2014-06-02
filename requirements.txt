@@ -31,7 +31,7 @@ django-jenkins==0.14.0
 django-mailer
 django-markupfield==1.1.1
 -e git://github.com/agiliq/merchant.git@a9e1d8be1cbc63f73c3f74c8785c1ff4969338a1#egg=django_merchant-dev
-django-ogone==0.1
+git+git://github.com/arjunc77/django-ogone.git#egg=django-ogone
 django-pagination==1.0.7
 django-paypal==0.1.2
 django-pingback==0.3
@@ -55,7 +55,7 @@ pylint==1.2.1
 pymongo==2.5.1
 pyparsing==2.0.1
 pystache==0.5.4
-python-beanstream
+git+git://github.com/dragonx/beanstream.git#egg=python-beanstream
 python-dateutil==1.5
 python-memcached==1.53
 raven==3.5.2

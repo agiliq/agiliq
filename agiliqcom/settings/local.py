@@ -19,5 +19,4 @@ TEMPLATE_DEBUG = DEBUG
 BACKTYPE_API_KEY = ''
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = os.getenv("DJANGO_SECRET_KEY") or ''
-
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY") or '7832hjghghjhggj'

@@ -120,7 +120,7 @@ INSTALLED_APPS = (
     'app',
     'billing',
     'paypal.pro',
-    #'dinette',
+    'dinette',
 
     #Third Party apps
     'crispy_forms',

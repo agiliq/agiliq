@@ -52,7 +52,7 @@ http {
         }
 
         location /newsletter.1 {
-          rewrite ^ http://app_server/newsletter/;
+          rewrite ^/newsletter.1(.*) /newsletter$1 permanent;
         }
 
         location / {

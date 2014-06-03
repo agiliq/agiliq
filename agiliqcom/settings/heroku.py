@@ -30,5 +30,6 @@ COMPRESS_ENABLED = "DJANGO_COMPRESS" in os.environ
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 ALLOWED_HOSTS += [".herokuapp.com"]
 
+LOG_FILE_PATH = os.path.join(SITE_ROOT, 'logs')
 LOG_FILE_NAME = os.path.join(SITE_ROOT, 'logs/log.txt')
 

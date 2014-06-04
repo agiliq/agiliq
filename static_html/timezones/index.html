@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="css/bootstrap.css" rel="stylesheet" />
+        <link rel="stylesheet" href="css/styles.css" type='text/css' />
+        <link href="css/jquery-ui.css" rel="stylesheet" type='text/css' />
+        
+        <title>TimeZone Convertor -  Scheule meetings across timezone - Agiliq
+        </title>
+    </head>
+    <body>
+
+        <div id="wrapper">
+                  <div id="container" class='canhide'>
+                      <div id='toolbar' class='well well-small'>
+                            <div class='date_help_animation_box arrow_box_date_help'>
+                                <div >
+                                    You can observe the date change here when you select and submit any date. The hourline on the rightside is based on this date.
+                                    <br><input type='checkbox' id='display_date_animation' style='margin-top:-2px;' /><span class='small_font margin-left-10'>Tick this to never show this animation</span>
+                                </div>
+                            </div>
+                        <div id='div_locations_input_box' class='pull-left'>
+                            <input type='text' id='search_input' placeholder='search city, country...' autocomplete='off' />
+                             <div id="search_result">
+
+                             </div> <!-- end of div search_result -->
+                        </div> <!-- end of div div_locations_input_box -->
+
+                        <div class='selected_date'></div>
+
+                        <div id='controls' class='pull-right'>
+
+                        <div class='show_meeting_modal pull-left margin-right-15px' >
+
+                            <div class='help_meeting_schedule help_style arrow_box well well-small'>
+                                Click this to re-open the schedule
+                            </div>
+                            <span>
+                                Show Meeting Schedule
+                            </span>
+
+                        </div>
+                             <div id='error_inputdate' class='well well-small'></div>
+                             <div id='date_help' class='well'>Enter the date on which you wish to schedule</div>
+                             <input type='text' placeholder='mm-dd-yyyy' id='dateinput'  maxlength=10 /><span style=';display:inline-block;width : 10px' ></span>
+                             <button id='setdate_go' class='btn'>Go</button>
+                             <span class='seldate1'></span><span class='seldate2'></span>
+                             <span class='seldate3'></span><span class='seldate4'></span>
+                             <span class='seldate5'></span>
+                        </div> <!-- end of div controls -->
+                      </div> <!-- end of div toolbar -->
+                        <div id="content">
+                            <div id='ajax-loader'>
+                                <img  src='images/ajax-round.gif' />
+                            </div>
+
+
+                          <!-- skeleton
+                              <div class='row'>
+                                  <div class="tzdetails">
+                                  </div>
+                                  <div class="dates">
+                                  </div>
+                              </div>
+
+                           -->
+
+                         </div> <!-- end of div content -->
+                      </div> <!-- end of div container -->
+
+
+            <div id='newevent'  style='display:none'>
+
+                            <div class='event-body'>
+                                <div id='event_close'><strong>X</strong></div>
+                                <div class='meeting_link input-prepend'></div>
+                                <h3 class='backcolor'>Add New Event </h3>
+                                <input type='text' id='event_name' placeholder='Enter Event name here' class='input-xxlarge'/>
+                                <textarea id='newevent_msg' placeholder='Enter description' class='input-xxlarge' ></textarea><br><br>
+                                <div>
+                                <button id='saveevent' class='btn btn-primary '>Save</button>
+                                <div  class='link_export_google_cal ' ><a target='_blank' ><img src='images/calendar-icon.png' /></a>
+                                    <div class='export_calendar_help help_style well well-small'>Click to export to Google Calendar</div>
+                                </div>
+                                </div>
+                            <h3 class='backcolor'> Time  </h3>  <div  id='newevent_time' ></div>
+
+
+
+
+                            </div>
+
+                        </div> <!-- end of newevent -->
+
+                        <div id='showevents' class='canhide'>
+                           <h3 class='eventheader'>Events</h3>
+                           <div id='event_help' class='well well-small' style='display:none'><span>Click to display the list of events</span></div>
+                           <div id='showeventbody'></div>
+
+
+                        </div> <!-- end of showevents -->
+
+                        <div id="meeting_details" class="modal">
+                            <div class='modal-header'>
+                                <div class='pull-right'>
+                                <a class='icon-move meeting_details_move pull-left margin-right-15px' ></a>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            </div>
+                                <h3>Meeting Schedule</h3>
+                            </div>
+                            <div class='modal-body'></div>
+
+                        </div>
+                        <div class='bottom-content'>
+                            <div class='help_text pull-left'>
+                                <ul>
+                                <li>Add locations you need in "Add locations box".
+                                <li>Set your Home location by clicking the "Home" button.
+                                <li>Reorder locations by dragging a row.
+                                <li>Click a column to add an event for that time.
+                                <li>Export to Google Calendar and much more
+                                </ul>
+
+                            </div>
+                            <div class='gplay pull-right'>
+                            <img src='images/blue_mascot_300.png' title='We build Amazing Apps' width='230px;' />
+                            <a href='https://play.google.com/store/apps/details?id=com.agiliq.timezone.core'><img src='images/gplay.png' /></a>
+                            <a href='https://chrome.google.com/webstore/detail/time-zone-convertor/felnfoggbfiggmnffdfhhcoeooincpgl' title='Chrome Webstore' >
+                                <img src='images/chrome_webstore_small.png'>
+                            </a>
+                            </div>
+                            <div class='clearfix'> </div>
+                            <div class='footer'>
+                                &copy; Agiliq 2009 - 2013
+                            </div>
+
+                        </div>
+
+
+
+
+
+
+
+        </div> <!-- end of div wrapper -->
+        <script src='lib/jquery-1.7.2.min.js'></script>
+        <script src='lib/jquery-ui.js'></script>
+        <script src='lib/bootstrap-modal.js'></script>
+        <script src="lib/scrollto-plugin.js" type="text/javascript" ></script>
+        <script type="text/javascript" src="jstz-1.0.4.min.js"></script>
+        <script type="text/javascript" src="lib/date.js"></script>
+        <script src="script.js" type="text/javascript" ></script>
+        <script type='text/javascript'>
+         $(function() {
+                 $( "#dateinput" ).datepicker({ dateFormat: 'mm-dd-yy'});
+            });
+        </script>
+        <script type="text/javascript">
+
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-367368-15']);
+          _gaq.push(['_trackPageview']);
+         _gaq.push(['_setCustomVar',1, 'Section', 'agiliq-pages', 3 ]);
+
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+
+      </script>
+
+    </body>
+</html>

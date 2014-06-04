@@ -12,6 +12,8 @@ http {
     gzip on;
     gzip_comp_level 2;
     gzip_min_length 512;
+    gzip_types text/plain text/css text/xml text/javascript application/x-javascript application/xml;
+    gzip_disable "MSIE [1-6]\.";
 
     server_tokens on;
 
@@ -23,8 +25,11 @@ http {
     default_type application/octet-stream;
     sendfile on;
 
-    #Must read the body in 5 seconds.
-    client_body_timeout 10;
+    #Must read the body in 15 seconds.
+    client_body_timeout 15;
+
+    # server will close connection after this time
+    keepalive_timeout 30;
 
     upstream app_server {
         server unix:/tmp/nginx.socket fail_timeout=0;

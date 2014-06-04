@@ -65,6 +65,10 @@ http {
           index  index.html;
         }
 
+        location /static/ {
+          root /app/agiliqcom/agiliqpages/static
+        }
+
 
         location / {
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;

@@ -33,7 +33,7 @@ http {
 
     server {
         listen <%= ENV["PORT"] %>;
-        server_name "";
+        server_name www.agiliq.com agiliq.com "";
         keepalive_timeout 5;
 
         if ($http_x_forwarded_proto != "https") {

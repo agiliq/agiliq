@@ -28,7 +28,7 @@ django-coverage==1.2.4
 django-crispy-forms==1.2.5
 git+https://github.com/agiliq/django-graphos.git
 django-jenkins==0.14.0
-django-mailer
+git+https://github.com/pinax/django-mailer.git
 django-markupfield==1.1.1
 -e git://github.com/agiliq/merchant.git@a9e1d8be1cbc63f73c3f74c8785c1ff4969338a1#egg=django_merchant-dev
 git+git://github.com/arjunc77/django-ogone.git#egg=django-ogone

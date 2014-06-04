@@ -71,6 +71,11 @@ http {
           index  index.html;
         }
 
+
+        location /static/ {
+          root /app/agiliqcom/static;
+        }
+
         location /timezones/ {
           root /app/static_html;
           index  index.html;
@@ -86,6 +91,7 @@ http {
             root /app/static_html;
             access_log      off;
             log_not_found   off;
+
         }
 
 

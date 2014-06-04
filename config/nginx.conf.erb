@@ -24,20 +24,26 @@ http {
     sendfile on;
 
     #Must read the body in 5 seconds.
-    client_body_timeout 5;
+    client_body_timeout 10;
 
     upstream app_server {
         server unix:/tmp/nginx.socket fail_timeout=0;
     }
 
+    server {
+        listen <%= ENV["PORT"] %>;
+        server_name www.agiliq.com "";
+        rewrite ^(.*)$ https://agiliq.com$1 permanent;
+
+    }
 
     server {
         listen <%= ENV["PORT"] %>;
-        server_name www.agiliq.com agiliq.com "";
+        server_name agiliq.com;
         keepalive_timeout 5;
 
         if ($http_x_forwarded_proto != "https") {
-          rewrite ^(.*)$ https://$server_name$1 permanent;
+          rewrite ^(.*)$ https://agiliq.com$1 permanent;
         }
 
         location /newsletter/ {

@@ -1,0 +1,14 @@
+{
+  "name": "Time zone convertor",
+  "version": "2.0",
+  "manifest_version": 1,
+  "description": "Time zone convertor - Compare different timezones, schedule events.",
+  "app" : {
+    "launch" : {
+      "local_path" : "index.html"
+    }
+  },
+  
+  "icons" : {"16" : "clock.png","48" : "clock.png","128" : "clock.png"},
+  "permissions": ["tz/tz.csv","tz/cities.csv"]
+}

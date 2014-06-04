@@ -29,3 +29,7 @@ COMPRESS_ENABLED = "DJANGO_COMPRESS" in os.environ
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 ALLOWED_HOSTS += [".herokuapp.com"]
+
+EMAIL_HOST = 'smtp.mailgun.org'
+EMAIL_HOST_USER = "postmaster@agiliq.com"
+EMAIL_HOST_PASSWORD = "43ze4je2vu21"

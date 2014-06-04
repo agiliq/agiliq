@@ -30,8 +30,8 @@
 <body>
 
 <div class='container'>
-{% block main_content %} {% endblock %}   
-{% block content %} 
+{% block main_content %} {% endblock %}
+{% block content %}
 
 
 {% endblock %}
@@ -42,10 +42,9 @@
 </div>
 
 {% compress js %}
-  <script type="text/javascript" src="{{ STATIC_URL }}dinette/scripts/jquery13.js"></script>
   <script type="text/javascript" src="{{ STATIC_URL }}dinette/scripts/jqueryform.js"></script>
   <script type="text/javascript" src="{{ STATIC_URL }}dinette/scripts/dinetteajax.js"></script>
 {% endcompress  %}
 
-</body>    
+</body>
 </html>

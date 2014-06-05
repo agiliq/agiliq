@@ -76,6 +76,11 @@ http {
           index  index.html;
         }
 
+        location /dumps/ {
+          root /app/static_html;
+          index  index.html;
+        }
+
 
         location /static/ {
           alias /app/agiliqcom/static/;

@@ -1,17 +1,20 @@
 language: python
 python:
-  - "2.7"
-# command to install dependencies
+- '2.7'
 cache:
   directories:
-    - $HOME/.pip-cache/
-    - /home/travis/virtualenv/python2.7
-
-install: "pip install -r requirements.txt --allow-all-external"
-env:
-    DJANGO_SECRET_KEY=travis
-# command to run tests
+  - $HOME/.pip-cache/
+  - /home/travis/virtualenv/python2.7
+install: pip install -r requirements.txt --allow-all-external
+env: DJANGO_SECRET_KEY=travis
 before_script:
-  - ./lint.sh
+- ./lint.sh
 script:
-  -  python agiliqcom/manage.py test agiliqpages blogango --settings=agiliqcom.settings.test
+- python agiliqcom/manage.py test agiliqpages blogango --settings=agiliqcom.settings.test
+deploy:
+  provider: heroku
+  on: master
+  api_key:
+    secure: 16rURGaob5pbLGBzjCt9aE+YGxwUrYHJ76UQQeZMTQsZnune2p356XFa3W0c/PAjKtmasMSTLCzZPih9FRs2tRybv5G7Ck/mY/oNKqDAo1KQZS5c9hNlVKONITdIUpQubGTvkt2nX8w6ADPbXsmaLiMmCSx82NpRGTWZ8Ts/YJc=
+  run:
+    - python agiliqcom/manage.py collectstatic --no-input

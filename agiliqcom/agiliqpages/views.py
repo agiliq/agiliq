@@ -38,7 +38,7 @@ class CachedMixin(object):
 
     @classonlymethod
     def as_view(cls, **initkwargs):
-        return cache_page(super(CachedMixin, cls).as_view(**initkwargs), settings.CACHE_DURATION)
+        return cache_page(settings.CACHE_DURATION)(super(CachedMixin, cls).as_view(**initkwargs))
 
 
 class CachedTemplateView(CachedMixin, TemplateView):

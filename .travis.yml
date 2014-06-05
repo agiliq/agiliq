@@ -18,3 +18,4 @@ deploy:
     secure: 16rURGaob5pbLGBzjCt9aE+YGxwUrYHJ76UQQeZMTQsZnune2p356XFa3W0c/PAjKtmasMSTLCzZPih9FRs2tRybv5G7Ck/mY/oNKqDAo1KQZS5c9hNlVKONITdIUpQubGTvkt2nX8w6ADPbXsmaLiMmCSx82NpRGTWZ8Ts/YJc=
   run:
     - python agiliqcom/manage.py collectstatic --no-input
+  strategy: git

@@ -158,13 +158,7 @@ CACHE_DURATION = 60 * 60 * 24
 # Dinette Settings
 AUTH_PROFILE_MODULE = 'dinette.DinetteUserProfile'
 
-RANKS_NAMES_DATA = ((30, "Member"), (100, "Senior Member"), (300, 'Star'))
 
-DINETTE_LOGIN_TEMPLATE = 'dinette/social_login.html'
-
-FLOOD_TIME = 10
-
-REPLY_PAGE_SIZE = 10
 
 LOGGING = {
     'version': 1,
@@ -217,13 +211,8 @@ SITE_URL = "https://agiliq.com/"
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'agiliq.com', '.agiliq.com', ]
 
-from markupfield.markup import DEFAULT_MARKUP_TYPES
-from dinette.libs.postmarkup import render_bbcode
-
-DEFAULT_MARKUP_TYPES.append(('bbcode', render_bbcode))
-MARKUP_RENDERERS = DEFAULT_MARKUP_TYPES
-
 LOGIN_URL  = "/login"
 LOGIN_REDIRECT_URL = '/'
 
+from dinette_demo import *
 from merchant_demo import *

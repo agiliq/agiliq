@@ -1,4 +1,7 @@
 # Merchant Demo
+
+import os
+
 MERCHANT_ID = ""
 if 'beanstream_MERCHANT_ID' in os.environ:
     MERCHANT_ID = int(os.environ.get('beanstream_MERCHANT_ID'))

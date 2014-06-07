@@ -50,9 +50,7 @@ MEDIA_URL = '/media/'
 
 STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(SITE_ROOT, 'static/')
-STATICFILES_DIRS = (
-    os.path.join(SITE_ROOT, 'static_seed/'),
-)
+
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.

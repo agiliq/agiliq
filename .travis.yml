@@ -10,7 +10,7 @@ env: DJANGO_SECRET_KEY=travis
 before_script:
 - ./lint.sh
 script:
-- python agiliqcom/manage.py test agiliqpages blogango --settings=agiliqcom.settings.test
+- python agiliqcom/manage.py test agiliqpages blogango dinette graphos parsley--settings=agiliqcom.settings.test
 # deploy:
 #   provider: heroku
 #   on: master

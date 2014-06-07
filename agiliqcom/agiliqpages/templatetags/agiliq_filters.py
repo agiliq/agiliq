@@ -74,12 +74,3 @@ def get_extra_context(parser, token):
     return ExtraContext()
 
 register.tag('get_extra_context', get_extra_context)
-
-from lib import ttp
-
-
-@register.filter
-def twitterify(tweet):
-    parse = ttp.Parser()
-    result = parse.parse(tweet)
-    return result.html

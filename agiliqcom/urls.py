@@ -13,9 +13,9 @@ handler500 = TemplateView.as_view(template_name="500.html")
 
 urlpatterns = patterns('',
     url(r'^', include('agiliqpages.urls')),
-	#url(r'^demo/dinette/', include('dinette.urls')),
 	url(r'^blog/', include('blogango.urls')),
     url(r'^login/$', login, name='dinette_login'),
+
     url(r'^demo/graphos/', include('demo.urls')),
     url(r'^demo/merchant/', include('app.urls')),
     url(r'^demo/dinette/', include('dinette.urls')),

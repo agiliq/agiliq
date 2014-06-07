@@ -6,7 +6,7 @@ DEBUG = False
 TEMPLATE_DEBUG = True
 
 ADMINS = (
-    # ('Your Name', 'your_email@domain.com'),
+    ('Agiliq', 'hello@agiliq.com'),
 )
 
 MANAGERS = ADMINS
@@ -149,9 +149,9 @@ BACKEND_ENGINE = "django.contrib.sessions.backends.cache"
 SEND_BROKEN_LINK_EMAILS = False
 EMAIL_SUBJECT_PREFIX = '[Agiliq] '
 
-DEFAULT_FROM_EMAIL = 'Agiliq.com <webmaster@agiliq.com>'
+DEFAULT_FROM_EMAIL = 'Agiliq.com <hello@agiliq.com>'
 # The e-mail address that error messages come from
-SERVER_EMAIL = 'developer@agiliq.com'
+SERVER_EMAIL = 'hello@agiliq.com'
 
 CACHE_DURATION = 60 * 60 * 24
 

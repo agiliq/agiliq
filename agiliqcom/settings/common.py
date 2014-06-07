@@ -215,7 +215,7 @@ LOGGING = {
 THUMBNAIL_FORMAT = "PNG"
 
 #Site URL
-SITE_URL = "http://agiliq.com/"
+SITE_URL = "https://agiliq.com/"
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'agiliq.com', '.agiliq.com', ]
 

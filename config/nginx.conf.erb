@@ -84,6 +84,7 @@ http {
 
         location /static/ {
           alias /app/agiliqcom/static/;
+          expires 30d;
         }
 
         location /timezones/ {
@@ -103,11 +104,6 @@ http {
             log_not_found   off;
 
         }
-
-        location ~* ^.+\.(jpg|jpeg|gif|png|ico|css|zip|tgz|gz|rar|bz2|pdf)$ {
-            expires 30d;
-          }
-
 
         location / {
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;

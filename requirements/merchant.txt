@@ -1,0 +1,3 @@
+bitcoin-python==0.3
+braintree==2.20.0
+wepay==0.1.5

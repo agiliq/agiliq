@@ -1,0 +1,5 @@
+git+https://github.com/agiliq/Dinette.git
+git+https://github.com/agiliq/django-graphos.git
+-e git://github.com/agiliq/merchant.git@a9e1d8be1cbc63f73c3f74c8785c1ff4969338a1#egg=django_merchant-dev
+git+git://github.com/arjunc77/django-ogone.git#egg=django-ogone
+git+git://github.com/dragonx/beanstream.git#egg=python-beanstream

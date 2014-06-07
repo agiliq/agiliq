@@ -215,4 +215,4 @@ LOGIN_URL  = "/login"
 LOGIN_REDIRECT_URL = '/'
 
 from .merchant_demo import *
-from .dinete_demo import *
+from .dinnete_demo import *

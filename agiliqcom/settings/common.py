@@ -214,5 +214,5 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'agiliq.com', '.agiliq.com', ]
 LOGIN_URL  = "/login"
 LOGIN_REDIRECT_URL = '/'
 
-from dinette_demo import *
-from merchant_demo import *
+from .merchant_demo import *
+from .dinete_demo import *

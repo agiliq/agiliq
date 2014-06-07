@@ -7,17 +7,12 @@ cache:
   directories:
   - $HOME/.pip-cache/
   - /home/travis/virtualenv/python2.7
-install: pip install -r requirements.txt --allow-all-external --download-cache $HOME/.pip-cache
-env: DJANGO_SECRET_KEY=travis
+install:
+  - pip install -r requirements.txt --allow-all-external --download-cache $HOME/.pip-cache
+env:
+  -DJANGO_SECRET_KEY=travis
 before_script:
 - ./lint.sh
 script:
 - python agiliqcom/manage.py test agiliqpages blogango dinette graphos --settings=agiliqcom.settings.test
-# deploy:
-#   provider: heroku
-#   on: master
-#   api_key:
-#     secure: 16rURGaob5pbLGBzjCt9aE+YGxwUrYHJ76UQQeZMTQsZnune2p356XFa3W0c/PAjKtmasMSTLCzZPih9FRs2tRybv5G7Ck/mY/oNKqDAo1KQZS5c9hNlVKONITdIUpQubGTvkt2nX8w6ADPbXsmaLiMmCSx82NpRGTWZ8Ts/YJc=
-#   run:
-#     - python agiliqcom/manage.py collectstatic --no-input
-#   strategy: git
+

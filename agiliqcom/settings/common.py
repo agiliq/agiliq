@@ -115,6 +115,8 @@ INSTALLED_APPS = (
     'blogango',
     'graphosdemo',
     'graphos',
+    'parsleydemo',
+    'parsley',
     'app',
     'billing',
     'paypal.pro',
@@ -213,6 +215,7 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'agiliq.com', '.agiliq.com', ]
 
 LOGIN_URL  = "/login"
 LOGIN_REDIRECT_URL = '/'
+
 
 from .merchant_demo import *
 from .dinnete_demo import *

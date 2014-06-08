@@ -19,6 +19,7 @@ urlpatterns = patterns('',
     url(r'^demo/graphos/', include('graphosdemo.urls')),
     url(r'^demo/merchant/', include('app.urls')),
     url(r'^demo/dinette/', include('dinette.urls')),
+    url(r'^demo/parsley/', include('parsleydemo.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
     url('^404$', TemplateView.as_view(template_name="404.html"), name='agiliqcom_notfound'),

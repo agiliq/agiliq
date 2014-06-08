@@ -50,7 +50,7 @@ class TeamMemberAdmin(admin.ModelAdmin):
 
 
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ['name', 'is_active']
+    list_display = ['name', 'url', 'is_active']
     list_editable = ['is_active']
     change_form_template = "admin/project_change_form.html"
 

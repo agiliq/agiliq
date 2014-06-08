@@ -16,7 +16,6 @@ PyYAML==3.11
 Pygments==1.6
 Sphinx==1.2b1
 argparse==1.2.1
-astroid==1.1.1
 distribute==0.6.34
 dj-database-url==0.3.0
 django-appconf==0.6
@@ -25,7 +24,6 @@ django-crispy-forms==1.2.5
 git+https://github.com/pinax/django-mailer.git
 django-markupfield==1.1.1
 django-pagination==1.0.7
-django-paypal==0.1.2
 django-pingback==0.3
 django-taggit==0.9.3
 django-toolbelt==0.0.1
@@ -48,6 +46,5 @@ six==1.6.1
 sorl-thumbnail==11.12
 suds==0.4
 termcolor==1.1.0
-tornado==3.1
 wsgiref==0.1.2
 akismet==0.2.0

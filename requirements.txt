@@ -13,9 +13,6 @@ git+https://github.com/pinax/django-mailer.git
 -r requirements/graphos.txt
 -r requirements/blogango.txt
 django-parsley==0.5
-BeautifulSoup==3.2.1
-FormEncode==1.2.6
-Jinja2==2.7.2
 argparse==1.2.1
 dj-database-url==0.3.0
 django-appconf==0.6

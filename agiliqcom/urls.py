@@ -16,7 +16,7 @@ urlpatterns = patterns('',
 	url(r'^blog/', include('blogango.urls')),
     url(r'^login/$', login, name='dinette_login'),
 
-    url(r'^demo/graphos/', include('demo.urls')),
+    url(r'^demo/graphos/', include('graphosdemo.urls')),
     url(r'^demo/merchant/', include('app.urls')),
     url(r'^demo/dinette/', include('dinette.urls')),
 

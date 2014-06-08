@@ -113,7 +113,7 @@ INSTALLED_APPS = (
     #Our Apps
     'agiliqpages',
     'blogango',
-    'demo',
+    'graphosdemo',
     'graphos',
     'app',
     'billing',

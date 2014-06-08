@@ -3,7 +3,7 @@ from django.views.decorators.cache import cache_page
 from django.views.generic.base import TemplateView
 from django.http import HttpResponse
 
-from graphos.renderers import gchart, yui, flot, morris, highcharts, matplotlib_renderer
+from graphos.renderers import gchart, yui, flot, morris, highcharts
 from graphos.sources.simple import SimpleDataSource
 from graphos.sources.mongo import MongoDBDataSource
 from graphos.sources.model import ModelDataSource
@@ -393,9 +393,4 @@ custom_gchart_renderer = GhcartRendererAsJson.as_view()
 
 
 def matplotlib_demo(request):
-
-    line_chart = matplotlib_renderer.LineChart(SimpleDataSource(data=data))
-    bar_chart = matplotlib_renderer.BarChart(SimpleDataSource(data=data))
-    context = {"line_chart": line_chart,
-               "bar_chart": bar_chart}
-    return render(request, 'graphos/demo/matplotlib.html', context)
+    return HttpResponse("TODO")

@@ -14,5 +14,5 @@ env:
 before_script:
 - ./lint.sh
 script:
-- python agiliqcom/manage.py test agiliqpages blogango dinette --settings=agiliqcom.settings.test
+- python agiliqcom/manage.py test agiliqpages blogango dinette graphosdemo --settings=agiliqcom.settings.test
 

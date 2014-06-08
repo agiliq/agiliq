@@ -197,7 +197,7 @@ LOGGING = {
         },
         "": {
             "handlers": ["console"],
-            'level': 'DEBUG',
+            'level': 'INFO',
             'propagate': True,
             'stream': sys.stdout
         }

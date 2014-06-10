@@ -12,6 +12,7 @@ git+https://github.com/pinax/django-mailer.git
 -r requirements/merchant.txt
 -r requirements/graphos.txt
 -r requirements/blogango.txt
+-r requirements/leave_tracker.txt
 django-parsley==0.5
 BeautifulSoup==3.2.1
 FormEncode==1.2.6

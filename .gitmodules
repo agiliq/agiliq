@@ -10,3 +10,6 @@
 [submodule "merchant"]
 	path = merchant
 	url = https://github.com/agiliq/merchant.git
+[submodule "graphos"]
+	path = graphos
+	url = https://github.com/agiliq/django-graphos.git

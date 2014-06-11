@@ -1,0 +1,5 @@
+MySQL-python==1.2.5
+django-openid-auth==0.5
+gunicorn==18.0
+-e git+https://github.com/adieu/python-openid@03773fb96dff352bbda12538726dc5c46fe0316c#egg=python_openid-dev
+pytz==2013b

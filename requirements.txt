@@ -12,6 +12,7 @@ git+https://github.com/pinax/django-mailer.git
 -r requirements/merchant.txt
 -r requirements/graphos.txt
 -r requirements/blogango.txt
+-r requirements/leave_tracker.txt
 django-parsley==0.5
 BeautifulSoup==3.2.1
 FormEncode==1.2.6
@@ -32,3 +33,4 @@ sorl-thumbnail==11.12
 termcolor==1.1.0
 wsgiref==0.1.2
 akismet==0.2.0
+-e git+https://github.com/agiliq/leave-tracker-app.git#egg=leave-tracker

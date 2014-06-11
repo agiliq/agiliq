@@ -121,6 +121,7 @@ INSTALLED_APPS = (
     'billing',
     'paypal.pro',
     'dinette',
+    'leave_tracker',
 
     #Third Party apps
     'crispy_forms',
@@ -134,7 +135,8 @@ INSTALLED_APPS = (
     'south',
     'django_wysiwyg',
     'django_coverage',
-    'raven.contrib.django.raven_compat'
+    'raven.contrib.django.raven_compat',
+    'django_openid_auth',
 )
 
 PROJECT_APPS = ('agiliqpages', 'blogango', 'dinette')
@@ -219,3 +221,4 @@ LOGIN_REDIRECT_URL = '/'
 
 from .merchant_demo import *
 from .dinnete_demo import *
+from .leave_tracker import *

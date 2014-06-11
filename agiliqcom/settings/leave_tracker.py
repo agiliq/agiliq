@@ -20,3 +20,5 @@ LOGIN_REDIRECT_URL = '/'
 
 # Should django_auth_openid be used to sign into the admin interface?
 OPENID_USE_AS_ADMIN_LOGIN = False
+LEAVE_CONST = 20
+WEEKEND_HOLIDAYS = [5, 6]

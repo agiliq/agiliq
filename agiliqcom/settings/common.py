@@ -122,6 +122,7 @@ INSTALLED_APPS = (
     'paypal.pro',
     'dinette',
     'leave_tracker',
+    'exapp',
 
     #Third Party apps
     'crispy_forms',

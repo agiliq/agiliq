@@ -21,6 +21,7 @@ urlpatterns = patterns('',
     url(r'^demo/dinette/', include('dinette.urls')),
     url(r'^demo/parsley/', include('parsleydemo.urls')),
     url(r'^team/leaves/', include('leave_tracker.urls')),
+    url(r'^team/expensify/', include('exapp.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
     url('^404$', TemplateView.as_view(template_name="404.html"), name='agiliqcom_notfound'),

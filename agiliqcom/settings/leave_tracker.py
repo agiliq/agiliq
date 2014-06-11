@@ -4,7 +4,7 @@ AUTHENTICATION_BACKENDS = (
 )
 
 # Should users be created when new OpenIDs are used to log in?
-OPENID_CREATE_USERS = True
+OPENID_CREATE_USERS = False
 
 # When logging in again, should we overwrite user details based on
 # data received via Simple Registration?
@@ -22,3 +22,6 @@ LOGIN_REDIRECT_URL = '/'
 OPENID_USE_AS_ADMIN_LOGIN = False
 LEAVE_CONST = 20
 WEEKEND_HOLIDAYS = [5, 6]
+
+LEAVE_TRACKER_FROM_MAIL = 'leaves@agiliq.com'
+LEAVE_TRACKER_RECIPIENT = 'shabda@agiliq.com'

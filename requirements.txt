@@ -33,6 +33,4 @@ sorl-thumbnail==11.12
 termcolor==1.1.0
 wsgiref==0.1.2
 akismet==0.2.0
--e git+https://github.com/agiliq/leave-tracker-app.git#egg=leave-tracker
--e git+https://github.com/agiliq/expensify.git#egg=expensify
-
+newrelic==2.20.0.17

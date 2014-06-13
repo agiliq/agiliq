@@ -5,4 +5,3 @@ stripe==1.7.10
 django-paypal==0.1.2
 suds==0.4
 git+git://github.com/arjunc77/django-ogone.git#egg=django-ogone
-git+git://github.com/dragonx/beanstream.git#egg=python-beanstream

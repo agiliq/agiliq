@@ -1,7 +1,6 @@
 git+https://github.com/agiliq/Dinette.git
 git+https://github.com/agiliq/django-graphos.git
 -e git://github.com/agiliq/merchant.git@960a3e6238f84021ce9f9ce3f783ebafdf3bc653#egg=django_merchant-dev
-git+git://github.com/arjunc77/django-ogone.git#egg=django-ogone
 git+git://github.com/dragonx/beanstream.git#egg=python-beanstream
 -e git+https://github.com/agiliq/leave-tracker-app.git#egg=leave-tracker
 -e git+https://github.com/agiliq/expensify.git#egg=expensify

@@ -222,3 +222,7 @@ LOGIN_REDIRECT_URL = '/'
 from .merchant_demo import *
 from .dinnete_demo import *
 from .leave_tracker import *
+
+SOUTH_MIGRATION_MODULES = {
+        'taggit': 'taggit.south_migrations',
+}

@@ -8,11 +8,11 @@ cache:
   - $HOME/.pip-cache/
   - /home/travis/virtualenv/python2.7
 install:
-  - pip install -r requirements/dev.txt --allow-all-external --download-cache $HOME/.pip-cache
+  - pip install -r requirements.txt --allow-all-external --download-cache $HOME/.pip-cache
 env:
   -DJANGO_SECRET_KEY=travis
 before_script:
 - ./lint.sh
 script:
-- python agiliqcom/manage.py test agiliqpages blogango dinette graphosdemo parsley parsleydemo --settings=agiliqcom.settings.test
+- python agiliqcom/manage.py test agiliqpages blogango dinette graphosdemo parsley parsleydemo --settings=settings.test
 

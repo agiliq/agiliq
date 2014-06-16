@@ -86,7 +86,7 @@ MIDDLEWARE_CLASSES = (
     'pagination.middleware.PaginationMiddleware'
 )
 
-ROOT_URLCONF = 'agiliqcom.urls'
+ROOT_URLCONF = 'urls'
 
 STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.FileSystemFinder",
@@ -105,7 +105,6 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
 	'django.contrib.humanize',
-	'django.contrib.markup',
     'django.contrib.flatpages',
     'django.contrib.staticfiles',
     'django.contrib.comments',
@@ -223,3 +222,7 @@ LOGIN_REDIRECT_URL = '/'
 from .merchant_demo import *
 from .dinnete_demo import *
 from .leave_tracker import *
+
+SOUTH_MIGRATION_MODULES = {
+        'taggit': 'taggit.south_migrations',
+}

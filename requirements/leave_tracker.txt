@@ -1,4 +1,4 @@
--e git+https://github.com/manjunath24/django_openid_auth.git@f8c17315db1213ddf8a4dc8c84f58a8d90095638#egg=django_openid_auth-dev
+-e git+https://github.com/manjunath24/django_openid_auth.git@83908ed417dc2abdf18706514cf9d96a56897927#egg=django_openid_auth-dev
 gunicorn==18.0
 -e git+https://github.com/adieu/python-openid@03773fb96dff352bbda12538726dc5c46fe0316c#egg=python_openid-dev
 pytz==2013b

@@ -4,7 +4,7 @@ AUTHENTICATION_BACKENDS = (
 )
 
 # Should users be created when new OpenIDs are used to log in?
-OPENID_CREATE_USERS = False
+OPENID_CREATE_USERS = True
 
 # When logging in again, should we overwrite user details based on
 # data received via Simple Registration?
@@ -20,6 +20,7 @@ LOGIN_REDIRECT_URL = '/'
 
 # Should django_auth_openid be used to sign into the admin interface?
 OPENID_USE_AS_ADMIN_LOGIN = False
+SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
 LEAVE_CONST = 20
 WEEKEND_HOLIDAYS = [5, 6]
 

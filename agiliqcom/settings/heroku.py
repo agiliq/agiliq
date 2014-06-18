@@ -33,3 +33,5 @@ ALLOWED_HOSTS += [".herokuapp.com"]
 EMAIL_HOST = os.environ.get('EMAIL_HOST')
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+
+AKISMET_API_KEY = os.environ.get('AKISMET_API_KEY')

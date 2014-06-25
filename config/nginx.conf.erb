@@ -47,7 +47,7 @@ http {
         location ~ "^/ngx_pagespeed_beacon$" { }
         
        pagespeed EnableFilters insert_ga;
-       pagespeed UA-367368-15;
+       pagespeed AnalyticsID UA-367368-15;
         
         listen <%= ENV["PORT"] %>;
         server_name agiliq.com;

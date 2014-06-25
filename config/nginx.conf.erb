@@ -35,21 +35,14 @@ http {
         server unix:/tmp/nginx.socket fail_timeout=0;
     }
 
-    server {
-        listen <%= ENV["PORT"] %>;
-        server_name www.agiliq.com "";
-        rewrite ^(.*)$ https://agiliq.com$1 permanent;
 
-    }
 
     server {
         listen <%= ENV["PORT"] %>;
         server_name agiliq.com;
         keepalive_timeout 5;
 
-        if ($http_x_forwarded_proto != "https") {
-          rewrite ^(.*)$ https://agiliq.com$1 permanent;
-        }
+
 
         location /newsletter/ {
           root /app/static_html;

@@ -226,3 +226,7 @@ from .leave_tracker import *
 SOUTH_MIGRATION_MODULES = {
         'taggit': 'taggit.south_migrations',
 }
+
+from memcacheify import memcacheify
+
+CACHES = memcacheify()

@@ -35,5 +35,5 @@ termcolor==1.1.0
 wsgiref==0.1.2
 akismet==0.2.0
 newrelic==2.20.0.17
-django-heroku-memcacheify
+django-heroku-memcacheify==0.5
 pylibmc==1.2.3

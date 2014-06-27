@@ -24,7 +24,10 @@ How to use this
 Deployment
 ----------------
 
-`git push heroku master`
+`source deploy.sh`
+
+
+`deploy.sh` deploys the app to heroku and clears the cache.
 
 This uses a custom multi buildpack. Heroku recommends using dj_static to serve static files, which we didn't like, so this is being served on gunicorn behind nginx. (Which is itself behind the heroku router, of course.)
 

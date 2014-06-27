@@ -37,3 +37,4 @@ akismet==0.2.0
 newrelic==2.20.0.17
 django-heroku-memcacheify==0.5
 pylibmc==1.2.3
+django-clear-cache==0.3

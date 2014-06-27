@@ -137,6 +137,7 @@ INSTALLED_APPS = (
     'django_coverage',
     'raven.contrib.django.raven_compat',
     'django_openid_auth',
+    'clear_cache',
 )
 
 PROJECT_APPS = ('agiliqpages', 'blogango', 'dinette')
@@ -226,3 +227,7 @@ from .leave_tracker import *
 SOUTH_MIGRATION_MODULES = {
         'taggit': 'taggit.south_migrations',
 }
+
+from memcacheify import memcacheify
+
+CACHES = memcacheify()

@@ -38,3 +38,4 @@ newrelic==2.20.0.17
 django-heroku-memcacheify==0.5
 pylibmc==1.2.3
 django-clear-cache==0.3
+django-storages==1.1.8

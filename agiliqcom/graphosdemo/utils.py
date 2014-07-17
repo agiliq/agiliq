@@ -11,6 +11,7 @@ DB_PORT = os.environ.get('MONGO_PORT') or 27017
 
 
 def get_db(db_name):
+    import pdb; pdb.set_trace()
     # DB_HOST = os.environ.get('MONGO_HOST') or ["localhost"]
     # DB_PORT = os.environ.get('MONGO_PORT') or 27017
     # db_name = os.environ.get('MONGO_DB_NAME') or db_name
@@ -18,7 +19,6 @@ def get_db(db_name):
     client = MongoClient(MONGO_URL)
     #db = pymongo.Connection(DB_HOST, int(DB_PORT))[db_name]
     db = client.db_name
-    import pdb; pdb.set_trace()
     # if 'agiliq_heroku' in os.environ:
     #   USERNAME = os.environ.get('MONGO_USERNAME')
     #   PASSWORD = os.environ.get('MONGO_PASSWORD')

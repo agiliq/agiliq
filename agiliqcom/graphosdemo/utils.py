@@ -11,7 +11,6 @@ DB_PORT = os.environ.get('MONGO_PORT') or 27017
 
 
 def get_db(db_name):
-    import pdb; pdb.set_trace()
     # DB_HOST = os.environ.get('MONGO_HOST') or ["localhost"]
     # DB_PORT = os.environ.get('MONGO_PORT') or 27017
     # db_name = os.environ.get('MONGO_DB_NAME') or db_name

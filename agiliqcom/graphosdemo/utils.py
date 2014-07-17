@@ -12,7 +12,7 @@ DB_PORT = os.environ.get('MONGO_PORT') or 27017
 def get_db(db_name):
     DB_HOST = os.environ.get('MONGO_HOST') or ["localhost"]
     DB_PORT = os.environ.get('MONGO_PORT') or 27017
-    db_name = os.environ.get('MONGO_DB_NAME') or db_name
+    #db_name = os.environ.get('MONGO_DB_NAME') or db_name
     db = pymongo.Connection(DB_HOST, int(DB_PORT))[db_name]
     if 'agiliq_heroku' in os.environ:
       USERNAME = os.environ.get('MONGO_USERNAME')
@@ -22,7 +22,7 @@ def get_db(db_name):
 
 
 def get_mongo_cursor(db_name, collection_name, max_docs=100):
-    db_name = os.environ.get('MONGO_DB_NAME') or db_name
+    #db_name = os.environ.get('MONGO_DB_NAME') or db_name
     db = pymongo.Connection(host=DB_HOST,
                             port=int(DB_PORT))[db_name]
     if 'agiliq_heroku' in os.environ:
@@ -128,7 +128,7 @@ def create_demo_accounts():
 
 
 def create_demo_mongo():
-    accounts = get_db(os.environ.get('MONGO_DB_NAME') or "accounts")
+    accounts = get_db("accounts")
     docs = accounts.docs
     docs.drop()
 

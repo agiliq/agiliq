@@ -1,4 +1,5 @@
 import pymongo
+from pymongo import MongoClient
 
 from .models import Account
 
@@ -10,25 +11,31 @@ DB_PORT = os.environ.get('MONGO_PORT') or 27017
 
 
 def get_db(db_name):
-    DB_HOST = os.environ.get('MONGO_HOST') or ["localhost"]
-    DB_PORT = os.environ.get('MONGO_PORT') or 27017
-    db_name = os.environ.get('MONGO_DB_NAME') or db_name
-    db = pymongo.Connection(DB_HOST, int(DB_PORT))[db_name]
-    if 'agiliq_heroku' in os.environ:
-      USERNAME = os.environ.get('MONGO_USERNAME')
-      PASSWORD = os.environ.get('MONGO_PASSWORD')
-      db.authenticate(USERNAME, PASSWORD)
+    # DB_HOST = os.environ.get('MONGO_HOST') or ["localhost"]
+    # DB_PORT = os.environ.get('MONGO_PORT') or 27017
+    # db_name = os.environ.get('MONGO_DB_NAME') or db_name
+    MONGO_URL = os.environ.get('MONGOHQ_URL')
+    client = MongoClient(MONGO_URL)
+    #db = pymongo.Connection(DB_HOST, int(DB_PORT))[db_name]
+    db = client.db_name
+    # if 'agiliq_heroku' in os.environ:
+    #   USERNAME = os.environ.get('MONGO_USERNAME')
+    #   PASSWORD = os.environ.get('MONGO_PASSWORD')
+    #   db.authenticate(USERNAME, PASSWORD)
     return db
 
 
 def get_mongo_cursor(db_name, collection_name, max_docs=100):
-    db_name = os.environ.get('MONGO_DB_NAME') or db_name
-    db = pymongo.Connection(host=DB_HOST,
-                            port=int(DB_PORT))[db_name]
-    if 'agiliq_heroku' in os.environ:
-      USERNAME = os.environ.get('MONGO_USERNAME')
-      PASSWORD = os.environ.get('MONGO_PASSWORD')
-      db.authenticate(USERNAME, PASSWORD)
+    MONGO_URL = os.environ.get('MONGOHQ_URL')
+    client = MongoClient(MONGO_URL)
+    db = client.db_name
+    # db_name = os.environ.get('MONGO_DB_NAME') or db_name
+    # db = pymongo.Connection(host=DB_HOST,
+    #                         port=int(DB_PORT))[db_name]
+    # if 'agiliq_heroku' in os.environ:
+    #   USERNAME = os.environ.get('MONGO_USERNAME')
+    #   PASSWORD = os.environ.get('MONGO_PASSWORD')
+    #   db.authenticate(USERNAME, PASSWORD)
     collection = db[collection_name]
     cursor = collection.find()
     if cursor.count >= max_docs:

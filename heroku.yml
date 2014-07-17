@@ -1,0 +1,26 @@
+# Provide the path to your manage.py file
+MANAGE_FILE_PATH: ./agiliqcom/manage.py
+
+# Provide the path to your requirements file, if not provided
+#then heroku will try to find it in the root directory.
+REQUIREMENTS_PATH:
+
+# Configuration for Sphinx, optional
+SPHINX_PATH:
+  NO_OF_DOCS:5
+  1:
+    COPY_FROM: ddp
+    COPY_TO: ../static_html/books/djangodesignpatterns/
+  2:
+    COPY_FROM: django-gotchas
+    COPY_TO: ../static_html/books/django-gotchas/
+  3:
+    COPY_FROM: djenofdjango
+    COPY_TO: ../static_html/books/djenofdjango/
+  4:
+    COPY_FROM: merchant/docs
+    COPY_TO: ../../static_html/docs/merchant/
+    BUILD_PATH: _build/html/
+  5:
+    COPY_FROM: graphos/docs
+    COPY_TO: ../../static_html/docs/django-graphos/

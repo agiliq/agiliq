@@ -18,6 +18,9 @@
     {% include 'blogango/entry_snippets.html' %}
 {% endwith %}
 
+
+{% comment %}
+
 {% if comments %}
 <!--COMMENT BLOCK STARTS-->
 <h2 style="clear:both;">Comments</h2>
@@ -95,10 +98,6 @@
 </div>
 <!--COMMENT FORM BLOCK ENDS-->
 
-{% endblock %}
-
-
-{% comment %}
 <div id="columnA_2columns">
     <div class="post">
         <h3><a href="{{entry.get_absolute_url}}">{{entry.title}}</a></h3>
@@ -107,3 +106,5 @@
     </div>
 </div>
 {% endcomment %}
+
+{% endblock %}

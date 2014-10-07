@@ -1,5 +1,5 @@
 Django==1.6.5
--e git+https://github.com/agiliq/django-blogango.git@4742d84c4cf514b826000f2197ca635178ffec22#egg=blogango
+-e git+https://github.com/agiliq/django-blogango.git@bdf5da45d807bd3717cb6764f041d808094b769a#egg=blogango
 psycopg2==2.5.3
 raven==3.5.2
 South==0.8.2

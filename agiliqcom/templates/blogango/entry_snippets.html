@@ -3,7 +3,7 @@
 {% load agiliq_filters %}
 {% load thumbnail %}
 <article itemscope itemtype="http://schema.org/BlogPosting">
-<div class="comment_block">
+<div class="comment_block" style="display:inline-block">
   <div class="left_panel">
     <div class="frame_bg">
         {% if entry.created_by.teammember.photo %}
@@ -21,7 +21,7 @@
     </div>
 
     <div class="comment_bg">
-      <span class="disqus-comment-count" data-disqus-url="http://{{request.get_host}}{{request.path}}#disqus_thread"> <!-- Count will be inserted here --> </span>
+      <a href="#disqus_thread"><span class="disqus-comment-count" data-disqus-url="http://{{request.get_host}}{{request.path}}"> <!-- Count will be inserted here --> </span></a>
     </div>
 
     <div class="italics">Comments</div>

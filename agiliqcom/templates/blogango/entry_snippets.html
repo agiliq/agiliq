@@ -23,8 +23,6 @@
     <div class="comment_bg">
       <a href="#disqus_thread"><span class="disqus-comment-count" data-disqus-url="http://{{request.get_host}}{{request.path}}"> <!-- Count will be inserted here --> </span></a>
     </div>
-
-    <div class="italics">Comments</div>
     {% if entry.get_num_reactions %}
       <div class="reactions_bg"><a href="{{ entry.get_absolute_url }}#reactions">{{ entry.get_num_reactions }}</a></div>
       <div class="italics">Reactions</div>

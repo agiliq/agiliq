@@ -20,6 +20,12 @@ How to use this
 3. cp localsettings.example.py localsettings.py, add correct settings etc.
 4. pip install -r requirements.txt (You use virtualenv, right?)
 
+For installaion on Mac
+
+1. brew install libmemcached
+2. pip install -r requirements.txt
+
+
 
 Deployment
 ----------------

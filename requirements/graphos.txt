@@ -3,3 +3,4 @@ pymongo==2.5.1
 pyparsing==2.0.1
 pystache==0.5.4
 python-dateutil==1.5
+matplotlib==1.4.3

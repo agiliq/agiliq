@@ -1,37 +1,28 @@
-import pymongo
-
 from .models import Account
 
-import os
 
-
-DB_HOST = os.environ.get('MONGO_HOST') or ["localhost"]
-DB_PORT = os.environ.get('MONGO_PORT') or 27017
+DB_HOST = ["localhost"]
+DB_PORT = 27017
 
 
 def get_db(db_name):
-    DB_HOST = os.environ.get('MONGO_HOST') or ["localhost"]
-    DB_PORT = os.environ.get('MONGO_PORT') or 27017
-    db_name = os.environ.get('MONGO_DB_NAME') or db_name
-    db = pymongo.Connection(DB_HOST, int(DB_PORT))[db_name]
-    if 'agiliq_heroku' in os.environ:
-      USERNAME = os.environ.get('MONGO_USERNAME')
-      PASSWORD = os.environ.get('MONGO_PASSWORD')
-      db.authenticate(USERNAME, PASSWORD)
+    import pymongo
+    DB_HOST = ["localhost"]
+    DB_PORT = 27017
+    db = pymongo.Connection(DB_HOST, DB_PORT)[db_name]
     return db
 
 
 def get_mongo_cursor(db_name, collection_name, max_docs=100):
-    db_name = os.environ.get('MONGO_DB_NAME') or db_name
+    import pymongo
     db = pymongo.Connection(host=DB_HOST,
-                            port=int(DB_PORT))[db_name]
-    if 'agiliq_heroku' in os.environ:
-      USERNAME = os.environ.get('MONGO_USERNAME')
-      PASSWORD = os.environ.get('MONGO_PASSWORD')
-      db.authenticate(USERNAME, PASSWORD)
+                            port=DB_PORT)[db_name]
     collection = db[collection_name]
     cursor = collection.find()
-    if cursor.count >= max_docs:
+    count = cursor.count
+    if callable(count):
+        count = count()
+    if count >= max_docs:
         cursor = cursor[0:max_docs]
     return cursor
 
@@ -39,9 +30,9 @@ def get_mongo_cursor(db_name, collection_name, max_docs=100):
 data = [
        ['Year', 'Sales', 'Expenses', 'Items Sold', 'Net Profit'],
        ['2004', 1000, 400, 100, 600],
-       ['2005', 1170, 460, 120, 310],
+       ['2005', 1170, 460, 120, 710],
        ['2006', 660, 1120, 50, -460],
-       ['2007', 1030, 540, 100, 200],
+       ['2007', 1030, 540, 100, 490],
        ]
 
 candlestick_data = [['Mon', 20, 28, 38, 45],
@@ -128,7 +119,7 @@ def create_demo_accounts():
 
 
 def create_demo_mongo():
-    accounts = get_db(os.environ.get('MONGO_DB_NAME') or "accounts")
+    accounts = get_db("accounts")
     docs = accounts.docs
     docs.drop()
 

@@ -6,6 +6,7 @@
 .project
 *.tmp*~
 *CACHE*
+*.DS_Store
 media/
 agiliqcom/static/
 htmlcov

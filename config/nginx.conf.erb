@@ -38,17 +38,7 @@ http {
 
 
     server {
-        <!-- pagespeed on;
-        pagespeed FileCachePath /tmp;
-        location ~ "\.pagespeed\.([a-z]\.)?[a-z]{2}\.[^.]{10}\.[^.]+" {
-            add_header "" "";
-        }
-        location ~ "^/pagespeed_static/" { }
-        location ~ "^/ngx_pagespeed_beacon$" { }
-        
-       pagespeed EnableFilters insert_ga;
-       pagespeed AnalyticsID UA-367368-15; -->
-        
+      
         listen <%= ENV["PORT"] %>;
         server_name agiliq.com;
         keepalive_timeout 5;

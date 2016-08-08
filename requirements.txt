@@ -1,8 +1,7 @@
-Django==1.6.5
--e git+https://github.com/agiliq/django-blogango.git@bdf5da45d807bd3717cb6764f041d808094b769a#egg=blogango
+Django==1.8
+-e git+https://github.com/agiliq/django-blogango.git@0cc3caff5892460b7ecee029d54956441eaf5a8b#egg=blogango
 psycopg2==2.5.3
 raven==3.5.2
-South==0.8.2
 boto==2.8.0
 Pillow==2.4.0
 python-memcached==1.53

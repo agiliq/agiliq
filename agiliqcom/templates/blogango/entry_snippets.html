@@ -32,7 +32,7 @@
       {% include "blogango/social.html" %}
     {% endif %}
   </div>
-
+{% comment %}
   <div class="right_panel">
     <a href="{{ entry.get_absolute_url }}" class='noline'><h1 class="post_title" itemprop="headline">{{ entry.title }}</h1></a>
     <h6 class="posted_by">By : <a href="{% url 'blogango_author' entry.created_by %}">{{ entry.created_by|get_full_name }}</a>{% if entry.created_by.teammember.tag_line %} - {{ entry.created_by.teammember.tag_line }} {% endif %}</h6>
@@ -72,7 +72,7 @@
     {% endfor %}
     </div> 
 
-
+{% endcomment %}
   </div>
 </div>
 </article>

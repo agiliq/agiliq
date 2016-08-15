@@ -107,7 +107,8 @@ INSTALLED_APPS = (
 	'django.contrib.humanize',
     'django.contrib.flatpages',
     'django.contrib.staticfiles',
-    'django.contrib.comments',
+    #'django.contrib.comments',
+    'django_comments'
 
     #Our Apps
     'agiliqpages',

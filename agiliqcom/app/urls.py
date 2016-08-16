@@ -3,7 +3,6 @@ from billing import get_integration
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView
 
-google_checkout_obj = get_integration("google_checkout")
 authorize_net_obj = get_integration("authorize_net_dpm")
 pay_pal_obj = get_integration("pay_pal")
 amazon_fps_obj = get_integration("fps")

@@ -17,7 +17,7 @@ urlpatterns = patterns('',
     url(r'^login/$', login, name='dinette_login'),
 
     url(r'^demo/graphos/', include('graphosdemo.urls')),
-    url(r'^demo/merchant/', include('app.urls')),
+    #url(r'^demo/merchant/', include('app.urls')),
     url(r'^demo/dinette/', include('dinette.urls')),
     url(r'^demo/parsley/', include('parsleydemo.urls')),
     url(r'^team/leaves/', include('leave_tracker.urls')),

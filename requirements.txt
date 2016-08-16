@@ -25,11 +25,12 @@ django-crispy-forms==1.2.5
 django-markupfield==1.1.1
 django-pagination==1.0.7
 django-toolbelt==0.0.1
+django-contrib-comments==1.7.2
 logilab-common==0.61.0
 lxml==3.3.1
 requests==1.2.0
 six==1.6.1
-sorl-thumbnail==11.12.1b
+sorl-thumbnail==12.3
 termcolor==1.1.0
 wsgiref==0.1.2
 akismet==0.2.0

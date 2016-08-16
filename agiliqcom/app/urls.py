@@ -50,9 +50,6 @@ urlpatterns += patterns('',
 urlpatterns += patterns('',
     (r'^paypal-ipn-handler/', include(pay_pal_obj.urls)),
 )
-urlpatterns += patterns('',
-    (r'^', include(google_checkout_obj.urls)),
-)
 
 urlpatterns += patterns('',
     (r'^fps/', include(amazon_fps_obj.urls)),
@@ -70,9 +67,6 @@ urlpatterns += patterns('',
     url(r'offsite/paypal/done/$',
         csrf_exempt(TemplateView.as_view(template_name="app/payment_done.html")),
         name='app_offsite_paypal_done'),
-    url(r'offsite/google-checkout/done/$',
-        TemplateView.as_view(template_name="app/payment_done.html"),
-        name='app_offsite_google_checkout_done'),
 )
 
 urlpatterns += patterns('app.views',

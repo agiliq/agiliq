@@ -5,7 +5,7 @@ services:
   - mongodb
 install:
   - pip install -r requirements.txt --allow-all-external
-  - pip install --upgrade numpy
+  - pip install -U numpy
 env:
   -DJANGO=1.8
 before_script:

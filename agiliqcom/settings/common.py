@@ -36,7 +36,7 @@ USE_I18N = True
 
 # If you set this to False, Django will not format dates, numbers and
 # calendars according to the current locale
-USE_L10N = True
+USE_L10N = False
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
@@ -92,7 +92,7 @@ STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
     'compressor.finders.CompressorFinder',
-    )
+)
 
 
 INSTALLED_APPS = (
@@ -107,7 +107,7 @@ INSTALLED_APPS = (
 	'django.contrib.humanize',
     'django.contrib.flatpages',
     'django.contrib.staticfiles',
-    'django.contrib.comments',
+    'django_comments',
 
     #Our Apps
     'agiliqpages',
@@ -132,7 +132,6 @@ INSTALLED_APPS = (
     'taggit',
     'sorl.thumbnail',
     'pagination',
-    'south',
     'django_wysiwyg',
     'django_coverage',
     'raven.contrib.django.raven_compat',

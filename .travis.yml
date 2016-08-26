@@ -3,16 +3,13 @@ python:
 - '2.7'
 services:
   - mongodb
-cache:
-  directories:
-  - $HOME/.pip-cache/
-  - /home/travis/virtualenv/python2.7
 install:
-  - pip install -r requirements.txt --allow-all-external --download-cache $HOME/.pip-cache
+  - pip install -r requirements.txt --allow-all-external
+  - pip install -U numpy
 env:
-  -DJANGO_SECRET_KEY=travis
+  -DJANGO=1.8
 before_script:
-- ./lint.sh
+  - ./lint.sh
 script:
-- python agiliqcom/manage.py test agiliqpages blogango dinette graphosdemo parsley parsleydemo --settings=settings.test
+  - python agiliqcom/manage.py test blogango agiliqpages dinette graphosdemo parsley parsleydemo --settings=settings.test
 

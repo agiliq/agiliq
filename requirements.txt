@@ -1,8 +1,7 @@
-Django==1.6.5
--e git+https://github.com/agiliq/django-blogango.git@bdf5da45d807bd3717cb6764f041d808094b769a#egg=blogango
+Django==1.8
+-e git+https://github.com/agiliq/django-blogango.git@0cc3caff5892460b7ecee029d54956441eaf5a8b#egg=blogango
 psycopg2==2.5.3
 raven==3.5.2
-South==0.8.2
 boto==2.8.0
 Pillow==2.4.0
 python-memcached==1.53
@@ -14,23 +13,24 @@ git+https://github.com/pinax/django-mailer.git
 -r requirements/blogango.txt
 -r requirements/leave_tracker.txt
 -r requirements/dev.txt
-django-parsley==0.5
+-e git+https://github.com/agiliq/Django-parsley.git@3e30e72433a3db2c5f58a9fda646cd65ce6ee12a#egg=parsley
 BeautifulSoup==3.2.1
 FormEncode==1.2.6
 Jinja2==2.7.2
 argparse==1.2.1
 dj-database-url==0.3.0
 django-appconf==0.6
-django-compressor==1.3
+django-compressor==2.1
 django-crispy-forms==1.2.5
 django-markupfield==1.1.1
 django-pagination==1.0.7
 django-toolbelt==0.0.1
+django-contrib-comments==1.7.2
 logilab-common==0.61.0
 lxml==3.3.1
 requests==1.2.0
 six==1.6.1
-sorl-thumbnail==11.12.1b
+sorl-thumbnail==12.3
 termcolor==1.1.0
 wsgiref==0.1.2
 akismet==0.2.0

@@ -1,4 +1,3 @@
-
 import re
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
@@ -16,6 +15,8 @@ class ContactUsForm(forms.ModelForm):
 
     class Meta:
         model = ContactUs
+        #added on migration to 1.8
+        fields = "__all__"
 
     def clean_phone(self):
         phone_number = self.cleaned_data['phone']

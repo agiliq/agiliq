@@ -10,5 +10,7 @@ env:
 before_script:
 - ./lint.sh
 script:
+  script:
+- '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && bundle exec rake tests:integration || false'
 - python agiliqcom/manage.py test blogango agiliqpages dinette graphosdemo parsley parsleydemo --settings=settings.test
 
